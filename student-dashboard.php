@@ -23,7 +23,12 @@ else{
         $student_dob = $run['date_of_birth'];
         $student_classid= $run['class_id'];
 
-    $query="select S.subject_name, M.marks from exam_marks M,subjects S where M.student_id='$student_id' and M.subject_id=S.subject_id";
+	$query1="select eid from exam where status=1";
+	$result1=mysqli_query($con,$query1) or die(mysqli_error);
+	$res = mysqli_fetch_assoc($result1);
+	$eid = $res['eid'];
+
+    $query="select S.subject_name, M.marks from exam_marks M,subjects S where M.student_id='$student_id' and M.subject_id=S.subject_id and eid='$eid'";
     $result=mysqli_query($con,$query) or die(mysqli_error);
      foreach($result as $data)
      {
@@ -252,55 +257,51 @@ else{
 										<div class="card-body">
                                         <canvas id="acscore"></canvas>
                                             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-                                            
+                                            <script>
+												const ctx = document.getElementById('acscore');
+												const myChart = new Chart(ctx, {
+													type: 'bar',
+													data: {
+														labels: <?php echo json_encode($y) ?>,
+														//echo json_encode($y), 
+														datasets: [{
+															label: 'MARKS SCORED',
+															data:<?php echo json_encode($x) ?>,
+														//echo json_encode($x),
 
-<script>
-    
-const ctx = document.getElementById('acscore');
-const myChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: <?php echo json_encode($y) ?>,
-         //echo json_encode($y), 
-        datasets: [{
-            label: 'MARKS SCORED',
-            data:<?php echo json_encode($x) ?>,
-          //echo json_encode($x),
-
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        //maintainAspectRatio: true,
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        }
-    }
-});
-
-
-</script>
+															backgroundColor: [
+																'rgba(255, 99, 132, 0.2)',
+																'rgba(54, 162, 235, 0.2)',
+																'rgba(255, 206, 86, 0.2)',
+																'rgba(75, 192, 192, 0.2)',
+																'rgba(153, 102, 255, 0.2)',
+																'rgba(255, 159, 64, 0.2)'
+															],
+															borderColor: [
+																'rgba(255, 99, 132, 1)',
+																'rgba(54, 162, 235, 1)',
+																'rgba(255, 206, 86, 1)',
+																'rgba(75, 192, 192, 1)',
+																'rgba(153, 102, 255, 1)',
+																'rgba(255, 159, 64, 1)'
+															],
+															borderWidth: 1
+														}]
+													},
+													options: {
+														//maintainAspectRatio: true,
+														scales: {
+															y: {
+																beginAtZero: true
+															}
+														}
+													}
+												});
+											</script>
 										</div>
 									</div>
 								</div>
+								
 								<div class="col-12 col-lg-12 col-xl-4 d-flex">
 									<div class="card flex-fill">
 										<div class="card-header">
