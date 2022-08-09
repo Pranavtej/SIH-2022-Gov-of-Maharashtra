@@ -645,7 +645,7 @@ body {
 											<i class="fas fa-user-graduate"></i>
 										</div>
 										<div class="db-info">
-											<a href="student-login.html"><h3>Student</h3></a>
+											<a href="student-login.php"><h3>Student</h3></a>
 											<h9>login as a student</h9>
 										</div>										
 									</div>
@@ -661,7 +661,7 @@ body {
 											<i class="fas fa-crown"></i>
 										</div>
 										<div class="db-info">
-                                            <a href="parent-login.html"><h3>Parent</h3></a>
+                                            <a href="parent-login.php"><h3>Parent</h3></a>
 											<h9>Login as a Parent</h9>
 										</div>										
 									</div>
@@ -678,7 +678,7 @@ body {
 											<i class="fas fa-building"></i>
 										</div>
 										<div class="db-info">
-											<a href="teacher-login.html"><h3>Teacher</h3></a>
+											<a href="teacher-login.php"><h3>Teacher</h3></a>
 											<h9>Login as a Teacher</h9>
 										</div>										
 									</div>
@@ -695,7 +695,7 @@ body {
 											<i class="fas fa-file-invoice-dollar"></i>
 										</div>
 										<div class="db-info">
-											<a href="school-login.html"><h3>School</h3></a>
+											<a href="school-login.php"><h3>School</h3></a>
 											<h9>Login as a School Administrator</h9>
 										</div>										
 									</div>
