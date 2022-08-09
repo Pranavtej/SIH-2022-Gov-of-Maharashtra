@@ -93,7 +93,7 @@ if(isset($_POST['login']))
 								</form>
 								<!-- /Form -->
 								
-								<div class="text-center forgotpass"><a href="forgot-password.html">Forgot Password?</a></div>
+								<div class="text-center forgotpass"><a href="forgot-password.php">Forgot Password?</a></div>
 							</div>
                         </div>
                     </div>
