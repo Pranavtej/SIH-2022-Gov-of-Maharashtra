@@ -124,7 +124,7 @@
                             </div>
                         </div>
                         <a class="dropdown-item" href="profile.html">My Profile</a>
-                        <a class="dropdown-item" href="inbox.html">Inbox</a>
+                        <a class="dropdown-item" href="#">Inbox</a>
                         <a class="dropdown-item" href="login.html">Logout</a>
                     </div>
                 </li>
@@ -150,6 +150,12 @@
                                 <li><a href="index.html">Admin Dashboard</a></li>
                                 <li><a href="teacher-dashboard.html">Teacher Dashboard</a></li>
                                 <li><a href="student-dashboard.html" class="active">Student Dashboard</a></li>
+                            </ul>
+                        </li>
+                        <li class="submenu">
+                            <a href="#"><i class="fas fa-user-graduate"></i> <span> Marks</span> <span class="menu-arrow"></span></a>
+                            <ul>
+                                <li><a href="student-marks.php">Marks List</a></li>
                             </ul>
                         </li>
                         <li class="submenu">
