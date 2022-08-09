@@ -53,10 +53,10 @@ $student_id = $_SESSION['STUDENT_ID'];
 					<div class="page-header">
 						<div class="row">
 							<div class="col">
-								<h3 class="page-title">Data Tables</h3>
+								<h3 class="page-title">Mark List</h3>
 								<ul class="breadcrumb">
-									<li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-									<li class="breadcrumb-item active">Data Tables</li>
+									<li class="breadcrumb-item"><a href="student-dashboard.php">Dashboard</a></li>
+									<li class="breadcrumb-item active">Mark List</li>
 								</ul>
 							</div>
 						</div>
@@ -71,14 +71,17 @@ $student_id = $_SESSION['STUDENT_ID'];
                                 $i = 0;
                                 $query="select S.subject_name as sn, M.marks as mm from exam_marks M,subjects S where M.student_id='$student_id' and M.subject_id=S.subject_id and eid='$id'";
                                 $result=mysqli_query($con,$query) or die(mysqli_error);
+                                $query1="select ename from exam where eid='$id'";
+                                $result2=mysqli_query($con,$query1) or die(mysqli_error);
+                                $res = mysqli_fetch_assoc($result2);
                                 echo '<div class="col-sm-12">
                                         <div class="card">
                                             <div class="card-header">
-                                                <h5 class="card-title mb-2">'.$id.'</h5>
+                                                <h5 class="card-title mb-2">'.$res['ename'].'</h5>
                                             </div>
                                             <div class="card-body">
                                                 <div class="table-responsive">
-                                                    <table class="datatable table table-stripped">
+                                                    <table class="table table-hover">
                                                         <thead>
                                                             <tr>
                                                                 <th>S. No.</th>

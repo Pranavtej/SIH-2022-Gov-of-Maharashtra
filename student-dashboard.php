@@ -8,7 +8,8 @@ if(empty($_SESSION['STUDENT_ID']))
 else{
 
     $student_id = $_SESSION['STUDENT_ID'];
-
+	$class_id = $_SESSION['CLASS_ID'];
+ 
     $sql="select * from student where student_id='$student_id'";
     $run = mysqli_query($con,$sql)or die(''.__LINE__.'<br>'.mysqli_error($con));
     $run = mysqli_fetch_assoc($run);
@@ -102,7 +103,7 @@ else{
 											<i class="fas fa-book-open"></i>
 										</div>
 										<div class="db-info">
-											<h3><?php echo'R'?></h3>
+											<h3><?php echo $class_id; ?></h3>
 											<h6>Academic Rank</h6>
 										</div>										
 									</div>

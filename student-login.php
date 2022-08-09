@@ -4,14 +4,15 @@ include 'connect.php';
 
 if(isset($_POST['login']))
 {
-    $sql = "select school_id ,student_id from student where student_id='{$_POST['student_id']}'";
+    $sql = "select school_id ,student_id,class_id from student where student_id='{$_POST['student_id']}'";
     $run = mysqli_query($con,$sql);
     $run = mysqli_fetch_assoc($run);
     if(!empty($run))
     {
         $_SESSION['SCHOOL_ID'] = $run['school_id'];
         $_SESSION['STUDENT_ID'] = $_POST['student_id'];
-        echo "<script>document.location='student-dashboard.php'</script>";
+        $_SESSION['CLASS_ID'] = $run['class_id'];
+		echo "<script>document.location='student-dashboard.php'</script>";
     }
     else
     {

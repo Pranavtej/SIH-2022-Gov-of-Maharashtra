@@ -161,10 +161,7 @@
                         <li class="submenu">
                             <a href="#"><i class="fas fa-user-graduate"></i> <span> Students</span> <span class="menu-arrow"></span></a>
                             <ul>
-                                <li><a href="students.html">Student List</a></li>
-                                <li><a href="student-details.html">Student View</a></li>
-                                <li><a href="add-student.html">Student Add</a></li>
-                                <li><a href="edit-student.html">Student Edit</a></li>
+                                <li><a href="student-view.php">Student View</a></li>
                             </ul>
                         </li>
                         <li class="submenu">
@@ -187,12 +184,10 @@
                         <li class="submenu">
                             <a href="#"><i class="fas fa-book-reader"></i> <span> Subjects</span> <span class="menu-arrow"></span></a>
                             <ul>
-                                <li><a href="subjects.html">Subject List</a></li>
-                                <li><a href="add-subject.html">Subject Add</a></li>
-                                <li><a href="edit-subject.html">Subject Edit</a></li>
+                                <li><a href="student-subjects.php">Subject List</a></li>
                             </ul>
                         </li>
-                        <li class="submenu">
+                        <li class="submenu">   
                             <a href="#"><i class="fas fa-clipboard"></i> <span> Invoices</span> <span class="menu-arrow"></span></a>
                             <ul>
                                 <li><a href="invoices.html">Invoices List</a></li>
