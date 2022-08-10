@@ -9,7 +9,7 @@
 							<li class="submenu active">
 								<a href="#"><i class="fas fa-user-graduate"></i> <span> Dashboard</span> <span class="menu-arrow"></span></a>
 								<ul>
-									<li><a href="teacher-going-classes.php">Teacher Dashboard</a></li>
+									<li><a href="teacher-classteacher-dashboard.php">Teacher Dashboard</a></li>
 									<!-- <li><a href="teacher-dashboard.html" class="active">Teacher Dashboard</a></li> -->
 									<!-- <li><a href="student-dashboard.html">Student Dashboard</a></li> -->
 								</ul>
