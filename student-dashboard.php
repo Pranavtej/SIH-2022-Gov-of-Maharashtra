@@ -326,19 +326,19 @@ else{
 											<div class="teaching-card">
 												<ul class="activity-feed">
 													<li class="feed-item">
-														<div class="feed-date1">Curent Academic Year 2021-2022 </div>
-														<span class="feed-text1"><a>Score </a></span>
-														<p><span>In Progress</span></p>
-													</li>
-													<li class="feed-item">
-														<div class="feed-date1">old  Acdemic Year</div>
-														<span class="feed-text1"><a>Score</a></span>
-														<p>Completed</p>
-													</li>
-													<li class="feed-item">
-														<div class="feed-date1">old  Acdemic Year</div>
-														<span class="feed-text1"><a>Score</a></span>
-														<p>completed</p>
+														<div class="feed-date1">Current Academic Year 2021-2022 </div>
+														<?php
+															$exam = array("UT1","FA1","UT2","FA2","AEE");
+															foreach($exam as $eid)
+															{
+																$qu1="select e.total as total,ex.ename as ename from exam_totals e, exam ex where e.eid='$eid' and e.student_id='$student_id' and e.eid = ex.eid";
+    															$re1=mysqli_query($con,$qu1);
+																$re1 = mysqli_fetch_assoc($re1);
+																echo '
+																<span class="feed-text1"><a>'.$re1['ename'].'</a></span>
+																<p><span>'.$re1['total'].'</span></p>';
+															}
+														?>
 													</li>
 													<li class="feed-item">
 														<div class="feed-date1">old  Acdemic Year</div>
