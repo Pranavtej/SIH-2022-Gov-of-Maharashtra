@@ -17,7 +17,11 @@
 	$sql3 = mysqli_query($con,"select class, section from schoolwise_class_details where class_id='$class_id'");
 	$run3 = mysqli_fetch_assoc($sql3);
 
+	$sql4 = mysqli_query($con,"select count(*) as male from student where school_id='$school_id' and class_id='$class_id' and gender='M'");
+	$run4 = mysqli_fetch_assoc($sql4);
 
+	$sql5 = mysqli_query($con,"select count(*) as female from student where school_id='$school_id' and class_id='$class_id' and gender='F'");
+	$run5 = mysqli_fetch_assoc($sql5);
 
 
 ?>
@@ -106,7 +110,7 @@
 											<i class="fas fa-user-graduate"></i>
 										</div>
 										<div class="db-info">
-											<h3>40/60</h3>
+											<h3><?php echo $run4['male']; ?></h3>
 											<h6>Total Boys</h6>
 										</div>										
 									</div>
@@ -122,7 +126,7 @@
 											<i class="fas fa-book-open"></i>
 										</div>
 										<div class="db-info">
-											<h3>30/50</h3>
+											<h3><?php echo $run5['female']; ?></h3>
 											<h6>Total Girls</h6>
 										</div>										
 									</div>
