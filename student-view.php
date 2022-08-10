@@ -94,7 +94,16 @@ $run2 = mysqli_fetch_assoc($run2);
                                                     </li>
                                                     <li>
                                                         <span class="title-span">Gender : </span>
-                                                        <span class="info-span"><?php echo $run['gender']; ?></span>
+                                                        <span class="info-span"><?php
+																					if($run['gender']== 'M')
+																					{
+																						echo "MALE";
+																					} 
+																					else
+																					{
+																						echo "FEMALE";
+																					}
+																				?></span>
                                                     </li>
                                                     <li>
                                                         <span class="title-span">DOB : </span>
