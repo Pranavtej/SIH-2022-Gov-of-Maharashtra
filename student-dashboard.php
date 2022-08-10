@@ -9,6 +9,7 @@ else{
 
     $student_id = $_SESSION['STUDENT_ID'];
 	$class_id = $_SESSION['CLASS_ID'];
+	$school_id = $_SESSION['SCHOOL_ID'];
  
     $sql="select * from student where student_id='$student_id'";
     $run = mysqli_query($con,$sql)or die(''.__LINE__.'<br>'.mysqli_error($con));
@@ -36,6 +37,19 @@ else{
         $y[] = $data['subject_name'];
         $x[]=$data['marks'];
     }
+    }
+
+	$qu="select e.student_id as sid from exam_totals e,student s where e.eid='$eid' and e.school_id='$school_id' and e.student_id=s.student_id and s.class_id='$class_id' order by e.total desc";
+    $re=mysqli_query($con,$qu);
+    $var=0;
+    foreach($re as $data)
+    {
+        $var=$var+1;
+        if($data['sid']==$student_id)
+        {
+            $rank = $var;
+            break;
+        }
     }
 }
 
@@ -103,7 +117,7 @@ else{
 											<i class="fas fa-book-open"></i>
 										</div>
 										<div class="db-info">
-											<h3><?php echo $class_id; ?></h3>
+											<h3><?php echo $rank; ?></h3>
 											<h6>Academic Rank</h6>
 										</div>										
 									</div>
