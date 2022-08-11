@@ -74,30 +74,23 @@ include 'connect.php';?>
 											</thead>
 											<tbody>
 													<?php
-													$query1="SELECT `student_id`, `school_id`, `student_name`, 
-													`date_of_birth`, `gender`, `email`, `address`, `class_id` FROM `student`";
+													$query1="SELECT s.student_id as student_id, s.student_name as student_name, s.date_of_birth as date_of_birth, s.gender as gender, s.email as email, s.address as address,c.class as class, c.section as section,si.school_name as school_name FROM student s,classes c,school_info si where s.class_id = c.class_id and s.school_id = si.school_id";
 													$run1=mysqli_query($con,$query1);
 													while($res1=mysqli_fetch_assoc($run1))
 													{
-														$cid=$res1['class_id'];
-														$sid=$res1['school_id'];
-														$query2="SELECT `class`, `section` FROM `classes` WHERE class_id = '$cid'";
-														$run2=mysqli_query($con,$query2);
-														$res2=mysqli_fetch_assoc($run2);
-														$query3="SELECT `school_name` from school_info WHERE school_id='$sid'";
-														$run3=mysqli_query($con,$query3);
-														$res3=mysqli_fetch_assoc($run3);
 														echo 
 														'<tr><td>'.$res1['student_id'].'</td>
 														<td><a href="super-admin-student-dashboard.php?student_id='.$res1['student_id'].'">'.$res1['student_name'].'</a></td>
-														<td>'.$res3['school_name'].'</td>
+														<td>'.$res1['school_name'].'</td>
 														<td>'.$res1['date_of_birth'].'</td>
 														<td>'.$res1['gender'].'</td>
 														<td>'.$res1['email'].'</td>
 														<td>'.$res1['address'].'</td>
-														<td>'.$res2['class'].'</td>
-														<td>'.$res2['section'].'</td>
-														</tr>';}?>
+														<td>'.$res1['class'].'</td>
+														<td>'.$res1['section'].'</td>
+														</tr>';
+													}
+													?>
 											</tbody>
 										</table>
 									</div>
