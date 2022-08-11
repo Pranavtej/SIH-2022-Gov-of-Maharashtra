@@ -11,23 +11,23 @@ if(empty($_SESSION['SCHOOL_ID']))
 else{
 
 $school_id=$_SESSION['SCHOOL_ID'];
-$std=" select class , section,c.class_id  from classes as c,schoolwise_class_details as sc where sc.school_id='$school_id' and sc.class_id=c.class_id";
+$std=" select c.class , c.section,c.class_id  from classes as c,schoolwise_class_details as sc where sc.school_id='$school_id' and sc.class_id=c.class_id";
 
 if(isset($_POST['submit'])) {
     if($_POST['select']=='6th') {   //<=========== 'select'
-        $std=" select class , section ,c.class_id  from classes as c,schoolwise_class_details as sc where sc.school_id='$school_id' and sc.class_id=c.class_id and (sc.class_id='CL0601' or sc.class_id='CL0602' or sc.class_id='CL0603' or sc.class_id='CL0604')" ;
+        $std=" select c.class , section ,c.class_id  from classes as c,schoolwise_class_details as sc where sc.school_id='$school_id' and sc.class_id=c.class_id and (sc.class_id='CL0601' or sc.class_id='CL0602' or sc.class_id='CL0603' or sc.class_id='CL0604')" ;
     }
     elseif($_POST['select']=='7th') {   //<=========== 'select'
-        $std=" select class , section,c.class_id   from classes as c,schoolwise_class_details as sc where sc.school_id='$school_id' and sc.class_id=c.class_id  and (sc.class_id='CL0701' or sc.class_id='CL0702' or sc.class_id='CL0703' or sc.class_id='CL0704')";
+        $std=" select c.class , c.section,c.class_id   from classes as c,schoolwise_class_details as sc where sc.school_id='$school_id' and sc.class_id=c.class_id  and (sc.class_id='CL0701' or sc.class_id='CL0702' or sc.class_id='CL0703' or sc.class_id='CL0704')";
   }
     elseif($_POST['select']=='8th'){
-        $std=" select class , section,c.class_id   from classes as c,schoolwise_class_details as sc where sc.school_id='$school_id' and sc.class_id=c.class_id and (sc.class_id='CL0801' or sc.class_id='CL0802' or sc.class_id='CL0803' or sc.class_id='CL0804')";
+        $std=" select c.class , c.section,c.class_id   from classes as c,schoolwise_class_details as sc where sc.school_id='$school_id' and sc.class_id=c.class_id and (sc.class_id='CL0801' or sc.class_id='CL0802' or sc.class_id='CL0803' or sc.class_id='CL0804')";
     }
     elseif($_POST['select']=='9th'){
-        $std=" select class , section ,c.class_id  from classes as c,schoolwise_class_details as sc where sc.school_id='$school_id' and sc.class_id=c.class_id and (sc.class_id='CL0901' or sc.class_id='CL0902' or sc.class_id='CL0903' or sc.class_id='CL0904')";
+        $std=" select c.class , c.section ,c.class_id  from classes as c,schoolwise_class_details as sc where sc.school_id='$school_id' and sc.class_id=c.class_id and (sc.class_id='CL0901' or sc.class_id='CL0902' or sc.class_id='CL0903' or sc.class_id='CL0904')";
     }
     elseif($_POST['select']=='10th'){
-        $std=" select class , section ,c.class_id  from classes as c,schoolwise_class_details as sc where sc.school_id='$school_id' and sc.class_id=c.class_id and (sc.class_id='CL1001' or sc.class_id='CL1002' or sc.class_id='CL1003' or sc.class_id='CL1004')";
+        $std=" select c.class , c.section ,c.class_id  from classes as c,schoolwise_class_details as sc where sc.school_id='$school_id' and sc.class_id=c.class_id and (sc.class_id='CL1001' or sc.class_id='CL1002' or sc.class_id='CL1003' or sc.class_id='CL1004')";
     }
     else{
 

@@ -71,15 +71,17 @@ $counter=mysqli_num_rows($result);
 
 <div>
 <form class="filteroption" action="" method="post">
-    <select id="class" name="select" onchange="searchFun()">
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
+    <select id="select" name="select" >
+        
+        <option value="6th" selected="selected">6</option>
+        <option value="7th" selected="selected">7</option>
+        <option value="8th" selected="selected">8</option>
+        <option value="9th" selected="selected">9</option>
+        <option value="10th" selected="selected">10</option>
         <option value=0 selected="selected">select class</option>
     </select>
-</form>
+    <input  class="btn btn-primary" type="submit" name="submit" value="submit">
+          </form>
 
 
 </div>
@@ -107,7 +109,7 @@ $counter=mysqli_num_rows($result);
 foreach ($result as $data) 
 {
        $stdname=$data['student_name'];
-       $std_id=$data['student_id'];
+       $student_id=$data['student_id'];
        $date=$data['date_of_birth'];
        $class=$data['class'];
        $section = $data['section'];
@@ -115,9 +117,9 @@ foreach ($result as $data)
        $mail=$data['email'];
     echo
     '<tr>
-<td>'.$std_id.'</td>
+<td>'.$student_id.'</td>
 <td>
-<a href="school-admin-student-dashboard.php?std_id=<?php echo $std_id ?>">'.$stdname.'</a>
+<a href="school-admin-student-dashboard.php?std_id='.$student_id.'">'.$stdname.'</a>
 </h2>
 </td>
 <td>'.$class.'</td>

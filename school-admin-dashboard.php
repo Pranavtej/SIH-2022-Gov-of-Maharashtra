@@ -119,7 +119,7 @@ if(empty($_SESSION['SCHOOL_ID'])){
 									</div>
 								</div>
 							</div>
-			-			</div>
+				</div>
 
 						<div class="col-xl-3 col-sm-6 col-12 d-flex">
 							<div class="card bg-three w-100">
