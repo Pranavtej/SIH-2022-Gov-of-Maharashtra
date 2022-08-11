@@ -3,25 +3,18 @@
     include 'connect.php';
 
     session_start();
+    $teacher_id=$_GET['teacher_id'];
 
     $school_id = $_SESSION['SCHOOL_ID'];
-    $teacher_id = $_GET['teacher_id'];
-	$class_id = $_SESSION['CLASS_ID'];
+    //$teacher_id = $_SESSION['TEACHER_ID'];
 
     $sql = mysqli_query($con,"select teacher_name from teacher_info where teacher_id='$teacher_id' and school_id='$school_id'");
     $run = mysqli_fetch_assoc($sql);
 
-	$sql2 = mysqli_query($con,"select count(*) as total from student where school_id='$school_id' and class_id='$class_id'");
-	$run2 = mysqli_fetch_assoc($sql2);
 
-	$sql3 = mysqli_query($con,"select class, section from schoolwise_class_details where class_id='$class_id'");
-	$run3 = mysqli_fetch_assoc($sql3);
 
-	$sql4 = mysqli_query($con,"select count(*) as male from student where school_id='$school_id' and class_id='$class_id' and gender='M'");
-	$run4 = mysqli_fetch_assoc($sql4);
 
-	$sql5 = mysqli_query($con,"select count(*) as female from student where school_id='$school_id' and class_id='$class_id' and gender='F'");
-	$run5 = mysqli_fetch_assoc($sql5);
+
 
 
 ?>
@@ -36,7 +29,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-        <title> School -Admin Class Teacher - Dashboard</title>
+        <title>School Admin -techer Dashboard</title>
 		
 		<!-- Favicon -->
         <link rel="shortcut icon" href="assets/img/favicon.png">
@@ -61,10 +54,8 @@
 	
 		<!-- Main Wrapper -->
         <div class="main-wrapper">
-		
-			<?php include 'teacher-header.php' ?>
-            			
-			<?php include 'teacher-sidebar.php' ?>
+		<?php include 'school-admin-header.php';?>
+    <?php include 'school-admin-sidebar.php';?>
 			
 			<!-- Page Wrapper -->
             <div class="page-wrapper">
@@ -77,7 +68,7 @@
 								<h3 class="page-title">Teacher Name : <?php echo $run['teacher_name']; ?></h3>
 								<ul class="breadcrumb">
 									<li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-									<li class="breadcrumb-item active"> School Admin /class Teacher Dashboard</li>
+									<li class="breadcrumb-item active">School Admin /Teacher Dashboard</li>
 								</ul>
 							</div>
 						</div>
@@ -94,8 +85,8 @@
 											<i class="fas fa-chalkboard"></i>
 										</div>
 										<div class="db-info">
-											<h3><?php echo $run2['total']; ?></h3>
-											<h6>Total Students</h6>
+											<h3>04/06</h3>
+											<h6>Total Classes</h6>
 										</div>										
 									</div>
 								</div>
@@ -110,8 +101,8 @@
 											<i class="fas fa-user-graduate"></i>
 										</div>
 										<div class="db-info">
-											<h3><?php echo $run4['male']; ?></h3>
-											<h6>Total Boys</h6>
+											<h3>40/60</h3>
+											<h6>Total Students</h6>
 										</div>										
 									</div>
 								</div>
@@ -126,8 +117,8 @@
 											<i class="fas fa-book-open"></i>
 										</div>
 										<div class="db-info">
-											<h3><?php echo $run5['female']; ?></h3>
-											<h6>Total Girls</h6>
+											<h3>30/50</h3>
+											<h6>Total Lessons</h6>
 										</div>										
 									</div>
 								</div>
@@ -142,8 +133,8 @@
 											<i class="fas fa-clock"></i>
 										</div>
 										<div class="db-info">
-											<h3><?php echo $run3['class'].'-'.$run3['section']; ?></h3>
-											<h6>Class & Section</h6>
+											<h3>15/20</h3>
+											<h6>Total Hours</h6>
 										</div>										
 									</div>
 								</div>

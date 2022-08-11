@@ -12,7 +12,7 @@ if(isset($_POST['login']))
         $_SESSION['SCHOOL_ID'] = $run['school_id'];
         $_SESSION['STUDENT_ID'] = $_POST['student_id'];
         $_SESSION['CLASS_ID'] = $run['class_id'];
-		echo "<script>document.location='student-dashboard.php'</script>";
+		echo "<script>document.location='parent-dashboard.php'</script>";
     }
     else
     {
