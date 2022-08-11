@@ -67,7 +67,7 @@ $teach_count = mysqli_fetch_assoc($run2);
 											<i class="fas fa-user-graduate"></i>
 										</div>
 										<div class="db-info">
-											<h3><a href="super-admin-school-list.php"><?php echo $school_count['sc'];?></h3>
+										<a href="super-admin-school-list.php"><h3><?php echo $school_count['sc'];?></h3></a>
 											<h6>Total Schools</h6>
 										</div>										
 									</div>
