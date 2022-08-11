@@ -59,10 +59,10 @@ $counter=mysqli_num_rows($result);
 					<div class="page-header">
 						<div class="row align-items-center">
 							<div class="col">
-								<h3 class="page-title">Add Section</h3>
+								<h3 class="page-title">Edit Teacher</h3>
 								<ul class="breadcrumb">
-									<li class="breadcrumb-item"><a href="school-admin-section-list.php">Section-list</a></li>
-									<li class="breadcrumb-item active">Add Section</li>
+									<li class="breadcrumb-item"><a href="school-admin-teacher-list.php">Teacher-list</a></li>
+									<li class="breadcrumb-item active">Edit Teacher</li>
 								</ul>
 							</div>
 						</div>

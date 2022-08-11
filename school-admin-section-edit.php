@@ -82,10 +82,10 @@ if(isset($_POST['submit']))
 
 
 							<div class="col">
-								<h3 class="page-title">Add Section</h3>
+								<h3 class="page-title">Edit Section</h3>
 								<ul class="breadcrumb">
 									<li class="breadcrumb-item"><a href="school-admin-section-list.php">Section-list</a></li>
-									<li class="breadcrumb-item active">Add Section</li>
+									<li class="breadcrumb-item active">Edit Section</li>
 								</ul>
 							</div>
 							<div>

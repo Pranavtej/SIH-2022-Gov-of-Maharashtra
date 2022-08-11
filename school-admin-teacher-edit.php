@@ -71,10 +71,10 @@ if(isset($_POST['submit']))
 					<div class="page-header">
 						<div class="row align-items-center">
 							<div class="col">
-								<h3 class="page-title">Add Teacher</h3>
+								<h3 class="page-title">Edit Teacher</h3>
 								<ul class="breadcrumb">
 									<li class="breadcrumb-item"><a href="school-admin-teacher-list.php">teachers-list</a></li>
-									<li class="breadcrumb-item active">Add Teacher</li>
+									<li class="breadcrumb-item active">Edit Teacher</li>
 								</ul>
 							</div>
 						</div>
