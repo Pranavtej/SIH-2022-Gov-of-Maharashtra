@@ -5,7 +5,7 @@ include'connect.php';
 
 if(empty($_SESSION['SCHOOL_ID']))
 {
-    header('location:index.php');
+    header('location:school-login.php');
 }
 else{
 
@@ -97,11 +97,11 @@ $counter=mysqli_num_rows($result);
 <form cla1ss="filteroption" action="" method="post">
     <select id="select" class="form-control form-select" name="select" >
         
-        <option value="6th" selected="selected">6</option>
-        <option value="7th" selected="selected">7</option>
-        <option value="8th" selected="selected">8</option>
-        <option value="9th" selected="selected">9</option>
-        <option value="10th" selected="selected">10</option>
+        <option value="6th" >6</option>
+        <option value="7th" >7</option>
+        <option value="8th" >8</option>
+        <option value="9th" >9</option>
+        <option value="10th" >10</option>
         <option value=0 selected="selected">select class</option>
     </select>
     <br>
@@ -143,7 +143,7 @@ foreach ($result as $data)
     '<tr>
 <td>'.$student_id.'</td>
 <td>
-<a href="school-admin-student-dashboard.php?std_id='.$student_id.'">'.$stdname.'</a>
+<a href="school-admin-student-dashboard.php?student_id='.$student_id.'">'.$stdname.'</a>
 </h2>
 </td>
 <td>'.$class_id.'</td>
