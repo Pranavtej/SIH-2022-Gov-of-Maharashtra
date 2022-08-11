@@ -5,38 +5,15 @@ include'connect.php';
 
 if(empty($_SESSION['SCHOOL_ID']))
 {
-    header('location:index.php');
+    header('location:school-login.php');
 }
 else{
 
 $school_id=$_SESSION['SCHOOL_ID'];
-$std=" select student_id , student_name ,date_of_birth,address,email,class_id from student where school_id='$school_id'";
-if(isset($_POST['submit'])) {
-    if($_POST['select']=='6th') {   //<=========== 'select'
-        $std=" select student_id , student_name ,date_of_birth,address,email,class_id from student where school_id='$school_id' and (class_id='CL0601' or class_id='CL0602' or class_id='CL0603' or class_id='CL0604') ";
-    }
-    elseif($_POST['select']=='7th') {   //<=========== 'select'
-        $std=" select student_id , student_name ,date_of_birth,address,email,class_id from student where school_id='$school_id' and class_id='CL0701' or class_id='CL0702' or class_id='CL0703' or class_id='CL0704' ";
-    }
-    elseif($_POST['select']=='8th'){
-        $std=" select student_id , student_name ,date_of_birth,address,email,class_id from student where school_id='$school_id' and class_id='CL0801' or class_id='CL0802' or class_id='CL0803' or class_id='CL0804' ";
-    }
-    elseif($_POST['select']=='9th'){
-        $std=" select student_id , student_name ,date_of_birth,address,email,class_id from student where school_id='$school_id' and class_id='CL0901' or class_id='CL0902' or class_id='CL0903' or class_id='CL0904' ";
-    }
-    elseif($_POST['select']=='10th'){
-        $std=" select student_id , student_name ,date_of_birth,address,email,class_id from student where school_id='$school_id' and class_id='CL1001' or class_id='CL1002' or class_id='CL1003' or class_id='CL1004' ";
-    }
-    else{
-
-    }
-
-    $result=mysqli_query($con,$std) or die(mysqli_error);
-    $counter=mysqli_num_rows($result);
-    
-}
+$std=" select s.student_id as student_id , s.student_name as student_name ,s.date_of_birth as date_of_birth,s.address as address,s.email as email,c.class as class,c.section as section from student s,classes c where s.school_id='$school_id' and s.class_id = c.class_id";
 $result=mysqli_query($con,$std) or die(mysqli_error);
 $counter=mysqli_num_rows($result);
+
 }
 
 ?> 
@@ -96,11 +73,11 @@ $counter=mysqli_num_rows($result);
 <form class="filteroption" action="" method="post">
     <select id="select" name="select" >
         
-        <option value="6th" selected="selected">6</option>
-        <option value="7th" selected="selected">7</option>
-        <option value="8th" selected="selected">8</option>
-        <option value="9th" selected="selected">9</option>
-        <option value="10th" selected="selected">10</option>
+        <option value="6th" >6</option>
+        <option value="7th" >7</option>
+        <option value="8th" >8</option>
+        <option value="9th" >9</option>
+        <option value="10th" >10</option>
         <option value=0 selected="selected">select class</option>
     </select>
     <input  class="btn btn-primary" type="submit" name="submit" value="submit">
@@ -114,12 +91,13 @@ $counter=mysqli_num_rows($result);
 <div class="card card-table">
 <div class="card-body">
 <div class="table-responsive">
-<table class="table table-hover table-center mb-0 datatable">
+<table id="myTable" class="table table-hover table-center mb-0 datatable">
 <thead>
 <tr>
 <th>ID</th>
 <th>Name</th>
 <th>Class</th>
+<th>Section</th>
 <th>DOB</th>
 <th>EMAIL</th>
 <th>Address</th>
@@ -131,19 +109,21 @@ $counter=mysqli_num_rows($result);
 foreach ($result as $data) 
 {
        $stdname=$data['student_name'];
-       $std_id=$data['student_id'];
+       $student_id=$data['student_id'];
        $date=$data['date_of_birth'];
-       $class_id=$data['class_id'];
+       $class=$data['class'];
+       $section = $data['section'];
        $addres=$data['address'];
        $mail=$data['email'];
     echo
     '<tr>
-<td>'.$std_id.'</td>
+<td>'.$student_id.'</td>
 <td>
-<a href="school-admin-student-dashboard.php?std_id=<?php echo $std_id ?>">'.$stdname.'</a>
+<a href="school-admin-student-dashboard.php?student_id='.$student_id.'">'.$stdname.'</a>
 </h2>
 </td>
-<td>'.$class_id.'</td>
+<td>'.$class.'</td>
+<td>'.$section.'</td>
 <td>'.$date.'</td>
 <td>'.$mail.'</td>
 <td>'.$addres.'</td>
@@ -170,5 +150,29 @@ foreach ($result as $data)
 <script src="assets/plugins/datatables/datatables.min.js"></script>
 
 <script src="assets/js/script.js"></script>
+
+<script>
+    const searchFun = () => {
+        let filter = document.getElementById('class').value;
+        
+        let myTable = document.getElementById('myTable');
+        
+        let tr = myTable.getElementsByTagName('tr');
+
+        for(var i=0;i<tr.length;i++){
+            let td = tr[i].getElementsByTagName('td')[2];
+        
+            if(td){
+                let textvlaue = td.textContent || td.innerHTML;
+                if(textvlaue.toUpperCase().indexOf(filter)>-1){
+                    tr[i].style.display = "";
+                }
+                else{
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>
 </body>
 </html>

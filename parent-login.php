@@ -4,13 +4,15 @@ include 'connect.php';
 
 if(isset($_POST['login']))
 {
-    $sql = "select school_id  from school_info where school_id='{$_POST['school_id']}'";
+    $sql = "select school_id ,student_id,class_id from student where student_id='{$_POST['student_id']}'";
     $run = mysqli_query($con,$sql);
     $run = mysqli_fetch_assoc($run);
     if(!empty($run))
     {
         $_SESSION['SCHOOL_ID'] = $run['school_id'];
-        echo "<script>document.location='school-admin-dashboard.php'</script>";
+        $_SESSION['STUDENT_ID'] = $_POST['student_id'];
+        $_SESSION['CLASS_ID'] = $run['class_id'];
+		echo "<script>document.location='parent-dashboard.php'</script>";
     }
     else
     {
@@ -32,7 +34,7 @@ if(isset($_POST['login']))
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-        <title>School - Login</title>
+        <title>Student  - Login</title>
 		
 		<!-- Favicon -->
         <link rel="shortcut icon" href="assets/img/favicon.png">
@@ -62,16 +64,16 @@ if(isset($_POST['login']))
                         </div>
                         <div class="login-right">
 							<div class="login-right-wrap">
-								<h1>School Login</h1>
+								<h1>Parent  Login</h1>
 								<p class="account-subtitle">Access to our dashboard</p>
 								
 								<!-- Form -->
 								<form action="" method="post">
 									<div class="form-group">
-										<input class="form-control" name="school_id" id="school_id" type="text" placeholder="School ID ">
+										<input class="form-control" name="student_id" id="student_id" type="text" placeholder="Student ID ">
 									</div>
 									<div class="form-group">
-										<input class="form-control" name="school_password" id="school_password" type="password" placeholder="Password">
+										<input class="form-control" name="student_password" id="student_password" type="password" placeholder="Password">
 									</div>
 									<div class="form-group">
 										<button class="btn btn-primary btn-block"  name="login" type="submit">Login</button>
@@ -96,3 +98,19 @@ if(isset($_POST['login']))
 							</div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+		<!-- /Main Wrapper -->
+		
+		<!-- jQuery -->
+        <script src="assets/js/jquery-3.6.0.min.js"></script>
+		
+		<!-- Bootstrap Core JS -->
+        <script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+		
+		<!-- Custom JS -->
+		<script src="assets/js/script.js"></script>
+		
+    </body>
+</html>

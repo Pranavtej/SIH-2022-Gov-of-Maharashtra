@@ -4,13 +4,10 @@ include 'connect.php';
 
 if(isset($_POST['login']))
 {
-    $sql = "select school_id  from school_info where school_id='{$_POST['school_id']}'";
-    $run = mysqli_query($con,$sql);
-    $run = mysqli_fetch_assoc($run);
-    if(!empty($run))
+    if(true)
     {
-        $_SESSION['SCHOOL_ID'] = $run['school_id'];
-        echo "<script>document.location='school-admin-dashboard.php'</script>";
+        $_SESSION['SUPER_ADMIN_ID'] = $_POST['username'];
+        echo "<script>document.location='super-admin-dashboard.php'</script>";
     }
     else
     {
@@ -24,15 +21,13 @@ if(isset($_POST['login']))
     }
 
 }
-
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-        <title>School - Login</title>
+        <title>Super Admin  Login</title>
 		
 		<!-- Favicon -->
         <link rel="shortcut icon" href="assets/img/favicon.png">
@@ -62,37 +57,37 @@ if(isset($_POST['login']))
                         </div>
                         <div class="login-right">
 							<div class="login-right-wrap">
-								<h1>School Login</h1>
+								<h1>Super Admin Login</h1>
 								<p class="account-subtitle">Access to our dashboard</p>
 								
 								<!-- Form -->
-								<form action="" method="post">
+								<form method="post">
 									<div class="form-group">
-										<input class="form-control" name="school_id" id="school_id" type="text" placeholder="School ID ">
+										<input class="form-control"  id="username" name="username"type="text" placeholder="username">
 									</div>
 									<div class="form-group">
-										<input class="form-control" name="school_password" id="school_password" type="password" placeholder="Password">
+										<input class="form-control" id="password" name="password" type="password" placeholder="Password">
 									</div>
 									<div class="form-group">
-										<button class="btn btn-primary btn-block"  name="login" type="submit">Login</button>
+										<button class="btn btn-primary btn-block" name="login" type="submit">Login</button>
 									</div>
 								</form>
-								<!-- /Form -->
-								
-								<div class="text-center forgotpass"><a href="forgot-password.php">Forgot Password?</a></div>
-								<div class="login-or">
-									<!-- <span class="or-line"></span> -->
-									<!-- <span class="span-or">or</span> -->
-								</div>
-								  
-								<!-- Social Login -->
-								<!-- <div class="social-login">
-									<span>Login with</span>
-									<a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a><a href="#" class="google"><i class="fab fa-google"></i></a>
-								</div> -->
-								<!-- /Social Login -->
-								
-								<!-- <div class="text-center dont-have">Don’t have an account? <a href="register.html">Register</a></div> -->
 							</div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+		<!-- /Main Wrapper -->
+		
+		<!-- jQuery -->
+        <script src="assets/js/jquery-3.6.0.min.js"></script>
+		
+		<!-- Bootstrap Core JS -->
+        <script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+		
+		<!-- Custom JS -->
+		<script src="assets/js/script.js"></script>
+		
+    </body>
+</html>

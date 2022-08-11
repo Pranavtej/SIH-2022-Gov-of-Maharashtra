@@ -1,49 +1,23 @@
-<?php session_start();
-include "connect.php";
-if(empty($_SESSION['SCHOOL_ID'])){
-	echo '<script>document.location="school-login.php"</script>';
-}else{
-	$school_id=$_SESSION['SCHOOL_ID'];
-	$sql="select * from school_info where school_id='$school_id'";
-	$run = mysqli_query($con,$sql)or die(''.__LINE__.'<br>'.mysqli_error($con));
-	$run = mysqli_fetch_assoc($run);
-	if(!empty($run))
-    {
-	$district_id=$run['district_id'];
-	$state_id=$run['state_id'];
-	$school_name=$run['school_name'];
-	$school_address=$run['school_address'];
-	$s="select count(*)  as total from student where school_id='$school_id'";
-	$res=mysqli_query($con,$s);
-	$res= mysqli_fetch_assoc($res);
-	$te="select count(*)  as total from teacher_info where school_id='$school_id'";
-	$t=mysqli_query($con,$te);
-	$t= mysqli_fetch_assoc($t);
-	$cl="select count(*)  as total from schoolwise_class_details  where school_id='$school_id'";
-	$c=mysqli_query($con,$cl);
-	$c= mysqli_fetch_assoc($c);
-	$m="select concat(c.class,c.section) as cls from classes as c,schoolwise_class_details as sc where sc.school_id='$school_id' and sc.class_id=c.class_id";
-    $result=mysqli_query($con,$m) or die(mysqli_error);
-	foreach($result as $data){
-		$r[]=$data['cls'];
-	}
-   
-	$query="SELECT count(*) FROM student where school_id='$school_id' group by class_id";
-    $result=mysqli_query($con,$query) or die(mysqli_error);
-	foreach($result as $data){
-		$r1[]=$data['count(*)'];
-	}
+<?php
+include 'connect.php';
+$query    = "select count(school_id) as sc from school_info";
+$run      = mysqli_query($con, $query);
+$school_count = mysqli_fetch_assoc($run);
 
-	}
-}
+$query1    = "select count(student_id) as stc  from student";
+$run1      = mysqli_query($con, $query1);
+$student_count = mysqli_fetch_assoc($run1);
+
+$query2    = "select count(teacher_id) as tc from teacher_info";
+$run2      = mysqli_query($con, $query2);
+$teach_count = mysqli_fetch_assoc($run2);
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-        <title>School-Admin-Dashboard</title>
+        <title>SuperAdmin-Dashboard</title>
 		
 		<!-- Favicon -->
         <link rel="shortcut icon" href="assets/img/favicon.png">
@@ -65,9 +39,8 @@ if(empty($_SESSION['SCHOOL_ID'])){
 	
 		<!-- Main Wrapper -->
         <div class="main-wrapper">
-	     <?php include 'school-admin-header.php';?>
-		<?php include 'school-admin-sidebar.php';?>
-			<!-- Page Wrapper -->
+		
+			<?php include 'super-admin-menu.php';	?><!-- Page Wrapper -->
             <div class="page-wrapper">
 			
                 <div class="content container-fluid">
@@ -75,7 +48,7 @@ if(empty($_SESSION['SCHOOL_ID'])){
 					<div class="page-header">
 						<div class="row">
 							<div class="col-sm-12">
-								<h3 class="page-title">Welcome <?php echo $school_name; ?></h3>
+								<h3 class="page-title">Welcome SuperAdmin!</h3>
 								<ul class="breadcrumb">
 									<li class="breadcrumb-item active">Dashboard</li>
 								</ul>
@@ -94,10 +67,8 @@ if(empty($_SESSION['SCHOOL_ID'])){
 											<i class="fas fa-user-graduate"></i>
 										</div>
 										<div class="db-info">
-											<h3> <?php echo $res['total']
-												?>
-											</h3>
-											<h6>Students</h6>
+										<a href="super-admin-school-list.php"><h3><?php echo $school_count['sc'];?></h3></a> 
+											<h6>Total Schools</h6>
 										</div>										
 									</div>
 								</div>
@@ -112,14 +83,13 @@ if(empty($_SESSION['SCHOOL_ID'])){
 											<i class="fas fa-crown"></i>
 										</div>
 										<div class="db-info">
-											<h3><?php echo $t['total']
-												?></h3>
-											<h6>Teachers</h6>
+											<h3><a href="super-admin-students-list.php"><?php echo $student_count['stc'];?></a></h3>
+											<h6>Total Students</h6>
 										</div>										
 									</div>
 								</div>
 							</div>
-				</div>
+						</div>
 
 						<div class="col-xl-3 col-sm-6 col-12 d-flex">
 							<div class="card bg-three w-100">
@@ -129,9 +99,8 @@ if(empty($_SESSION['SCHOOL_ID'])){
 											<i class="fas fa-building"></i>
 										</div>
 										<div class="db-info">
-											<h3><?php echo $c['total']
-												?></h3>
-											<h6>Classes</h6>
+											<h3><a href="super-admin-teachers-list.php"><?php echo $teach_count['tc'];?></a></h3>
+											<h6>Total Teachers</h6>
 										</div>										
 									</div>
 								</div>
@@ -146,8 +115,8 @@ if(empty($_SESSION['SCHOOL_ID'])){
 											<i class="fas fa-file-invoice-dollar"></i>
 										</div>
 										<div class="db-info">
-											<h3><?php echo $t['total']/$c['total'] ?></h3>
-											<h6>Revenue</h6>
+											<h3>1</h3>
+											<h6></h6>
 										</div>										
 									</div>
 								</div>
@@ -155,64 +124,72 @@ if(empty($_SESSION['SCHOOL_ID'])){
 						</div>
 					</div>
 					<!-- /Overview Section -->				
-			
-							<!-- Student Chart -->
-							<div class="card-body">
-                                        <canvas id="acscore"></canvas>
-                                            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-                                            <script>
-												const ctx = document.getElementById('acscore');
-												const myChart = new Chart(ctx, {
-													type: 'bar',
-													data: {
-														labels: <?php echo json_encode($r) ?>,
-														//echo json_encode($y), 
-														datasets: [{
-															label: 'No.of Students',
-															data:<?php echo json_encode($r1) ?>,
-														//echo json_encode($x),
 
-															backgroundColor: [
-																'rgba(255, 99, 132, 0.2)',
-																'rgba(54, 162, 235, 0.2)',
-																'rgba(255, 206, 86, 0.2)',
-																'rgba(75, 192, 192, 0.2)',
-																'rgba(153, 102, 255, 0.2)',
-																'rgba(255, 159, 64, 0.2)'
-															],
-															borderColor: [
-																'rgba(255, 99, 132, 1)',
-																'rgba(54, 162, 235, 1)',
-																'rgba(255, 206, 86, 1)',
-																'rgba(75, 192, 192, 1)',
-																'rgba(153, 102, 255, 1)',
-																'rgba(255, 159, 64, 1)'
-															],
-															borderWidth: 1
-														}]
-													},
-													options: {
-														//maintainAspectRatio: true,
-														scales: {
-															y: {
-																beginAtZero: true
-															}
-														}
-													}
-												});
-											</script>
+					<div class="row">
+						<div class="col-md-12 col-lg-6">
+						
+							<!-- Revenue Chart -->
+							<div class="card card-chart">
+								<div class="card-header">
+									<div class="row align-items-center">
+										<div class="col-6">
+											<h5 class="card-title">Revenue</h5>
 										</div>
-	
+										<div class="col-6">
+											<ul class="list-inline-group text-end mb-0 pl-0">
+												<li class="list-inline-item">
+													  <div class="form-group mb-0 amount-spent-select">
+														<select class="form-control form-control-sm form-select">
+														  <option>Today</option>
+														  <option>Last Week</option>
+														  <option>Last Month</option>
+														</select>
+													</div>
+												</li>
+											</ul>                                        
+										</div>
+									</div>						
+								</div>
+								<div class="card-body">
+									<div id="apexcharts-area"></div>
+								</div>
+							</div>
+							<!-- /Revenue Chart -->
+							
+						</div>
+						
+						<div class="col-md-12 col-lg-6">
+						
+							<!-- Student Chart -->
+							<div class="card card-chart">
+								<div class="card-header">
+									<div class="row align-items-center">
+										<div class="col-6">
+											<h5 class="card-title">Number of Students</h5>
+										</div>
+										<div class="col-6">
+											<ul class="list-inline-group text-end mb-0 pl-0">
+												<li class="list-inline-item">
+													  <div class="form-group mb-0 amount-spent-select">
+														<select class="form-control form-control-sm form-select">
+														  <option>Today</option>
+														  <option>Last Week</option>
+														  <option>Last Month</option>
+														</select>
+													</div>
+												</li>
+											</ul>                                        
+										</div>
+									</div>									
+								</div>
+								<div class="card-body">
+									<div id="bar"></div>
+								</div>
+							</div>
 							<!-- /Student Chart -->							
-					
-					
-											</div>
-
-			</div>
+						</div>	
+					</div>	
 			<!-- /Page Wrapper -->
-
-			
-		
         </div>
 		<!-- /Main Wrapper -->
 		
