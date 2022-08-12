@@ -39,7 +39,7 @@ else{
     }
     }
 
-	$qu="select e.student_id as sid from exam_totals e,student s where e.eid='$eid' and e.school_id='$school_id' and e.student_id=s.student_id and s.class_id='$class_id' order by e.total desc";
+	$qu="select e.student_id as sid from exam_totals e,student s where e.eid='$eid' and e.school_id='$school_id' and e.student_id=s.student_id and s.class_id='$student_classid' order by e.total desc";
     $re=mysqli_query($con,$qu);
     $var=0;
     foreach($re as $data)
