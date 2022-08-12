@@ -6,10 +6,16 @@ session_start();
 
 $class_id = $_GET['cid'];
 $school_id = $_SESSION['SCHOOL_ID'];
-$subject_id = $_GET['sid'];
+$subject_id = $_GET['suid'];
+$student_id = $_GET['sid'];
 
-$sql = mysqli_query($con,"select student_id,student_name from student where school_id='$school_id' and class_id='$class_id'");
+$sql = mysqli_query($con,"select lo.loc as loc from learning_outcomes lo,classes c where c.class_id ='$class_id' and lo.class=c.class and lo.subject_id = '$subject_id' LIMIT 5");
 
+
+if(isset($_POST['give']))
+{
+    
+}
 ?>
 
 
@@ -79,23 +85,27 @@ $sql = mysqli_query($con,"select student_id,student_name from student where scho
 										<table class="table table-hover table-center">
 											<thead>
 												<tr>
-													<th>ID</th>
-													<th>Name</th>
+													<th>S. No.</th>
+													<th>Learning Outcome</th>
                                                     <th>Give Rating</th>
 												</tr>
 											</thead>
+                                            <form action="" method="post">
                                             <tbody>
                                                 <?php
+                                                    $i = 0;
 													while($run1 = mysqli_fetch_assoc($sql))
 													{
 														echo '<tr>
-															<td>'.$run1['student_id'].'</td>
-															<td>'.$run1['student_name'].'</td>
-                                                            <td><a href="teacher-student-give-rating.php?cid='.$class_id.'&sid='.$run1['student_id'].'&suid='.$subject_id.'">Opening Soon!!</a></td>
+															<td>'.++$i.'</td>
+															<td name="'.$i.'">'.$run1['loc'].'</td>
+                                                            <td><input type="number" name="'.++$i.'"></td>
 														</tr>';
 													}
                                                 ?>
                                             </tbody>
+                                            <input type="submit" name="give">
+                                            </form>
 										</table>
 									</div>
 								</div>

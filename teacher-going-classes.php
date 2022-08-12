@@ -7,7 +7,7 @@ session_start();
 $school_id = $_SESSION['SCHOOL_ID']; 
 $teacher_id = $_SESSION['TEACHER_ID'];
 
-$sql = "select su.subject_name as subject_name,c.class as class,c.section as section,scst.class_id as class_id 
+$sql = "select su.subject_id as sid, su.subject_name as subject_name,c.class as class,c.section as section,scst.class_id as class_id 
 		from schoolwise_class_subject_teachers as scst, subjects su ,classes c where scst.school_id = '$school_id' 
 		and scst.teacher_id = '$teacher_id' and su.subject_id = scst.subject_id and scst.class_id = c.class_id";
 $run = mysqli_query($con, $sql);
@@ -92,7 +92,7 @@ $run = mysqli_query($con, $sql);
 															<td>'.$run1['subject_name'].'</td>
 															<td>'.$run1['class'].'</td>
 															<td>'.$run1['section'].'</td>
-															<td><a href="teacher-student-rating.php?cid='.$run1['class_id'].'">Coming Soon!</a></td>
+															<td><a href="teacher-student-rating.php?cid='.$run1['class_id'].'&sid='.$run1['sid'].'">Coming Soon!</a></td>
 														</tr>';
 													}
                                                 ?>
