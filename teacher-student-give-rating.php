@@ -9,12 +9,20 @@ $school_id = $_SESSION['SCHOOL_ID'];
 $subject_id = $_GET['suid'];
 $student_id = $_GET['sid'];
 
-$sql = mysqli_query($con,"select lo.loc as loc from learning_outcomes lo,classes c where c.class_id ='$class_id' and lo.class=c.class and lo.subject_id = '$subject_id' LIMIT 5");
 
-
+$sql = mysqli_query($con,"select lo.loc as loc , lo.loc_id  as loc_id from learning_outcomes lo,classes c where c.class_id ='$class_id' and lo.class=c.class and lo.subject_id = '$subject_id' LIMIT 5");
 if(isset($_POST['give']))
 {
-    
+$sql1 = mysqli_query($con,"select lo.loc as loc , lo.loc_id  as loc_id from learning_outcomes lo,classes c where c.class_id ='$class_id' and lo.class=c.class and lo.subject_id = '$subject_id' LIMIT 5");
+$run2 = mysqli_fetch_assoc($sql1);
+
+    foreach($sql1 as $id)
+    {   
+        $d=$id['loc_id'];
+        //change table baby :)
+        $q = mysqli_query($con,"insert into log (id) values('{$_POST[$d]}')");
+        
+    }
 }
 ?>
 
@@ -98,8 +106,8 @@ if(isset($_POST['give']))
 													{
 														echo '<tr>
 															<td>'.++$i.'</td>
-															<td name="'.$i.'">'.$run1['loc'].'</td>
-                                                            <td><input type="number" name="'.++$i.'"></td>
+															<td name="'.$run1['loc_id'].'">'.$run1['loc'].'</td>
+                                                            <td><input type="number" name="'.$run1['loc_id'].'"></td>
 														</tr>';
 													}
                                                 ?>
