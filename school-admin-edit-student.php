@@ -94,7 +94,7 @@ $counter=mysqli_num_rows($result);
 					<!-- /Page Header -->
 <div>
 <form class="filteroption" action="" method="post">
-    <select id="select" name="select" >
+    <select id="select" class="form-select" name="select" >
         
         <option value="6th" selected="selected">6</option>
         <option value="7th" selected="selected">7</option>
@@ -103,9 +103,11 @@ $counter=mysqli_num_rows($result);
         <option value="10th" selected="selected">10</option>
         <option value=0 selected="selected">select class</option>
     </select>
+    <br>
     <input  class="btn btn-primary" type="submit" name="submit" value="submit">
-          </form>
-
+        
+</form>
+<br>
 
 </div>
 

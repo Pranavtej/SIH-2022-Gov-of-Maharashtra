@@ -1,13 +1,13 @@
 <?php  session_start();
 
 include 'connect.php';
-if(empty($_SESSION['STUDENT_ID']))
+if(empty($_SESSION['SCHOOL_ID']))
 {
-    echo '<script>document.location="student-login.php"</script>';
+    echo '<script>document.location="school-login.php"</script>';
 }
 else{
 
-    $student_id = $_SESSION['STUDENT_ID'];
+    $student_id = $_GET['student_id'];
 	$class_id = $_SESSION['CLASS_ID'];
 	$school_id = $_SESSION['SCHOOL_ID'];
  
