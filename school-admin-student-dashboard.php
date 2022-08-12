@@ -8,7 +8,7 @@ if(empty($_SESSION['SCHOOL_ID']))
 else{
 
     $student_id = $_GET['student_id'];
-	$class_id = $_SESSION['CLASS_ID'];
+	//$class_id = $_SESSION['CLASS_ID'];
 	$school_id = $_SESSION['SCHOOL_ID'];
  
     $sql="select * from student where student_id='$student_id'";
