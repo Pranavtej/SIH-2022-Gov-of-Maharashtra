@@ -117,7 +117,7 @@ else{
 											<i class="fas fa-book-open"></i>
 										</div>
 										<div class="db-info">
-											<h3><?php echo $rank; ?></h3>
+											<h3><?php echo $rank;?></h3>
 											<h6>Academic Rank</h6>
 										</div>										
 									</div>
