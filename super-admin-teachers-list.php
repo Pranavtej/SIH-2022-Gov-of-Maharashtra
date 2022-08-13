@@ -44,7 +44,6 @@ include 'connect.php';?>
 							</div>
 							<div class="col-auto text-end float-end ms-auto">
 								<a href="#" class="btn btn-outline-primary me-2"><i class="fas fa-download"></i> Download</a>
-								<a href="add-student.html" class="btn btn-primary"><i class="fas fa-plus"></i></a>
 							</div>
 						</div>
 					</div>
@@ -70,19 +69,16 @@ include 'connect.php';?>
 											</thead>
 											<tbody>
 													<?php
-													$query1="SELECT `school_id`, `teacher_id`, `teacher_name`, 
-                                                    `teacher_dob`, `teacher_email`, `teacher_mob` FROM `teacher_info`";
+													$query1="SELECT t.school_id as school_id,t.teacher_id as teacher_id,t.teacher_name as teacher_name, 
+                                                    t.teacher_dob as teacher_dob, t.teacher_email as teacher_email, t.teacher_mob as teacher_mob,s.school_name as school_name FROM teacher_info t,school_info s
+													 where s.school_id =	t.school_id";
 													$run1=mysqli_query($con,$query1);
 													while($res1=mysqli_fetch_assoc($run1))
 													{
-														$sid=$res1['school_id'];
-														$query2="SELECT `school_name` from school_info WHERE school_id='$sid'";
-														$run2=mysqli_query($con,$query2);
-														$res2=mysqli_fetch_assoc($run2);
 														echo 
 														'<tr><td>'.$res1['teacher_id'].'</td>
 														<td><a href="SuperAdmin-teacher-dashboard.php?teacher_id='.$res1['teacher_id'].'">'.$res1['teacher_name'].'</a></td>
-														<td>'.$res2['school_name'].'</td>
+														<td>'.$res1['school_name'].'</td>
 														<td>'.$res1['teacher_dob'].'</td>
 														<td>'.$res1['teacher_email'].'</td>
 														<td>'.$res1['teacher_mob'].'</td>

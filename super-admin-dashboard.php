@@ -61,49 +61,52 @@ $teach_count = mysqli_fetch_assoc($run2);
 					<div class="row">
 						<div class="col-xl-3 col-sm-6 col-12 d-flex">
 							<div class="card bg-one w-100">
+							  <a href="super-admin-school-list.php">
 								<div class="card-body">
 									<div class="db-widgets d-flex justify-content-between align-items-center">
 										<div class="db-icon">
 											<i class="fas fa-user-graduate"></i>
 										</div>
 										<div class="db-info">
-										<a href="super-admin-school-list.php"><h3><?php echo $school_count['sc'];?></h3></a> 
+											<h3><?php echo $school_count['sc'];?></h3>
 											<h6>Total Schools</h6>
 										</div>										
 									</div>
-								</div>
+								</div></a>
 							</div>
 						</div>
 
 						<div class="col-xl-3 col-sm-6 col-12 d-flex">
 							<div class="card bg-two w-100">
+							 <a href="super-admin-students-list.php">
 								<div class="card-body">
 									<div class="db-widgets d-flex justify-content-between align-items-center">
 										<div class="db-icon">
 											<i class="fas fa-crown"></i>
 										</div>
 										<div class="db-info">
-											<h3><a href="super-admin-students-list.php"><?php echo $student_count['stc'];?></a></h3>
+											<h3><?php echo $student_count['stc'];?></h3>
 											<h6>Total Students</h6>
 										</div>										
 									</div>
 								</div>
-							</div>
+							</div></a>
 						</div>
 
 						<div class="col-xl-3 col-sm-6 col-12 d-flex">
 							<div class="card bg-three w-100">
+							   <a href="super-admin-teachers-list.php">
 								<div class="card-body">
 									<div class="db-widgets d-flex justify-content-between align-items-center">
 										<div class="db-icon">
 											<i class="fas fa-building"></i>
 										</div>
 										<div class="db-info">
-											<h3><a href="super-admin-teachers-list.php"><?php echo $teach_count['tc'];?></a></h3>
+											<h3><?php echo $teach_count['tc'];?></h3>
 											<h6>Total Teachers</h6>
 										</div>										
 									</div>
-								</div>
+								</div></a>
 							</div>
 						</div>
 

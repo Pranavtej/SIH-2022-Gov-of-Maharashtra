@@ -82,7 +82,6 @@ if(isset($_POST['UPDATE-SCHOOL']))
 								</ul>
 							</div>
                 </div>			
-
                 <BR>    
 				<div class="row">
 						<div class="col-md-12">
