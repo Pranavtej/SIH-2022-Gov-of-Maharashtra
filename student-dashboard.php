@@ -111,7 +111,7 @@ else{
 					<div class="row">
 						<div class="col-xl-3 col-sm-6 col-12 d-flex">
 							<div class="card bg-nine w-100">
-								<div class="card-body">
+								<div class="card-body"><a href="student-view-all-academic-rank.php?ra=<?php echo $rank; ?>">
 									<div class="db-widgets d-flex justify-content-between align-items-center">
 										<div class="db-icon">
 											<i class="fas fa-book-open"></i>
@@ -121,7 +121,7 @@ else{
 											<h6>Academic Rank</h6>
 										</div>										
 									</div>
-								</div>
+								</div></a>
 							</div>
 						</div>
 
