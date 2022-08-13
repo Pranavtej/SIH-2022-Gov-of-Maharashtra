@@ -135,7 +135,7 @@ $re=mysqli_query($con,$qu);
 		<script>
 			let myTable = document.getElementById('rank');
             let tr = myTable.getElementsByTagName('tr');
-			tr[22].style.color ="red";
+			tr[<?php echo $rank; ?>].style.color ="red";
 		</script>
     </body>
 </html>
