@@ -135,8 +135,7 @@ $re=mysqli_query($con,$qu);
 		<script>
 			let myTable = document.getElementById('rank');
             let tr = myTable.getElementsByTagName('tr');
-			tr[22].style.color ="blue";
-			window.scrollTo(0, document.querySelector(tr[22]).scrollHeight);
+			tr[22].style.color ="red";
 		</script>
     </body>
 </html>
