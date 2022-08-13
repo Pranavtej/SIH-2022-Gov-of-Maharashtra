@@ -48,7 +48,11 @@
 				<a href="javascript:void(0);" id="toggle_btn">
 					<i class="fas fa-align-left"></i>
 				</a>
-				
+				<!-- Mobile Menu Toggle -->
+				<a class="mobile_btn" id="mobile_btn">
+                <i class="fas fa-bars"></i>
+            </a>
+            <!-- /Mobile Menu Toggle -->
 			
 					<!-- /User Menu -->
 					
