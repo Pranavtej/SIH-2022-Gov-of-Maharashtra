@@ -4,22 +4,21 @@ include 'connect.php';
 
 session_start();
 
-$school_id = $_SESSION['SCHOOL_ID']; 
-$teacher_id = $_SESSION['TEACHER_ID'];
+$class_id = $_GET['cid'];
+$school_id = $_SESSION['SCHOOL_ID'];
+$subject_id = $_GET['sid'];
 
-$sql = "select su.subject_id as sid, su.subject_name as subject_name,c.class as class,c.section as section,scst.class_id as class_id 
-		from schoolwise_class_subject_teachers as scst, subjects su ,classes c where scst.school_id = '$school_id' 
-		and scst.teacher_id = '$teacher_id' and su.subject_id = scst.subject_id and scst.class_id = c.class_id";
-$run = mysqli_query($con, $sql);
+$sql = mysqli_query($con,"select student_id,student_name from student where school_id='$school_id' and class_id='$class_id'");
 
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-        <title>Preskool - Subjects</title>
+        <title>Preskool - Students</title>
 		
 		<!-- Favicon -->
         <link rel="shortcut icon" href="assets/img/favicon.png">
@@ -45,8 +44,9 @@ $run = mysqli_query($con, $sql);
 		<!-- Main Wrapper -->
         <div class="main-wrapper">
 		
-			<?php include 'teacher-header.php'; ?>
+            <?php include 'teacher-header.php'; ?>
 			<?php include 'teacher-sidebar.php'; ?>
+
 			
 			<!-- Page Wrapper -->
             <div class="page-wrapper">
@@ -56,12 +56,16 @@ $run = mysqli_query($con, $sql);
 					<div class="page-header">
 						<div class="row align-items-center">
 							<div class="col">
-								<h3 class="page-title">Subjects</h3>
+								<h3 class="page-title">Students</h3>
 								<ul class="breadcrumb">
-									<li class="breadcrumb-item"><a href="teacher-classteacher-dashboard.php">Dashboard</a></li>
-									<li class="breadcrumb-item active">Subjects</li>
+									<li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+									<li class="breadcrumb-item active">Students</li>
 								</ul>
 							</div>
+							<!-- <div class="col-auto text-end float-end ms-auto">
+								<a href="#" class="btn btn-outline-primary me-2"><i class="fas fa-download"></i> Download</a>
+								<a href="add-student.html" class="btn btn-primary"><i class="fas fa-plus"></i></a>
+							</div> -->
 						</div>
 					</div>
 					<!-- /Page Header -->
@@ -72,25 +76,20 @@ $run = mysqli_query($con, $sql);
 							<div class="card card-table">
 								<div class="card-body">
 									<div class="table-responsive">
-										<table class="table table-hover">
+										<table class="table table-hover table-center">
 											<thead>
 												<tr>
-													<th>S. No.</th>
-													<th>Subject</th>
-													<th>Class</th>
-                                                    <th>Section</th>
+													<th>ID</th>
+													<th>Name</th>
 												</tr>
 											</thead>
-											<tbody>
+                                            <tbody>
                                                 <?php
-													$i = 0;
-													while($run1 = mysqli_fetch_assoc($run))
+													while($run1 = mysqli_fetch_assoc($sql))
 													{
 														echo '<tr>
-															<td>'.++$i.'</td>
-															<td>'.$run1['subject_name'].'</td>
-															<td>'.$run1['class'].'</td>
-															<td>'.$run1['section'].'</td>
+															<td>'.$run1['student_id'].'</td>
+															<td><a href="teacher-add-behaviour.php?sid='.$run1['student_id'].'&cid='.$class_id.'">'.$run1['student_name'].'</a></td>
 														</tr>';
 													}
                                                 ?>
@@ -107,8 +106,7 @@ $run = mysqli_query($con, $sql);
 				<!-- <footer>
 					<p>Copyright © 2020 Dreamguys.</p>					
 				</footer> -->
-				<!-- /Footer -->
-				
+				<!-- /Footer -->				
 			</div>
 			<!-- /Page Wrapper -->
 			
@@ -122,8 +120,8 @@ $run = mysqli_query($con, $sql);
         <script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 		
 		<!-- Slimscroll JS -->
-        <script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-
+		<script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+		
 		<!-- Datatables JS -->
 		<script src="assets/plugins/datatables/datatables.min.js"></script>
 		

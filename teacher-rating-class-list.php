@@ -79,6 +79,7 @@ $run = mysqli_query($con, $sql);
 													<th>Subject</th>
 													<th>Class</th>
                                                     <th>Section</th>
+                                                    <th>Rating</th>
 												</tr>
 											</thead>
 											<tbody>
@@ -91,6 +92,7 @@ $run = mysqli_query($con, $sql);
 															<td>'.$run1['subject_name'].'</td>
 															<td>'.$run1['class'].'</td>
 															<td>'.$run1['section'].'</td>
+                                                            <td><a href="teacher-student-rating2.php?cid='.$run1['class_id'].'&sid='.$run1['sid'].'">Give Rating for this class students</a></td>
 														</tr>';
 													}
                                                 ?>
