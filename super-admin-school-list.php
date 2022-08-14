@@ -84,7 +84,7 @@ include 'connect.php';?>
                                                         
 														echo 
 														'<tr><td>'.$res['school_id'].'</td>
-														<td><a href="super-admin-school-dashboard.php?school_id='.$res['school_id'].'">'.$res['school_name'].'</a></td>
+														<td><a href="super-admin-school-view.php?school_id='.$res['school_id'].'">'.$res['school_name'].'</a></td>
 														<td>'.$res['school_address'].'</td>
 														<td>'.$res1['district_name'].'</td>
 														<td>'.$res2['state_name'].'</td>

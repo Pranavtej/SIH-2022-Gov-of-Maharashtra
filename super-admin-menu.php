@@ -61,13 +61,13 @@
                             <span>Main Menu</span>
                         </li>
                         <li class="submenu active">
-                            <a href="#"><i class="fas fa-user-graduate"></i> <span> Dashboard</span> <span class="menu-arrow"></span></a>
+                            <a href="#"><i class="fas fa-graduate"></i><span> Dashboard</span> <span class="menu-arrow"></span></a>
                             <ul>
                                 <li><a href="super-admin-dashboard.php" class="active">Admin Dashboard</a></li>
                             </ul>
                         </li>
                         <li class="submenu">
-                            <a href="#"><i class="fas fa-user-graduate"></i> <span> Schools</span> <span class="menu-arrow"></span></a>
+                            <a href="#"> <i class="fas fa-building"></i><span> Schools</span> <span class="menu-arrow"></span></a>
                             <ul>
                                 <li><a href="super-admin-school-list.php">Schools List</a></li>
                                 <li><a href="super-admin-add-school.php">Schools Add</a></li>
@@ -80,7 +80,7 @@
                             </ul>
                         </li>
                          <li class="submenu">
-                            <a href="#"><i class="fas fa-building"></i> <span> Students</span> <span class="menu-arrow"></span></a>
+                            <a href="#"><i class="fas fa-user-graduate"></i> <span> Students</span> <span class="menu-arrow"></span></a>
                             <ul>
                                 <li><a href="super-admin-students-list.php">Students List</a></li>
                             </ul>

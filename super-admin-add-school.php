@@ -1,8 +1,10 @@
 <?php
 
 include 'connect.php';
-$query="SELECT d.district_id as district_id,d.district_name as district_name,s.state_id as state_id , s.state_name as state_name from states s,districts d";
+$query="SELECT s.state_id as state_id , s.state_name as state_name from states s";
+$query1="SELECT d.district_id as district_id,d.district_name as district_name from districts d";
 $run=mysqli_query($con,$query);
+$run1=mysqli_query($con,$query1);
 if(isset($_POST['add-school']))
 {
     $school_id=$_POST['school_id'];
@@ -15,7 +17,7 @@ if(isset($_POST['add-school']))
     $run3=mysqli_query($con,$query3);
     if($run3)
     {
-        echo" <script>document.location='super-admin-dashboard.php?pid=$pid'</script>";
+        echo" <script>document.location='super-admin-dashboard.php'</script>";
     }
     else
     {
@@ -102,7 +104,7 @@ if(isset($_POST['add-school']))
                                                         <?php
                                                         echo '<select name="district"  id="district" class="form-control form-select" required>
 																<option value="">Select Districts</option>';
-																while($data = mysqli_fetch_assoc($run))
+																while($data1 = mysqli_fetch_assoc($run1))
 																{
 																	echo '<option value='.$data['district_id'].'>'.$data['district_id'].'-'.$data['district_name'].'</option>';
 																}
