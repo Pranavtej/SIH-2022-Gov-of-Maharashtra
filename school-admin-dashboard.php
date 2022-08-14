@@ -33,6 +33,8 @@ if(empty($_SESSION['SCHOOL_ID'])){
 	foreach($result as $data){
 		$r1[]=$data['count(*)'];
 	}
+	$total="select 
+	"
 
 	}
 }
