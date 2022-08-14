@@ -14,7 +14,7 @@ if(empty($_SESSION['SCHOOL_ID']))
 else{
 
 $school_id=$_SESSION['SCHOOL_ID'];
-$std=" select student_id , student_name ,date_of_birth,address,email,class_id,gender from student where school_id='$school_id'";
+$std=" select s.student_id , s.student_name ,s.date_of_birth,s.address,s.email,s.class_id,s.gender,c.class,c.section from student as s, classes as c where s.school_id='$school_id' and s.class_id=c.class_id";
 if(isset($_POST['submit'])) {
     if($_POST['select']=='6th') {   //<=========== 'select'
         $std=" select student_id , student_name ,date_of_birth,address,email,class_id,gender from student where school_id='$school_id' and (class_id='CL0601' or class_id='CL0602' or class_id='CL0603' or class_id='CL0604') ";
