@@ -86,7 +86,7 @@ else{
 <div class="main-wrapper">
 		
 	
-		<?php include 'student-menu.php'; ?>
+		<?php include 'parent-menu.php'; ?>
 			
 			<!-- Page Wrapper -->
             <div class="page-wrapper">

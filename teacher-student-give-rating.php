@@ -8,21 +8,17 @@ $class_id = $_GET['cid'];
 $school_id = $_SESSION['SCHOOL_ID'];
 $subject_id = $_GET['suid'];
 $student_id = $_GET['sid'];
-
-
-$sql = mysqli_query($con,"select lo.loc as loc , lo.loc_id  as loc_id from learning_outcomes lo,classes c where c.class_id ='$class_id' and lo.class=c.class and lo.subject_id = '$subject_id' LIMIT 5");
+$hello = mysqli_query($con,"select lo.loc as loc , lo.loc_id  as loc_id from learning_outcomes lo,classes c where c.class_id ='$class_id' and lo.class=c.class and lo.subject_id = '$subject_id' order by lo.loc_id desc LIMIT 5");
 if(isset($_POST['give']))
 {
-$sql1 = mysqli_query($con,"select lo.loc as loc , lo.loc_id  as loc_id from learning_outcomes lo,classes c where c.class_id ='$class_id' and lo.class=c.class and lo.subject_id = '$subject_id' LIMIT 5");
-$run2 = mysqli_fetch_assoc($sql1);
-
-    foreach($sql1 as $id)
+	$sql2 = mysqli_query($con,"select lo.loc as loc , lo.loc_id  as loc_id from learning_outcomes lo,classes c where c.class_id ='$class_id' and lo.class=c.class and lo.subject_id = '$subject_id' order by lo.loc_id desc LIMIT 5");
+    foreach($sql2 as $id)
     {   
         $d=$id['loc_id'];
-        //change table baby :)
-        $q = mysqli_query($con,"insert into log (id) values('{$_POST[$d]}')");
-        
+		$f = $_POST[$d];
+        $q = mysqli_query($con,"INSERT INTO `learning_outcomes_credits` (`school_id`, `class_id`, `student_id`, `subject_id`, `loc_id`, `credits`) VALUES ('$school_id', '$class_id', '$student_id', '$subject_id', '$d', $f)") or die(mysqli_error());
     }
+	echo "<script>window.location='teacher-student-rating.php?cid=$class_id&sid=$subject_id'</script>";
 }
 ?>
 
@@ -102,7 +98,7 @@ $run2 = mysqli_fetch_assoc($sql1);
                                             <tbody>
                                                 <?php
                                                     $i = 0;
-													while($run1 = mysqli_fetch_assoc($sql))
+													while($run1 = mysqli_fetch_assoc($hello))
 													{
 														echo '<tr>
 															<td>'.++$i.'</td>
