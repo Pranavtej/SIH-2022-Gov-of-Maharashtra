@@ -31,6 +31,13 @@
 									<!-- <li><a href="edit-teacher.html">Teacher Edit</a></li> -->
 								</ul>
 							</li>
+							<li class="submenu">
+								<a href="#"><i class="fas fa-chalkboard-teacher"></i> <span>Student Assesments</span> <span class="menu-arrow"></span></a>
+								<ul>
+									<li><a href="teacher-rating-class-list.php">Classroom Decorum</a></li>
+									<li><a href="teacher-lo-assesment.php">Learning Outcomes</a></li>
+								</ul>
+							</li>
 						</ul>
 					</div>
                 </div>

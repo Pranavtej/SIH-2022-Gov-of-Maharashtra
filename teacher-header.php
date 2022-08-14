@@ -3,10 +3,10 @@
 			
             <!-- Logo -->
             <div class="header-left">
-                <a href="index.html" class="logo">
+                <a href="teacher-classteacher-dashboard.php" class="logo">
                     <img src="assets/img/logo.png" alt="Logo">
                 </a>
-                <a href="index.html" class="logo logo-small">
+                <a href="teacher-classteacher-dashboard.php" class="logo logo-small">
                     <img src="assets/img/logo-small.png" alt="Logo" width="30" height="30">
                 </a>
             </div>
@@ -40,7 +40,7 @@
                         </div>
                         <a class="dropdown-item" href="profile.html">My Profile</a>
                         <a class="dropdown-item" href="inbox.html">Inbox</a>
-                        <a class="dropdown-item" href="login.html">Logout</a>
+                        <a class="dropdown-item" href="logout.php">Logout</a>
                     </div>
                 </li>
                 <!-- /User Menu -->

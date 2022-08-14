@@ -8,8 +8,8 @@ $class_id = $_GET['cid'];
 $school_id = $_SESSION['SCHOOL_ID'];
 $subject_id = $_GET['sid'];
 
-$sql = mysqli_query($con,"select student_id,student_name from student where school_id='$school_id' and class_id='$class_id'");
-
+$sql = "select student_id from student where student_id not in (select student_id from learning_outcomes_credits where subject_id='$subject_id' AND class_id='$class_id' and school_id='$school_id') AND class_id='$class_id' AND school_id='$school_id'";
+$run = mysqli_query($con,$sql);
 ?>
 
 
@@ -86,12 +86,15 @@ $sql = mysqli_query($con,"select student_id,student_name from student where scho
 											</thead>
                                             <tbody>
                                                 <?php
-													while($run1 = mysqli_fetch_assoc($sql))
+													foreach($run as $id)
 													{
+														$id = $id['student_id'];
+														$query = "select student_name from student where school_id='$school_id' and class_id='$class_id' and student_id='$id'";
+														$run1 = mysqli_fetch_assoc(mysqli_query($con,$query));
 														echo '<tr>
-															<td>'.$run1['student_id'].'</td>
+															<td>'.$id.'</td>
 															<td>'.$run1['student_name'].'</td>
-                                                            <td><a href="teacher-student-give-rating.php?cid='.$class_id.'&sid='.$run1['student_id'].'&suid='.$subject_id.'">Opening Soon!!</a></td>
+                                                            <td><a href="teacher-student-give-rating.php?cid='.$class_id.'&sid='.$id.'&suid='.$subject_id.'">Opening Soon!!</a></td>
 														</tr>';
 													}
                                                 ?>

@@ -111,17 +111,17 @@ else{
 					<div class="row">
 						<div class="col-xl-3 col-sm-6 col-12 d-flex">
 							<div class="card bg-nine w-100">
-								<div class="card-body">
+								<div class="card-body"><a href="student-view-all-academic-rank.php?ra=<?php echo $rank; ?>">
 									<div class="db-widgets d-flex justify-content-between align-items-center">
 										<div class="db-icon">
 											<i class="fas fa-book-open"></i>
 										</div>
 										<div class="db-info">
-											<h3><?php echo $rank; ?></h3>
+											<h3><?php echo $rank;?></h3>
 											<h6>Academic Rank</h6>
 										</div>										
 									</div>
-								</div>
+								</div></a>
 							</div>
 						</div>
 
@@ -352,8 +352,154 @@ else{
 								</div>
 							</div>
 								
-						</div>
+						
+						<div class="row">
+<div class="col-12 col-lg-12 col-xl-8 d-flex">
+<div class="card flex-fill">
+<div class="card-header">
+<div class="row align-items-center">
+<div class="col-6">
+<h5 class="card-title">Academeic Marks</h5>
+</div>
+<div class="col-6">
+<ul class="list-inline-group text-end mb-0 ps-0">
+<li class="list-inline-item">
+<!-- <div class="form-group mb-0 amount-spent-select"> -->
+<!-- <select class="form-control form-control-sm form-select">
+<option>Weekly</option>
+<option>Monthly</option>
+<option>Yearly</option>
+</select> -->
+<!-- </div> -->
+</li>
+</ul>
+</div>
+</div>
+</div> 
+<div  id="chart">
 
+<canvas id="cscore"></canvas>
+<!-- <canvas id="ccscore"></canvas> -->
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    
+const ctxc = document.getElementById('cscore');
+const myChartc = new Chart(ctxc, {
+    type: 'pie',
+    data: {
+        labels:  <?php echo json_encode($y)?>, 
+        datasets: [{
+            label: 'MARKS SCORED',
+            data: <?php echo json_encode($x)?>,
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+					// 'rgb(255, 99, 132)',
+					// 'rgb(54, 162, 235)',
+					// 'rgb(255, 205, 86)',
+					// 'rgb(255, 99, 13)',
+					// 'rgb(54, 162, 23)',
+					// 'rgb(255, 205, 8)',
+					// 'rgb(255, 205, 899)'super-admin-add-school.php
+
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        maintainAspectRatio: false,
+        scales: {
+            
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+
+</script>
+
+</div>
+</div> 
+<div class="col-12 col-lg-12 col-xl-4 d-flex">
+<div class="card flex-fill">
+<div class="card-header">
+<h5 class="card-title">Your Intrests </h5>
+</div>
+
+<!-- <div class="circle-bar circle-bar3">
+<div class="circle-graph3" data-percent="50"> -->
+<!-- <b>50%</b>
+</div> -
+<h2>Score</h2>
+<h2><?php echo $zzz['total']; ?></h2>-->
+<div id="chart" >
+<canvas id="ccscore" width="750" height="750"></canvas>
+<!-- <canvas id="ccscore"></canvas> -->
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    
+const ctxcc = document.getElementById('ccscore');
+const myChartcc = new Chart(ctxcc, {
+    type: 'doughnut',
+    data: {
+        labels:  <?php echo json_encode($y)?>, 
+        datasets: [{
+            label: 'MARKS SCORED',
+            data: <?php echo json_encode($x)?>,
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        maintainAspectRatio: true,
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+
+</script>
+</div>
+</div>
+</div>
+</div>
+</div>
 						<!-- <div class="col-12 col-lg-12 col-xl-3 d-flex">
 							<div class="card flex-fill">
 								<div class="card-header">

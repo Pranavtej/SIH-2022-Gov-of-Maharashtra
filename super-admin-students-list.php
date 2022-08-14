@@ -1,5 +1,4 @@
 <?php
-error_reporting(E_ALL ^ E_NOTICE);  
 include 'connect.php';?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,8 +25,7 @@ include 'connect.php';?>
 		
 		<!-- Main CSS -->
         <link rel="stylesheet" href="assets/css/style.css">
-		<script type="text/javascript" src="Exportcsv.js"></script>
-	</head>
+    </head>
     <body>
          <?php include 'super-admin-menu.php';	?>	
 			<!-- Page Wrapper -->
@@ -45,8 +43,7 @@ include 'connect.php';?>
 								</ul>
 							</div>
 							<div class="col-auto text-end float-end ms-auto">
-		<button id="btnExportToCsv" type="button" class="btn btn-primary">Export to CSV</button>
-							<!-- <button class="btn btn-outline-primary me-2" onclick="Export();"><i class="fas fa-download"></i> Download</button> -->
+								<a href="#" class="btn btn-outline-primary me-2"><i class="fas fa-download"></i> Download</a>
 							</div>
 						</div>
 					</div>
@@ -58,7 +55,7 @@ include 'connect.php';?>
 							<div class="card card-table">
 								<div class="card-body">
 									<div class="table-responsive">
-										<table  id="dataTable" class="table table-hover table-center mb-0 datatable">
+										<table class="table table-hover table-center mb-0 datatable">
 											<thead>
 												<tr>
 													<th>STUDENT ID</th>
@@ -74,7 +71,10 @@ include 'connect.php';?>
 											</thead>
 											<tbody>
 													<?php
-													$query1="SELECT s.student_id as student_id, s.student_name as student_name, s.date_of_birth as date_of_birth, s.gender as gender, s.email as email, s.address as address,c.class as class, c.section as section,si.school_name as school_name FROM student s,classes c,school_info si where s.class_id = c.class_id and s.school_id = si.school_id";
+													$query1="SELECT s.student_id as student_id,s.school_id as school_id, s.student_name as student_name, 
+													s.date_of_birth as date_of_birth, s.gender as gender, s.email as email, s.address as address,sc.school_name as school_name,
+													c.class as class, c.section as section,
+													 s.class_id as class_id FROM student s,classes c,school_info sc WHERE c.class_id=s.class_id and sc.school_id=s.school_id";
 													$run1=mysqli_query($con,$query1);
 													while($res1=mysqli_fetch_assoc($run1))
 													{
@@ -88,9 +88,7 @@ include 'connect.php';?>
 														<td>'.$res1['address'].'</td>
 														<td>'.$res1['class'].'</td>
 														<td>'.$res1['section'].'</td>
-														</tr>';
-													}
-													?>
+														</tr>';}?>
 											</tbody>
 										</table>
 									</div>
@@ -105,27 +103,8 @@ include 'connect.php';?>
 			
         </div>
 		<!-- /Main Wrapper -->
-<script>
-const dataTable = document.getElementById("dataTable");
-        const btnExportToCsv = document.getElementById("btnExportToCsv");
-
-        btnExportToCsv.addEventListener("click", () => {
-            const exporter = new TableCSVExporter(dataTable);
-            const csvOutput = exporter.convertToCSV();
-            const csvBlob = new Blob([csvOutput], { type: "text/csv" });
-            const blobUrl = URL.createObjectURL(csvBlob);
-            const anchorElement = document.createElement("a");
-
-            anchorElement.href = blobUrl;
-            anchorElement.download = "table-export.csv";
-            anchorElement.click();
-
-            setTimeout(() => {
-                URL.revokeObjectURL(blobUrl);
-            }, 500);
-        });
-    </script>
-<!-- jQuery -->
+		
+		<!-- jQuery -->
         <script src="assets/js/jquery-3.6.0.min.js"></script>
 		
 		<!-- Bootstrap Core JS -->
