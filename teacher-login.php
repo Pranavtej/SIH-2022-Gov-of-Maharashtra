@@ -8,12 +8,12 @@ if(isset($_POST['login']))
 {
 	$tid=$_POST['teacher_id'];
     $sql = "select * from teacher_info where teacher_id='$tid'";
+	$run = mysqli_query($con,$sql);
+    $run = mysqli_fetch_assoc($run);
 	$_SESSION['TEACHER_NAME']=$run['teacher_name'];
 	$_SESSION['DOB']=$run['teacher_dob'];
 	$_SESSION['MOBILE']=$run['teacher_mob'];
 	$_SESSION['EMAIL']=$run['teacher_email'];
-    $run = mysqli_query($con,$sql);
-    $run = mysqli_fetch_assoc($run);
     if(!empty($run))
     {
 		$TID=$_POST['teacher_id'];
