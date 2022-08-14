@@ -99,7 +99,8 @@
                         <li class="submenu">
                             <a href="#"><i class="fas fa-book-reader"></i> <span> Assessments</span> <span class="menu-arrow"></span></a>
                             <ul>
-                                <li><a href="student-subjects.php">Child-Assessment</a></li>
+                                <li><a href="student-subjects.php">Child-
+                                    Assessment</a></li>
                             </ul>
                         </li>
                     </ul>
