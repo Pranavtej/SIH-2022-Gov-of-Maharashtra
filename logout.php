@@ -1,11 +1,8 @@
-<?
+<?php
+
 session_start();
-session_unset();
-session_destroy();
-ob_start();
-header("location:index.php");
-ob_end_flush(); 
-//include 'home.php';
-//include 'home.php';
-exit();
+unset($_SESSION['Student_id']);
+unset($_SESSION['SCHOOL_ID']);
+unset($_SESSION['CLASS_ID']);
+header('location:index.php');
 ?>

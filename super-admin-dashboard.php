@@ -61,8 +61,8 @@ $teach_count = mysqli_fetch_assoc($run2);
 					<div class="row">
 						<div class="col-xl-3 col-sm-6 col-12 d-flex">
 							<div class="card bg-one w-100">
-							  <a href="super-admin-school-list.php">
-								<div class="card-body">
+							  
+								<div class="card-body"><a href="super-admin-school-list.php">
 									<div class="db-widgets d-flex justify-content-between align-items-center">
 										<div class="db-icon">
 											<i class="fas fa-user-graduate"></i>
@@ -78,8 +78,8 @@ $teach_count = mysqli_fetch_assoc($run2);
 
 						<div class="col-xl-3 col-sm-6 col-12 d-flex">
 							<div class="card bg-two w-100">
-							 <a href="super-admin-students-list.php">
-								<div class="card-body">
+							 
+								<div class="card-body"><a href="super-admin-students-list.php">
 									<div class="db-widgets d-flex justify-content-between align-items-center">
 										<div class="db-icon">
 											<i class="fas fa-crown"></i>
@@ -95,8 +95,9 @@ $teach_count = mysqli_fetch_assoc($run2);
 
 						<div class="col-xl-3 col-sm-6 col-12 d-flex">
 							<div class="card bg-three w-100">
-							   <a href="super-admin-teachers-list.php">
-								<div class="card-body">
+							   
+								<div class="card-body"><a href="super-admin-teachers-list.php">
+									
 									<div class="db-widgets d-flex justify-content-between align-items-center">
 										<div class="db-icon">
 											<i class="fas fa-building"></i>
