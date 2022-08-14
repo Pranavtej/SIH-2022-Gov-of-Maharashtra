@@ -14,6 +14,12 @@ if(isset($_POST['login']))
     {	
 		$_SESSION['TEACHER_ID'] = $tid;
 		$_SESSION['SCHOOL_ID'] = $sid = $run['school_id'];
+		$sql2 = mysqli_query($con,"select count(*) as cc from schoolwise_class_subject_teachers where teacher_id='$tid'");
+		$sql2 = mysqli_fetch_assoc($sql2);
+		if($sql2['cc'] == 0)
+		{
+			echo "<script>document.location='pet-dashboard.php'</script>";
+		}
 	    $sql = "select class_id from schoolwise_class_details where teacher_id='{$_POST['teacher_id']}' and school_id='$sid'";
     	$run1 = mysqli_query($con,$sql);
     	$run1 = mysqli_fetch_assoc($run1);
