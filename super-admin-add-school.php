@@ -55,8 +55,8 @@ if(isset($_POST['add-school']))
 		<link rel="stylesheet" href="assets/css/bootstrap-datetimepicker.min.css">
 		
 		<!-- Main CSS -->
-		<link rel="stylesheet" href="assets/css/style.css">
-	</head>
+		<link rel="stylesheet" href="assets/css/style.css"> 
+    </head>
 	<body>
         <?php include "super-admin-menu.php";?>
         <div class="page-wrapper">
