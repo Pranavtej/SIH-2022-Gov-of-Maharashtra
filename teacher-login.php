@@ -8,25 +8,14 @@ if(isset($_POST['login']))
 {
 	$tid=$_POST['teacher_id'];
     $sql = "select * from teacher_info where teacher_id='$tid'";
-	$run = mysqli_query($con,$sql);
-    $run = mysqli_fetch_assoc($run);
 	$_SESSION['TEACHER_NAME']=$run['teacher_name'];
 	$_SESSION['DOB']=$run['teacher_dob'];
 	$_SESSION['MOBILE']=$run['teacher_mob'];
 	$_SESSION['EMAIL']=$run['teacher_email'];
+    $run = mysqli_query($con,$sql);
+    $run = mysqli_fetch_assoc($run);
     if(!empty($run))
-    {
-		$TID=$_POST['teacher_id'];
-		$sql1= "select class_id from schoolwise_class_subject_teachers where teacher_id='$tid'";
-		$run1=mysqli_query($con,$sql1);
-		$run1 = mysqli_fetch_assoc($run1);
-        $_SESSION['SCHOOL_ID'] =$sid=$run['school_id'];
-        $_SESSION['TEACHER_ID'] =$tid;
-		if(empty($run1))
-		{
-			echo "<script>document.location='coach-dashboard.php'</script>";
-		}
-		
+    {	
 	    $sql = "select class_id from schoolwise_class_details where teacher_id='{$_POST['teacher_id']}' and school_id='$sid'";
     	$run1 = mysqli_query($con,$sql);
     	$run1 = mysqli_fetch_assoc($run1);
