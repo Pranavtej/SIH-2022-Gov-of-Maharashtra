@@ -17,7 +17,7 @@ if(isset($_POST['login']))
     if(!empty($run))
     {
 		$TID=$_POST['teacher_id'];
-		$sql1= "select class_id from schoolwise_class_subject_teachers where teacher_id='$TID'";
+		$sql1= "select class_id from schoolwise_class_subject_teachers where teacher_id='$tid'";
 		$run1=mysqli_query($con,$sql1);
 		$run1 = mysqli_fetch_assoc($run1);
         $_SESSION['SCHOOL_ID'] =$sid=$run['school_id'];
