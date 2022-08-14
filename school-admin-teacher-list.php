@@ -98,7 +98,7 @@ foreach ($result as $data)
     '<tr>
 <td>'.$t_id.'</td>
 <td>
-<a href="school-admin-teacher-dashboard.php?teacher_id='.$t_id.'">'.$tname.'</a>
+<a href="school-admin-teacher-view.php?teacher_id='.$t_id.'">'.$tname.'</a>
 </h2>
 </td>
 <td>'.$date.'</td>
