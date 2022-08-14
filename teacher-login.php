@@ -10,6 +10,8 @@ if(isset($_POST['login']))
     $sql = "select * from teacher_info where teacher_id='$tid'";
     $run = mysqli_query($con,$sql);
     $run = mysqli_fetch_assoc($run);
+	$_SESSION['TEACHER_ID'] = $tid;
+	$_SESSION['SCHOOL_ID'] = $sid = $run['school_id'];
     if(!empty($run))
     {	
 	    $sql = "select class_id from schoolwise_class_details where teacher_id='{$_POST['teacher_id']}' and school_id='$sid'";
