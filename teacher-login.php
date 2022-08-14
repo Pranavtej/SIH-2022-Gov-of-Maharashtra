@@ -21,11 +21,7 @@ if(isset($_POST['login']))
 		$run1=mysqli_query($con,$sql1);
 		$run1 = mysqli_fetch_assoc($run1);
         $_SESSION['SCHOOL_ID'] =$sid=$run['school_id'];
-        $_SESSION['TEACHER_ID'] =$TID;
-		/*$_SESSION['TEACHER_NAME']=$run['teacher_name'];
-		$_SESSION['DOB']=$run['teacher_dob'];
-		$_SESSION['MOBILE']=$run['teacher_mob'];
-		$_SESSION['EMAIL']=$run['teacher_email'];*/
+        $_SESSION['TEACHER_ID'] =$tid;
 		if(empty($run1))
 		{
 			echo "<script>document.location='coach-dashboard.php'</script>";
