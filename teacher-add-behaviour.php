@@ -10,6 +10,7 @@
     $details=mysqli_fetch_assoc($result);
     $oldbehave=$details['classroom_behaviour'];
     $oldclasss=$details['classroom_attentiveness'];
+    $points = 0;
     $points = $oldbehave+$oldclasss;
     if(isset($_POST['submit']))
     {
