@@ -139,6 +139,7 @@ foreach ($result as $data)
        $student_id=$data['student_id'];
        $date=$data['date_of_birth'];
        $class=$data['class'];
+       $class_id=$data['class_id'];
        $section = $data['section'];
        $addres=$data['address'];
        $mail=$data['email'];
@@ -146,7 +147,7 @@ foreach ($result as $data)
     '<tr>
 <td>'.$student_id.'</td>
 <td>
-<a href="school-admin-student-dashboard.php?student_id='.$student_id.'">'.$stdname.'</a>
+<a href="school-admin-student-view.php?student_id='.$student_id.'&class_id='.$class_id.'">'.$stdname.'</a>
 </h2>
 </td>
 <td>'.$class.'</td>
