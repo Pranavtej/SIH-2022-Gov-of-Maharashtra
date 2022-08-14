@@ -28,7 +28,7 @@ if(isset($_POST['login']))
 		$_SESSION['EMAIL']=$run['teacher_email'];*/
 		if(empty($run1))
 		{
-			echo "<script>document.location='coach-dashboard.php'</script>";
+			echo "<script>document.location='pet-dashboard.php'</script>";
 		}
 		
 	    $sql = "select class_id from schoolwise_class_details where teacher_id='{$_POST['teacher_id']}' and school_id='$sid'";

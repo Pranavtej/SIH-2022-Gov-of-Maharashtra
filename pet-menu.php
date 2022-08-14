@@ -138,17 +138,17 @@
 <a href="#"><i class="fas fa-user-graduate"></i> <span> Dashboard</span> <span class="menu-arrow"></span></a>
 <ul>
 <!-- <li><a href="index.html">Admin Dashboard</a></li> -->
-<li><a href="coach-dashboard.php" class="active">Coach Dashboard</a></li>
+<li><a href="pet-dashboard.php" class="active">Coach Dashboard</a></li>
 <!-- <li><a href="student-dashboard.html">Student Dashboard</a></li> -->
 </ul>
 </li>
 <li class="submenu">
 <a href="#"><i class="fas fa-user-graduate"></i> <span> Students</span> <span class="menu-arrow"></span></a>
 <ul>
-<li><a href="coach-student-list.php">Student List</a></li>
+<li><a href="pet-student-list.php">Student List</a></li>
 <!--<li><a href="student-details.html">Student View</a></li>-->
-<li><a href="coach-student-add.php">Student Add</a></li>
-<li><a href="coach-student-edit-list.php">Student Edit</a></li>
+<!-- <li><a href="pet-student-add.php">Student Add</a></li>
+<li><a href="pet-student-edit-list.php">Student Edit</a></li> -->
 
 
 </ul>
@@ -165,9 +165,9 @@
 <li class="submenu">
 <a href="#"><i class="fas fa-book-reader"></i> <span> Sports</span> <span class="menu-arrow"></span></a>
 <ul>
-<li><a href="teacher-subjects.php">Sports List</a></li>
-<li><a href="teacher-subject-add.php">Sport Add</a></li>
-<li><a href="teacher-subject-add.php">Sport Edit</a></li>
+<li><a href="pet-sports-list.php">Sports List</a></li>
+<li><a href="pet-sport-add.php">Sport Add</a></li>
+<li><a href="pet-sport-edit-list.php">Sport Edit</a></li>
 </ul>
 </li>
 <!-- <li class="submenu">
@@ -180,9 +180,8 @@
         <a href="#"><i class="fas fa-book-reader"></i> <span>Scores</span> <span class="menu-arrow"></span></a>
         <ul>
        <!-- <li><a href="teacher-student-academic.php" class="active">Rank List</a></li>-->
-        <li><a href="teacher-student-cca.php" class="active">Co-Circular Rank</a></li>
-        <li><a href="teacher-student-sports.php" class="active">Sports Rank</a></li>
-        <li><a href="coach-student-add-per-list.php"> Add Performace </a></li>
+        
+        <li><a href="pet-student-add-per-list.php"> Add Performace </a></li>
     </ul></li>
 <!--<li class="menu-title">
 <span>Management</span>

@@ -2,20 +2,42 @@
 
 
 include'connect.php';
-if(empty($_SESSION['TID']))
-{
-    header('location:index.php');
-}
-else{
 
-    $class_id= $_SESSION['cid'];
-
-    $std=" select sid , Student_Name ,dob, cid ,address,email from student where cid='$class_id'";
-    $result=mysqli_query($con,$std) or die(mysqli_error);
-    $counter=mysqli_num_rows($result);
+    if(empty($_SESSION['TEACHER_ID']))
+    {
+        header('location:index.php');
+    }
+    else{
     
+        $school_id= $_SESSION['SCHOOL_ID'];
+    
+        $std=" select *from student where school_id='$school_id'";
+        
+    if(isset($_POST['submit'])) {
+        $class=$_POST['select'];
+        if($_POST['select']=='6th') {   //<=========== 'select'
+            $std=" select * from student where school_id='$school_id' and class_id=ANY(select class_id from classes where class=6) ";
+        }
+        elseif($_POST['select']=='7th') {   //<=========== 'select'
+            $std=" select * from student where school_id='$school_id' and class_id=ANY(select class_id from classes where class=7) ";
+        }
+        elseif($_POST['select']=='8th'){
+            $std=" select * from student where school_id='$school_id' and class_id=ANY(select class_id from classes where class=8) ";
+        }
+        elseif($_POST['select']=='9th'){
+            $std=" select * from student where school_id='$school_id' and class_id=ANY(select class_id from classes where class=9) ";
+        }
+        elseif($_POST['select']=='10th'){
+            $std=" select *from student where school_id='$school_id' and class_id=ANY(select class_id from classes where class=10) ";
+        }
+        
+         $result=mysqli_query($con,$std) or die(mysqli_error);
+        $counter=mysqli_num_rows($result);
+        
+    }
+    $result=mysqli_query($con,$std) or die(mysqli_error);
+        $counter=mysqli_num_rows($result);
 }
-
 ?>
 
 
@@ -44,7 +66,7 @@ else{
 <body>
 
 <?php
-include 'coach-menu.php';
+include 'pet-menu.php';
 ?>
 
 
@@ -67,6 +89,19 @@ include 'coach-menu.php';
 </div>
 </div>
 </div>
+<form class="filteroption" action="" method="post">
+    <select id="select" class="form-control form-select" name="select" >
+
+        <option value="6th" >6</option>
+        <option value="7th" >7</option>
+        <option value="8th" >8</option>
+        <option value="9th" >9</option>
+        <option value="10th" >10</option>
+        <option value=0 selected="selected">select class</option>
+    </select>
+    <br>
+    <input  class="btn btn-primary" type="submit" name="submit" value="submit">
+          </form>
 
 <div class="row">
 <div class="col-sm-12">
@@ -79,10 +114,11 @@ include 'coach-menu.php';
 <th>ID</th>
 <th>Name</th>
 <th>Class</th>
+<th>Gender</th>
 <th>DOB</th>
-<th>Parent Name</th>
 <th>EMAIL</th>
 <th>Address</th>
+<th>Edit</th>
 <!-- <th class="text-end">Action</th> -->
 </tr>
 </thead>
@@ -90,26 +126,33 @@ include 'coach-menu.php';
 <?php
 foreach ($result as $data) 
 {
-       $stdname=$data['Student_Name'];
-       $std_id=$data['sid'];
-       $date=$data['dob'];
-       $class_id=$data['cid'];
+       $stdname=$data['student_name'];
+       $std_id=$data['student_id'];
+       $date=$data['date_of_birth'];
+       $class_id=$_POST['select'];
+       $gender=$data['gender'];
        $addres=$data['address'];
        $mail=$data['email'];
     echo
     '<tr>
 <td>'.$std_id.'</td>
 <td>
-<a href="teacher-student-edit.php?data='.$std_id.'">'.$stdname.'</a>
+<a >'.$stdname.'</a>
 </h2>
 </td>
 <td>'.$class_id.'</td>
+<td>'.$gender.'</td>
 <td>'.$date.'</td>
-<td>NAME</td>
 <td>'.$mail.'</td>
 <td>'.$addres.'</td>
+<td><a href="pet-student-edit.php?student_id='.$std_id.'&student_name='.$stdname.'&dob='.$date.'&class_id='.$class_id.'&gender='.$gender.'&address='.$addres.'&email='.$mail.'">
+<button class="btn btn-primary">
+    Edit 
+</button>
+</a></td>
 <td class="text-end">';
 }
+?>
 ?>
 <!-- <tr>
 <td>PRE2209</td>
