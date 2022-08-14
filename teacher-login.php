@@ -7,13 +7,13 @@ session_start();
 if(isset($_POST['login']))
 {
 	$tid=$_POST['teacher_id'];
-    $sql = "select * from teacher_info where teacher_id='$tid'";
+    $sql = "select teacher_id,school_id from teacher_info where teacher_id='$tid'";
     $run = mysqli_query($con,$sql);
     $run = mysqli_fetch_assoc($run);
-	$_SESSION['TEACHER_ID'] = $tid;
-	$_SESSION['SCHOOL_ID'] = $sid = $run['school_id'];
     if(!empty($run))
     {	
+		$_SESSION['TEACHER_ID'] = $tid;
+		$_SESSION['SCHOOL_ID'] = $sid = $run['school_id'];
 	    $sql = "select class_id from schoolwise_class_details where teacher_id='{$_POST['teacher_id']}' and school_id='$sid'";
     	$run1 = mysqli_query($con,$sql);
     	$run1 = mysqli_fetch_assoc($run1);
