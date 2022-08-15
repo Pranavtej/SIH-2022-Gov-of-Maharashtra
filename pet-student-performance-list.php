@@ -126,6 +126,7 @@ include 'pet-menu.php';
 <th>DOB</th>
 <th>EMAIL</th>
 <th>Address</th>
+<th>Add Performance</th>
 <!-- <th class="text-end">Action</th> -->
 </tr>
 </thead>
@@ -152,6 +153,11 @@ foreach ($result as $data)
 <td>'.$date.'</td>
 <td>'.$mail.'</td>
 <td>'.$addres.'</td>
+<td><a href="pet-add-performance.php?student_id='.$std_id.'&student_name='.$stdname.'&dob='.$date.'&class_id='.$class_id.'&gender='.$gender.'&address='.$addres.'&email='.$mail.'">
+<button class="btn btn-primary">
+    Add Performance 
+</button>
+</a></td>
 <td class="text-end">';
 }
 ?>

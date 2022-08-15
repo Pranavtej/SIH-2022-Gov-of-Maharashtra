@@ -181,7 +181,7 @@
         <ul>
        <!-- <li><a href="teacher-student-academic.php" class="active">Rank List</a></li>-->
         
-        <li><a href="pet-student-add-per-list.php"> Add Performace </a></li>
+        <li><a href="pet-student-performance-list.php"> Add Performace </a></li>
     </ul></li>
 <!--<li class="menu-title">
 <span>Management</span>
