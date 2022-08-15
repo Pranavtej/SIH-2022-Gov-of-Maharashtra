@@ -23,21 +23,21 @@
 	$sql5 = mysqli_query($con,"select count(*) as female from student where school_id='$school_id' and class_id='$class_id' and gender='F'");
 	$run5 = mysqli_fetch_assoc($sql5);
     
-    $total=0;
-    foreach($re as $data)
-    {
-        $y[] = $data['sid'];
-        $x[] = $data['TOT'];
-        $total=$total+$data['TOT'];
-    }
-    $count=mysqli_num_rows($re);
-    $total=$total/$count;
-    $i=0;
-    while($i<=$count)
-    {
-        $z[]=$total;
-        $i=$i+1;
-    }
+    // $total=0;
+    // foreach($re as $data)
+    // {
+    //     $y[] = $data['sid'];
+    //     $x[] = $data['TOT'];
+    //     $total=$total+$data['TOT'];
+    // }
+    // $count=mysqli_num_rows($re);
+    // $total=$total/$count;
+    // $i=0;
+    // while($i<=$count)
+    // {
+    //     $z[]=$total;
+    //     $i=$i+1;
+    // }
 
     
 
@@ -204,10 +204,10 @@ const ctx_2 = document.getElementById('cpscore');
 const myChart = new Chart(ctx_2, {
     type: 'line',
     data: {
-        labels:  <?php echo json_encode($y)?>, 
+        labels:  ['STUDENT', 'TEACHER', 'PARENT', 'ADMIN'],'], 
         datasets: [{
             label: 'class performance',
-            data: <?php echo json_encode($x)?>,
+            data: [100, 100, 100, 100],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -229,7 +229,24 @@ const myChart = new Chart(ctx_2, {
         {
         label: 'Average',
         type: 'line',
-           data:<?php echo json_encode($z)?>,
+           data:[100, 100, 100, 100],
+			backgroundColor: [
+				'rgba(255, 99, 132, 0.2)',
+				'rgba(54, 162, 235, 0.2)',
+				'rgba(255, 206, 86, 0.2)',
+				'rgba(75, 192, 192, 0.2)',
+				'rgba(153, 102, 255, 0.2)',
+				'rgba(255, 159, 64, 0.2)'
+			],
+			borderColor: [
+				'rgba(255, 99, 132, 1)',
+				'rgba(54, 162, 235, 1)',
+				'rgba(255, 206, 86, 1)',
+				'rgba(75, 192, 192, 1)',
+				'rgba(153, 102, 255, 1)',
+				'rgba(255, 159, 64, 1)'
+			],
+			borderWidth: 1
            // this dataset is drawn below0
            order: 2,
            backgroundColor: [
