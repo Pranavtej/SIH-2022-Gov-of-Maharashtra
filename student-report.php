@@ -116,28 +116,40 @@ $run2 = mysqli_fetch_assoc($run2);
 										<div class="row mt-3">                                           
 										</div>
 										
-										<div class="row follow-sec">
-                                            <div class="col-md-4 mb-3">
-                                                <div class="blue-box">
-                                                    <h3>2850</h3>
-                                                    <p>Followers</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4 mb-3">
-                                                <div class="blue-box">
-                                                    <h3>2050</h3>
-                                                    <p>Following</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4 mb-3">
-                                                <div class="blue-box">
-                                                    <h3>2950</h3>
-                                                    <p>Friends</p>
-                                                </div>
-                                            </div>
+										<div class="row">
+											<div class="col-xl-3 col-sm-6 col-12">
+												<div class="card flex-fill fb sm-box">
+													<!-- <i class="fab fa-facebook"></i> -->
+													<h6>50,095</h6>
+													<p>Likes</p>
+												</div>
+											</div>
+											<div class="col-xl-3 col-sm-6 col-12">
+												<div class="card flex-fill twitter sm-box">
+													<!-- <i class="fab fa-twitter"></i> -->
+													<h6>48,596</h6>
+													<p>Follows</p>
+												</div>
+											</div>
+						
+											<div class="col-xl-3 col-sm-6 col-12">
+												<div class="card flex-fill insta sm-box">
+													<!-- <i class="fab fa-instagram"></i> -->
+													<h6>52,085</h6>
+													<p>Follows</p>
+												</div>
+											</div>
+						
+											<div class="col-xl-3 col-sm-6 col-12">
+												<div class="card flex-fill linkedin sm-box">
+													<!-- <i class="fab fa-linkedin-in"></i> -->
+													<h6>69,050</h6>
+													<p>Follows</p>
+												</div>
+											</div>
 										</div>
 										
-										<div class="row mt-2">
+										<!-- <div class="row mt-2">
 											<div class="col-md-12">
 												<h5>Permanent Address</h5>
 												<p><?php echo $run['address']; ?></p>
@@ -149,7 +161,7 @@ $run2 = mysqli_fetch_assoc($run2);
 												<h5>Present Address</h5>
 												<p><?php echo $run['address']; ?></p>
 											</div>                                            
-                                        </div>
+                                        </div> -->
 									</div>
 								</div>								
 							</div>
@@ -157,44 +169,40 @@ $run2 = mysqli_fetch_assoc($run2);
 					</div>	
 					
 					<div class="row">
+						<?php
+							$query = "SELECT s.subject_name as subject_name,ROUND(sum(credits)/5) as num,loc.subject_id as subject_id FROM `learning_outcomes_credits` loc,subjects s WHERE class_id='$class_id' and student_id='$student_id' and s.subject_id=loc.subject_id GROUP BY loc.subject_id";
+							$run = mysqli_query($con,$query);
+
+							foreach($run as $id)
+							{
+								$cc = (int)$id['num'];
+								$star = '⭐';
+								for($i=1;$i<$cc;$i++)
+								{
+									$star = $star . '⭐';
+								}
+								$sum = mysqli_query($con, "SELECT type FROM `conclusion` WHERE id='$cc'");
+								echo'
 								<div class="col-12 col-md-6 col-lg-4 d-flex">
 									<div class="card flex-fill">
 										<div class="card-header">
-											<h5 class="card-title mb-0">Academics ⭐⭐⭐⭐</h5>
+											<h5 class="card-title mb-0">'.$id['subject_name'].'<br><br>Credits : '.$star.'</h5>
 										</div>
 										<div class="card-body">
-											<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-											<a class="card-link" href="#">Card link</a>
-											<a class="card-link" href="#">Another link</a>
+											<h6 class="card-text" >Your Score </h6><br>
+											<h3 class="card-text" >'.$id['num'].'/5</h3>';
+											foreach($sum as $su)
+											{
+												echo '<p class="card-text">'.$su['type'].'</p>';
+											}
+											echo '<a class="card-link" href="student-detailed-view.php?suid='.$id['subject_id'].'">View detailed credits</a>
 										</div>
 									</div>
-																				</div>
-								
-								<div class="col-12 col-md-6 col-lg-4 d-flex">
-									<div class="card flex-fill">
-										<div class="card-header">
-											<h5 class="card-title mb-0"> sports ⭐⭐⭐⭐</h5>
-										</div>
-										<div class="card-body">
-											<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-											<a class="card-link" href="#">Card link</a>
-											<a class="card-link" href="#">Another link</a>
-										</div>
-									</div>
-									</div>
-							
-								<div class="col-12 col-md-6 col-lg-4 d-flex">
-									<div class="card flex-fill">
-										<div class="card-header">
-											<h5 class="card-title mb-0">Humanity⭐⭐⭐⭐</h5>
-										</div>
-										<div class="card-body">
-											<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-											<a class="card-link" href="#">Card link</a>
-											<a class="card-link" href="#">Another link</a>
-										</div>
-									</div>
-								
+								</div>
+								';
+							}
+						?>
+					</div>
 				</div>
 				
 				<!-- Footer -->
