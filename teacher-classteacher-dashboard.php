@@ -22,11 +22,6 @@
 
 	$sql5 = mysqli_query($con,"select count(*) as female from student where school_id='$school_id' and class_id='$class_id' and gender='F'");
 	$run5 = mysqli_fetch_assoc($sql5);
-
-	$quer="SELECT distinct e.sid,(e.TOTAL+a.TOTAL+c.TOTAL+s.TOTAL) as TOT
-    FROM exam_totals e,academic_points a,ccapoints c, spoints s,student t,class cl 
-    WHERE e.sid=a.sid and a.sid=c.sid and c.sid=s.SID and s.sid=t.sid and t.cid='$ci'";
-    $re=mysqli_query($con,$quer) or die(mysqli_error());
     
     $total=0;
     foreach($re as $data)
