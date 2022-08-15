@@ -168,7 +168,7 @@
 						</div>
 					</div>
 					<!-- /Overview Section -->				
-					<div class="row">
+<div class="row">
 <div class="col-12 col-lg-12 col-xl-8 d-flex">
 <div class="card flex-fill">
 <div class="card-header">
@@ -176,22 +176,6 @@
 <div class="col-6">
 <h5 class="card-title">Class Performance</h5>
 </div>
-<div class="col-6">
-<ul class="list-inline-group text-end mb-0 ps-0">
-<li class="list-inline-item">
-<div class="form-group mb-0 amount-spent-select">
-<!-- <select class="form-control form-control-sm form-select">
-<option>Weekly</option>
-<option>Monthly</option>
-<option>Yearly</option>
-</select> -->
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div> 
-
 <div id="chart-body" >
 <canvas id="cpscore"></canvas>
 <!-- <canvas id="ccscore"></canvas> -->
@@ -204,10 +188,10 @@ const ctx_2 = document.getElementById('cpscore');
 const myChart = new Chart(ctx_2, {
     type: 'line',
     data: {
-        labels:  ['STUDENT', 'TEACHER', 'PARENT', 'ADMIN'],'], 
+        labels:  ['STUDENT', 'TEACHER', 'PARENT', 'ADMIN'],
         datasets: [{
             label: 'class performance',
-            data: [100, 100, 100, 100],
+            data: [100,120,130,140],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -229,7 +213,7 @@ const myChart = new Chart(ctx_2, {
         {
         label: 'Average',
         type: 'line',
-           data:[100, 100, 100, 100],
+           data:[100,120,130,140],
 			backgroundColor: [
 				'rgba(255, 99, 132, 0.2)',
 				'rgba(54, 162, 235, 0.2)',
@@ -246,9 +230,9 @@ const myChart = new Chart(ctx_2, {
 				'rgba(153, 102, 255, 1)',
 				'rgba(255, 159, 64, 1)'
 			],
-			borderWidth: 1
+			borderWidth: 1,
            // this dataset is drawn below0
-           order: 2,
+           border: 2,
            backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -269,6 +253,7 @@ const myChart = new Chart(ctx_2, {
        }]
     },
     options: {
+		maintainAspectRatio: true,
         scales: {
             y: {
                 beginAtZero: true
@@ -282,13 +267,12 @@ const myChart = new Chart(ctx_2, {
 
 </div>
 </div>
+</div>
+</div>
 
 					<!-- Teacher Dashboard -->
-					<div class="row">
-						<div class="col-12 col-lg-12 col-xl-9">
+					<div class="col-12 col-lg-12 col-xl-4 d-flex">
 
-							<div class="row">
-								<div class="col-12 col-lg-4 col-xl-4 d-flex">
 									<div class="card flex-fill">
 										<div class="card-header">
 											<div class="row align-items-center">
