@@ -96,6 +96,13 @@
                                 <li><a href="student-subjects.php">Subject List</a></li>
                             </ul>
                         </li>
+                        <li class="submenu">
+                            <a href="#"><i class="fas fa-user-graduate"></i> <span>Report Card</span> <span class="menu-arrow"></span></a>
+                            <ul>
+                            <li><a href="student-report.php">Academic Report</a></li>
+
+                            </ul>
+                        </li>
                     </ul>
                 </div>
             </div>

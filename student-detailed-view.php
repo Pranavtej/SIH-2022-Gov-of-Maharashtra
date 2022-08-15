@@ -43,8 +43,7 @@ $sql = mysqli_query($con ,"SELECT lo.loc as locs, loc.credits as credits FROM `l
 		<!-- Main Wrapper -->
         <div class="main-wrapper">
 		
-			<?php include 'teacher-header.php'; ?>
-			<?php include 'teacher-sidebar.php'; ?>
+			<?php include 'student-menu.php'; ?>
 			
 			<!-- Page Wrapper -->
             <div class="page-wrapper">
