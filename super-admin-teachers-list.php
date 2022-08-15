@@ -77,7 +77,7 @@ include 'connect.php';?>
 													{
 														echo 
 														'<tr><td>'.$res1['teacher_id'].'</td>
-														<td><a href="SuperAdmin-teacher-dashboard.php?teacher_id='.$res1['teacher_id'].'">'.$res1['teacher_name'].'</a></td>
+														<td><a href="super-admin-teacher-view.php?teacher_id='.$res1['teacher_id'].'">'.$res1['teacher_name'].'</a></td>
 														<td>'.$res1['school_name'].'</td>
 														<td>'.$res1['teacher_dob'].'</td>
 														<td>'.$res1['teacher_email'].'</td>

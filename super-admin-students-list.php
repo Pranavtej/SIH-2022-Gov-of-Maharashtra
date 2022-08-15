@@ -38,7 +38,7 @@ include 'connect.php';?>
 							<div class="col">
 								<h3 class="page-title">Students</h3>
 								<ul class="breadcrumb">
-									<li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+									<li class="breadcrumb-item"><a href="dashboard.html">Dashboard</a></li>
 									<li class="breadcrumb-item active">Students</li>
 								</ul>
 							</div>
@@ -80,7 +80,7 @@ include 'connect.php';?>
 													{
 														echo 
 														'<tr><td>'.$res1['student_id'].'</td>
-														<td><a href="super-admin-student-dashboard.php?student_id='.$res1['student_id'].'">'.$res1['student_name'].'</a></td>
+														<td><a href="super-admin-student-view.php?student_id='.$res1['student_id'].'">'.$res1['student_name'].'</a></td>
 														<td>'.$res1['school_name'].'</td>
 														<td>'.$res1['date_of_birth'].'</td>
 														<td>'.$res1['gender'].'</td>
