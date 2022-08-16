@@ -9,8 +9,8 @@ if(empty($_SESSION['TEACHER_ID']))
 else{
 
     $school_id= $_SESSION['SCHOOL_ID'];
-
-    $std=" select *from student where school_id='$school_id'";
+    $class_id=$_GET['class_id'];
+    $std=" select *from student where school_id='$school_id' and class_id='$class_id'";
     
 if(isset($_POST['submit'])) {
     $class=$_POST['select'];
@@ -74,7 +74,8 @@ $result=mysqli_query($con,$std) or die(mysqli_error);
 <body>
 
 <?php
-include 'pet-menu.php';
+include 'teacher-teacher-header.php';
+include 'teacher-teacher-sidebar.php';
 ?>
 
 <div class="page-wrapper">
@@ -83,7 +84,7 @@ include 'pet-menu.php';
 <div class="page-header">
 <div class="row align-items-center">
 <div class="col">
-<h3 class="page-title">Students</h3>
+<h3 class="page-title">Students-list</h3>
 <ul class="breadcrumb">
 <li class="breadcrumb-item"><a href="teacher-dashboard.php">Dashboard</a></li>
 <li class="breadcrumb-item active">Students</li>
@@ -144,7 +145,7 @@ foreach ($result as $data)
     '<tr>
 <td>'.$std_id.'</td>
 <td>
-<a >'.$stdname.'</a>
+<a href=teacher-teacher-student-view.php?student_id='.$std_id.'&class_id='.$class_id.'>'.$stdname.'</a>
 </h2>
 </td>
 <td>'.$class_id.'</td>
