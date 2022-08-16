@@ -52,14 +52,14 @@ else{
         }
     }
 
-	$sql = mysqli_query($con , "SELECT student_id,sum(marks) as marks from sports_marksn where school_id='$school_id' GROUP BY student_id order by marks desc")
-	$var=0;
-    foreach($re as $data)
+	$qu1 = mysqli_query($con , "SELECT student_id,sum(marks) as marks from sports_marksn where school_id='$school_id' GROUP BY student_id order by marks desc")
+	$var3=0;
+    foreach($qu1 as $data)
     {
         $var=$var+1;
         if($data['student_id']==$student_id)
         {
-            $rank3 = $var;
+            $rank3 = $var3;
             break;
         }
     }
