@@ -62,6 +62,10 @@ include'connect.php';
 <link rel="stylesheet" href="assets/plugins/datatables/datatables.min.css">
 
 <link rel="stylesheet" href="assets/css/style.css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+
+      <!-- save the modal script on your server and link to it -->
+      <script src="/path/to/jquery.modal.min.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
 
@@ -145,9 +149,9 @@ foreach ($result as $data)
 <td>'.$date.'</td>
 <td>'.$mail.'</td>
 <td>'.$addres.'</td>
-<td><a href="pet-student-edit.php?student_id='.$std_id.'&student_name='.$stdname.'&dob='.$date.'&class_id='.$class_id.'&gender='.$gender.'&address='.$addres.'&email='.$mail.'">
+<td><a href="pet-student-edit.php?student_id='.$std_id.'&student_name='.$stdname.'&dob='.$date.'&class_id='.$class_id.'&gender='.$gender.'&address='.$addres.'&email='.$mail.'" rel="modal:open">
 <button class="btn btn-primary">
-    Edit 
+    Report 
 </button>
 </a></td>
 <td class="text-end">';

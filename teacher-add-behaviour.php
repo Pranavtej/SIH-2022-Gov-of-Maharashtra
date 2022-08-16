@@ -8,17 +8,19 @@
     $query="select classroom_behaviour,classroom_attentiveness from behaviour_points where student_id='$student_id' and school_id='$school_id'";
     $result=mysqli_query($con,$query);
     $details=mysqli_fetch_assoc($result);
-    $oldbehave=$details['classroom_behaviour'];
-    $oldclasss=$details['classroom_attentiveness'];
+    $oldbehave=(int)$details['classroom_behaviour'];
+    $oldclasss=(int)$details['classroom_attentiveness'];
     $points = 0;
     $points = $oldbehave+$oldclasss;
     if(isset($_POST['submit']))
     {
+        $nd = 0;
+        $nc = 0;
         $nb=$_POST['behave'];
         $nc=$_POST['ca'];
-        $oldbehave=$oldbehave+$nb;
-        $oldclasss=$oldclasss+$nc;
-        $tot=$oldbehave+$oldclasss;
+        $oldbehave=(int)$oldbehave+(int)$nb;
+        $oldclasss=(int)$oldclasss+(int)$nc;
+        $points=$oldbehave+$oldclasss;
         $query2="update behaviour_points set classroom_behaviour='$oldbehave', classroom_attentiveness='$oldclasss' where student_id='$student_id' and school_id='$school_id'";
         $result2=mysqli_query($con,$query2) or die(mysqli_error);
         echo "<script>header.location='teacher-add-behaviour.php?sid=$student_id&cid=$class_id'</script>";

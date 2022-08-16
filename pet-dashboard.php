@@ -14,10 +14,13 @@
 
      $tid=$_SESSION['TEACHER_ID'];
      $sid=$_SESSION['SCHOOL_ID'];
-     $teacher_name=$_SESSION['TEACHER_NAME'];
-     $teacher_dob=$_SESSION['DOB'];
-     $teacher_mobile=$_SESSION['MOBILE'];
-     $teacher_email=$_SESSION['EMAIL'];
+     $res="select * from teacher_info where teacher_id='$tid' AND school_id='$sid'";
+     $run=mysqli_query($con,$res);
+     $run=mysqli_fetch_assoc($run);
+     $teacher_name=$_SESSION['TEACHER_NAME']=$run['teacher_name'];
+     $teacher_dob=$_SESSION['DOB']=$run['teacher_dob'];
+     $teacher_mobile=$_SESSION['MOBILE']=$run['teacher_mob'];
+     $teacher_email=$_SESSION['EMAIL']=$run['teacher_email'];
      $query="select COUNT(student_id) as cont from `student` where school_id='$sid'";
      $result=mysqli_query($con,$query);
      $result=mysqli_fetch_assoc($result);

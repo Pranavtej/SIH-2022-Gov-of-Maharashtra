@@ -1,6 +1,6 @@
 <?php session_start();
 
-
+error_reporting(E_ALL ^ E_NOTICE);  
 include'connect.php';
 if(empty($_SESSION['TEACHER_ID']))
 {
@@ -61,6 +61,15 @@ $result=mysqli_query($con,$std) or die(mysqli_error);
 <link rel="stylesheet" href="assets/plugins/datatables/datatables.min.css">
 
 <link rel="stylesheet" href="assets/css/style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+
+<!-- jQuery Modal -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+
+      <!-- save the modal script on your server and link to it -->
+      <script src="/path/to/jquery.modal.min.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
 
@@ -127,7 +136,7 @@ foreach ($result as $data)
        $stdname=$data['student_name'];
        $std_id=$data['student_id'];
        $date=$data['date_of_birth'];
-       $class_id=$_POST['select'];
+       $class_id=$data['class_id'];
        $gender=$data['gender'];
        $addres=$data['address'];
        $mail=$data['email'];
@@ -146,280 +155,6 @@ foreach ($result as $data)
 <td class="text-end">';
 }
 ?>
-<!-- <tr>
-<td>PRE2209</td>
-<td>
-<a href="student-details.html">Aaliyah</a>
-</h2>
-</td>
-<td>10 A</td>
-<td>2 Feb 2002</td>
-<td>Jeffrey Wong</td>
-<td>097 3584 5870</td>
-<td>911 Deer Ridge Drive,USA</td>
-<td class="text-end">
-<div class="actions">
-<a href="edit-student.html" class="btn btn-sm bg-success-light me-2">
-<i class="fas fa-pen"></i>
-</a>
-<a href="#" class="btn btn-sm bg-danger-light">
-<i class="fas fa-trash"></i>
-</a>
-</div>
-</td>
-</tr>
-<tr>
-<td>PRE2213</td>
-<td>
-<h2 class="table-avatar">
-<a href="student-details.html" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle" src="assets/img/profiles/avatar-03.jpg" alt="User Image"></a>
-<a href="student-details.html">Malynne</a>
-</h2>
-</td>
-<td>8 A</td>
-<td>3 June 2010</td>
- <td>Fields Malynne</td>
-<td>242 362 3100</td>
-<td>Bacardi Rd P.O. Box N-4880, New Providence</td>
-<td class="text-end">
-<div class="actions">
-<a href="edit-student.html" class="btn btn-sm bg-success-light me-2">
-<i class="fas fa-pen"></i>
-</a>
-<a href="#" class="btn btn-sm bg-danger-light">
-<i class="fas fa-trash"></i>
-</a>
-</div>
-</td>
-</tr>
-<tr>
-<td>PRE2143</td>
-<td>
-<h2 class="table-avatar">
-<a href="student-details.html" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle" src="assets/img/profiles/avatar-02.jpg" alt="User Image"></a>
-<a href="student-details.html">Levell Scott</a>
-</h2>
-</td>
-<td>10 A</td>
-<td>12 Apr 2002</td>
-<td>Jeffrey Scott</td>
-<td>026 7318 4366</td>
-<td>P.O. Box: 41, Gaborone</td>
-<td class="text-end">
-<div class="actions">
-<a href="edit-student.html" class="btn btn-sm bg-success-light me-2">
-<i class="fas fa-pen"></i>
-</a>
-<a href="#" class="btn btn-sm bg-danger-light">
-<i class="fas fa-trash"></i>
-</a>
-</div>
-</td>
-</tr>
-<tr>
-<td>PRE2431</td>
-<td>
-<h2 class="table-avatar">
-<a href="student-details.html" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle" src="assets/img/profiles/avatar-03.jpg" alt="User Image"></a>
-<a href="student-details.html">Minnie</a>
-</h2>
-</td>
-<td>11 C</td>
-<td>24 Feb 2000</td>
-<td>J Shaffer</td>
-<td>952 512 4909</td>
-<td>4771 Oral Lake Road, Golden Valley</td>
-<td class="text-end">
-<div class="actions">
-<a href="edit-student.html" class="btn btn-sm bg-success-light me-2">
-<i class="fas fa-pen"></i>
-</a>
-<a href="#" class="btn btn-sm bg-danger-light">
-<i class="fas fa-trash"></i>
-</a>
-</div>
-</td>
-</tr>
-<tr>
-<td>PRE1534</td>
-<td>
-<h2 class="table-avatar">
-<a href="student-details.html" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle" src="assets/img/profiles/avatar-04.jpg" alt="User Image"></a>
-<a href="student-details.html">Lois A</a>
-</h2>
-</td>
-<td>10 A</td>
-<td>22 Jul 2006</td>
-<td>Cleary Wong</td>
-<td>413 289 1314</td>
-<td>2844 Leverton Cove Road, Palmer</td>
-<td class="text-end">
-<div class="actions">
-<a href="edit-student.html" class="btn btn-sm bg-success-light me-2">
-<i class="fas fa-pen"></i>
-</a>
-<a href="#" class="btn btn-sm bg-danger-light">
-<i class="fas fa-trash"></i>
-</a>
-</div>
-</td>
-</tr>
-<tr>
-<td>PRE2153</td>
-<td>
-<h2 class="table-avatar">
-<a href="student-details.html" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle" src="assets/img/profiles/avatar-05.jpg" alt="User Image"></a>
-<a href="student-details.html">Calvin</a>
-</h2>
-</td>
-<td>9 B</td>
-<td>8 Dec 2003</td>
-<td>Minnie J Shaffer</td>
-<td>701 753 3810</td>
-<td>1900 Hidden Meadow Drive, Crete</td>
-<td class="text-end">
-<div class="actions">
-<a href="edit-student.html" class="btn btn-sm bg-success-light me-2">
-<i class="fas fa-pen"></i>
-</a>
-<a href="#" class="btn btn-sm bg-danger-light">
-<i class="fas fa-trash"></i>
-</a>
-</div>
-</td>
-</tr>
-<tr>
-<td>PRE1252</td>
-<td>
-<h2 class="table-avatar">
-<a href="student-details.html" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle" src="assets/img/profiles/avatar-06.jpg" alt="User Image"></a>
-<a href="student-details.html">Joe Kelley</a>
-</h2>
-</td>
-<td>11 C</td>
-<td>7 Oct 2000</td>
-<td>Vincent Howard</td>
-<td>402 221 7523</td>
-<td>3979 Ashwood Drive, Omaha</td>
-<td class="text-end">
-<div class="actions">
-<a href="edit-student.html" class="btn btn-sm bg-success-light me-2">
-<i class="fas fa-pen"></i>
-</a>
-<a href="#" class="btn btn-sm bg-danger-light">
-<i class="fas fa-trash"></i>
-</a>
-</div>
-</td>
-</tr>
-<tr>
-<td>PRE1434</td>
-<td>
-<h2 class="table-avatar">
-<a href="student-details.html" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle" src="assets/img/profiles/avatar-07.jpg" alt="User Image"></a>
-<a href="student-details.html">Vincent</a>
-</h2>
-</td>
-<td>10 A</td>
-<td>4 Jan 2002</td>
-<td>Kelley Joe</td>
-<td>402 221 7523</td>
-<td>3979 Ashwood Drive, Omaha</td>
-<td class="text-end">
-<div class="actions">
-<a href="edit-student.html" class="btn btn-sm bg-success-light me-2">
-<i class="fas fa-pen"></i>
-</a>
-<a href="#" class="btn btn-sm bg-danger-light">
-<i class="fas fa-trash"></i>
-</a>
-</div>
-</td>
-</tr>
-<tr>
-<td>PRE2345</td>
-<td>
-<h2 class="table-avatar">
-<a href="student-details.html" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle" src="assets/img/profiles/avatar-08.jpg" alt="User Image"></a>
-<a href="student-details.html">Kozma  Tatari</a>
-</h2>
-</td>
-<td>9 A</td>
-<td>1 Feb 2006</td>
-<td>Lombardi</td>
-<td>04 2239 968</td>
-<td>Rruga E Kavajes, Condor Center, Tirana</td>
-<td class="text-end">
-<div class="actions">
-<a href="edit-student.html" class="btn btn-sm bg-success-light me-2">
-<i class="fas fa-pen"></i>
-</a>
-<a href="#" class="btn btn-sm bg-danger-light">
-<i class="fas fa-trash"></i>
-</a>
-</div>
-</td>
-</tr>
-<tr>
-<td>PRE2365</td>
-<td>
-<h2 class="table-avatar">
-<a href="student-details.html" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle" src="assets/img/profiles/avatar-09.jpg" alt="User Image"></a>
-<a href="student-details.html">John Chambers</a>
-</h2>
-</td>
-<td>11 B</td>
-<td>13 Sept 2003</td>
-<td>Wong Jeffrey</td>
-<td>870 663 2334</td>
-<td>4667 Sunset Drive, Pine Bluff</td>
-<td class="text-end">
-<div class="actions">
-<a href="edit-student.html" class="btn btn-sm bg-success-light me-2">
-<i class="fas fa-pen"></i>
-</a>
-<a href="#" class="btn btn-sm bg-danger-light">
-<i class="fas fa-trash"></i>
-</a>
-</div>
-</td>
-</tr>
-<tr>
-<td>PRE1234</td>
-<td>
-<h2 class="table-avatar">
-<a href="student-details.html" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle" src="assets/img/profiles/avatar-10.jpg" alt="User Image"></a>
-<a href="student-details.html">Nathan Humphries</a>
-</h2>
-</td>
-<td>10 B</td>
-<td>26 Apr 1994</td>
-<td>Stephen Marley</td>
-<td>077 3499 9959</td>
-<td>86 Lamphey Road, Thelnetham</td>
-<td class="text-end">
-<div class="actions">
-<a href="edit-student.html" class="btn btn-sm bg-success-light me-2">
-<i class="fas fa-pen"></i>
-</a>
-<a href="#" class="btn btn-sm bg-danger-light">
-<i class="fas fa-trash"></i>
-</a>
-</div>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-<footer>
-<p>Copyright © 2020 Dreamguys.</p>
-</footer> -->
 
 </div>
 

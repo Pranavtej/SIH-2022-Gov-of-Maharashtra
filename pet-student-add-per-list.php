@@ -1,7 +1,7 @@
 <?php session_start();
 
 
-include'connect.php';
+include 'connect.php';
 if(empty($_SESSION['TID']))
 {
     header('location:index.php');

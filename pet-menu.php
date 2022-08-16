@@ -4,9 +4,9 @@
 <div class="header">
 
 <div class="header-left">
-<!--<a href="index.html" class="logo">
+<a href="index.html" class="logo">
 <img src="assets/img/logo.png" alt="Logo">
-</a>-->
+</a>
 <a href="index.html" class="logo logo-small">
 <img src="assets/img/logo-small.png" alt="Logo" width="30" height="30">
 </a>
@@ -181,7 +181,7 @@
         <ul>
        <!-- <li><a href="teacher-student-academic.php" class="active">Rank List</a></li>-->
         
-        <li><a href="pet-student-add-per-list.php"> Add Performace </a></li>
+        <li><a href="pet-student-performance-list.php"> Add Performace </a></li>
     </ul></li>
 <!--<li class="menu-title">
 <span>Management</span>
