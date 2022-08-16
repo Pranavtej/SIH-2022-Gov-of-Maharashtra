@@ -70,7 +70,7 @@ include 'pet-menu.php';
 											<div class="col-12 col-sm-6">  
 												<div class="form-group">
 													<label>Student ID</label>
-													<input type="text" name="student_id" value="<?php echo $student_id ?>" disabled="disabled" class="form-control">
+													<input type="text" name="student_id" id="student_id" value="<?php echo $student_id ?>" disabled="disabled" class="form-control">
 												</div>
 											</div>
 											<!-- <div class="col-12 col-sm-6">
@@ -117,7 +117,7 @@ include 'pet-menu.php';
                                         </form>
 										<div>
 											<br>
-											<h4 id="message">Hello</h4>
+											<h4 id="message"></h4>
 										</div>
 								</div>
 							</div>							
@@ -147,16 +147,18 @@ include 'pet-menu.php';
 		<script>
 
 			function generate() {
-				let d = document.getElementById("sport_id").value;
-				alert(d);
+				let d = document.getElementById("student_id").value;
+				let e = document.getElementById("sport_id").value;
+				let f = document.getElementById("sport_score").value;
+				
 				var xmlhttp=new XMLHttpRequest();
   				xmlhttp.onreadystatechange=function() {
     				if (this.readyState==4 && this.status==200) {
 						console.log(this.responseText);
-      					document.getElementById("pid").value=this.responseText;
+      					document.getElementById("message").value=this.responseText;
     				}
  				}
-  				xmlhttp.open("GET","generate_pid.php?date="+d,true);
+  				xmlhttp.open("GET","pet-add-performace-h.php?sid="+d+"&spid="+e+"&ss="+f,true);
   				xmlhttp.send();
 			}
 
