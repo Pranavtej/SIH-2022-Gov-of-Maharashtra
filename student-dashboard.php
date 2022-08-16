@@ -51,6 +51,18 @@ else{
             break;
         }
     }
+
+	$sql = mysqli_query($con , "SELECT student_id,sum(marks) as marks from sports_marksn where school_id='$school_id' GROUP BY student_id order by marks desc")
+	$var=0;
+    foreach($re as $data)
+    {
+        $var=$var+1;
+        if($data['student_id']==$student_id)
+        {
+            $rank3 = $var;
+            break;
+        }
+    }
 }
 
 ?>
@@ -149,7 +161,7 @@ else{
 											<i class="fas fa-clipboard-list"></i>
 										</div>
 										<div class="db-info">
-											<h3><?php echo'S';?></h3>
+											<h3><?php echo $rank3;?></h3>
 											<h6>Sports Rank</h6>
 										</div>										
 									</div>
