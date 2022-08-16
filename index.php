@@ -263,13 +263,13 @@
 								<div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
 										<div class="carousel-inner">
 										  <div class="carousel-item active" data-bs-interval="100">
-											<img src="https://pranavtej.github.io/aicte-ideal-lab/assets/img/slider.png" class="d-block w-100" alt="...">
+											<img src="assets/img/slider.png" class="d-block w-100" alt="...">
 										  </div>
 										  <div class="carousel-item" data-bs-interval="2000">
-											<img src="https://pranavtej.github.io/aicte-ideal-lab/assets/img/slider.png" class="d-block w-100" alt="...">
+											<img src="assets/img/slider.png" class="d-block w-100" alt="...">
 										  </div>
 										  <div class="carousel-item">
-											<img src="https://pranavtej.github.io/aicte-ideal-lab/assets/img/slider.png" class="d-block w-100" alt="...">
+											<img src="assets/img/slider.png" class="d-block w-100" alt="...">
 										  </div>
 										</div>
 										<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
@@ -284,6 +284,7 @@
 								</div>
                             </div>
                         </div>
+						<br>
                     
                             <div class="page-header">
                                 <div class="row">
@@ -320,7 +321,7 @@
 								<div class="card-body">
 									<div class="db-widgets d-flex justify-content-between align-items-center">
 										<div class="db-icon">
-											<i class="fas fa-crown"></i>
+											<i class="fas fa-user-tie"></i>
 										</div>
 										<div class="db-info">
                                             <a href="parent-login.php"><h3>Parent</h3></a>
@@ -337,7 +338,7 @@
 								<div class="card-body">
 									<div class="db-widgets d-flex justify-content-between align-items-center">
 										<div class="db-icon">
-											<i class="fas fa-building"></i>
+											<i class="fas fa-chalkboard-teacher"></i>
 										</div>
 										<div class="db-info">
 											<a href="teacher-login.php"><h3>Teacher</h3></a>
@@ -353,8 +354,8 @@
 								<div class="card bg-four w-100">
 								<div class="card-body">
 									<div class="db-widgets d-flex justify-content-between align-items-center">
-										<div class="db-icon">
-											<i class="fas fa-file-invoice-dollar"></i>
+										<div class="db-icon center">
+											<i class="fas fa-school fa-align-center"></i>
 										</div>
 										<div class="db-info">
 											<a href="school-login.php"><h3>School</h3></a>
