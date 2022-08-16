@@ -24,6 +24,12 @@ else
         $total=$score+$sport_score;
         $stat2="UPDATE `sports_marks` SET `marks`='$total' WHERE student_id='$student_id' AND sport_id='$sport_id'";
         $run2=mysqli_query($con,$stat2);
+		echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+	  <strong>Error!</strong> Invalid login credentials. Please retry or contact your administrator.
+	  <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
+	  <span aria-hidden="true">&times;</span>
+	  </button>
+  </div>';
       }
       else
       {
