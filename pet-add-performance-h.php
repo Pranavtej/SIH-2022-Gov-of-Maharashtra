@@ -16,7 +16,7 @@ if(!empty($res))
     $total=$score+$sport_score;
     $stat2="UPDATE `sports_marks` SET `marks`='$total' WHERE student_id='$student_id' AND sport_id='$sport_id'";
     $run2=mysqli_query($con,$stat2);
-    if(!empty($run2))
+    if($run2)
     {
         echo 'Added';
     }
