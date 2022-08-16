@@ -124,7 +124,7 @@
 									<li><a href="invoices-settings.html">Invoices Settings</a></li>
 								</ul>
 							</li>
-							<!-- <li class="menu-title"> 
+							<li class="menu-title"> 
 								<span>Management</span>
 							</li>
 
@@ -282,9 +282,9 @@
 										</button>
 									  </div>
 								</div>
-    </div>
-    </div>
-    </div>
+                            </div>
+                        </div>
+                    
                             <div class="page-header">
                                 <div class="row">
                                     <div class="col-sm-12">
@@ -297,6 +297,7 @@
                             </div>
 
 					<!-- Overview Section -->
+					
 					<div class="row">
 						<div class="col-xl-3 col-sm-6 col-12 d-flex">
 							<div class="card bg-one w-100">
@@ -357,13 +358,15 @@
 										</div>
 										<div class="db-info">
 											<a href="school-login.php"><h3>School</h3></a>
-											<h9>Login as a School Administrator</h9>
+											<h9>Login as a School</h9>
+											<!-- <h9> Administrator</h9> -->
 										</div>										
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
+				
     </div>
 
     </div>
