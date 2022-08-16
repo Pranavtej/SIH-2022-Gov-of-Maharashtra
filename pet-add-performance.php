@@ -155,7 +155,7 @@ include 'pet-menu.php';
   				xmlhttp.onreadystatechange=function() {
     				if (this.readyState==4 && this.status==200) {
 						console.log(this.responseText);
-      					document.getElementById("message").value=this.responseText;
+      					document.getElementById("message").innerHTML=this.responseText;
     				}
  				}
   				xmlhttp.open("GET","pet-add-performace-h.php?sid="+d+"&spid="+e+"&ss="+f,true);
