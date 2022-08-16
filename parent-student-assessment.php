@@ -1,6 +1,6 @@
 <?php
 include "connect.php";
-$sql="select Query from assessment_questions where assessment_id='FA'";
+$sql="select question from assessment_questions where assessment_id='FA'";
 $query=mysqli_query($con,$sql);
 ?>
 <!DOCTYPE html>
@@ -66,7 +66,7 @@ $query=mysqli_query($con,$sql);
 		echo
 			
 ' <div class="form-group">
-<h5> '.$data['Query'].'
+<h5> '.$data['question'].'
  <select name="" id="cars">
   <option value="volvo">Volvo</option>
   <option value="saab">Saab</option>
