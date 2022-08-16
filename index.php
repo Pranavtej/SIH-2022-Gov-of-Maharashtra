@@ -263,13 +263,13 @@
 								<div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
 										<div class="carousel-inner">
 										  <div class="carousel-item active" data-bs-interval="100">
-											<img src="https://pranavtej.github.io/aicte-ideal-lab/assets/img/slider.png" class="d-block w-100" alt="...">
+											<img src="assets/img/slider.png" class="d-block w-100" alt="...">
 										  </div>
 										  <div class="carousel-item" data-bs-interval="2000">
-											<img src="https://pranavtej.github.io/aicte-ideal-lab/assets/img/slider.png" class="d-block w-100" alt="...">
+											<img src="assets/img/slider.png" class="d-block w-100" alt="...">
 										  </div>
 										  <div class="carousel-item">
-											<img src="https://pranavtej.github.io/aicte-ideal-lab/assets/img/slider.png" class="d-block w-100" alt="...">
+											<img src="assets/img/slider.png" class="d-block w-100" alt="...">
 										  </div>
 										</div>
 										<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
