@@ -81,7 +81,7 @@ include 'pet-menu.php';
                                             <div class="form-group">
                                                     <label>Sports</label>
                                                     <?php
-                                                        echo '<select name="sport_id"  id="sport_id" class="form-control form-select" required>
+                                                        echo '<select id="sport_id" class="form-control form-select" required>
                                                                 <option value="">Select Sport</option>';
                                                                 while($data = mysqli_fetch_assoc($run))
                                                                 {
@@ -94,7 +94,7 @@ include 'pet-menu.php';
 											<div class="col-12 col-sm-6">  
 												<div class="form-group">
 													<label>Score</label>
-													<input type="number" name="sport_score"  id="sport_score" class="form-control">
+													<input type="number" id="sport_score" class="form-control">
 												</div>
 											</div>
 											
