@@ -47,7 +47,7 @@ $run2 = mysqli_fetch_assoc($run2);
 		<!-- Main Wrapper -->
         <div class="main-wrapper">
 		
-			<?php include 'student-menu.php'; ?>
+			<?php include 'parent-menu.php'; ?>
         
 			<!-- Page Wrapper -->
             <div class="page-wrapper">
