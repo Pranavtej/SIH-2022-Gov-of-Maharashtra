@@ -23,20 +23,20 @@
 							<li class="submenu">
 								<a href="#"><i class="fas fa-chalkboard-teacher"></i> <span> Teacher</span> <span class="menu-arrow"></span></a>
 								<ul>
-									<li><a href="teacher-classteacher-view.php?">Teacher View</a></li>
-									<li><a href="teacher-going-classes.php">Teacher Classes</a></li>
+									<li><a href="teacher-classteacher-view.php">Teacher View</a></li>
+									<li><a href="teacher-classteacher-going-classes.php">Teacher Classes</a></li>
 									<!-- <li><a href="edit-teacher.html">Teacher Edit</a></li> -->
 								</ul>
 							</li>
 							<li class="submenu">
-								<a href="#"><i class="fas fa-chalkboard-teacher"></i> <span>Student Assesments</span> <span class="menu-arrow"></span></a>
+								<a href="#"><i class="fas fa-book-reader"></i> <span>Student Assesments</span> <span class="menu-arrow"></span></a>
 								<ul>
-									<li><a href="teacher-rating-class-list.php">Classroom Decorum</a></li>
-									<li><a href="class-teacher-lo-assesment.php">Learning Outcomes</a></li>
+									<li><a href="teacher-classteacher-rating-class-list.php">Classroom Decorum</a></li>
+									<li><a href="class-teacher-lo-assessment.php">Learning Outcomes</a></li>
 								</ul>
 							</li>
 							<li class="submenu">
-								<a href="#"><i class="fas fa-chalkboard-teacher"></i> <span>MY CLASS</span> <span class="menu-arrow"></span></a>
+								<a href="#"><i class="fas fa-chalkboard"></i> <span>My Class</span> <span class="menu-arrow"></span></a>
 								<ul>
 									<li><a href="teacher-classteacher-students-list.php">Students List</a></li>
 									<li><a href="teacher-classteacher-students-edit.php">Student Edit</a></li>

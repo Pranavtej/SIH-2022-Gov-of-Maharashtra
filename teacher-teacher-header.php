@@ -3,10 +3,10 @@
 			
             <!-- Logo -->
             <div class="header-left">
-                <a href="teacher-classteacher-dashboard.php" class="logo">
+                <a href="teacher-teacher-dashboard.php" class="logo">
                     <img src="assets/img/logo.png" alt="Logo">
                 </a>
-                <a href="teacher-classteacher-dashboard.php" class="logo logo-small">
+                <a href="teacher-teacher-dashboard.php" class="logo logo-small">
                     <img src="assets/img/logo-small.png" alt="Logo" width="30" height="30">
                 </a>
             </div>

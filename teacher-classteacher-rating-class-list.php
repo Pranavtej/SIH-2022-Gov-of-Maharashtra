@@ -58,7 +58,7 @@ $run = mysqli_query($con, $sql);
 							<div class="col">
 								<h3 class="page-title">Subjects</h3>
 								<ul class="breadcrumb">
-									<li class="breadcrumb-item"><a href="teacher-classteacher-dashboard.php">Dashboard</a></li>
+									<li class="breadcrumb-item"><a href="#">Dashboard</a></li>
 									<li class="breadcrumb-item active">Subjects</li>
 								</ul>
 							</div>
@@ -79,7 +79,7 @@ $run = mysqli_query($con, $sql);
 													<th>Subject</th>
 													<th>Class</th>
                                                     <th>Section</th>
-													<th>Rate</th>
+                                                    <th>Rating</th>
 												</tr>
 											</thead>
 											<tbody>
@@ -92,7 +92,7 @@ $run = mysqli_query($con, $sql);
 															<td>'.$run1['subject_name'].'</td>
 															<td>'.$run1['class'].'</td>
 															<td>'.$run1['section'].'</td>
-															<td><a href="teacher-classteacher-student-rating.php?cid='.$run1['class_id'].'&sid='.$run1['sid'].'">Coming Soon!</a></td>
+                                                            <td><a href="teacher-classteacher-student-rating2.php?cid='.$run1['class_id'].'&sid='.$run1['sid'].'">Give Rating for this class students</a></td>
 														</tr>';
 													}
                                                 ?>

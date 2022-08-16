@@ -45,8 +45,8 @@ $run = mysqli_query($con, $sql);
 		<!-- Main Wrapper -->
         <div class="main-wrapper">
 		
-			<?php include 'teacher-header.php'; ?>
-			<?php include 'teacher-sidebar.php'; ?>
+			<?php include 'teacher-teacher-header.php'; ?>
+			<?php include 'teacher-teacher-sidebar.php'; ?>
 			
 			<!-- Page Wrapper -->
             <div class="page-wrapper">
@@ -58,7 +58,7 @@ $run = mysqli_query($con, $sql);
 							<div class="col">
 								<h3 class="page-title">Subjects</h3>
 								<ul class="breadcrumb">
-									<li class="breadcrumb-item"><a href="teacher-classteacher-dashboard.php">Dashboard</a></li>
+									<li class="breadcrumb-item"><a href="#">Dashboard</a></li>
 									<li class="breadcrumb-item active">Subjects</li>
 								</ul>
 							</div>

@@ -10,6 +10,7 @@ else
    $stat="select * from sports";
    $run=mysqli_query($con,$stat);
    $student_id=$_GET['student_id'];
+   $class_id = $_GET['cid'];
    if(!empty($_POST['submit']))
    {
       $sport_id=$_POST['sport_id'];
@@ -22,12 +23,12 @@ else
       if(!empty($res))
       {
         $total=$score+$sport_score;
-        $stat2="UPDATE `sports_marks` SET `marks`='$total' WHERE student_id='$student_id' AND sport_id='$sport_id'";
+        $stat2="UPDATE `sports_marks` SET `marks`='$total' WHERE student_id='$student_id' AND sport_id='$sport_id' and class_id='$class_id'";
         $run2=mysqli_query($con,$stat2);
       }
       else
       {
-        $stat2="INSERT INTO sports_marks (student_id,school_id,sport_id,marks) VALUES ('$student_id','$school_id','$sport_id',$sport_score)";
+        $stat2="INSERT INTO sports_marks (student_id,class_id,school_id,sport_id,marks) VALUES ('$student_id','$class_id','$school_id','$sport_id',$sport_score)";
         $run2=mysqli_query($con,$stat2);
       }
 

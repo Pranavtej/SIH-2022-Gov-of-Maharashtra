@@ -51,8 +51,8 @@
 
 
 <div class="page-wrapper">
-<?php include 'teacher-teacher-header.php' ?>
-<?php include 'teacher-teacher-sidebar.php' ?>
+<?php include 'teacher-header.php' ?>
+<?php include 'teacher-sidebar.php' ?>
 <div class="content container-fluid">
 
 <div class="page-header">
