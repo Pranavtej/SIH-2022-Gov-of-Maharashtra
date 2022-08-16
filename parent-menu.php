@@ -97,9 +97,9 @@
                             </ul>
                         </li>
                         <li class="submenu">
-                            <a href="parent-student-assessment.php"><i class="fas fa-book-reader"></i> <span> Assessments</span> <span class="menu-arrow"></span></a>
+                            <a href=""><i class="fas fa-book-reader"></i> <span> Assessments</span> <span class="menu-arrow"></span></a>
                             <ul>
-                                <li><a href="student-subjects.php">Child-
+                                <li><a href="parent-student-assessment.php">Child-
                                     Assessment</a></li>
                             </ul>
                         </li>
