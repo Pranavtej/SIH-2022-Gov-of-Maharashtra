@@ -284,6 +284,7 @@
 								</div>
                             </div>
                         </div>
+						<br>
                     
                             <div class="page-header">
                                 <div class="row">
@@ -320,7 +321,7 @@
 								<div class="card-body">
 									<div class="db-widgets d-flex justify-content-between align-items-center">
 										<div class="db-icon">
-											<i class="fas fa-crown"></i>
+											<i class="fas fa-user-tie"></i>
 										</div>
 										<div class="db-info">
                                             <a href="parent-login.php"><h3>Parent</h3></a>
@@ -337,7 +338,7 @@
 								<div class="card-body">
 									<div class="db-widgets d-flex justify-content-between align-items-center">
 										<div class="db-icon">
-											<i class="fas fa-building"></i>
+											<i class="fas fa-chalkboard-teacher"></i>
 										</div>
 										<div class="db-info">
 											<a href="teacher-login.php"><h3>Teacher</h3></a>
@@ -353,8 +354,8 @@
 								<div class="card bg-four w-100">
 								<div class="card-body">
 									<div class="db-widgets d-flex justify-content-between align-items-center">
-										<div class="db-icon">
-											<i class="fas fa-file-invoice-dollar"></i>
+										<div class="db-icon center">
+											<i class="fas fa-school fa-align-center"></i>
 										</div>
 										<div class="db-info">
 											<a href="school-login.php"><h3>School</h3></a>
