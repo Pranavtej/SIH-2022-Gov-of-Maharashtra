@@ -34,8 +34,7 @@ $query=mysqli_query($con,$sql);
 		<!-- Main Wrapper -->
         <div class="main-wrapper">
 			
-            <?php include 'school-admin-header.php';?>
-			<?php include 'school-admin-sidebar.php';?>
+		<?php include 'parent-menu.php'; ?>
 		
 				
 			<!-- Page Wrapper -->
