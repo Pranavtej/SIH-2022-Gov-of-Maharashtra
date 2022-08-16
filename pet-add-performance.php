@@ -158,7 +158,7 @@ include 'pet-menu.php';
       					document.getElementById("message").innerHTML=this.responseText;
     				}
  				}
-  				xmlhttp.open("GET","pet-add-performace-h.php?sid="+d+"&spid="+e+"&ss="+f,true);
+  				xmlhttp.open("GET","pet-add-performance-h.php?sid="+d+"&spid="+e+"&ss="+f,true);
   				xmlhttp.send();
 			}
 
