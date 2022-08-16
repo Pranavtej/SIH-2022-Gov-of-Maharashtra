@@ -75,10 +75,6 @@
 						<div class="row">
 							<div class="col-sm-12">
 								<h3 class="page-title">Welcome <?php echo $run['teacher_name']; ?></h3>
-								<ul class="breadcrumb">
-									<li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-									<li class="breadcrumb-item active">Teacher Dashboard</li>
-								</ul>
 							</div>
 						</div>
 					</div>

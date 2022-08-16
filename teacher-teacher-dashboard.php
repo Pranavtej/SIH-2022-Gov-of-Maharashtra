@@ -10,19 +10,7 @@
     $sql = mysqli_query($con,"select teacher_name from teacher_info where teacher_id='$teacher_id' and school_id='$school_id'");
     $run = mysqli_fetch_assoc($sql);
 
-
-
-
-
-
-
 ?>
-
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -53,11 +41,11 @@
 	
 		<!-- Main Wrapper -->
         <div class="main-wrapper">
-		
-			<?php include 'teacher-header.php' ?>
-            			
-			<?php include 'teacher-sidebar.php' ?>
-			
+			<?php
+			    include 'teacher-teacher-header.php';
+
+				include 'teacher-teacher-sidebar.php';
+			 ?>			
 			<!-- Page Wrapper -->
             <div class="page-wrapper">
 			

@@ -1,23 +1,14 @@
 <?php
-
 include 'connect.php';
-
-session_start();
-
-$class_id = $_GET['cid'];
-$school_id = $_SESSION['SCHOOL_ID'];
-$subject_id = $_GET['sid'];
-
-$sql = mysqli_query($con,"select student_id,student_name from student where school_id='$school_id' and class_id='$class_id'");
+$class_id=$_GET['class_id'];
+$school_id=$_GET['school_id'];
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-        <title>Preskool - Students</title>
+        <title>Students Lists</title>
 		
 		<!-- Favicon -->
         <link rel="shortcut icon" href="assets/img/favicon.png">
@@ -39,14 +30,8 @@ $sql = mysqli_query($con,"select student_id,student_name from student where scho
         <link rel="stylesheet" href="assets/css/style.css">
     </head>
     <body>
-		
-		<!-- Main Wrapper -->
-        <div class="main-wrapper">
-		
-            <?php include 'teacher-header.php'; ?>
-			<?php include 'teacher-sidebar.php'; ?>
-
-			
+         <?php include 'teacher-sidebar.php';
+         include 'teacher-header.php';	?>	
 			<!-- Page Wrapper -->
             <div class="page-wrapper">
                 <div class="content container-fluid">
@@ -57,14 +42,15 @@ $sql = mysqli_query($con,"select student_id,student_name from student where scho
 							<div class="col">
 								<h3 class="page-title">Students</h3>
 								<ul class="breadcrumb">
-									<li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-									<li class="breadcrumb-item active">Students</li>
+									<li class="breadcrumb-item"><a href="teacher-classteacher-dashboard.php">Teacher Dashboard</a></li>
+									<li class="breadcrumb-item"><a href="teacher-students-list.php">Ongoing Classes</a></li>
+									<li class="breadcrumb-item active">Classwise Students List</a></li>
+
 								</ul>
 							</div>
-							<!-- <div class="col-auto text-end float-end ms-auto">
+							<div class="col-auto text-end float-end ms-auto">
 								<a href="#" class="btn btn-outline-primary me-2"><i class="fas fa-download"></i> Download</a>
-								<a href="add-student.html" class="btn btn-primary"><i class="fas fa-plus"></i></a>
-							</div> -->
+							</div>
 						</div>
 					</div>
 					<!-- /Page Header -->
@@ -75,33 +61,33 @@ $sql = mysqli_query($con,"select student_id,student_name from student where scho
 							<div class="card card-table">
 								<div class="card-body">
 									<div class="table-responsive">
-										<table class="table table-hover table-center">
+										<table class="table table-hover table-center mb-0 datatable">
 											<thead>
 												<tr>
-													<th>ID</th>
-													<th>Name</th>
+													<th>STUDENT ID</th>
+													<th>STUDENT NAME</th>
+													<th>DOB</th>
+													<th>GENDER</th>
+													<th>Email</th>
 												</tr>
 											</thead>
-                                            <tbody>
-                                                <?php
-													while($run1 = mysqli_fetch_assoc($sql))
+											<tbody>
+													<?php
+													$query1="SELECT s.student_id as student_id,s.school_id as school_id, s.student_name as student_name, 
+													s.date_of_birth as date_of_birth, s.gender as gender, s.email as email, s.address as address,sc.school_name as school_name,
+													c.class as class, c.section as section,
+													 s.class_id as class_id FROM student s,classes c,school_info sc WHERE c.class_id=s.class_id and sc.school_id=s.school_id and s.class_id='$class_id' and s.school_id='$school_id'";
+													$run1=mysqli_query($con,$query1);
+													while($res1=mysqli_fetch_assoc($run1))
 													{
-														$sid=$run1['student_id'];
-														$query="select classroom_behaviour,classroom_attentiveness 
-														from behaviour_points where student_id='$sid' and school_id='$school_id'";
-														$result=mysqli_query($con,$query);
-														$details=mysqli_fetch_assoc($result);
-														$oldbehave=$details['classroom_behaviour'];
-														$oldclasss=$details['classroom_attentiveness'];
-														$points = 0;
-														$points = $oldbehave+$oldclasss;
-														echo '<tr>
-															<td>'.$run1['student_id'].'</td>
-															<td><a href="teacher-add-behaviour.php?sid='.$run1['student_id'].'&cid='.$class_id.'">'.$run1['student_name'].'</a></td>
-														</tr>';
-													}
-                                                ?>
-                                            </tbody>
+														echo 
+														'<tr><td>'.$res1['student_id'].'</td>
+														<td><a href="teacher-student-view.php?student_id='.$res1['student_id'].'">'.$res1['student_name'].'</a></td>
+														<td>'.$res1['date_of_birth'].'</td>
+														<td>'.$res1['gender'].'</td>
+														<td>'.$res1['email'].'</td>
+														</tr>';}?>
+											</tbody>
 										</table>
 									</div>
 								</div>
@@ -109,12 +95,7 @@ $sql = mysqli_query($con,"select student_id,student_name from student where scho
 						</div>					
 					</div>					
 				</div>
-
-				<!-- Footer -->
-				<!-- <footer>
-					<p>Copyright © 2020 Dreamguys.</p>					
-				</footer> -->
-				<!-- /Footer -->				
+			
 			</div>
 			<!-- /Page Wrapper -->
 			

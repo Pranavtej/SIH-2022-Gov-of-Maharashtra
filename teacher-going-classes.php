@@ -19,7 +19,7 @@ $run = mysqli_query($con, $sql);
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-        <title>Preskool - Subjects</title>
+        <title>Subjects</title>
 		
 		<!-- Favicon -->
         <link rel="shortcut icon" href="assets/img/favicon.png">
@@ -56,10 +56,10 @@ $run = mysqli_query($con, $sql);
 					<div class="page-header">
 						<div class="row align-items-center">
 							<div class="col">
-								<h3 class="page-title">Subjects</h3>
+								<h3 class="page-title">Subjects Teaching</h3>
 								<ul class="breadcrumb">
-									<li class="breadcrumb-item"><a href="teacher-classteacher-dashboard.php">Dashboard</a></li>
-									<li class="breadcrumb-item active">Subjects</li>
+									<li class="breadcrumb-item"><a href="teacher-classteacher-dashboard.php">ClassTeacher Dashboard</a></li>
+									<li class="breadcrumb-item active">Subjects Teaching</li>
 								</ul>
 							</div>
 						</div>

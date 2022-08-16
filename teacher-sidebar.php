@@ -17,16 +17,13 @@
 							<li class="submenu">
 								<a href="#"><i class="fas fa-user-graduate"></i> <span> Students</span> <span class="menu-arrow"></span></a>
 								<ul>
-									<li><a href="students.html">Student List</a></li>
-									<li><a href="student-details.html">Student View</a></li>
-									<li><a href="add-student.html">Student Add</a></li>
-									<li><a href="edit-student.html">Student Edit</a></li>
+									<li><a href="teacher-students-list.php">Students List</a></li>
 								</ul>
 							</li>
 							<li class="submenu">
-								<a href="#"><i class="fas fa-chalkboard-teacher"></i> <span> Teachers</span> <span class="menu-arrow"></span></a>
+								<a href="#"><i class="fas fa-chalkboard-teacher"></i> <span> Teacher</span> <span class="menu-arrow"></span></a>
 								<ul>
-									<li><a href="teacher-details.html">Teacher View</a></li>
+									<li><a href="teacher-classteacher-view.php?">Teacher View</a></li>
 									<li><a href="teacher-going-classes.php">Teacher Classes</a></li>
 									<!-- <li><a href="edit-teacher.html">Teacher Edit</a></li> -->
 								</ul>
@@ -36,6 +33,13 @@
 								<ul>
 									<li><a href="teacher-rating-class-list.php">Classroom Decorum</a></li>
 									<li><a href="teacher-lo-assesment.php">Learning Outcomes</a></li>
+								</ul>
+							</li>
+							<li class="submenu">
+								<a href="#"><i class="fas fa-chalkboard-teacher"></i> <span>MY CLASS</span> <span class="menu-arrow"></span></a>
+								<ul>
+									<li><a href="teacher-classteacher-students-list.php">Students List</a></li>
+									<li><a href="teacher-classteacher-students-edit.php">Student Edit</a></li>
 								</ul>
 							</li>
 						</ul>
