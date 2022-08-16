@@ -3,7 +3,7 @@
 include 'connect.php';
 if(empty($_SESSION['STUDENT_ID']))
 {
-    echo '<script>document.location="student-login.php"</script>';
+    echo '<script>document.location="parent-login.php"</script>';
 }
 else{
 
@@ -96,7 +96,7 @@ else{
 					<div class="page-header">
 						<div class="row">
 							<div class="col-sm-12">
-								<h3 class="page-title">Welcome ! <?php echo $student_name ?></h3>
+								<h3 class="page-title">Welcome Parent!</h3>
                                 </h3>
 								<ul class="breadcrumb">
 									<li class="breadcrumb-item"><a href="">Dashboard</a></li>
