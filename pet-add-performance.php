@@ -5,13 +5,11 @@ if(empty($_SESSION['TEACHER_ID'])){
     header('location:index.php');
 
 }
-else
-{
-   $stat="select * from sports";
-   $run=mysqli_query($con,$stat);
-   $student_id=$_GET['student_id'];
-   
-}
+
+$stat="select * from sports";
+$run=mysqli_query($con,$stat);
+$student_id=$_GET['student_id'];
+
 ?>
 
 <!DOCTYPE html>
@@ -61,7 +59,7 @@ include 'pet-menu.php';
 						
 							<div class="card">
 								<div class="card-body">
-									<form  method="post" class="form-validation">
+									<form class="form-validation">
 										<div class="row">
 											<div class="co-l-12">
 												<h5 class="form-title"><span>Add Performance</span></h5>
