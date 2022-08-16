@@ -54,8 +54,8 @@ if(isset($_POST['give']))
 		<!-- Main Wrapper -->
         <div class="main-wrapper">
 		
-            <?php include 'teacher-header.php'; ?>
-			<?php include 'teacher-sidebar.php'; ?>
+            <?php include 'teacher-teacher-header.php'; ?>
+			<?php include 'teacher-teacher-sidebar.php'; ?>
 
 			
 			<!-- Page Wrapper -->

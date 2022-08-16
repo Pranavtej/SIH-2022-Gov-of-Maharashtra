@@ -19,7 +19,7 @@ $run = mysqli_query($con, $sql);
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-        <title>Preskool - Subjects</title>
+        <title>Subjects</title>
 		
 		<!-- Favicon -->
         <link rel="shortcut icon" href="assets/img/favicon.png">
@@ -56,10 +56,10 @@ $run = mysqli_query($con, $sql);
 					<div class="page-header">
 						<div class="row align-items-center">
 							<div class="col">
-								<h3 class="page-title">Subjects</h3>
+								<h3 class="page-title">Subjects Teaching</h3>
 								<ul class="breadcrumb">
-									<li class="breadcrumb-item"><a href="teacher-classteacher-dashboard.php">Dashboard</a></li>
-									<li class="breadcrumb-item active">Subjects</li>
+									<li class="breadcrumb-item"><a href="#">Teacher Dashboard</a></li>
+									<li class="breadcrumb-item active">Subjects Teaching</li>
 								</ul>
 							</div>
 						</div>
@@ -79,7 +79,6 @@ $run = mysqli_query($con, $sql);
 													<th>Subject</th>
 													<th>Class</th>
                                                     <th>Section</th>
-													<th>Rate</th>
 												</tr>
 											</thead>
 											<tbody>
@@ -92,7 +91,6 @@ $run = mysqli_query($con, $sql);
 															<td>'.$run1['subject_name'].'</td>
 															<td>'.$run1['class'].'</td>
 															<td>'.$run1['section'].'</td>
-															<td><a href="teacher-classteacher-student-rating.php?cid='.$run1['class_id'].'&sid='.$run1['sid'].'">Coming Soon!</a></td>
 														</tr>';
 													}
                                                 ?>
