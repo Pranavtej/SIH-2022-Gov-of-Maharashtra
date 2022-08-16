@@ -149,7 +149,7 @@ while($data = mysqli_fetch_assoc($result))
 <td>'.$date.'</td>
 <td>'.$mail.'</td>
 <td>'.$addres.'</td>
-<td><a href="pet-add-performance.php?student_id='.$std_id.'&student_name='.$stdname.'&dob='.$date.'&class_id='.$class_id.'&gender='.$gender.'&address='.$addres.'&email='.$mail.'">
+<td><a href="pet-add-performance.php?student_id='.$std_id.'&student_name='.$stdname.'">
 <button class="btn btn-primary">
     Add Performance 
 </button>
