@@ -68,7 +68,7 @@ include 'pet-menu.php';
 											<div class="col-12 col-sm-6">  
 												<div class="form-group">
 													<label>Student ID</label>
-													<input type="text" name="student_id" id="student_id" value="<?php echo $student_id ?>" disabled="disabled" class="form-control">
+													<input type="text" name="student_id" id="student_id" value="<?php echo $student_id ?>" readonly="readonly" class="form-control">
 												</div>
 											</div>
 											<!-- <div class="col-12 col-sm-6">
