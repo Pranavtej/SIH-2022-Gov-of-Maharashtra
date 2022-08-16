@@ -75,25 +75,25 @@
                             <ul>
                                 <!-- <li><a href="index.html">Admin Dashboard</a></li> -->
                                 <!-- <li><a href="teacher-dashboard.html">Teacher Dashboard</a></li> -->
-                                <li><a href="student-dashboard.php">Student Dashboard</a></li>
+                                <li><a href="parent-dashboard.php">Parent Dashboard</a></li>
                             </ul>
                         </li>
                         <li class="submenu">
                             <a href="#"><i class="fas fa-user-graduate"></i> <span> Marks</span> <span class="menu-arrow"></span></a>
                             <ul>
-                                <li><a href="student-marks.php">Marks List</a></li>
+                                <li><a href="parent-student-marks.php">Marks List</a></li>
                             </ul>
                         </li>
                         <li class="submenu">
                             <a href="#"><i class="fas fa-user-graduate"></i> <span> Students</span> <span class="menu-arrow"></span></a>
                             <ul>
-                                <li><a href="student-view.php">Student View</a></li>
+                                <li><a href="parent-student-view.php">Student View</a></li>
                             </ul>
                         </li>
                         <li class="submenu">
                             <a href="#"><i class="fas fa-book-reader"></i> <span> Subjects</span> <span class="menu-arrow"></span></a>
                             <ul>
-                                <li><a href="student-subjects.php">Subject List</a></li>
+                                <li><a href="parent-student-subjects.php">Subject List</a></li>
                             </ul>
                         </li>
                         <li class="submenu">
