@@ -47,8 +47,8 @@ $run1 = mysqli_query($con, $sql1);
 		<!-- Main Wrapper -->
         <div class="main-wrapper">
 		
-			<?php include 'super-admin-menu.php'; ?>
-        
+			<?php include 'teacher-sidebar.php';?>
+            <?php include 'teacher-header.php';?>
 			<!-- Page Wrapper -->
             <div class="page-wrapper">
                 <div class="content container-fluid">

@@ -23,7 +23,7 @@
 							<li class="submenu">
 								<a href="#"><i class="fas fa-chalkboard-teacher"></i> <span> Teacher</span> <span class="menu-arrow"></span></a>
 								<ul>
-									<li><a href="teacher-classteacher-view.php?">Teacher View</a></li>
+									<li><a href="teacher-classteacher-view.php">Teacher View</a></li>
 									<li><a href="teacher-going-classes.php">Teacher Classes</a></li>
 									<!-- <li><a href="edit-teacher.html">Teacher Edit</a></li> -->
 								</ul>

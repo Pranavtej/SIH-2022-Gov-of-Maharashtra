@@ -43,8 +43,8 @@ $sql = mysqli_query($con,"select student_id,student_name from student where scho
 		<!-- Main Wrapper -->
         <div class="main-wrapper">
 		
-            <?php include 'teacher-header.php'; ?>
-			<?php include 'teacher-sidebar.php'; ?>
+            <?php include 'teacher-teacher-header.php'; ?>
+			<?php include 'teacher-teacher-sidebar.php'; ?>
 
 			
 			<!-- Page Wrapper -->
@@ -57,7 +57,7 @@ $sql = mysqli_query($con,"select student_id,student_name from student where scho
 							<div class="col">
 								<h3 class="page-title">Students</h3>
 								<ul class="breadcrumb">
-									<li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+									<li class="breadcrumb-item"><a href="#">Dashboard</a></li>
 									<li class="breadcrumb-item active">Students</li>
 								</ul>
 							</div>
