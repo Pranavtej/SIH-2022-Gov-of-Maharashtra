@@ -52,7 +52,7 @@ else{
         }
     }
 
-	$qu1 = mysqli_query($con , "SELECT student_id,sum(marks) as marks from sports_marksn where school_id='$school_id' GROUP BY student_id order by marks desc")
+	$qu1 = mysqli_query($con , "SELECT student_id,sum(marks) as marks from sports_marksn where school_id='$school_id' GROUP BY student_id order by marks desc");
 	$var3=0;
     foreach($qu1 as $data)
     {
