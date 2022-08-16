@@ -60,6 +60,7 @@ else{
         if($data['student_id']==$student_id)
         {
             $rank3 = $var3;
+			echo "<script>alert($rank3)</script>";
             break;
         }
     }
