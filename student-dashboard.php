@@ -56,7 +56,7 @@ else{
 	$var3=0;
     foreach($qu1 as $data)
     {
-        $var=$var+1;
+        $var3=$var3+1;
         if($data['student_id']==$student_id)
         {
             $rank3 = $var3;
