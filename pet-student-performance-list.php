@@ -1,16 +1,13 @@
-<?php session_start();
+<?php 
+session_start();
 
-error_reporting(E_ALL ^ E_NOTICE);  
-include'connect.php';
-if(empty($_SESSION['TEACHER_ID']))
-{
-    header('location:index.php');
-}
-else{
+include 'connect.php';
 
-    $school_id= $_SESSION['SCHOOL_ID'];
 
-    $std=" select *from student where school_id='$school_id'";
+
+$school_id= $_SESSION['SCHOOL_ID'];
+$std=" select * from student where school_id='$school_id'";
+$result=mysqli_query($con,$std) or die(mysqli_error);
     
 if(isset($_POST['submit'])) {
     $class=$_POST['select'];
@@ -31,12 +28,11 @@ if(isset($_POST['submit'])) {
     }
     
      $result=mysqli_query($con,$std) or die(mysqli_error);
-    $counter=mysqli_num_rows($result);
+     $counter=mysqli_num_rows($result);
     
 }
-$result=mysqli_query($con,$std) or die(mysqli_error);
-    $counter=mysqli_num_rows($result);
-}
+    
+
 ?>
 
 
@@ -132,7 +128,7 @@ include 'pet-menu.php';
 </thead>
 <tbody>
 <?php
-foreach ($result as $data) 
+while($data = mysqli_fetch_assoc($result)) 
 {
        $stdname=$data['student_name'];
        $std_id=$data['student_id'];
