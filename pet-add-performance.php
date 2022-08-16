@@ -29,13 +29,14 @@ else
       {
         $stat2="INSERT INTO sports_marks (student_id,school_id,sport_id,marks) VALUES ('$student_id','$school_id','$sport_id',$sport_score)";
         $run2=mysqli_query($con,$stat2);
-      }
-	  echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+		echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
 	  <strong>Error!</strong> Invalid login credentials. Please retry or contact your administrator.
 	  <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
 	  <span aria-hidden="true">&times;</span>
 	  </button>
   </div>';
+      }
+	  
    }
 }
 ?>
