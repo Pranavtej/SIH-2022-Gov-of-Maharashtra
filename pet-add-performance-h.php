@@ -1,5 +1,6 @@
 <?php
 
+include "connect.php";
 session_start();
 
 $student_id=$_GET['sid'];
