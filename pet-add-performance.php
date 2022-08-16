@@ -59,7 +59,7 @@ include 'pet-menu.php';
 						
 							<div class="card">
 								<div class="card-body">
-									<form class="form-validation">
+									<!-- <form class="form-validation"> -->
 										<div class="row">
 											<div class="co-l-12">
 												<h5 class="form-title"><span>Add Performance</span></h5>
@@ -112,7 +112,7 @@ include 'pet-menu.php';
 											</div>
 
 										</div>
-                                        </form>
+                                        <!-- </form> -->
 										<div>
 											<br>
 											<h4 id="message"></h4>
