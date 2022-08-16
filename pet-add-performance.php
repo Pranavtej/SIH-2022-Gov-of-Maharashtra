@@ -10,28 +10,7 @@ else
    $stat="select * from sports";
    $run=mysqli_query($con,$stat);
    $student_id=$_GET['student_id'];
-   if(isset($_POST['submit']))
-   {
-      $sport_id=$_POST['sport_id'];
-      $sport_score=$_POST['sport_score'];
-      $school_id=$_SESSION['SCHOOL_ID'];
-      $stat1="SELECT * FROM sports_marks WHERE student_id='$student_id' AND sport_id='$sport_id' AND school_id='$school_id'";
-      $run1=mysqli_query($con,$stat1);
-      $res=mysqli_fetch_array($run1);
-      $score=$res['marks'];
-      if(!empty($res))
-      {
-        $total=$score+$sport_score;
-        $stat2="UPDATE `sports_marks` SET `marks`='$total' WHERE student_id='$student_id' AND sport_id='$sport_id'";
-        $run2=mysqli_query($con,$stat2);
-      }
-      else
-      {
-        $stat2="INSERT INTO sports_marks (student_id,school_id,sport_id,marks) VALUES ('$student_id','$school_id','$sport_id',$sport_score)";
-        $run2=mysqli_query($con,$stat2);
-      }
-	  
-   }
+   
 }
 ?>
 
@@ -117,7 +96,7 @@ include 'pet-menu.php';
 											<div class="col-12 col-sm-6">  
 												<div class="form-group">
 													<label>Score</label>
-													<input type="number" name="sport_score" class="form-control">
+													<input type="number" name="sport_score"  id="sport_score" class="form-control">
 												</div>
 											</div>
 											
@@ -131,14 +110,14 @@ include 'pet-menu.php';
                                             
 											</div>
 											<div class="col-12">
-												<button type="submit" class="btn btn-primary" name="submit" value="submit">Submit</button>
+												<button type="submit" class="btn btn-primary" name="submit" value="submit" onclick="generate()">Submit</button>
 											</div>
 
 										</div>
                                         </form>
 										<div>
 											<br>
-											<h4>Hello</h4>
+											<h4 id="message">Hello</h4>
 										</div>
 								</div>
 							</div>							
@@ -165,6 +144,23 @@ include 'pet-menu.php';
 
 		<!-- Custom JS -->
 		<script src="assets/js/script.js"></script>
+		<script>
+
+			function generate() {
+				let d = document.getElementById("sport_id").value;
+				alert(d);
+				var xmlhttp=new XMLHttpRequest();
+  				xmlhttp.onreadystatechange=function() {
+    				if (this.readyState==4 && this.status==200) {
+						console.log(this.responseText);
+      					document.getElementById("pid").value=this.responseText;
+    				}
+ 				}
+  				xmlhttp.open("GET","generate_pid.php?date="+d,true);
+  				xmlhttp.send();
+			}
+
+		</script>
 		
     </body>
 </html>
