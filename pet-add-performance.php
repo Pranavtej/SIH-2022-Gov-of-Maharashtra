@@ -108,7 +108,7 @@ include 'pet-menu.php';
                                             
 											</div>
 											<div class="col-12">
-												<button type="submit" class="btn btn-primary" name="submit" value="submit" onclick="generate()">Submit</button>
+												<button class="btn btn-primary" onclick="generate()">Submit</button>
 											</div>
 
 										</div>
