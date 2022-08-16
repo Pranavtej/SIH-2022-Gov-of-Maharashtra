@@ -1,6 +1,6 @@
 <?php
 include "connect.php";
-$sql="select Query from family_assessment where 1";
+$sql="select Query from assessment_questions where assessment_id='FA'";
 $query=mysqli_query($con,$sql);
 ?>
 <!DOCTYPE html>
