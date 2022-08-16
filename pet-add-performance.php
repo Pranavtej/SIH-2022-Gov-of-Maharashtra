@@ -10,7 +10,7 @@ else
    $stat="select * from sports";
    $run=mysqli_query($con,$stat);
    $student_id=$_GET['student_id'];
-   if(isset($_POST['submit']))
+   if(!empty($_POST['submit']))
    {
       $sport_id=$_POST['sport_id'];
       $sport_score=$_POST['sport_score'];
@@ -30,7 +30,7 @@ else
         $stat2="INSERT INTO sports_marks (student_id,school_id,sport_id,marks) VALUES ('$student_id','$school_id','$sport_id',$sport_score)";
         $run2=mysqli_query($con,$stat2);
       }
-	  
+
    }
 }
 ?>
