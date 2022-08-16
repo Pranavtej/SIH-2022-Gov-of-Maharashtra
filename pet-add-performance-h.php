@@ -29,7 +29,7 @@ else
 {
     $stat2="INSERT INTO sports_marks (student_id,school_id,sport_id,marks) VALUES ('$student_id','$school_id','$sport_id',$sport_score)";
     $run2=mysqli_query($con,$stat2);
-    if(!empty($run2))
+    if($run2)
     {
         echo 'Added';
     }
