@@ -86,18 +86,9 @@ $sql = mysqli_query($con,"select student_id,student_name from student where scho
                                                 <?php
 													while($run1 = mysqli_fetch_assoc($sql))
 													{
-														$sid=$run1['student_id'];
-														$query="select classroom_behaviour,classroom_attentiveness 
-														from behaviour_points where student_id='$sid' and school_id='$school_id'";
-														$result=mysqli_query($con,$query);
-														$details=mysqli_fetch_assoc($result);
-														$oldbehave=$details['classroom_behaviour'];
-														$oldclasss=$details['classroom_attentiveness'];
-														$points = 0;
-														$points = $oldbehave+$oldclasss;
 														echo '<tr>
 															<td>'.$run1['student_id'].'</td>
-															<td><a href="teacher-classteacher-add-behaviour.php?sid='.$run1['student_id'].'&cid='.$class_id.'">'.$run1['student_name'].'</a></td>
+															<td><a href="teacher-classteacher-add-behaviour.php?sid='.$run1['student_id'].'&cid='.$class_id.'&sname='.$run1['student_name'].'">'.$run1['student_name'].'</a></td>
 														</tr>';
 													}
                                                 ?>

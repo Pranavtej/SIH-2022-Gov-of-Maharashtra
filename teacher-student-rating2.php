@@ -17,7 +17,7 @@ $sql = mysqli_query($con,"select student_id,student_name from student where scho
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-        <title>Preskool - Students</title>
+        <title>Students</title>
 		
 		<!-- Favicon -->
         <link rel="shortcut icon" href="assets/img/favicon.png">
@@ -86,18 +86,9 @@ $sql = mysqli_query($con,"select student_id,student_name from student where scho
                                                 <?php
 													while($run1 = mysqli_fetch_assoc($sql))
 													{
-														$sid=$run1['student_id'];
-														$query="select classroom_behaviour,classroom_attentiveness 
-														from behaviour_points where student_id='$sid' and school_id='$school_id'";
-														$result=mysqli_query($con,$query);
-														$details=mysqli_fetch_assoc($result);
-														$oldbehave=$details['classroom_behaviour'];
-														$oldclasss=$details['classroom_attentiveness'];
-														$points = 0;
-														$points = $oldbehave+$oldclasss;
 														echo '<tr>
 															<td>'.$run1['student_id'].'</td>
-															<td><a href="teacher-add-behaviour.php?sid='.$run1['student_id'].'&cid='.$class_id.'">'.$run1['student_name'].'</a></td>
+															<td><a href="teacher-add-behaviour.php?sid='.$run1['student_id'].'&cid='.$class_id.'&sname='.$run1['student_name'].'">'.$run1['student_name'].'</a></td>
 														</tr>';
 													}
                                                 ?>
