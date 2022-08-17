@@ -86,7 +86,7 @@ include 'teacher-teacher-sidebar.php';
 <div class="col">
 <h3 class="page-title">Students-list</h3>
 <ul class="breadcrumb">
-<li class="breadcrumb-item"><a href="teacher-dashboard.php">Dashboard</a></li>
+<li class="breadcrumb-item"><a href="teacher-teacher-dashboard.php">Dashboard</a></li>
 <li class="breadcrumb-item active">Students</li>
 </ul>
 </div>

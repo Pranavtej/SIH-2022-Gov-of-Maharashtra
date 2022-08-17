@@ -58,8 +58,7 @@ $run1 = mysqli_query($con, $sql1);
 							<div class="col-sm-12">
 								<h3 class="page-title">Teacher Details</h3>
 								<ul class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="super-admin-dashboard.php">Dashboard</a></li>
-									<li class="breadcrumb-item"><a href="super-admin-teachers-list.php">Teacher</a></li>
+                                    <li class="breadcrumb-item"><a href="teacher-teacher-dashboard.php">Dashboard</a></li>
 									<li class="breadcrumb-item active">Teacher Details</li>
 								</ul>
 							</div>

@@ -92,6 +92,9 @@
 						<div class="row">
 							<div class="col-sm-12">
 								<h3 class="page-title">Welcome <?php echo $run['teacher_name']; ?></h3>
+								<ul class="breadcrumb">
+									<h4><li class="breadcrumb-item active">Teacher</li></h4>
+								</ul>
 							</div>
 						</div>
 					</div>
