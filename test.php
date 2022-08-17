@@ -1,5 +1,5 @@
 <?php
 
-return shell_exec("python app.py");
+return shell_exec("python ml-model/app.py");
 
 ?>
