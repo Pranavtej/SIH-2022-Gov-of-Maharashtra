@@ -41,19 +41,16 @@
 	
 		<!-- Main Wrapper -->
         <div class="main-wrapper">
-<<<<<<< HEAD
 			<?php
 			    include 'teacher-teacher-header.php';
 
 				include 'teacher-teacher-sidebar.php';
 			 ?>			
-=======
 		
 			<?php include 'teacher-teacher-header.php' ?>
             			
 			<?php include 'teacher-teacher-sidebar.php' ?>
 			
->>>>>>> 212a5b2751a17c876919c4f40424d38d36f6cf74
 			<!-- Page Wrapper -->
             <div class="page-wrapper">
 			
@@ -64,8 +61,7 @@
 							<div class="col-sm-12">
 								<h3 class="page-title">Welcome <?php echo $run['teacher_name']; ?></h3>
 								<ul class="breadcrumb">
-									<li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-									<li class="breadcrumb-item active">Teacher Dashboard</li>
+									<h4><li class="breadcrumb-item active">Teacher</li></h4>
 								</ul>
 							</div>
 						</div>

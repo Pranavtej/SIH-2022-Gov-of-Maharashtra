@@ -53,7 +53,7 @@ if(isset($_POST['login']))
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-        <title>Preskool - Login</title>
+        <title>Teacher - Login</title>
 		
 		<!-- Favicon -->
         <link rel="shortcut icon" href="assets/img/favicon.png">
@@ -83,7 +83,7 @@ if(isset($_POST['login']))
                         </div>
                         <div class="login-right">
 							<div class="login-right-wrap">
-								<h1>Login</h1>
+								<h1>Teacher Login</h1>
 								<p class="account-subtitle">Access to our dashboard</p>
 								
 								<!-- Form -->
