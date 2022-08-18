@@ -94,50 +94,15 @@ include 'pet-menu.php';
 										<img class="rounded-circle" alt="User Image" src="assets/img/profiles/avatar-02.jpg">
                                         </a>
                                         </div>
-                                        <div class="col ms-md-n2 profile-user-info">
+                                    
                                         <h4 class="user-name mb-0">John Doe</h4>
                                         <h6 class="text-muted">UI/UX Design Team</h6>
                                         <div class="user-Location"><i class="fas fa-map-marker-alt"></i> Florida, United States</div>
                                         <div class="about-text">Lorem ipsum dolor sit amet.</div>
-                                        </div>
+                                        
 									</a></div>
 								</div>
 								
-								<div class="col-12 col-md-6 col-lg-4 d-flex"><a href="student-detailed-view.php?suid=SUB0603">
-									<div class="card flex-fill">
-										<div class="card-header">
-											<h5 class="card-title mb-0">MATHEMATICS<br><br>Credits : <span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star"></span></h5>
-										</div>
-										
-									</a></div>
-								</div>
-								
-								<div class="col-12 col-md-6 col-lg-4 d-flex"><a href="student-detailed-view.php?suid=SUB0603">
-									<div class="card flex-fill">
-										<div class="card-header">
-											<h5 class="card-title mb-0">SCIENCE<br><br>Credits : <span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star"></span></h5>
-										</div>
-										
-									</a></div>
-								</div>
-								
-								<div class="col-12 col-md-6 col-lg-4 d-flex"><a href="student-detailed-view.php?suid=SUB0603">
-									<div class="card flex-fill">
-										<div class="card-header">
-											<h5 class="card-title mb-0">HISTORY&CIVICS<br><br>Credits : <span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star"></span><span class="fa fa-star"></span></h5>
-										</div>
-										
-									</a></div>
-								</div>
-								
-								<div class="col-12 col-md-6 col-lg-4 d-flex"><a href="student-detailed-view.php?suid=SUB0603">
-									<div class="card flex-fill">
-										<div class="card-header">
-											<h5 class="card-title mb-0">GEOGRAPHY<br><br>Credits : <span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star"></span><span class="fa fa-star"></span></h5>
-										</div>
-										
-									</a></div>
-								</div>
 										
 </div>
 
