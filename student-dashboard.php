@@ -37,6 +37,14 @@ else{
         $y[] = $data['subject_name'];
         $x[]=$data['marks'];
     }
+
+	$q="SELECT e.marks,s.sport_name FROM sports_marks e,sports s WHERE student_id='$student_id' AND s.sport_id=e.sport_id;";
+    $=mysqli_query($con,$query) or die(mysqli_error);
+     foreach($result as $data)
+     {
+        $l[] = $data['sport_name'];
+        $m[]=$data['marks'];
+    }
     }
 
 	$qu="select e.student_id as sid from exam_totals e,student s where e.eid='$eid' and e.school_id='$school_id' and e.student_id=s.student_id and s.class_id='$class_id' order by e.total desc";
@@ -510,10 +518,10 @@ const ctxcc = document.getElementById('ccscore');
 const myChartcc = new Chart(ctxcc, {
     type: 'doughnut',
     data: {
-        labels:  <?php echo json_encode($y)?>, 
+        labels:  <?php echo json_encode($l)?>, 
         datasets: [{
             label: 'MARKS SCORED',
-            data: <?php echo json_encode($x)?>,
+            data: <?php echo json_encode($m)?>,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
