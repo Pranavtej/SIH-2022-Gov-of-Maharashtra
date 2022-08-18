@@ -93,12 +93,12 @@ include 'pet-menu.php';
 										<div class="col-auto profile-image">
 										<img class="rounded-circle" alt="User Image" src="assets/img/profiles/avatar-02.jpg">
                                         </div>
-                                        <div class="col ms-md-n2 profile-user-info">
+                                        
+				</div>
+                <div class="col ms-md-n2 profile-user-info">
                                         <h4 class="user-name mb-0">John Doe</h4>
                                         <h6 class="text-muted">UI/UX Design Team</h6>
     </div>
-    </div>
-									</div>
 								</div>
 								
 										
