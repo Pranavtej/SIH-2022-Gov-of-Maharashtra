@@ -306,7 +306,7 @@ const myChart = new Chart(ctx_2, {
                                             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
                                             <script>
 const ctx_1 = document.getElementById('acscore');
-const myChart = new Chart(ctx_1, {
+const mChart = new Chart(ctx_1, {
 type: 'bar',
 data: {
 labels: <?php echo json_encode($y)?> ,
