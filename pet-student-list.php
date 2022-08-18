@@ -12,28 +12,28 @@ else{
 
     $std=" select *from student where school_id='$school_id'";
     
-if(isset($_POST['submit'])) {
-    $class=$_POST['select'];
-    if($_POST['select']=='6th') {   //<=========== 'select'
-        $std=" select * from student where school_id='$school_id' and class_id=ANY(select class_id from classes where class=6) ";
-    }
-    elseif($_POST['select']=='7th') {   //<=========== 'select'
-        $std=" select * from student where school_id='$school_id' and class_id=ANY(select class_id from classes where class=7) ";
-    }
-    elseif($_POST['select']=='8th'){
-        $std=" select * from student where school_id='$school_id' and class_id=ANY(select class_id from classes where class=8) ";
-    }
-    elseif($_POST['select']=='9th'){
-        $std=" select * from student where school_id='$school_id' and class_id=ANY(select class_id from classes where class=9) ";
-    }
-    elseif($_POST['select']=='10th'){
-        $std=" select *from student where school_id='$school_id' and class_id=ANY(select class_id from classes where class=10) ";
-    }
+// if(isset($_POST['submit'])) {
+//     $class=$_POST['select'];
+//     if($_POST['select']=='6th') {   //<=========== 'select'
+//         $std=" select * from student where school_id='$school_id' and class_id=ANY(select class_id from classes where class=6) ";
+//     }
+//     elseif($_POST['select']=='7th') {   //<=========== 'select'
+//         $std=" select * from student where school_id='$school_id' and class_id=ANY(select class_id from classes where class=7) ";
+//     }
+//     elseif($_POST['select']=='8th'){
+//         $std=" select * from student where school_id='$school_id' and class_id=ANY(select class_id from classes where class=8) ";
+//     }
+//     elseif($_POST['select']=='9th'){
+//         $std=" select * from student where school_id='$school_id' and class_id=ANY(select class_id from classes where class=9) ";
+//     }
+//     elseif($_POST['select']=='10th'){
+//         $std=" select *from student where school_id='$school_id' and class_id=ANY(select class_id from classes where class=10) ";
+//     }
     
-     $result=mysqli_query($con,$std) or die(mysqli_error);
-    $counter=mysqli_num_rows($result);
+//      $result=mysqli_query($con,$std) or die(mysqli_error);
+//     $counter=mysqli_num_rows($result);
     
-}
+// }
 $result=mysqli_query($con,$std) or die(mysqli_error);
     $counter=mysqli_num_rows($result);
 }
@@ -96,7 +96,15 @@ include 'pet-menu.php';
 </div>
 </div>
 <div>
-<form class="filteroption" action="" method="post">
+<h5>Search</h5>
+
+
+<input type="text" class="form-control"  name="name" id="myInput" onkeyup="searchFun()">
+<!-- <button class="btn" type="submit"><i class="fas fa-search"></i></button> -->
+<br>
+</div>
+<!-- <h5>Select</h5> -->
+<!-- <form class="filteroption" action="" method="post">
     <select id="select" class="form-control form-select" name="select" >
 
         <option value="6th" >6</option>
@@ -108,7 +116,7 @@ include 'pet-menu.php';
     </select>
     <br>
     <input  class="btn btn-primary" type="submit" name="submit" value="submit">
-          </form>
+          </form> -->
 
 
 <div class="row">
@@ -116,7 +124,7 @@ include 'pet-menu.php';
 <div class="card card-table">
 <div class="card-body">
 <div class="table-responsive">
-<table class="table table-hover table-center mb-0 datatable">
+<table id="myTable" class="table table-hover table-center mb-0 datatable">
 <thead>
 <tr>
 <th>ID</th>
@@ -159,6 +167,32 @@ foreach ($result as $data)
 </div>
 
 </div>
+<script>
+            const searchFun = () => {
+                let filter = document.getElementById('myInput').value.toUpperCase();
+                
+                let myTable = document.getElementById('myTable');
+                
+                let tr = myTable.getElementsByTagName('tr');
+
+                for(var i=0;i<tr.length;i++){
+                    let td = tr[i].getElementsByTagName('td')[1];
+                    let t1 = tr[i].getElementsByTagName('td')[0];
+             
+                    if(td || t1){
+                        let textvlaue = td.textContent || td.innerHTML;
+                        let pid = t1.textContent || t1.innerHTML;
+                        if(textvlaue.toUpperCase().indexOf(filter)>-1 || pid.toUpperCase().indexOf(filter)>-1){
+                            tr[i].style.display = "";
+                        }
+                        else{
+                            tr[i].style.display = "none";
+                        }
+                    }
+                }
+
+            }
+        </script>
 
 
 <script src="assets/js/jquery-3.6.0.min.js"></script>

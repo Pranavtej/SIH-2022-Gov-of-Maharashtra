@@ -3,7 +3,7 @@
 include 'connect.php';
 if(empty($_SESSION['STUDENT_ID']))
 {
-    echo '<script>document.location="parent-login.php"</script>';
+    echo '<script>document.location="student-login.php"</script>';
 }
 else{
 
@@ -37,6 +37,22 @@ else{
         $y[] = $data['subject_name'];
         $x[]=$data['marks'];
     }
+
+	$query="select m.cocircular_name as cn,c.marks as marks from cocircular_marks c,cocircular m where c.student_id='$student_id' and c.school_id='$school_id' and c.class_id='$class_id' and c.cocircular_id = m.cocircular_id";
+    $result=mysqli_query($con,$query) or die(mysqli_error);
+     foreach($result as $data)
+     {
+        $cn[] = $data['cn'];
+        $ma[]=$data['marks'];
+    }
+
+	$q="SELECT e.marks,s.sport_name FROM sports_marks e,sports s WHERE student_id='$student_id' AND s.sport_id=e.sport_id;";
+    $r=mysqli_query($con,$q) or die(mysqli_error);
+     foreach($r as $d)
+     {
+        $l[] = $d['sport_name'];
+        $m[]=$d['marks'];
+    }
     }
 
 	$qu="select e.student_id as sid from exam_totals e,student s where e.eid='$eid' and e.school_id='$school_id' and e.student_id=s.student_id and s.class_id='$class_id' order by e.total desc";
@@ -51,6 +67,43 @@ else{
             break;
         }
     }
+
+	$qu1 = mysqli_query($con , "SELECT student_id,sum(marks) as marks from sports_marks where school_id='$school_id' GROUP BY student_id order by marks desc");
+	$var3=0;
+    foreach($qu1 as $data)
+    {
+        $var3=$var3+1;
+        if($data['student_id']==$student_id)
+        {
+            $rank3 = $var3;
+            break;
+        }
+    }
+
+	$qu5="select student_id as sid,SUM(marks) as sum from cocircular_marks where class_id='$class_id' and school_id='$school_id' GROUP BY student_id order by sum desc";
+	$re5=mysqli_query($con,$qu5);
+    $varc=0;
+    foreach($re5 as $data)
+    {
+        $varc=$varc+1;
+        if($data['sid']==$student_id)
+        {
+            $ccarank = $varc;
+            break;
+        }
+    }
+	$qu6="select c.student_id as sid,SUM(c.marks+e.total+s.marks) as sum from cocircular_marks c,exam_totals e,sports_marks s where e.class_id='$class_id' and e.school_id='$school_id' and e.student_id=c.student_id and e.student_id=c.student_id and e.student_id = s.student_id GROUP BY e.student_id order by sum desc";
+	$re9=mysqli_query($con,$qu6);
+    $v = 0;
+    foreach($re9 as $data)
+    {
+        $v = $v+1;
+        if($data['sid']==$student_id)
+        {
+            $ovrank = $v;
+            break;
+        }
+    }
 }
 
 ?>
@@ -60,7 +113,7 @@ else{
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-        <title>Parent  - Dashboard</title>
+        <title>Student - Dashboard</title>
 		
 		<!-- Favicon -->
         <link rel="shortcut icon" href="assets/img/favicon.png">
@@ -86,7 +139,7 @@ else{
 <div class="main-wrapper">
 		
 	
-		<?php include 'parent-menu.php'; ?>
+		<?php include 'student-menu.php'; ?>
 			
 			<!-- Page Wrapper -->
             <div class="page-wrapper">
@@ -96,7 +149,7 @@ else{
 					<div class="page-header">
 						<div class="row">
 							<div class="col-sm-12">
-								<h3 class="page-title">Welcome Parent!</h3>
+								<h3 class="page-title">Welcome Parent !!</h3>
                                 </h3>
 								<ul class="breadcrumb">
 									<li class="breadcrumb-item"><a href="">Dashboard</a></li>
@@ -111,17 +164,17 @@ else{
 					<div class="row">
 						<div class="col-xl-3 col-sm-6 col-12 d-flex">
 							<div class="card bg-nine w-100">
-								<div class="card-body">
+								<div class="card-body"><a href="student-view-all-academic-rank.php?ra=<?php echo $rank; ?>">
 									<div class="db-widgets d-flex justify-content-between align-items-center">
 										<div class="db-icon">
 											<i class="fas fa-book-open"></i>
 										</div>
 										<div class="db-info">
-											<h3><?php echo $rank; ?></h3>
+											<h3><?php echo $rank;?></h3>
 											<h6>Academic Rank</h6>
 										</div>										
 									</div>
-								</div>
+								</div></a>
 							</div>
 						</div>
 
@@ -133,7 +186,7 @@ else{
 											<i class="fas fa-file-alt"></i>
 										</div>
 										<div class="db-info">
-											<h3><?php echo'C';?></h3>
+											<h3><?php echo $ccarank; ?></h3>
 											<h6>CCA Rank</h6>
 										</div>										
 									</div>
@@ -149,7 +202,7 @@ else{
 											<i class="fas fa-clipboard-list"></i>
 										</div>
 										<div class="db-info">
-											<h3><?php echo'S';?></h3>
+											<h3><?php echo $rank3;?></h3>
 											<h6>Sports Rank</h6>
 										</div>										
 									</div>
@@ -165,7 +218,7 @@ else{
 											<i class="fas fa-clipboard-check"></i>
 										</div>
 										<div class="db-info">
-											<h3><?php echo'R';?></h3>
+											<h3><?php echo $ovrank; ?></h3>
 											<h6>Rank</h6>
 										</div>										
 									</div>
@@ -327,6 +380,11 @@ else{
 												<ul class="activity-feed">
 													<li class="feed-item">
 														<div class="feed-date1">Current Academic Year 2021-2022 </div>
+														<style>
+															.checked {
+																color: orange;
+																}
+														</style>
 														<?php
 															$exam = array("UT1","FA1","UT2","FA2","AEE");
 															foreach($exam as $eid)
@@ -352,8 +410,187 @@ else{
 								</div>
 							</div>
 								
-						</div>
+							<div class="row">
+						<?php
+							$query = "SELECT s.subject_name  as subject_name,ROUND(sum(credits)/5) as num,loc.subject_id as subject_id FROM `learning_outcomes_credits` loc,subjects s WHERE class_id='$class_id' and student_id='$student_id' and s.subject_id=loc.subject_id GROUP BY loc.subject_id";
+							$run = mysqli_query($con,$query);
 
+							foreach($run as $id)
+							{
+								$cc = (int)$id['num'];
+								$sum = mysqli_query($con, "SELECT type FROM `conclusion` WHERE id='$cc'");
+								echo'
+								<div class="col-12 col-md-6 col-lg-4 d-flex"><a href="student-detailed-view.php?suid=SUB0603">
+									<div class="card flex-fill">
+										<div class="card-header">
+											<h5 class="card-title mb-0">'.$id['subject_name'].'<br><br>Credits : ';
+											for($i=1;$i<=$cc;$i++)
+											{
+												echo '<span class="fa fa-star checked"></span>';
+											}
+											$k = 6 - $i;
+											for($i=0;$i<$k;$i++)
+											{
+												echo '<span class="fa fa-star"></span>';
+											}
+											echo '</h5>
+										</div>
+										
+									</a></div>
+								</div>
+								';
+							}
+						?>
+					
+				</div>
+				
+						<div class="row">
+<div class="col-12 col-lg-12 col-xl-8 d-flex">
+<div class="card flex-fill">
+<div class="card-header">
+<div class="row align-items-center">
+<div class="col-6">
+<h5 class="card-title">Academeic Marks</h5>
+</div>
+<div class="col-6">
+<ul class="list-inline-group text-end mb-0 ps-0">
+<li class="list-inline-item">
+<!-- <div class="form-group mb-0 amount-spent-select"> -->
+<!-- <select class="form-control form-control-sm form-select">
+<option>Weekly</option>
+<option>Monthly</option>
+<option>Yearly</option>
+</select> -->
+<!-- </div> -->
+</li>
+</ul>
+</div>
+</div>
+</div> 
+<div  id="chart">
+
+<canvas id="cscore"></canvas>
+<!-- <canvas id="ccscore"></canvas> -->
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    
+const ctxc = document.getElementById('cscore');
+const myChartc = new Chart(ctxc, {
+    type: 'pie',
+    data: {
+        labels:  <?php echo json_encode($cn)?>, 
+        datasets: [{
+            label: 'MARKS SCORED',
+            data: <?php echo json_encode($ma)?>,
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+					// 'rgb(255, 99, 132)',
+					// 'rgb(54, 162, 235)',
+					// 'rgb(255, 205, 86)',
+					// 'rgb(255, 99, 13)',
+					// 'rgb(54, 162, 23)',
+					// 'rgb(255, 205, 8)',
+					// 'rgb(255, 205, 899)'super-admin-add-school.php
+
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        maintainAspectRatio: false,
+        scales: {
+            
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+
+</script>
+
+</div>
+</div> 
+<div class="col-12 col-lg-12 col-xl-4 d-flex">
+<div class="card flex-fill">
+<div class="card-header">
+<h5 class="card-title">Your Intrests </h5>
+</div>
+
+<!-- <div class="circle-bar circle-bar3">
+<div class="circle-graph3" data-percent="50"> -->
+<!-- <b>50%</b>
+</div> -
+<h2>Score</h2>
+<h2><?php echo $zzz['total']; ?></h2>-->
+<div id="chart" >
+<canvas id="ccscore" width="750" height="750"></canvas>
+<!-- <canvas id="ccscore"></canvas> -->
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    
+const ctxcc = document.getElementById('ccscore');
+const myChartcc = new Chart(ctxcc, {
+    type: 'doughnut',
+    data: {
+        labels:  <?php echo json_encode($l)?>, 
+        datasets: [{
+            label: 'MARKS SCORED',
+            data: <?php echo json_encode($m)?>,
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        maintainAspectRatio: true,
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+
+</script>
+</div>
+</div>
+</div>
+</div>
+</div>
 						<!-- <div class="col-12 col-lg-12 col-xl-3 d-flex">
 							<div class="card flex-fill">
 								<div class="card-header">

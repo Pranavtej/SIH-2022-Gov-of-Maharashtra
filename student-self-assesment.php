@@ -6,31 +6,31 @@ $school_id = $_SESSION['SCHOOL_ID'] ;
 $student_id = $_SESSION['STUDENT_ID'];
 $class_id = $_SESSION['CLASS_ID'] ;
 
-$query = mysqli_query($con, "select * from parent_student_assesment where school_id='$school_id' and class_id='$class_id' and student_id='$student_id'");
+$query = mysqli_query($con, "select * from student_self_assesment where school_id='$school_id' and class_id='$class_id' and student_id='$student_id'");
 $count = mysqlI_num_rows($query);
 
 if($count !=0)
 {
 	echo "<script>alert('Already Given')</script>";
-	echo "<script>document.location='parent-dashboard.php'</script>";
+	echo "<script>document.location='student-dashboard.php'</script>";
 
 }
 
-$sql="select question_id as ai,question from assessment_questions where assessment_id='FA'";
+$sql="select question_id as ai,question from assessment_questions where assessment_id='SA'";
 $query=mysqli_query($con,$sql);
 
 if(isset($_POST['submit']))
 {
-	$sql="select question_id as ai from assessment_questions where assessment_id='FA'";
+	$sql="select question_id as ai from assessment_questions where assessment_id='SA'";
 	$query=mysqli_query($con,$sql);
 	foreach($query as $data)
 	{
 		$d = $data['ai'];
 		$mark = $_POST[$d];
 
-		$insert = mysqli_query($con,"INSERT INTO `parent_student_assesment` (`school_id`, `student_id`, `question_id`, `class_id`, `marks`) VALUES ('$school_id', '$student_id', '$d', '$class_id', '$mark')");
+		$insert = mysqli_query($con,"INSERT INTO `student_self_assesment` (`school_id`, `student_id`, `question_id`, `class_id`, `marks`) VALUES ('$school_id', '$student_id', '$d', '$class_id', '$mark')");
 	}
-	echo "<script>document.location='parent-dashboard.php'</script>";
+	echo "<script>document.location='student-dashboard.php'</script>";
 }
 
 ?>
@@ -39,7 +39,7 @@ if(isset($_POST['submit']))
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-        <title>Parent-Student-Assessment</title>
+        <title>Student-Self-Assessment</title>
 		
 		<!-- Favicon -->
         <link rel="shortcut icon" href="assets/img/favicon.png">

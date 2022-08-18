@@ -28,7 +28,7 @@
              $qu="INSERT INTO `log_behaviour`(`student_id`, `teacher_id`, `points`, `purpose`) 
              VALUES ('$student_id','$teacher_id','$nb','$re')";
              $re=mysqli_query($con,$qu) or die(mysqli_error);
-             echo "<script>header.location='teacher-classteacher-add-behaviour.php?sid=$student_id&
+             echo "<script>header.location='teacher-add-behaviour.php?sid=$student_id&
              cid=$class_id&sname=$student_name'</script>";
         }
     }
