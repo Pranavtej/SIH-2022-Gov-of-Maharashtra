@@ -9,7 +9,15 @@
 
     $sql = mysqli_query($con,"select teacher_name from teacher_info where teacher_id='$teacher_id' and school_id='$school_id'");
     $run = mysqli_fetch_assoc($sql);
-
+	$sql1= mysqli_query($con,"select avg(marks) as av,sct.class_id as cls from exam_marks as e,schoolwise_class_subject_teachers as sct,classes as c where sct.teacher_id='TE0001' and e.class_id=sct.class_id and e.subject_id=sct.subject_id group by sct.class_id ");
+    // $sql2= mysqli_query($con,"select (class,section) as cls from classes where class_id=(select sct.class_id from exam_marks as e,schoolwise_class_subject_teachers as sct,classes as c where sct.teacher_id='TE0001' and e.class_id=sct.class_id and e.subject_id=sct.subject_id group by sct.class_id)");
+	foreach($sql1 as $d){
+  $x[]=$d['avg'];
+  $y[]=$d['cls'];
+}
+//  foreach($sql1 as $d){ 
+	
+//   }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -59,7 +67,7 @@
 					<div class="page-header">
 						<div class="row">
 							<div class="col-sm-12">
-								<h3 class="page-title">Welcome <?php echo $run['teacher_name']; ?></h3>
+								<h3 class="page-title">Welcome <?php echo $run['teacher_name']; echo json_encode($x); ?></h3>
 								<ul class="breadcrumb">
 									<h4><li class="breadcrumb-item active">Teacher</li></h4>
 								</ul>
@@ -134,19 +142,107 @@
 							</div>
 						</div>
 					</div>
-					<!-- /Overview Section -->				
+					<!-- /Overview Section -->	
+									
 
 					<!-- Teacher Dashboard -->
 					<div class="row">
-						<div class="col-12 col-lg-12 col-xl-9">
+						<div class="col-12 col-lg-12 col-xl-8 d-flex">
+									<div class="card flex-fill">
+										<div class="card-header">
+											<div class="row align-items-center">
+												<div class="col-6">
+													<h5 class="card-title">Class Wise Progress</h5>
+												</div>
+												<!-- <div class="col-6">
+													<ul class="list-inline-group text-end mb-0 ps-0">
+														<li class="list-inline-item">
+															  <div class="form-group mb-0 amount-spent-select">
+																<select class="form-control form-control-sm form-select">
+																  <option>Weekly</option>
+																  <option>Monthly</option>
+																  <option>Yearly</option>
+																</select>
+															</div>
+														</li>
+													</ul>                                        
+												</div> -->
+											</div>						
+										</div>
+						<div class="card-body">
+                                        <canvas id="acscore"></canvas>
+                                            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                                            <script>
+const ctx_2 = document.getElementById('acscore');
+const myChart = new Chart(ctx_2, {
+type: 'bar',
+data: {
+labels: <?php echo json_encode($y)?> ,
+datasets: [{
+label: 'class performance',
+data: <?php echo json_encode($x)?>,
+backgroundColor: [
+'rgba(255, 99, 132, 0.2)',
+'rgba(54, 162, 235, 0.2)',
+'rgba(255, 206, 86, 0.2)',
+'rgba(75, 192, 192, 0.2)',
+'rgba(153, 102, 255, 0.2)',
+'rgba(255, 159, 64, 0.2)'
+],
+borderColor: [
+'rgba(255, 99, 132, 1)',
+'rgba(54, 162, 235, 1)',
+'rgba(255, 206, 86, 1)',
+'rgba(75, 192, 192, 1)',
+'rgba(153, 102, 255, 1)',
+'rgba(255, 159, 64, 1)'
+],
+borderWidth: 1
+},
+{
+label: 'Average',
+type: 'line',
+data:[369.54545454545456095729605294764041900634765625,369.54545454545456095729605294764041900634765625,369.54545454545456095729605294764041900634765625,369.54545454545456095729605294764041900634765625,369.54545454545456095729605294764041900634765625,369.54545454545456095729605294764041900634765625,369.54545454545456095729605294764041900634765625,369.54545454545456095729605294764041900634765625,369.54545454545456095729605294764041900634765625,369.54545454545456095729605294764041900634765625,369.54545454545456095729605294764041900634765625,369.54545454545456095729605294764041900634765625],
+// this dataset is drawn below0
+order: 2,
+backgroundColor: [
+'rgba(255, 99, 132, 0.2)',
+'rgba(54, 162, 235, 0.2)',
+'rgba(255, 206, 86, 0.2)',
+'rgba(75, 192, 192, 0.2)',
+'rgba(153, 102, 255, 0.2)',
+'rgba(255, 159, 64, 0.2)'
+],
+borderColor: [
+'rgba(255, 99, 132, 1)',
+'rgba(54, 162, 235, 1)',
+'rgba(255, 206, 86, 1)',
+'rgba(75, 192, 192, 1)',
+'rgba(153, 102, 255, 1)',
+'rgba(255, 159, 64, 1)'
+],
+borderWidth: 1
+}]
+},
+options: {
+scales: {
+y: {
+beginAtZero: true
+}
+}
+}
+});
 
-							<div class="row">
+											</script>
+										</div>
+										</div></div>
+							
 								<div class="col-12 col-lg-4 col-xl-4 d-flex">
 									<div class="card flex-fill">
 										<div class="card-header">
 											<div class="row align-items-center">
 												<div class="col-12">
-													<h5 class="card-title">Semester Progress</h5>
+													<h5 class="card-title">Semester Progres</h5>
 												</div>
 											</div>						
 										</div>
