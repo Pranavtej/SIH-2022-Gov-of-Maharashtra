@@ -177,95 +177,7 @@
 					
 					
 					<div class="row">
-						<div class="col-12 col-lg-12 col-xl-8 d-flex">
-									<div class="card flex-fill">
-										<div class="card-header">
-											<div class="row align-items-center">
-												<div class="col-6">
-													<h5 class="card-title">Class Wise Progress</h5>
-												</div>
-												<!-- <div class="col-6">
-													<ul class="list-inline-group text-end mb-0 ps-0">
-														<li class="list-inline-item">
-															  <div class="form-group mb-0 amount-spent-select">
-																<select class="form-control form-control-sm form-select">
-																  <option>Weekly</option>
-																  <option>Monthly</option>
-																  <option>Yearly</option>
-																</select>
-															</div>
-														</li>
-													</ul>                                        
-												</div> -->
-											</div>						
-										</div>
-						<div class="card-body">
-                                        <canvas id="acscore"></canvas>
-                                            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-                                            <script>
-const ctx_2 = document.getElementById('acscore');
-const myChart = new Chart(ctx_2, {
-type: 'bar',
-data: {
-labels: <?php echo json_encode($y)?> ,
-datasets: [{
-label: 'Highest Marks',
-data: <?php echo json_encode($m)?>,
-backgroundColor: [
-'rgba(255, 99, 132, 0.2)',
-'rgba(54, 162, 235, 0.2)',
-'rgba(255, 206, 86, 0.2)',
-'rgba(75, 192, 192, 0.2)',
-'rgba(153, 102, 255, 0.2)',
-'rgba(255, 159, 64, 0.2)'
-],
-borderColor: [
-'rgba(255, 99, 132, 1)',
-'rgba(54, 162, 235, 1)',
-'rgba(255, 206, 86, 1)',
-'rgba(75, 192, 192, 1)',
-'rgba(153, 102, 255, 1)',
-'rgba(255, 159, 64, 1)'
-],
-borderWidth: 1
-},
-{
-label: 'Average',
-type: 'line',
-data:<?php echo json_encode($x)?>,
-// this dataset is drawn below0
-order: 2,
-backgroundColor: [
-'rgba(255, 99, 132, 0.2)',
-'rgba(54, 162, 235, 0.2)',
-'rgba(255, 206, 86, 0.2)',
-'rgba(75, 192, 192, 0.2)',
-'rgba(153, 102, 255, 0.2)',
-'rgba(255, 159, 64, 0.2)'
-],
-borderColor: [
-'rgba(255, 99, 132, 1)',
-'rgba(54, 162, 235, 1)',
-'rgba(255, 206, 86, 1)',
-'rgba(75, 192, 192, 1)',
-'rgba(153, 102, 255, 1)',
-'rgba(255, 159, 64, 1)'
-],
-borderWidth: 1
-}]
-},
-options: {
-scales: {
-y: {
-beginAtZero: true
-}
-}
-}
-});
-
-											</script>
-										</div>
-										</div></div>
+						
 
 <div class="col-12 col-lg-12 col-xl-8 d-flex">
 <div class="card flex-fill">
@@ -367,6 +279,95 @@ const myChart = new Chart(ctx_2, {
 </div>
 </div>
 </div>
+<div class="col-12 col-lg-12 col-xl-8 d-flex">
+									<div class="card flex-fill">
+										<div class="card-header">
+											<div class="row align-items-center">
+												<div class="col-6">
+													<h5 class="card-title">Class Wise Progress</h5>
+												</div>
+												<!-- <div class="col-6">
+													<ul class="list-inline-group text-end mb-0 ps-0">
+														<li class="list-inline-item">
+															  <div class="form-group mb-0 amount-spent-select">
+																<select class="form-control form-control-sm form-select">
+																  <option>Weekly</option>
+																  <option>Monthly</option>
+																  <option>Yearly</option>
+																</select>
+															</div>
+														</li>
+													</ul>                                        
+												</div> -->
+											</div>						
+										</div>
+						<div class="card-body">
+                                        <canvas id="acscore"></canvas>
+                                            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                                            <script>
+const ctx_2 = document.getElementById('acscore');
+const myChart = new Chart(ctx_2, {
+type: 'bar',
+data: {
+labels: <?php echo json_encode($y)?> ,
+datasets: [{
+label: 'Highest Marks',
+data: <?php echo json_encode($m)?>,
+backgroundColor: [
+'rgba(255, 99, 132, 0.2)',
+'rgba(54, 162, 235, 0.2)',
+'rgba(255, 206, 86, 0.2)',
+'rgba(75, 192, 192, 0.2)',
+'rgba(153, 102, 255, 0.2)',
+'rgba(255, 159, 64, 0.2)'
+],
+borderColor: [
+'rgba(255, 99, 132, 1)',
+'rgba(54, 162, 235, 1)',
+'rgba(255, 206, 86, 1)',
+'rgba(75, 192, 192, 1)',
+'rgba(153, 102, 255, 1)',
+'rgba(255, 159, 64, 1)'
+],
+borderWidth: 1
+},
+{
+label: 'Average',
+type: 'line',
+data:<?php echo json_encode($x)?>,
+// this dataset is drawn below0
+order: 2,
+backgroundColor: [
+'rgba(255, 99, 132, 0.2)',
+'rgba(54, 162, 235, 0.2)',
+'rgba(255, 206, 86, 0.2)',
+'rgba(75, 192, 192, 0.2)',
+'rgba(153, 102, 255, 0.2)',
+'rgba(255, 159, 64, 0.2)'
+],
+borderColor: [
+'rgba(255, 99, 132, 1)',
+'rgba(54, 162, 235, 1)',
+'rgba(255, 206, 86, 1)',
+'rgba(75, 192, 192, 1)',
+'rgba(153, 102, 255, 1)',
+'rgba(255, 159, 64, 1)'
+],
+borderWidth: 1
+}]
+},
+options: {
+scales: {
+y: {
+beginAtZero: true
+}
+}
+}
+});
+
+											</script>
+										</div>
+										</div></div>
 
 					<!-- Teacher Dashboard -->
 					<div class="col-12 col-lg-12 col-xl-4 d-flex">
