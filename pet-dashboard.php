@@ -322,47 +322,34 @@ const myChart = new Chart(ctx_2, {
 </div>
 
 <div class="col-12 col-lg-12 col-xl-4 d-flex">
-									<div class="card flex-fill">
-										<div class="card-header">
-											<h5 class="card-title">LeaderBoard</h5>
-										</div>
-										<div class="card-body">
-											<div class="teaching-card">
-												<ul class="activity-feed">
-													<li class="feed-item">
-														<div class="feed-date1">Current Academic Year 2021-20</div>
-														<?php
-                                                        $exam = array();
-                                                        $exam= ['SP0001','SP0002','SP0003','SP0004'];
-															foreach($exam as $spid)
-															{
-																$qu1="select MAX(e.marks) as high,s.student_name as name1,s.class_id as class_id1,a.sport_name as sname FROM sports_marks e,student s,sports a WHERE e.sport_id='$spid' AND s.student_id=e.student_id AND e.school_id='$sid' AND a.sport_id='$spid'";
-    															$re=mysqli_query($con,$qu1);
-																$re1 = mysqli_fetch_assoc($re);
-																echo '
-																<span class="feed-text1"><a>'.$re1['sname'].'</a></span>
-                                                                <p>'.$re1['name1'].' - '.$re1['class_id1'].'</span></p>
-																<p><span>Score :'.$re1['high'].'</span></p>';
-															}
-														?>
-													</li>
-													<li class="feed-item">
-														<!-- <div class="feed-date1">old  Acdemic Year</div>
-														<span class="feed-text1"><a>Score</a></span>
-														<p>Completed</p> -->
-													</li>
-												</ul>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-								
-
-
-
-
+    <div class="card flex-fill">
+        <div class="card-header">
+            <h5 class="card-title">LeaderBoard</h5>
+        </div>
+        <div class="card-body">
+            <div class="teaching-card">
+                <ul class="activity-feed">
+                    <li class="feed-item">
+                        <div class="feed-date1">Current Academic Year 2021-20</div>
+                        <?php
+                        $exam = array("SP0001","SP0002","SP0003","SP0004");
+                            foreach($exam as $spid)
+                            {
+                                $qu1="select student_name from student where student_id in (select student_id from sports_marks where marks in (select max(marks) from sports_marks where sport_id='$spid') AND sport_id='$spid') LIMIT 1";
+                                $re=mysqli_query($con,$qu1);
+                                $re1 = mysqli_fetch_assoc($re);
+                                echo '
+                                <span class="feed-text1"><a>'.$re1['student_name'].'</a></span>';
+                            }
+                        ?>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>
+</div>
+						</div>
 
 <!-- <footer>
 <p>Copyright © 2020 Dreamguys.</p>
