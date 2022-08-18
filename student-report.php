@@ -45,7 +45,7 @@ foreach($qu1 as $data)
 	}
 }
 
-$qu5="select student_id as sid,SUM(marks) as sum from cocircular_marks where   class_id='$class_id' and school_id='$school_id' GROUP BY student_id order by sum desc";
+$qu5="select student_id as sid,SUM(marks) as sum from cocircular_marks where class_id='$class_id' and school_id='$school_id' GROUP BY student_id order by sum desc";
 $re5=mysqli_query($con,$qu5);
 $varc=0;
 foreach($re5 as $data)
@@ -57,15 +57,15 @@ foreach($re5 as $data)
 		break;
 	}
 }
-$qu6="select c.student_id as sid,SUM(c.marks+e.total) as sum from cocircular_marks c,exam_marks e where   e.class_id='$class_id' and e.school_id='$school_id' and e.student_id=c.student_id and e.student_id=c.student_id GROUP BY student_id order by sum desc";
-$re6=mysqli_query($con,$qu5);
-$varc=0;
-foreach($re6 as $data)
+$qu6="select c.student_id as sid,SUM(c.marks+e.total+s.marks) as sum from cocircular_marks c,exam_totals e,sports_marks s where e.class_id='$class_id' and e.school_id='$school_id' and e.student_id=c.student_id and e.student_id=c.student_id and e.student_id = s.student_id GROUP BY e.student_id order by sum desc";
+$re9=mysqli_query($con,$qu6);
+$v = 0;
+foreach($re9 as $data)
 {
-	$varo=$varo+1;
+	$v = $v+1;
 	if($data['sid']==$student_id)
 	{
-		$ovrank = $varo;
+		$ovrank = $v;
 		break;
 	}
 }
