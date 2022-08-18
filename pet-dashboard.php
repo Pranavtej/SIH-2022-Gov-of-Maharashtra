@@ -21,12 +21,12 @@
      $teacher_dob=$_SESSION['DOB']=$run['teacher_dob'];
      $teacher_mobile=$_SESSION['MOBILE']=$run['teacher_mob'];
      $teacher_email=$_SESSION['EMAIL']=$run['teacher_email'];
-     $query="select COUNT(student_id) as cont from `student` where school_id='$sid'";
+     $query="select distinct COUNT(student_id) as cont from `student` where school_id='$sid'";
      $result=mysqli_query($con,$query);
      $result=mysqli_fetch_assoc($result);
      $_SESSION['COUNT_STUDENT']=$result['cont'];
      $count_student=$_SESSION['COUNT_STUDENT'];
-     $stat="select count(*) as ts from sports_marks where school_id='$sid'";
+     $stat="select distinct count(*) as ts from sports_marks where school_id='$sid'";
      $res=mysqli_query($con,$stat);
      $res=mysqli_fetch_assoc($res);
      $totalstudent_sports=$res['ts'];
@@ -39,7 +39,7 @@
      $tc=mysqli_fetch_assoc($result2);
      $_SESSION['GC']=$tc['TC'];
 
-     $stat2="SELECT COUNT(*) as sum,c.class FROM sports_marks e,classes c WHERE e.school_id='$sid' AND e.class_id=c.class_id";
+     $stat2="SELECT COUNT(*) as sum,c.class FROM sports_marks e,classes c WHERE e.school_id='$sid' AND e.class_id=c.class_id group by class ";
      $res2=mysqli_query($con,$stat2);
      while($data=mysqli_fetch_assoc($res2))
      {
@@ -286,7 +286,7 @@ const myChart = new Chart(ctx_2, {
     data: {
         labels:  <?php echo json_encode($y) ;?>, 
         datasets: [{
-            label: 'Sports Performance  ',
+            label: 'Sports Performance',
             data: <?php echo json_encode($x) ;?>,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',

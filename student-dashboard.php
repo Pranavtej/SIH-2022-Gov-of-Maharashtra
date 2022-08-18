@@ -38,6 +38,14 @@ else{
         $x[]=$data['marks'];
     }
 
+	$query="select m.cocircular_name as cn,c.marks as marks from cocircular_marks c,cocircular m where c.student_id='$student_id' and c.school_id='$school_id' and c.class_id='$class_id' and c.cocircular_id = m.cocircular_id";
+    $result=mysqli_query($con,$query) or die(mysqli_error);
+     foreach($result as $data)
+     {
+        $cn[] = $data['cn'];
+        $ma[]=$data['marks'];
+    }
+
 	$q="SELECT e.marks,s.sport_name FROM sports_marks e,sports s WHERE student_id='$student_id' AND s.sport_id=e.sport_id;";
     $r=mysqli_query($con,$q) or die(mysqli_error);
      foreach($r as $d)
@@ -472,10 +480,10 @@ const ctxc = document.getElementById('cscore');
 const myChartc = new Chart(ctxc, {
     type: 'pie',
     data: {
-        labels:  <?php echo json_encode($y)?>, 
+        labels:  <?php echo json_encode($cn)?>, 
         datasets: [{
             label: 'MARKS SCORED',
-            data: <?php echo json_encode($x)?>,
+            data: <?php echo json_encode($ma)?>,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
