@@ -96,8 +96,10 @@ include 'pet-menu.php';
                             <br><
                                 
                             <br>
-<div class="row">
-						
+
+<br>
+                                
+<br><div class="row">
 								<div class="col-12 col-md-6 col-lg-4 d-flex">
 									<div class="card flex-fill">
 										<div class="card-header">
@@ -107,8 +109,10 @@ include 'pet-menu.php';
 </a>
 </div>
 <div class="col ms-md-n2 profile-user-info">
-<h4 class="user-name mb-0">John Doe</h4>
-<h6 class="text-muted">UI/UX Design Team</h6>
+<h4 class="user-name mb-0">Student Name </h4>
+<h6 class="text-muted">Class Id : </h6>
+<h6 class="text-muted">Achivement : </h6>
+
 
 </div>
 </div>
