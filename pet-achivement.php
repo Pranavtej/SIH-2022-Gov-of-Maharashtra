@@ -96,7 +96,7 @@ include 'pet-menu.php';
 									<li class="breadcrumb-item active">Achivements</li>
 								</ul>
 							</div>
-                            <br><
+                            <br>
                                 
                             <br>
 
