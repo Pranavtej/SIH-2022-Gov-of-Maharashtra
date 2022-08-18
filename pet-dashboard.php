@@ -343,7 +343,7 @@ const myChart = new Chart(ctx_2, {
                                 $nam = mysqli_fetch_assoc($name);
 
                                 echo '
-                                <span class="feed-text1"><a>'.$nam['sport_name'].'</a></span>
+                                <span class="feed-text1"><a>'.$nam['sport_name'].' : </a></span>
                                 <p><span>'.$re1['student_name'].'</span></p>';
                             }
                         ?>
