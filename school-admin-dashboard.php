@@ -27,6 +27,10 @@ if(empty($_SESSION['SCHOOL_ID'])){
 	foreach($result as $data){
 		$r[]=$data['cls'];
 	}
+   $pass="select count(*) as pass from exam_totals where school_id='$school_id' and eid='AEE' and total>245";
+   $pas=mysqli_query($con,$pass);
+   $pas=mysqli_fetch_assoc($pas);
+
    
 	$query="SELECT count(*) FROM student where school_id='$school_id' group by class_id";
     $result=mysqli_query($con,$query) or die(mysqli_error);
@@ -148,7 +152,7 @@ if(empty($_SESSION['SCHOOL_ID'])){
 											<i class="fas fa-file-invoice-dollar"></i>
 										</div>
 										<div class="db-info">
-											<h3><?php echo $t['total']/$c['total'] ?></h3>
+											<h3><?php echo round(($pas['pass']/$res['total'])*100); echo "%";?></h3>
 											<h6>Revenue</h6>
 										</div>										
 									</div>
