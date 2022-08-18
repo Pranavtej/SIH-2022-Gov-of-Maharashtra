@@ -22,6 +22,9 @@
      $teacher_mobile=$_SESSION['MOBILE']=$run['teacher_mob'];
      $teacher_email=$_SESSION['EMAIL']=$run['teacher_email'];
 
+     $stat="SELECT e.details,s.student_name,s.class_id FROM achievements e,student s WHERE e.student_id=s.student_id AND e.school_id='$sid'";
+     $res=mysqli_query($con,$stat);
+
 
     
 
@@ -99,27 +102,34 @@ include 'pet-menu.php';
 
 <br>
                                 
-<br><div class="row">
+<br><div class="row"><?php 
+while($data=mysqli_fetch_assoc($res))
+{
+    echo'
 								<div class="col-12 col-md-6 col-lg-4 d-flex">
 									<div class="card flex-fill">
-										<div class="card-header">
-										<div class="col-auto profile-image">
+<div class="card-header">
+    <div class="col-auto profile-image">
 <a href="#">
 <img class="rounded-circle" alt="User Image" src="assets/img/profiles/avatar-02.jpg">
 </a>
 </div>
 <div class="col ms-md-n2 profile-user-info">
-<h4 class="user-name mb-0">Student Name </h4>
-<h6 class="text-muted">Class Id : </h6>
-<h6 class="text-muted">Achivement : </h6>
+<h4 class="user-name mb-0">Student Name:'.$data['student_name'].' </h4>
+<h6 class="text-muted">Class Id :'.$data['class_id'].' </h6>
+<h6 class="text-muted">Achivement :'.$data['details'].' </h6>
 
 
-</div>
-</div>
-</div>
+</div></div>										
+</div>										
 								
 										
 </div>
+
+';
+}
+?>
+
 
 <!-- <footer>
 <p>Copyright © 2020 Dreamguys.</p>

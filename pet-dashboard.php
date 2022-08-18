@@ -124,16 +124,16 @@ include 'pet-menu.php';
 <div class="row">
 <div class="col-xl-3 col-sm-6 col-12 d-flex">
 <div class="card bg-five w-100">
-<div class="card-body">
+<a href="pet-achivement.php"><div class="card-body">
 <div class="db-widgets d-flex justify-content-between align-items-center">
-<!-- <div class="db-icon">
+<div class="db-icon">
 <i class="fas fa-chalkboard"></i>
-</div> -->
+</div>
 <div class="db-info">
 <h3>Acheivements</h3>
 <h6>Of Students</h6>
 </div>
-</div>
+</div></a>
 </div>
 </div>
 </div>
@@ -141,9 +141,9 @@ include 'pet-menu.php';
 <div class="card bg-six w-100">
 <div class="card-body">
 <div class="db-widgets d-flex justify-content-between align-items-center">
-<!-- <div class="db-icon">
+<div class="db-icon">
 <i class="fas fa-user-graduate"></i>
-</div>-->
+</div>
 <div class="db-info">
 <h3><?php echo $totalstudent_sports;?>/<?php echo $count_student;?></h3>
 <h6>Total Students in sports</h6>
@@ -156,9 +156,9 @@ include 'pet-menu.php';
 <div class="card bg-seven w-100">
 <div class="card-body">
 <div class="db-widgets d-flex justify-content-between align-items-center">
-<!-- <div class="db-icon">
+<div class="db-icon">
 <i class="fas fa-book-open"></i>
-</div> -->
+</div> 
 <div class="db-info">
 <h3><?php echo $_SESSION['BC'];?>/<?php echo $_SESSION['GC'];?></h3>
 <h6>Total Boys And Girls Ratio</h6>
