@@ -338,8 +338,12 @@ const myChart = new Chart(ctx_2, {
                                 $qu1="select student_name from student where student_id in (select student_id from sports_marks where marks in (select max(marks) from sports_marks where sport_id='$spid') AND sport_id='$spid') LIMIT 1";
                                 $re=mysqli_query($con,$qu1);
                                 $re1 = mysqli_fetch_assoc($re);
+
+                                $name = mysqli_query($con, "select sport_name from sportd where sport_id='$spid'");
+                                $nam = mysqli_fetch_assoc($name);
+
                                 echo '
-                                <span class="feed-text1"><a></a></span>
+                                <span class="feed-text1"><a>'.$nam['sport_name'].'</a></span>
                                 <p><span>'.$re1['student_name'].'</span></p>';
                             }
                         ?>
