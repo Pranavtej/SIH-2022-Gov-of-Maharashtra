@@ -87,7 +87,7 @@ if(empty($_SESSION['SCHOOL_ID'])){
 					<!-- Overview Section -->
 					<div class="row">
 						<div class="col-xl-3 col-sm-6 col-12 d-flex">
-							<div class="card bg-one w-100">
+							<div class="card bg-one w-100"><a href="school-admin-student-list.php">
 								<div class="card-body">
 									<div class="db-widgets d-flex justify-content-between align-items-center">
 										<div class="db-icon">
@@ -100,7 +100,7 @@ if(empty($_SESSION['SCHOOL_ID'])){
 											<h6>Students</h6>
 										</div>										
 									</div>
-								</div>
+							</a></div>
 							</div>
 						</div>
 
