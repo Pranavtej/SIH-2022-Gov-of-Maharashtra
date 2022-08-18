@@ -13,10 +13,10 @@
     {
 
      $tid=$_SESSION['TEACHER_ID'];
-     $sid=$_SESSION['SCHOOL_ID'];
-     $res="select * from teacher_info where teacher_id='$tid' AND school_id='$sid'";
+     $res="select * from teacher_info where teacher_id='$tid'";
      $run=mysqli_query($con,$res);
      $run=mysqli_fetch_assoc($run);
+     $sid=$_SESSION['SCHOOL_ID']=$run['school_id'];
      $teacher_name=$_SESSION['TEACHER_NAME']=$run['teacher_name'];
      $teacher_dob=$_SESSION['DOB']=$run['teacher_dob'];
      $teacher_mobile=$_SESSION['MOBILE']=$run['teacher_mob'];
