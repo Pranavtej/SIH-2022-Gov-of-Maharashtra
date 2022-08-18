@@ -175,8 +175,8 @@ include 'pet-menu.php';
 <i class="fas fa-clock"></i>
 </div>
 <div class="db-info">
-<h3>Sports</h3>
-<h6>list</h6>
+<h3>Sports List</h3>
+<h6>School wise Sports List</h6>
 </div>
 </div>
 </div>
