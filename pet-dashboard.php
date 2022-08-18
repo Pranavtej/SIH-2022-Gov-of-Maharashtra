@@ -39,7 +39,7 @@
      $tc=mysqli_fetch_assoc($result2);
      $_SESSION['GC']=$tc['TC'];
 
-     $stat2="SELECT COUNT(*) as sum,c.class FROM sports_marks e,classes c WHERE e.school_id='$sid' AND e.class_id=c.class_id group by class asc";
+     $stat2="SELECT COUNT(*) as sum,c.class FROM sports_marks e,classes c WHERE e.school_id='$sid' AND e.class_id=c.class_id";
      $res2=mysqli_query($con,$stat2);
      while($data=mysqli_fetch_assoc($res2))
      {
@@ -286,7 +286,7 @@ const myChart = new Chart(ctx_2, {
     data: {
         labels:  <?php echo json_encode($y) ;?>, 
         datasets: [{
-            label: 'Sports Performance ',
+            label: 'Sports Performance  ',
             data: <?php echo json_encode($x) ;?>,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
