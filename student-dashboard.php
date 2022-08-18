@@ -364,7 +364,35 @@ else{
 								</div>
 							</div>
 								
-						
+							<div class="row">
+						<?php
+							$query = "SELECT s.subject_name as subject_name,ROUND(sum(credits)/5) as num,loc.subject_id as subject_id FROM `learning_outcomes_credits` loc,subjects s WHERE class_id='$class_id' and student_id='$student_id' and s.subject_id=loc.subject_id GROUP BY loc.subject_id";
+							$run = mysqli_query($con,$query);
+
+							foreach($run as $id)
+							{
+								$cc = (int)$id['num'];
+								$star = '⭐';
+								for($i=1;$i<$cc;$i++)
+								{
+									$star = $star . '⭐';
+								}
+								$sum = mysqli_query($con, "SELECT type FROM `conclusion` WHERE id='$cc'");
+								echo'
+								<div class="col-12 col-md-6 col-lg-4 d-flex">
+									<div class="card flex-fill">
+										<div class="card-header">
+											<h5 class="card-title mb-0">'.$id['subject_name'].'<br><br>Credits : '.$star.'</h5>
+										</div>
+										
+									</div>
+								</div>
+								';
+							}
+						?>
+					</div>
+				</div>
+				
 						<div class="row">
 <div class="col-12 col-lg-12 col-xl-8 d-flex">
 <div class="card flex-fill">
