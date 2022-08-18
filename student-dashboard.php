@@ -71,6 +71,31 @@ else{
             break;
         }
     }
+
+	$qu5="select student_id as sid,SUM(marks) as sum from cocircular_marks where   class_id='$class_id' and school_id='$school_id' GROUP BY student_id order by sum desc";
+	$re5=mysqli_query($con,$qu5);
+    $varc=0;
+    foreach($re5 as $data)
+    {
+        $varc=$varc+1;
+        if($data['sid']==$student_id)
+        {
+            $ccarank = $varc;
+            break;
+        }
+    }
+	$qu6="select c.student_id as sid,SUM(c.marks+e.total) as sum from cocircular_marks c,exam_marks e where   e.class_id='$class_id' and e.school_id='$school_id' and e.student_id=c.student_id and e.student_id=c.student_id GROUP BY student_id order by sum desc";
+	$re6=mysqli_query($con,$qu5);
+    $varc=0;
+    foreach($re6 as $data)
+    {
+        $varo=$varo+1;
+        if($data['sid']==$student_id)
+        {
+            $ovrank = $varo;
+            break;
+        }
+    }
 }
 
 ?>
@@ -153,7 +178,7 @@ else{
 											<i class="fas fa-file-alt"></i>
 										</div>
 										<div class="db-info">
-											<h3><?php echo'C';?></h3>
+											<h3><?php echo $ccarank; ?></h3>
 											<h6>CCA Rank</h6>
 										</div>										
 									</div>
@@ -185,7 +210,7 @@ else{
 											<i class="fas fa-clipboard-check"></i>
 										</div>
 										<div class="db-info">
-											<h3><?php echo'R';?></h3>
+											<h3><?php echo $ovrank; ?></h3>
 											<h6>Rank</h6>
 										</div>										
 									</div>
