@@ -10,8 +10,8 @@ foreach($query as $data)
     $q = mysqli_fetch_assoc($query2);
     $class_id = $q['class_id'];
     
-    $update = mysqli_query($con, "update exam_marks set class_id='$class_id' where student_id='$id'");
-    
+    // $update = mysqli_query($con, "update exam_marks set class_id='$class_id' where student_id='$id'");
+
 }
 
 
