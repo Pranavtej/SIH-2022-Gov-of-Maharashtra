@@ -375,7 +375,7 @@ else{
 								$star = '⭐';
 								for($i=1;$i<$cc;$i++)
 								{
-									$star = $star . '⭐';
+									$star = $star . '⭐'.'☆';
 								}
 								$sum = mysqli_query($con, "SELECT type FROM `conclusion` WHERE id='$cc'");
 								echo'
