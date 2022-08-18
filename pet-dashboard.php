@@ -339,7 +339,7 @@ const myChart = new Chart(ctx_2, {
                                 $re=mysqli_query($con,$qu1);
                                 $re1 = mysqli_fetch_assoc($re);
 
-                                $name = mysqli_query($con, "select sport_name from sportd where sport_id='$spid'");
+                                $name = mysqli_query($con, "select sport_name from sports where sport_id='$spid'");
                                 $nam = mysqli_fetch_assoc($name);
 
                                 echo '
