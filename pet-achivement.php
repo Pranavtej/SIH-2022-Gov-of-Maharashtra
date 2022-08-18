@@ -85,8 +85,21 @@ include 'pet-menu.php';
 <div class="page-wrapper">
 <div class="content container-fluid">
 <div class="page-header">
-<div class="row">
-						
+<div class="row align-items-center">
+							<div class="col">
+								<h3 class="page-title">Achivements </h3>
+								<ul class="breadcrumb">
+									<li class="breadcrumb-item"><a href="#">Sports teacher </a></li>
+									<li class="breadcrumb-item active">Achivements</li>
+								</ul>
+							</div>
+                            <br><
+                                
+                            <br>
+
+<br>
+                                
+<br><div class="row">
 								<div class="col-12 col-md-6 col-lg-4 d-flex">
 									<div class="card flex-fill">
 										<div class="card-header">
@@ -96,8 +109,10 @@ include 'pet-menu.php';
 </a>
 </div>
 <div class="col ms-md-n2 profile-user-info">
-<h4 class="user-name mb-0">John Doe</h4>
-<h6 class="text-muted">UI/UX Design Team</h6>
+<h4 class="user-name mb-0">Student Name </h4>
+<h6 class="text-muted">Class Id : </h6>
+<h6 class="text-muted">Achivement : </h6>
+
 
 </div>
 </div>
