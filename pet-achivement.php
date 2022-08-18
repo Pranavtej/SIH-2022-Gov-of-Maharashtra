@@ -90,9 +90,9 @@ include 'pet-menu.php';
 								<div class="col-12 col-md-6 col-lg-4 d-flex"><a href="student-detailed-view.php?suid=SUB0603">
 									<div class="card flex-fill">
 										<div class="card-header">
-										
+										<div class="col-auto profile-image">
 										<img class="rounded-circle" alt="User Image" src="assets/img/profiles/avatar-02.jpg">
-                                        </a>
+    </div></a>
                                         <div class="col ms-md-n2 profile-user-info">
                                         <h4 class="user-name mb-0">John Doe</h4>
                                         <h6 class="text-muted">UI/UX Design Team</h6>
