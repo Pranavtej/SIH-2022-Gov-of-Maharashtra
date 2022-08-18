@@ -15,6 +15,36 @@ $sql2 = "select class,section from classes where class_id='$class_id'";
 $run2 = mysqli_query($con, $sql2);
 $run2 = mysqli_fetch_assoc($run2);
 
+$query1="select eid from exam where status=1";
+$result1=mysqli_query($con,$query1) or die(mysqli_error);
+$res = mysqli_fetch_assoc($result1);
+$eid = $res['eid'];
+
+$qu="select e.student_id as sid from exam_totals e,student s where e.eid='$eid' and e.school_id='$school_id' and e.student_id=s.student_id and s.class_id='$class_id' order by e.total desc";
+$re=mysqli_query($con,$qu);
+$var=0;
+foreach($re as $data)
+{
+	$var=$var+1;
+	if($data['sid']==$student_id)
+	{
+		$rank = $var;
+		break;
+	}
+}
+
+$qu1 = mysqli_query($con , "SELECT student_id,sum(marks) as marks from sports_marks where school_id='$school_id' GROUP BY student_id order by marks desc");
+$var3=0;
+foreach($qu1 as $data)
+{
+	$var3=$var3+1;
+	if($data['student_id']==$student_id)
+	{
+		$rank3 = $var3;
+		break;
+	}
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -120,23 +150,24 @@ $run2 = mysqli_fetch_assoc($run2);
 											<div class="col-xl-3 col-sm-6 col-12">
 												<div class="card flex-fill fb sm-box">
 													<!-- <i class="fab fa-facebook"></i> -->
-													<h6>50,095</h6>
-													<p>Likes</p>
+													<h6><?php echo $rank; ?></h6>
+													<p>Academeic Rank</p>
 												</div>
 											</div>
-											<div class="col-xl-3 col-sm-6 col-12">
-												<div class="card flex-fill twitter sm-box">
-													<!-- <i class="fab fa-twitter"></i> -->
-													<h6>48,596</h6>
-													<p>Follows</p>
-												</div>
-											</div>
-						
+
 											<div class="col-xl-3 col-sm-6 col-12">
 												<div class="card flex-fill insta sm-box">
 													<!-- <i class="fab fa-instagram"></i> -->
 													<h6>52,085</h6>
 													<p>Follows</p>
+												</div>
+											</div>
+											
+											<div class="col-xl-3 col-sm-6 col-12">
+												<div class="card flex-fill twitter sm-box">
+													<!-- <i class="fab fa-twitter"></i> -->
+													<h6><?php echo $rank3; ?></h6>
+													<p>Sports Rank</p>
 												</div>
 											</div>
 						
@@ -169,6 +200,11 @@ $run2 = mysqli_fetch_assoc($run2);
 					</div>	
 					
 					<div class="row">
+					<style>
+						.checked {
+							color: orange;
+							}
+					</style>
 						<?php
 							$query = "SELECT s.subject_name as subject_name,ROUND(sum(credits)/5) as num,loc.subject_id as subject_id FROM `learning_outcomes_credits` loc,subjects s WHERE class_id='$class_id' and student_id='$student_id' and s.subject_id=loc.subject_id GROUP BY loc.subject_id";
 							$run = mysqli_query($con,$query);
@@ -176,17 +212,22 @@ $run2 = mysqli_fetch_assoc($run2);
 							foreach($run as $id)
 							{
 								$cc = (int)$id['num'];
-								$star = '⭐';
-								for($i=1;$i<$cc;$i++)
-								{
-									$star = $star . '⭐';
-								}
 								$sum = mysqli_query($con, "SELECT type FROM `conclusion` WHERE id='$cc'");
 								echo'
 								<div class="col-12 col-md-6 col-lg-4 d-flex">
 									<div class="card flex-fill">
 										<div class="card-header">
-											<h5 class="card-title mb-0">'.$id['subject_name'].'<br><br>Credits : '.$star.'</h5>
+											<h5 class="card-title mb-0">'.$id['subject_name'].'<br><br>Credits : ';
+											for($i=1;$i<=$cc;$i++)
+											{
+												echo '<span class="fa fa-star checked"></span>';
+											}
+											$k = 6 - $i;
+											for($i=0;$i<$k;$i++)
+											{
+												echo '<span class="fa fa-star"></span>';
+											}
+											echo '</h5>
 										</div>
 										<div class="card-body">
 											<h6 class="card-text" >Your Score </h6><br>

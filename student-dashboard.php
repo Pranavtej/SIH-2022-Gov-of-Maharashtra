@@ -37,6 +37,14 @@ else{
         $y[] = $data['subject_name'];
         $x[]=$data['marks'];
     }
+
+	$q="SELECT e.marks,s.sport_name FROM sports_marks e,sports s WHERE student_id='$student_id' AND s.sport_id=e.sport_id;";
+    $r=mysqli_query($con,$q) or die(mysqli_error);
+     foreach($r as $d)
+     {
+        $l[] = $d['sport_name'];
+        $m[]=$d['marks'];
+    }
     }
 
 	$qu="select e.student_id as sid from exam_totals e,student s where e.eid='$eid' and e.school_id='$school_id' and e.student_id=s.student_id and s.class_id='$class_id' order by e.total desc";
@@ -339,6 +347,11 @@ else{
 												<ul class="activity-feed">
 													<li class="feed-item">
 														<div class="feed-date1">Current Academic Year 2021-2022 </div>
+														<style>
+															.checked {
+																color: orange;
+																}
+														</style>
 														<?php
 															$exam = array("UT1","FA1","UT2","FA2","AEE");
 															foreach($exam as $eid)
@@ -372,18 +385,22 @@ else{
 							foreach($run as $id)
 							{
 								$cc = (int)$id['num'];
-								$star = '⭐';
-								for($i=1;$i<$cc;$i++)
-								{
-									$star = $star . '⭐'.'☆'; 
-									//<i class="icon-star-empty"></i> icon-star-empty
-								}
 								$sum = mysqli_query($con, "SELECT type FROM `conclusion` WHERE id='$cc'");
 								echo'
 								<div class="col-12 col-md-6 col-lg-4 d-flex"><a href="student-detailed-view.php?suid=SUB0603">
 									<div class="card flex-fill">
 										<div class="card-header">
-											<h5 class="card-title mb-0">'.$id['subject_name'].'<br><br>Credits : '.$star.'</h5>
+											<h5 class="card-title mb-0">'.$id['subject_name'].'<br><br>Credits : ';
+											for($i=1;$i<=$cc;$i++)
+											{
+												echo '<span class="fa fa-star checked"></span>';
+											}
+											$k = 6 - $i;
+											for($i=0;$i<$k;$i++)
+											{
+												echo '<span class="fa fa-star"></span>';
+											}
+											echo '</h5>
 										</div>
 										
 									</a></div>
@@ -501,10 +518,10 @@ const ctxcc = document.getElementById('ccscore');
 const myChartcc = new Chart(ctxcc, {
     type: 'doughnut',
     data: {
-        labels:  <?php echo json_encode($y)?>, 
+        labels:  <?php echo json_encode($l)?>, 
         datasets: [{
             label: 'MARKS SCORED',
-            data: <?php echo json_encode($x)?>,
+            data: <?php echo json_encode($m)?>,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
