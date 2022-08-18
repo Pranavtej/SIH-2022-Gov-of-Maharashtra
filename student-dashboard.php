@@ -518,10 +518,10 @@ const ctxcc = document.getElementById('ccscore');
 const myChartcc = new Chart(ctxcc, {
     type: 'doughnut',
     data: {
-        labels:  <?php echo json_encode($l)?>, 
+        labels:  <?php echo json_encode($y)?>, 
         datasets: [{
             label: 'MARKS SCORED',
-            data: <?php echo json_encode($m)?>,
+            data: <?php echo json_encode($x)?>,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
