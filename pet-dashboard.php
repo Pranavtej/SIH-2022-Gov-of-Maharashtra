@@ -21,12 +21,12 @@
      $teacher_dob=$_SESSION['DOB']=$run['teacher_dob'];
      $teacher_mobile=$_SESSION['MOBILE']=$run['teacher_mob'];
      $teacher_email=$_SESSION['EMAIL']=$run['teacher_email'];
-     $query="select COUNT(student_id) as cont from `student` where school_id='$sid'";
+     $query="select distinct COUNT(student_id) as cont from `student` where school_id='$sid'";
      $result=mysqli_query($con,$query);
      $result=mysqli_fetch_assoc($result);
      $_SESSION['COUNT_STUDENT']=$result['cont'];
      $count_student=$_SESSION['COUNT_STUDENT'];
-     $stat="select count(*) as ts from sports_marks where school_id='$sid'";
+     $stat="select distinct count(*) as ts from sports_marks where school_id='$sid'";
      $res=mysqli_query($con,$stat);
      $res=mysqli_fetch_assoc($res);
      $totalstudent_sports=$res['ts'];
