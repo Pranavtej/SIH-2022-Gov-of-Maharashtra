@@ -85,6 +85,14 @@ include 'pet-menu.php';
 <div class="page-wrapper">
 <div class="content container-fluid">
 <div class="page-header">
+<div class="row align-items-center">
+							<div class="col">
+								<h3 class="page-title">Achivements </h3>
+								<ul class="breadcrumb">
+									<li class="breadcrumb-item"><a href="#">Sports teacher </a></li>
+									<li class="breadcrumb-item active">Achivements</li>
+								</ul>
+							</div>
 <div class="row">
 						
 								<div class="col-12 col-md-6 col-lg-4 d-flex">
