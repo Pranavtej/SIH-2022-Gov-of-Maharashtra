@@ -284,10 +284,10 @@ const ctx_2 = document.getElementById('cpscore');
 const myChart = new Chart(ctx_2, {
     type: 'line',
     data: {
-        labels:  <?php echo json_encode($y)?>, 
+        labels:  <?php echo json_encode($y) ;?>, 
         datasets: [{
             label: 'class performance',
-            data: <?php echo json_encode($x)?>,
+            data: <?php echo json_encode($x) ;?>,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -309,7 +309,7 @@ const myChart = new Chart(ctx_2, {
         {
         label: 'Average',
         type: 'line',
-           data:<?php echo json_encode($x)?>,
+           data:<?php echo json_encode($x);?>,
            // this dataset is drawn below0
            order: 2,
            backgroundColor: [
