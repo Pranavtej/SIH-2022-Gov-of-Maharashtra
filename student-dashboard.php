@@ -39,7 +39,7 @@ else{
     }
 
 	$q="SELECT e.marks,s.sport_name FROM sports_marks e,sports s WHERE student_id='$student_id' AND s.sport_id=e.sport_id;";
-    $r=mysqli_query($con,$query) or die(mysqli_error);
+    $r=mysqli_query($con,$q) or die(mysqli_error);
      foreach($r as $d)
      {
         $l[] = $d['sport_name'];
