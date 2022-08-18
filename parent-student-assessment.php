@@ -1,7 +1,38 @@
 <?php
 include "connect.php";
-$sql="select question from assessment_questions where assessment_id='FA'";
+session_start();
+
+$school_id = $_SESSION['SCHOOL_ID'] ;
+$student_id = $_SESSION['STUDENT_ID'];
+$class_id = $_SESSION['CLASS_ID'] ;
+
+$query = mysqli_query($con, "select * from parent_student_assesment where school_id='$school_id' and class_id='$class_id' and student_id='$student_id'");
+$count = mysqlI_num_rows($query);
+
+if($count !=0)
+{
+	echo "<script>alert('Already Given')</script>";
+	echo "<script>document.location='parent-dashboard.php'</script>";
+
+}
+
+$sql="select question_id as ai,question from assessment_questions where assessment_id='FA'";
 $query=mysqli_query($con,$sql);
+
+if(isset($_POST['submit']))
+{
+	$sql="select question_id as ai from assessment_questions where assessment_id='FA'";
+	$query=mysqli_query($con,$sql);
+	foreach($query as $data)
+	{
+		$d = $data['ai'];
+		$mark = $_POST[$d];
+
+		$insert = mysqli_query($con,"INSERT INTO `parent_student_assesment` (`school_id`, `student_id`, `question_id`, `class_id`, `marks`) VALUES ('$school_id', '$student_id', '$d', '$class_id', '$mark')");
+	}
+	echo "<script>document.location='parent-dashboard.php'</script>";
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -54,34 +85,56 @@ $query=mysqli_query($con,$sql);
 						</div>
 					</div>
 					<!-- /Page Header -->
-<form action="" method="post">
-
-
- 
-	<?php 
-	$i=0;
-	foreach($query as $data){
-		
-		echo
-			
-' <div class="form-group">
-<h5> '.$data['question'].'
- <select name="" id="cars">
-  <option value=>1</option>
-  <option value=>2</option>
-  <option value=>3</option>
-  <option value=>4</option>
-  <option value=>5</option>
-</select></h5>
-</div>';
-
-		}
-?>
-<div class="form-group">
-<input type="submit" value="Submit" name="submit" class="btn btn-primary"/>
-</div>
-</form>
-</div>				
+					<div class="row">
+						<div class="col-sm-12">
+						
+							<div class="card card-table">
+								<div class="card-body">
+									<div class="table-responsive">
+										<table class="table table-hover table-center">
+											<thead>
+												<tr>
+													<th>S No</th>
+													<th>Question</th>
+													<th>Mark</th>
+												</tr>
+											</thead>
+											<form method="post">
+												<tbody>
+													<?php
+														$i = 0;
+														foreach($query as $data)
+														{
+															echo
+															'<tr>
+																<td>'.++$i.'</td>
+																<td name="'.$data['ai'].'">'.$data['question'].'</td>
+																<td>
+																	<div class="form-group">
+																	<div>
+																		<select name="'.$data['ai'].'" class="form-control form-select"required>
+																			<option value="">-- Select --</option>
+																			<option value=1>1</option>
+																			<option value=2>2</option>
+																			<option value=3>3</option>
+																			<option value=4>4</option>
+																			<option value=5>5</option>
+																		</select>
+																	</div>
+																</td>
+															</tr>';
+														}
+													?>
+												</tbody>
+												<input type="submit" class="btn btn-primary" name="submit">
+											</form>
+										</table>
+									</div>
+								</div>
+							</div>							
+						</div>					
+					</div>
+				
 			</div>
 			<!-- /Page Wrapper -->
 			
