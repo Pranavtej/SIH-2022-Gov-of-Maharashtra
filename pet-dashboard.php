@@ -342,8 +342,8 @@ const myChart = new Chart(ctx_2, {
 															foreach($exam as $spid)
 															{
 																$qu1="SELECT MAX(e.marks) as high,s.student_name as name1,s.class_id as class_id1,a.sport_name as sname FROM sports_marks e,student s,sports a WHERE e.sport_id='$spid' AND s.student_id=e.student_id AND e.school_id='$sid' AND a.sport_id='$spid'";
-    															$re1=mysqli_query($con,$qu1);
-																$re1 = mysqli_fetch_assoc($re1);
+    															$re=mysqli_query($con,$qu1);
+																$re1 = mysqli_fetch_assoc($re);
 																echo '
 																<span class="feed-text1"><a>'.$re1['sname'].'</a></span>
                                                                 <p>'.$re1['name1'].' - '.$re1['class_id1'].'</span></p>
