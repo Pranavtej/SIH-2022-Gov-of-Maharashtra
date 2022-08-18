@@ -45,6 +45,31 @@ foreach($qu1 as $data)
 	}
 }
 
+$qu5="select student_id as sid,SUM(marks) as sum from cocircular_marks where   class_id='$class_id' and school_id='$school_id' GROUP BY student_id order by sum desc";
+$re5=mysqli_query($con,$qu5);
+$varc=0;
+foreach($re5 as $data)
+{
+	$varc=$varc+1;
+	if($data['sid']==$student_id)
+	{
+		$ccarank = $varc;
+		break;
+	}
+}
+$qu6="select c.student_id as sid,SUM(c.marks+e.total) as sum from cocircular_marks c,exam_marks e where   e.class_id='$class_id' and e.school_id='$school_id' and e.student_id=c.student_id and e.student_id=c.student_id GROUP BY student_id order by sum desc";
+$re6=mysqli_query($con,$qu5);
+$varc=0;
+foreach($re6 as $data)
+{
+	$varo=$varo+1;
+	if($data['sid']==$student_id)
+	{
+		$ovrank = $varo;
+		break;
+	}
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -158,11 +183,11 @@ foreach($qu1 as $data)
 											<div class="col-xl-3 col-sm-6 col-12">
 												<div class="card flex-fill insta sm-box">
 													<!-- <i class="fab fa-instagram"></i> -->
-													<h6>52,085</h6>
-													<p>Follows</p>
+													<h6><?php echo $ccarank; ?></h6>
+													<p>CCA Rank</p>
 												</div>
 											</div>
-											
+
 											<div class="col-xl-3 col-sm-6 col-12">
 												<div class="card flex-fill twitter sm-box">
 													<!-- <i class="fab fa-twitter"></i> -->
@@ -174,8 +199,8 @@ foreach($qu1 as $data)
 											<div class="col-xl-3 col-sm-6 col-12">
 												<div class="card flex-fill linkedin sm-box">
 													<!-- <i class="fab fa-linkedin-in"></i> -->
-													<h6>69,050</h6>
-													<p>Follows</p>
+													<h6><?php echo $ovrank; ?></h6>
+													<p>Overall Rank</p>
 												</div>
 											</div>
 										</div>
