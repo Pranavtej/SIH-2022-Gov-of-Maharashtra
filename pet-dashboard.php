@@ -39,12 +39,12 @@
      $tc=mysqli_fetch_assoc($result2);
      $_SESSION['GC']=$tc['TC'];
 
-     $stat2="SELECT COUNT(*) as sum,c.class FROM sports_marks e,classes c WHERE e.school_id="$sid" AND e.class_id=c.class_id group by class";
+     $stat2="SELECT COUNT(*) as sum,c.class FROM sports_marks e,classes c WHERE e.school_id='$sid' AND e.class_id=c.class_id group by class";
      $res2=mysqli_query($con,$stat2);
      while($data=mysqli_fetch_assoc($res2))
      {
         $y[] = $data['class'];
-         $x[] = $data['sum'];
+        $x[] = $data['sum'];
      }
 
     
