@@ -12,7 +12,7 @@
 	$sql1= mysqli_query($con,"select avg(marks) as av,sct.class_id as cls from exam_marks as e,schoolwise_class_subject_teachers as sct,classes as c where sct.teacher_id='TE0001' and e.class_id=sct.class_id and e.subject_id=sct.subject_id group by sct.class_id ");
     // $sql2= mysqli_query($con,"select (class,section) as cls from classes where class_id=(select sct.class_id from exam_marks as e,schoolwise_class_subject_teachers as sct,classes as c where sct.teacher_id='TE0001' and e.class_id=sct.class_id and e.subject_id=sct.subject_id group by sct.class_id)");
 	foreach($sql1 as $d){
-  $x[]=$d['avg'];
+  $x[]=$d['av'];
   $y[]=$d['cls'];
 }
 //  foreach($sql1 as $d){ 
