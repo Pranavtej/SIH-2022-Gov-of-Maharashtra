@@ -87,7 +87,8 @@ if(empty($_SESSION['SCHOOL_ID'])){
 					<!-- Overview Section -->
 					<div class="row">
 						<div class="col-xl-3 col-sm-6 col-12 d-flex">
-							<div class="card bg-one w-100"><a href="school-admin-student-list.php">
+							<div class="card bg-one w-100">
+								<a href="school-admin-student-list.php">
 								<div class="card-body">
 									<div class="db-widgets d-flex justify-content-between align-items-center">
 										<div class="db-icon">
@@ -99,13 +100,14 @@ if(empty($_SESSION['SCHOOL_ID'])){
 											</h3>
 											<h6>Students</h6>
 										</div>										
-									</div>
-							</a></div>
+									</div></a>
+								</div>
 							</div>
 						</div>
 
 						<div class="col-xl-3 col-sm-6 col-12 d-flex">
 							<div class="card bg-two w-100">
+							<a href="school-admin-teacher-list.php">
 								<div class="card-body">
 									<div class="db-widgets d-flex justify-content-between align-items-center">
 										<div class="db-icon">
@@ -116,24 +118,24 @@ if(empty($_SESSION['SCHOOL_ID'])){
 												?></h3>
 											<h6>Teachers</h6>
 										</div>										
-									</div>
+									</div></a>
 								</div>
 							</div>
 				</div>
 
 						<div class="col-xl-3 col-sm-6 col-12 d-flex">
 							<div class="card bg-three w-100">
+							<a href="school-admin-section-list.php">
 								<div class="card-body">
 									<div class="db-widgets d-flex justify-content-between align-items-center">
 										<div class="db-icon">
 											<i class="fas fa-building"></i>
 										</div>
 										<div class="db-info">
-											<h3><?php echo $c['total']
-												?></h3>
+											<h3>6-10</h3>
 											<h6>Classes</h6>
 										</div>										
-									</div>
+									</div></a>
 								</div>
 							</div>
 						</div>
