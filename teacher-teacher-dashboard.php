@@ -9,11 +9,12 @@
 
     $sql = mysqli_query($con,"select teacher_name from teacher_info where teacher_id='$teacher_id' and school_id='$school_id'");
     $run = mysqli_fetch_assoc($sql);
-	$sql1= mysqli_query($con,"select avg(marks) as av,sct.class_id as cls from exam_marks as e,schoolwise_class_subject_teachers as sct,classes as c where sct.teacher_id='TE0001' and e.class_id=sct.class_id and e.subject_id=sct.subject_id group by sct.class_id ");
-    // $sql2= mysqli_query($con,"select (class,section) as cls from classes where class_id=(select sct.class_id from exam_marks as e,schoolwise_class_subject_teachers as sct,classes as c where sct.teacher_id='TE0001' and e.class_id=sct.class_id and e.subject_id=sct.subject_id group by sct.class_id)");
+	$sql1= mysqli_query($con,"select avg(marks) as av,sct.class_id as cls,max(marks) as max from exam_marks as e,schoolwise_class_subject_teachers as sct,classes as c where sct.teacher_id='TE0001' and e.class_id=sct.class_id and e.subject_id=sct.subject_id group by sct.class_id ");
+    // $sql2= mysqli_query($con,"select max(marks) from exam_marks as e,schoolwise_class_subject_teachers as sct,classes as c where sct.teacher_id='TE0001' and e.class_id=sct.class_id and e.subject_id=sct.subject_id group by sct.class_id)");
 	foreach($sql1 as $d){
-  $x[]=$d['avg'];
+  $x[]=$d['av'];
   $y[]=$d['cls'];
+  $m[]=$d['max'];
 }
 //  foreach($sql1 as $d){ 
 	
@@ -67,7 +68,7 @@
 					<div class="page-header">
 						<div class="row">
 							<div class="col-sm-12">
-								<h3 class="page-title">Welcome <?php echo $run['teacher_name']; echo json_encode($x); ?></h3>
+								<h3 class="page-title">Welcome <?php echo $run['teacher_name'];  ?></h3>
 								<ul class="breadcrumb">
 									<h4><li class="breadcrumb-item active">Teacher</li></h4>
 								</ul>
@@ -179,8 +180,8 @@ type: 'bar',
 data: {
 labels: <?php echo json_encode($y)?> ,
 datasets: [{
-label: 'class performance',
-data: <?php echo json_encode($x)?>,
+label: 'Highest Marks',
+data: <?php echo json_encode($m)?>,
 backgroundColor: [
 'rgba(255, 99, 132, 0.2)',
 'rgba(54, 162, 235, 0.2)',
@@ -202,7 +203,7 @@ borderWidth: 1
 {
 label: 'Average',
 type: 'line',
-data:[369.54545454545456095729605294764041900634765625,369.54545454545456095729605294764041900634765625,369.54545454545456095729605294764041900634765625,369.54545454545456095729605294764041900634765625,369.54545454545456095729605294764041900634765625,369.54545454545456095729605294764041900634765625,369.54545454545456095729605294764041900634765625,369.54545454545456095729605294764041900634765625,369.54545454545456095729605294764041900634765625,369.54545454545456095729605294764041900634765625,369.54545454545456095729605294764041900634765625,369.54545454545456095729605294764041900634765625],
+data:<?php echo json_encode($x)?>,
 // this dataset is drawn below0
 order: 2,
 backgroundColor: [
