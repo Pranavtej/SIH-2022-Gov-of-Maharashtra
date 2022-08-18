@@ -282,7 +282,7 @@ include 'pet-menu.php';
     
 const ctx_2 = document.getElementById('cpscore');
 const myChart = new Chart(ctx_2, {
-    type: 'line',
+    type: 'bar',
     data: {
         labels:  <?php echo json_encode($y) ;?>, 
         datasets: [{
