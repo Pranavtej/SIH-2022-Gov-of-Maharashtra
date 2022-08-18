@@ -169,19 +169,19 @@ include 'pet-menu.php';
 </div>
 <div class="col-xl-3 col-sm-6 col-12 d-flex">
 <div class="card bg-eight w-100">
-<div class="card-body">
+<a href="pet-sports-list.php"><div class="card-body">
 <div class="db-widgets d-flex justify-content-between align-items-center">
 <div class="db-icon">
 <i class="fas fa-clock"></i>
 </div>
 <div class="db-info">
-<a href="pet-sports-list.php"><h3>Sports</h3>
-<h6>list</h6></a>
+<h3>Sports</h3>
+<h6>list</h6>
 </div>
 </div>
 </div>
 </div>
-</div>
+</div></a>
 </div>
 
 
