@@ -196,12 +196,12 @@ include 'pet-menu.php';
 <h5 class="card-title">Top Scorers</h5>
 </div>
 <div class="col-6">
-<!-- <span class="float-end view-link"><a href="#">View All Courses</a></span> -
+<span class="float-end view-link"><a href="#">View All Courses</a></span> -
 </div>
 </div>
 </div>
 <div class="pt-3 pb-3">
-<!-- <div class="table-responsive lesson"> -
+<div class="table-responsive lesson"> -
 <table class="table table-center">
 <tbody>
 <tr>
@@ -322,134 +322,50 @@ const myChart = new Chart(ctx_2, {
 </div>
 </div>
 
+<div class="col-12 col-lg-12 col-xl-4 d-flex">
+									<div class="card flex-fill">
+										<div class="card-header">
+											<h5 class="card-title">LeaderBoard</h5>
+										</div>
+										<div class="card-body">
+											<div class="teaching-card">
+												<ul class="activity-feed">
+													<li class="feed-item">
+														<div class="feed-date1">Current Academic Year 2021-20</div>
+														<style>
+															.checked {
+																color: orange;
+																}
+														</style>
+														<?php
+															$exam = array("SP0001","SP0002","SP0003","SP0004");
+															foreach($exam as $spid)
+															{
+																$qu1="SELECT MAX(e.marks) as high,s.student_name as name1,s.class_id as class_id1,a.sport_name as sname FROM sports_marks e,student s,sports a WHERE e.sport_id='$spid' AND s.student_id=e.student_id AND e.school_id='$sid' AND a.sport_id='$spid'";
+    															$re1=mysqli_query($con,$qu1);
+																$re1 = mysqli_fetch_assoc($re1);
+																echo '
+																<span class="feed-text1"><a>'.$re1['sname'].'</a></span>
+                                                                <p>'.$re1['name1'].' - '.$re1['class_id1'].'</span></p>
+																<p><span>Score :'.$re1['high'].'</span></p>';
+															}
+														?>
+													</li>
+													<li class="feed-item">
+														<!-- <div class="feed-date1">old  Acdemic Year</div>
+														<span class="feed-text1"><a>Score</a></span>
+														<p>Completed</p> -->
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+								
 
 
 
-
-<div class="col-12 col-lg-4 col-xl-4 d-flex">
-<div class="card flex-fill">
-<div class="card-header">
-<div class="row align-items-center">
-<div class="col-12">
-<h5 class="card-title">Semester Progress</h5>
-</div>
-</div>
-</div>
- <!-- average percentage here------------------------->
-<div class="dash-widget">
-<div class="circle-bar circle-bar1">
-<div class="circle-graph1" data-percent="50">
-<b>50%</b>
-</div>
-</div>
-<div class="dash-info">
-<h6>Lesson Progressed</h6>
-<h4>30 <span>/ 60</span></h4>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- <div class="row">
-<div class="col-12 col-lg-6 col-xl-8 d-flex">
-<div class="card flex-fill">
-<div class="card-header">
-<div class="row align-items-center">
-<div class="col-6">
-<h5 class="card-title">Teaching Activity</h5>
-</div>
-<div class="col-6">
-<ul class="list-inline-group text-end mb-0 ps-0">
-<li class="list-inline-item">
-<div class="form-group mb-0 amount-spent-select">
-<select class="form-control form-control-sm form-select">
-<option>Weekly</option>
-<option>Monthly</option>
-<option>Yearly</option>
-</select>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="card-body">
-<div id="apexcharts-area"></div>
-</div>
-</div> -->
-</div>
-<!-- <div class="col-12 col-lg-6 col-xl-4 d-flex">
-<div class="card flex-fill">
-<div class="card-header">
-<h5 class="card-title">Teaching History</h5>
-</div>
-<div class="card-body">
-<div class="teaching-card">
-<ul class="activity-feed">
-<li class="feed-item">
-<div class="feed-date1">Sep 05, 9 am - 10 am (60min)</div>
-<span class="feed-text1"><a>Lorem ipsum dolor</a></span>
-<p><span>In Progress</span></p>
-</li>
-<li class="feed-item">
-<div class="feed-date1">Sep 04, 2 pm - 3 pm (70min)</div>
-<span class="feed-text1"><a>Et dolore magna</a></span>
-<p>Completed</p>
-</li>
-<li class="feed-item">
-<div class="feed-date1">Sep 02, 1 pm - 2 am (80min)</div>
-<span class="feed-text1"><a>Exercitation ullamco</a></span>
-<p>Completed</p>
-</li>
-<li class="feed-item">
-<div class="feed-date1">Aug 30, 10 am - 12 pm (90min)</div>
-<span class="feed-text1"><a>Occaecat cupidatat</a></span>
-<p>Completed</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="col-12 col-lg-12 col-xl-3 d-flex">
-<div class="card flex-fill">
-<div class="card-header">
-<div class="row align-items-center">
-<div class="col-12">
-<h5 class="card-title">Calendar</h5>
-</div>
-</div>
-</div>
-<div class="card-body">
-<div id="calendar-doctor" class="calendar-container"></div>
-<div class="calendar-info calendar-info1">
-<div class="calendar-details">
-<p>09 am</p>
-<h6 class="calendar-blue d-flex justify-content-between align-items-center">Fermentum <span>09am - 10pm</span></h6>
-</div>
-<div class="calendar-details">
-<p>10 am</p>
-<h6 class="calendar-violet d-flex justify-content-between align-items-center">Pharetra et <span>10am - 11am</span></h6>
-</div>
-<div class="calendar-details">
-<p>11 am</p>
-<h6 class="calendar-red d-flex justify-content-between align-items-center">Break <span>11am - 11.30am</span></h6>
-</div>
-<div class="calendar-details">
-<p>12 pm</p>
-<h6 class="calendar-orange d-flex justify-content-between align-items-center">Massa <span>11.30am - 12.00pm</span></h6>
-</div>
-<div class="calendar-details">
-<p>09 am</p>
-<h6 class="calendar-blue d-flex justify-content-between align-items-center">Fermentum <span>09am - 10pm</span></h6>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div> -->
 
 </div>
 

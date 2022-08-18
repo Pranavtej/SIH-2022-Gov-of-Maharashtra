@@ -93,7 +93,12 @@ include 'pet-menu.php';
 </div>
 <div>
 <h5>Search</h5>
-<input type="text" name="name" id="myInput" onkeyup="searchFun()">
+
+
+<input type="text" class="form-control"  name="name" id="myInput" onkeyup="searchFun()">
+<!-- <button class="btn" type="submit"><i class="fas fa-search"></i></button> -->
+<br>
+</div>
 <!-- <form class="filteroption" action="" method="post">
     <select id="select" class="form-control form-select" name="select" >
 
