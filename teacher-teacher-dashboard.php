@@ -180,7 +180,7 @@ type: 'bar',
 data: {
 labels: <?php echo json_encode($y)?> ,
 datasets: [{
-label: 'class performance',
+label: 'Highest Marks',
 data: <?php echo json_encode($m)?>,
 backgroundColor: [
 'rgba(255, 99, 132, 0.2)',
