@@ -286,7 +286,7 @@ const myChart = new Chart(ctx_2, {
     data: {
         labels:  <?php echo json_encode($y) ;?>, 
         datasets: [{
-            label: 'Sports Performance',
+            label: 'Sports Performance ',
             data: <?php echo json_encode($x) ;?>,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
