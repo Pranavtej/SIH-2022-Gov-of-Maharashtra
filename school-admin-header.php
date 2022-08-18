@@ -30,7 +30,7 @@
             <ul class="nav user-menu">
 
                 <!-- Notifications -->
-                <li class="nav-item dropdown noti-dropdown">
+                <!-- <li class="nav-item dropdown noti-dropdown">
                     <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
                         <i class="far fa-bell"></i> <span class="badge badge-pill">3</span>
                     </a>
@@ -99,7 +99,7 @@
                             <a href="#">View all Notifications</a>
                         </div>
                     </div>
-                </li>
+                </li> -->
                 <!-- /Notifications -->
                 
                 <!-- User Menu -->

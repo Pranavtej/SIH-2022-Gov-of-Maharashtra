@@ -21,42 +21,56 @@
      $teacher_dob=$_SESSION['DOB']=$run['teacher_dob'];
      $teacher_mobile=$_SESSION['MOBILE']=$run['teacher_mob'];
      $teacher_email=$_SESSION['EMAIL']=$run['teacher_email'];
-     $query="select COUNT(student_id) as cont from `student` where school_id='$sid'";
+     $query="select distinct COUNT(student_id) as cont from `student` where school_id='$sid'";
      $result=mysqli_query($con,$query);
      $result=mysqli_fetch_assoc($result);
      $_SESSION['COUNT_STUDENT']=$result['cont'];
      $count_student=$_SESSION['COUNT_STUDENT'];
-    /* $boy="select count(*) as BC from student where class_id='$class_id' and gender='M'";
+     $stat="select distinct count(*) as ts from sports_marks where school_id='$sid'";
+     $res=mysqli_query($con,$stat);
+     $res=mysqli_fetch_assoc($res);
+     $totalstudent_sports=$res['ts'];
+     $boy="select count(*) as BC from student where school_id='$sid' AND gender='M'";
      $result1=mysqli_query($con,$boy);
      $bc=mysqli_fetch_assoc($result1);
      $_SESSION['BC']=$bc['BC'];
-     $ot="select count(*) as TC from student where class_id='$class_id'";
+     $ot="select count(*) as TC from student where school_id='$sid' AND gender='F'";
      $result2=mysqli_query($con,$ot);
      $tc=mysqli_fetch_assoc($result2);
-     $_SESSION['TC']=$tc['TC'];
+     $_SESSION['GC']=$tc['TC'];
 
-    $quer="SELECT distinct e.student_id,(e.total+a.TOTAL+c.TOTAL+s.TOTAL) as TOT
-    FROM exam_totals e,academic_points a,ccapoints c, spoints s,student t,class cl 
-    WHERE e.student_id=a.sid and a.sid=c.sid and c.sid=s.SID and s.sid=t.sid and t.cid='$ci'";
-    $re=mysqli_query($con,$quer) or die(mysqli_error());
+     $stat2="SELECT COUNT(*) as sum,c.class FROM sports_marks e,classes c WHERE e.school_id='$sid' AND e.class_id=c.class_id group by class ";
+     $res2=mysqli_query($con,$stat2);
+     while($data=mysqli_fetch_assoc($res2))
+     {
+        $y[] = $data['class'];
+        $x[] = $data['sum'];
+     }
+
     
-    $total=0;
-    foreach($re as $data)
-    {
-        $y[] = $data['sid'];
-        $x[] = $data['TOT'];
-        $total=$total+$data['TOT'];
-    }
-    $count=mysqli_num_rows($re);
-    $total=$total/$count;
-    $i=0;
-    while($i<=$count)
-    {
-        $z[]=$total;
-        $i=$i+1;
-    }*/
 
-    }
+    // $quer="SELECT distinct e.student_id,(e.total+a.TOTAL+c.TOTAL+s.TOTAL) as TOT
+    // FROM exam_totals e,academic_points a,ccapoints c, spoints s,student t,class cl 
+    // WHERE e.student_id=a.sid and a.sid=c.sid and c.sid=s.SID and s.sid=t.sid and t.cid='$ci'";
+    // $re=mysqli_query($con,$quer) or die(mysqli_error());
+    
+    // $total=0;
+    // foreach($re as $data)
+    // {
+    //     $y[] = $data['sid'];
+    //     $x[] = $data['TOT'];
+    //     $total=$total+$data['TOT'];
+    // }
+    // $count=mysqli_num_rows($re);
+    // $total=$total/$count;
+    // $i=0;
+    // while($i<=$count)
+    // {
+    //     $z[]=$total;
+    //     $i=$i+1;
+    // }*/
+
+     }
 ?>
 
 
@@ -116,8 +130,8 @@ include 'pet-menu.php';
 <i class="fas fa-chalkboard"></i>
 </div> -->
 <div class="db-info">
-<h3><?php echo $count_student; ?></h3>
-<h6>Total Students</h6>
+<h3>Acheivements</h3>
+<h6>Of Students</h6>
 </div>
 </div>
 </div>
@@ -131,7 +145,7 @@ include 'pet-menu.php';
 <i class="fas fa-user-graduate"></i>
 </div>-->
 <div class="db-info">
-<h3>180</h3>
+<h3><?php echo $totalstudent_sports;?>/<?php echo $count_student;?></h3>
 <h6>Total Students in sports</h6>
 </div>
 </div>
@@ -146,8 +160,8 @@ include 'pet-menu.php';
 <i class="fas fa-book-open"></i>
 </div> -->
 <div class="db-info">
-<h3>65</h3>
-<h6>Total Girls players</h6>
+<h3><?php echo $_SESSION['BC'];?>/<?php echo $_SESSION['GC'];?></h3>
+<h6>Total Boys And Girls Ratio</h6>
 </div>
 </div>
 </div>
@@ -155,19 +169,19 @@ include 'pet-menu.php';
 </div>
 <div class="col-xl-3 col-sm-6 col-12 d-flex">
 <div class="card bg-eight w-100">
-<div class="card-body">
+<a href="pet-sports-list.php"><div class="card-body">
 <div class="db-widgets d-flex justify-content-between align-items-center">
 <div class="db-icon">
 <i class="fas fa-clock"></i>
 </div>
 <div class="db-info">
-<h3>15/20</h3>
-<h6>Total Hours</h6>
+<h3>Sports</h3>
+<h6>list</h6>
 </div>
 </div>
 </div>
 </div>
-</div>
+</div></a>
 </div>
 
 
@@ -268,12 +282,12 @@ include 'pet-menu.php';
     
 const ctx_2 = document.getElementById('cpscore');
 const myChart = new Chart(ctx_2, {
-    type: 'line',
+    type: 'bar',
     data: {
-        labels:  <?php echo json_encode($y)?>, 
+        labels:  <?php echo json_encode($y) ;?>, 
         datasets: [{
-            label: 'class performance',
-            data: <?php echo json_encode($x)?>,
+            label: 'Sports Performance',
+            data: <?php echo json_encode($x) ;?>,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -292,31 +306,7 @@ const myChart = new Chart(ctx_2, {
             ],
             borderWidth: 1
         },
-        {
-        label: 'Average',
-        type: 'line',
-           data:<?php echo json_encode($z)?>,
-           // this dataset is drawn below0
-           order: 2,
-           backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-       }]
-    },
+    ]},
     options: {
         scales: {
             y: {

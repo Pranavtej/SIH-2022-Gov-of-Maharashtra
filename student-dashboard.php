@@ -37,6 +37,22 @@ else{
         $y[] = $data['subject_name'];
         $x[]=$data['marks'];
     }
+
+	$query="select m.cocircular_name as cn,c.marks as marks from cocircular_marks c,cocircular m where c.student_id='$student_id' and c.school_id='$school_id' and c.class_id='$class_id' and c.cocircular_id = m.cocircular_id";
+    $result=mysqli_query($con,$query) or die(mysqli_error);
+     foreach($result as $data)
+     {
+        $cn[] = $data['cn'];
+        $ma[]=$data['marks'];
+    }
+
+	$q="SELECT e.marks,s.sport_name FROM sports_marks e,sports s WHERE student_id='$student_id' AND s.sport_id=e.sport_id;";
+    $r=mysqli_query($con,$q) or die(mysqli_error);
+     foreach($r as $d)
+     {
+        $l[] = $d['sport_name'];
+        $m[]=$d['marks'];
+    }
     }
 
 	$qu="select e.student_id as sid from exam_totals e,student s where e.eid='$eid' and e.school_id='$school_id' and e.student_id=s.student_id and s.class_id='$class_id' order by e.total desc";
@@ -60,6 +76,31 @@ else{
         if($data['student_id']==$student_id)
         {
             $rank3 = $var3;
+            break;
+        }
+    }
+
+	$qu5="select student_id as sid,SUM(marks) as sum from cocircular_marks where class_id='$class_id' and school_id='$school_id' GROUP BY student_id order by sum desc";
+	$re5=mysqli_query($con,$qu5);
+    $varc=0;
+    foreach($re5 as $data)
+    {
+        $varc=$varc+1;
+        if($data['sid']==$student_id)
+        {
+            $ccarank = $varc;
+            break;
+        }
+    }
+	$qu6="select c.student_id as sid,SUM(c.marks+e.total+s.marks) as sum from cocircular_marks c,exam_totals e,sports_marks s where e.class_id='$class_id' and e.school_id='$school_id' and e.student_id=c.student_id and e.student_id=c.student_id and e.student_id = s.student_id GROUP BY e.student_id order by sum desc";
+	$re9=mysqli_query($con,$qu6);
+    $v = 0;
+    foreach($re9 as $data)
+    {
+        $v = $v+1;
+        if($data['sid']==$student_id)
+        {
+            $ovrank = $v;
             break;
         }
     }
@@ -145,7 +186,7 @@ else{
 											<i class="fas fa-file-alt"></i>
 										</div>
 										<div class="db-info">
-											<h3><?php echo'C';?></h3>
+											<h3><?php echo $ccarank; ?></h3>
 											<h6>CCA Rank</h6>
 										</div>										
 									</div>
@@ -177,7 +218,7 @@ else{
 											<i class="fas fa-clipboard-check"></i>
 										</div>
 										<div class="db-info">
-											<h3><?php echo'R';?></h3>
+											<h3><?php echo $ovrank; ?></h3>
 											<h6>Rank</h6>
 										</div>										
 									</div>
@@ -339,6 +380,11 @@ else{
 												<ul class="activity-feed">
 													<li class="feed-item">
 														<div class="feed-date1">Current Academic Year 2021-2022 </div>
+														<style>
+															.checked {
+																color: orange;
+																}
+														</style>
 														<?php
 															$exam = array("UT1","FA1","UT2","FA2","AEE");
 															foreach($exam as $eid)
@@ -372,18 +418,22 @@ else{
 							foreach($run as $id)
 							{
 								$cc = (int)$id['num'];
-								$star = '⭐';
-								for($i=1;$i<$cc;$i++)
-								{
-									$star = $star . '⭐'.'☆'; 
-									//<i class="icon-star-empty"></i> icon-star-empty
-								}
 								$sum = mysqli_query($con, "SELECT type FROM `conclusion` WHERE id='$cc'");
 								echo'
 								<div class="col-12 col-md-6 col-lg-4 d-flex"><a href="student-detailed-view.php?suid=SUB0603">
 									<div class="card flex-fill">
 										<div class="card-header">
-											<h5 class="card-title mb-0">'.$id['subject_name'].'<br><br>Credits : '.$star.'</h5>
+											<h5 class="card-title mb-0">'.$id['subject_name'].'<br><br>Credits : ';
+											for($i=1;$i<=$cc;$i++)
+											{
+												echo '<span class="fa fa-star checked"></span>';
+											}
+											$k = 6 - $i;
+											for($i=0;$i<$k;$i++)
+											{
+												echo '<span class="fa fa-star"></span>';
+											}
+											echo '</h5>
 										</div>
 										
 									</a></div>
@@ -430,10 +480,10 @@ const ctxc = document.getElementById('cscore');
 const myChartc = new Chart(ctxc, {
     type: 'pie',
     data: {
-        labels:  <?php echo json_encode($y)?>, 
+        labels:  <?php echo json_encode($cn)?>, 
         datasets: [{
             label: 'MARKS SCORED',
-            data: <?php echo json_encode($x)?>,
+            data: <?php echo json_encode($ma)?>,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -501,10 +551,10 @@ const ctxcc = document.getElementById('ccscore');
 const myChartcc = new Chart(ctxcc, {
     type: 'doughnut',
     data: {
-        labels:  <?php echo json_encode($y)?>, 
+        labels:  <?php echo json_encode($l)?>, 
         datasets: [{
             label: 'MARKS SCORED',
-            data: <?php echo json_encode($x)?>,
+            data: <?php echo json_encode($m)?>,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',

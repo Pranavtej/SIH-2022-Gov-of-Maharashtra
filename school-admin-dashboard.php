@@ -27,6 +27,10 @@ if(empty($_SESSION['SCHOOL_ID'])){
 	foreach($result as $data){
 		$r[]=$data['cls'];
 	}
+   $pass="select count(*) as pass from exam_totals where school_id='$school_id' and eid='AEE' and total>245";
+   $pas=mysqli_query($con,$pass);
+   $pas=mysqli_fetch_assoc($pas);
+
    
 	$query="SELECT count(*) FROM student where school_id='$school_id' group by class_id";
     $result=mysqli_query($con,$query) or die(mysqli_error);
@@ -88,6 +92,7 @@ if(empty($_SESSION['SCHOOL_ID'])){
 					<div class="row">
 						<div class="col-xl-3 col-sm-6 col-12 d-flex">
 							<div class="card bg-one w-100">
+								<a href="school-admin-student-list.php">
 								<div class="card-body">
 									<div class="db-widgets d-flex justify-content-between align-items-center">
 										<div class="db-icon">
@@ -99,13 +104,14 @@ if(empty($_SESSION['SCHOOL_ID'])){
 											</h3>
 											<h6>Students</h6>
 										</div>										
-									</div>
+									</div></a>
 								</div>
 							</div>
 						</div>
 
 						<div class="col-xl-3 col-sm-6 col-12 d-flex">
 							<div class="card bg-two w-100">
+							<a href="school-admin-teacher-list.php">
 								<div class="card-body">
 									<div class="db-widgets d-flex justify-content-between align-items-center">
 										<div class="db-icon">
@@ -116,24 +122,24 @@ if(empty($_SESSION['SCHOOL_ID'])){
 												?></h3>
 											<h6>Teachers</h6>
 										</div>										
-									</div>
+									</div></a>
 								</div>
 							</div>
 				</div>
 
 						<div class="col-xl-3 col-sm-6 col-12 d-flex">
 							<div class="card bg-three w-100">
+							<a href="school-admin-section-list.php">
 								<div class="card-body">
 									<div class="db-widgets d-flex justify-content-between align-items-center">
 										<div class="db-icon">
 											<i class="fas fa-building"></i>
 										</div>
 										<div class="db-info">
-											<h3><?php echo $c['total']
-												?></h3>
+											<h3>6-10</h3>
 											<h6>Classes</h6>
 										</div>										
-									</div>
+									</div></a>
 								</div>
 							</div>
 						</div>
@@ -146,8 +152,8 @@ if(empty($_SESSION['SCHOOL_ID'])){
 											<i class="fas fa-file-invoice-dollar"></i>
 										</div>
 										<div class="db-info">
-											<h3><?php echo $t['total']/$c['total'] ?></h3>
-											<h6>Revenue</h6>
+											<h3><?php echo round(($pas['pass']/$res['total'])*100); echo "%";?></h3>
+											<h6>Pass Percentage</h6>
 										</div>										
 									</div>
 								</div>
