@@ -39,7 +39,7 @@
      $tc=mysqli_fetch_assoc($result2);
      $_SESSION['GC']=$tc['TC'];
 
-     $stat2="SELECT COUNT(*) as sum,c.class FROM sports_marks e,classes c WHERE e.school_id='$sid' AND e.class_id=c.class_id group by class";
+     $stat2="SELECT COUNT(*) as sum,c.class FROM sports_marks e,classes c WHERE e.school_id='$sid' AND e.class_id=c.class_id group by class asc";
      $res2=mysqli_query($con,$stat2);
      while($data=mysqli_fetch_assoc($res2))
      {
@@ -282,11 +282,11 @@ include 'pet-menu.php';
     
 const ctx_2 = document.getElementById('cpscore');
 const myChart = new Chart(ctx_2, {
-    type: 'line',
+    type: 'bar',
     data: {
         labels:  <?php echo json_encode($y) ;?>, 
         datasets: [{
-            label: 'class performance',
+            label: 'Sports Performance  ',
             data: <?php echo json_encode($x) ;?>,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
@@ -306,31 +306,7 @@ const myChart = new Chart(ctx_2, {
             ],
             borderWidth: 1
         },
-        {
-        label: 'Average',
-        type: 'line',
-           data:<?php echo json_encode($x);?>,
-           // this dataset is drawn below0
-           order: 2,
-           backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-       }]
-    },
+    ]},
     options: {
         scales: {
             y: {
