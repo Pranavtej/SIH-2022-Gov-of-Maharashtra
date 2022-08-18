@@ -337,7 +337,8 @@ const myChart = new Chart(ctx_2, {
 																}
 														</style>
 														<?php
-                                                        $exam = array('SP0001','SP0002','SP0003','SP0004');
+                                                        $exam = array();
+                                                        $exam= ['SP0001','SP0002','SP0003','SP0004'];
 															foreach($exam as $spid)
 															{
 																$qu1="select MAX(e.marks) as high,s.student_name as name1,s.class_id as class_id1,a.sport_name as sname FROM sports_marks e,student s,sports a WHERE e.sport_id='$spid' AND s.student_id=e.student_id AND e.school_id='$sid' AND a.sport_id='$spid'";
