@@ -10,7 +10,7 @@
     $sql = mysqli_query($con,"select teacher_name from teacher_info where teacher_id='$teacher_id' and school_id='$school_id'");
     $run = mysqli_fetch_assoc($sql);
 	$sql1= mysqli_query($con,"select avg(marks) as av,sct.class_id as cls,max(marks) as max from exam_marks as e,schoolwise_class_subject_teachers as sct,classes as c where sct.teacher_id='TE0001' and e.class_id=sct.class_id and e.subject_id=sct.subject_id group by sct.class_id ");
-    $sql2= mysqli_query($con,"select max(marks) from exam_marks as e,schoolwise_class_subject_teachers as sct,classes as c where sct.teacher_id='TE0001' and e.class_id=sct.class_id and e.subject_id=sct.subject_id group by sct.class_id)");
+    // $sql2= mysqli_query($con,"select max(marks) from exam_marks as e,schoolwise_class_subject_teachers as sct,classes as c where sct.teacher_id='TE0001' and e.class_id=sct.class_id and e.subject_id=sct.subject_id group by sct.class_id)");
 	foreach($sql1 as $d){
   $x[]=$d['av'];
   $y[]=$d['cls'];
