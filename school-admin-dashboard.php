@@ -153,7 +153,7 @@ if(empty($_SESSION['SCHOOL_ID'])){
 										</div>
 										<div class="db-info">
 											<h3><?php echo round(($pas['pass']/$res['total'])*100); echo "%";?></h3>
-											<h6>Revenue</h6>
+											<h6>Pass Percentage</h6>
 										</div>										
 									</div>
 								</div>
