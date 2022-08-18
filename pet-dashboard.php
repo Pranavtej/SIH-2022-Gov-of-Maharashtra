@@ -331,11 +331,6 @@ const myChart = new Chart(ctx_2, {
 												<ul class="activity-feed">
 													<li class="feed-item">
 														<div class="feed-date1">Current Academic Year 2021-20</div>
-														<style>
-															.checked {
-																color: orange;
-																}
-														</style>
 														<?php
                                                         $exam = array();
                                                         $exam= ['SP0001','SP0002','SP0003','SP0004'];
