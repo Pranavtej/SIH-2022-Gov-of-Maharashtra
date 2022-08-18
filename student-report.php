@@ -169,6 +169,11 @@ $run2 = mysqli_fetch_assoc($run2);
 					</div>	
 					
 					<div class="row">
+					<style>
+						.checked {
+							color: orange;
+							}
+					</style>
 						<?php
 							$query = "SELECT s.subject_name as subject_name,ROUND(sum(credits)/5) as num,loc.subject_id as subject_id FROM `learning_outcomes_credits` loc,subjects s WHERE class_id='$class_id' and student_id='$student_id' and s.subject_id=loc.subject_id GROUP BY loc.subject_id";
 							$run = mysqli_query($con,$query);
@@ -176,17 +181,22 @@ $run2 = mysqli_fetch_assoc($run2);
 							foreach($run as $id)
 							{
 								$cc = (int)$id['num'];
-								$star = '⭐';
-								for($i=1;$i<$cc;$i++)
-								{
-									$star = $star . '⭐';
-								}
 								$sum = mysqli_query($con, "SELECT type FROM `conclusion` WHERE id='$cc'");
 								echo'
 								<div class="col-12 col-md-6 col-lg-4 d-flex">
 									<div class="card flex-fill">
 										<div class="card-header">
-											<h5 class="card-title mb-0">'.$id['subject_name'].'<br><br>Credits : '.$star.'</h5>
+											<h5 class="card-title mb-0">'.$id['subject_name'].'<br><br>Credits : ';
+											for($i=1;$i<=$cc;$i++)
+											{
+												echo '<span class="fa fa-star checked"></span>';
+											}
+											$k = 6 - $i;
+											for($i=0;$i<$k;$i++)
+											{
+												echo '<span class="fa fa-star"></span>';
+											}
+											echo '</h5>
 										</div>
 										<div class="card-body">
 											<h6 class="card-text" >Your Score </h6><br>
