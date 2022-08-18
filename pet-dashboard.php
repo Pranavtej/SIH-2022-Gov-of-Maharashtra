@@ -339,8 +339,8 @@ const myChart = new Chart(ctx_2, {
                                 $re=mysqli_query($con,$qu1);
                                 $re1 = mysqli_fetch_assoc($re);
                                 echo '
-                                <span class="feed-text1"><a>'.$re1['student_name'].'</a></span>
-                                <p><span>Super</span></p>';
+                                <span class="feed-text1"><a></a></span>
+                                <p><span>'.$re1['student_name'].'</span></p>';
                             }
                         ?>
                     </li>
