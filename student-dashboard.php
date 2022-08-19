@@ -193,6 +193,14 @@ else{
 								</div>
 							</div>
 						</div>
+						
+						<script>
+                            var source=new EventSource("student-sports-rank.php");
+                             source.onmessage=function(event)
+                             {
+                              document.getElementById("srank").innerHTML=event.data;
+                              }
+                        </script>
 
 						<div class="col-xl-3 col-sm-6 col-12 d-flex">
 							<div class="card bg-ten w-100">
@@ -202,7 +210,7 @@ else{
 											<i class="fas fa-clipboard-list"></i>
 										</div>
 										<div class="db-info">
-											<h3><?php echo $rank3;?></h3>
+											<h3 id="srank"></h3>
 											<h6>Sports Rank</h6>
 										</div>										
 									</div>
