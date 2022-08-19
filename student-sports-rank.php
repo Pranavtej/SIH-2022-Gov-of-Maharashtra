@@ -36,5 +36,5 @@ include "connect.php";
           }
       }
     }
-echo "data:".$rank3."\n\n";
+echo "data:".json_encode($rank3)."\n\n";
 ?>
