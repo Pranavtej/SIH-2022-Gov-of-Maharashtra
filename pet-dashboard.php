@@ -335,16 +335,17 @@ const myChart = new Chart(ctx_2, {
                         $exam = array("SP0001","SP0002","SP0003","SP0004");
                             foreach($exam as $spid)
                             {
-                                $qu1="select student_name from student where student_id in (select student_id from sports_marks where marks in (select max(marks) from sports_marks where sport_id='$spid') AND sport_id='$spid') LIMIT 1";
+                                //$qu1="select student_name from student where student_id in (select student_id from sports_marks where marks in (select max(marks) from sports_marks where sport_id='$spid') AND sport_id='$spid') LIMIT 1";
+                                $qu1="SELECT MAX(e.marks) AS max,e.student_id,a.student_name,e.class_id,s.sport_name FROM sports_marks e,sports s,student a WHERE e.sport_id='$spid' AND s.sport_id='$spid' AND e.school_id='$sid' AND a.student_id=e.student_id";
                                 $re=mysqli_query($con,$qu1);
                                 $re1 = mysqli_fetch_assoc($re);
 
-                                $name = mysqli_query($con, "select sport_name from sports where sport_id='$spid'");
-                                $nam = mysqli_fetch_assoc($name);
+                                // $name = mysqli_query($con, "select sport_name from sports where sport_id='$spid'");
+                                // $nam = mysqli_fetch_assoc($name);
 
                                 echo '
-                                <span class="feed-text1"><a>'.$nam['sport_name'].' : </a></span>
-                                <p><span>'.$re1['student_name'].'</span></p>';
+                                <span class="feed-text1"><a>'.$re1['sport_name'].' : </a></span>
+                                <p><span>'.$re1['student_name'].'-'.$re1['class_id'].'-'.$re1['max'].'</span></p>';
                             }
                         ?>
                     </li>
