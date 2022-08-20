@@ -342,7 +342,7 @@ else{
 								a.forEach(str => {
                                  m.push(Number(str));
                                  });
-								 localStorage.m = JSON.stringify(m); 
+								 
 							   }
 							   
 		

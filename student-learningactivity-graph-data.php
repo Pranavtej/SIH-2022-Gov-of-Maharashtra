@@ -39,5 +39,5 @@ else{
         }
     }
 }
-echo "data:".json_encode($x)."\n\n";
+echo "data:".$x."\n\n";
 ?>
