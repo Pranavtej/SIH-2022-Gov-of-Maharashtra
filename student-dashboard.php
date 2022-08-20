@@ -375,7 +375,7 @@ else{
                                         <canvas id="acscore"></canvas>
                                             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
                                             <script>
-												 m = JSON.parse(localStorage.m);
+												// m = JSON.parse(localStorage.m);
 												const ctx = document.getElementById('acscore');
 												const myChart = new Chart(ctx, {
 													type: 'bar',
