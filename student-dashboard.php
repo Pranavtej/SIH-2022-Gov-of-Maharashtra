@@ -35,7 +35,7 @@ else{
      foreach($result as $data)
      {
         $y[] = $data['subject_name'];
-        $x[]=$data['marks'];
+        // $x[]=$data['marks'];
     }
 
 	$query="select m.cocircular_name as cn,c.marks as marks from cocircular_marks c,cocircular m where c.student_id='$student_id' and c.school_id='$school_id' and c.class_id='$class_id' and c.cocircular_id = m.cocircular_id";
@@ -161,6 +161,13 @@ else{
 					<!-- /Page Header -->
 
 					<!-- Overview Section -->
+					<script>
+                            var source=new EventSource("student-academic-rank.php");
+                             source.onmessage=function(event)
+                             {
+                              document.getElementById("rank").innerHTML=event.data;
+                              }
+                     </script>
 					<div class="row">
 						<div class="col-xl-3 col-sm-6 col-12 d-flex">
 							<div class="card bg-nine w-100">
@@ -170,13 +177,20 @@ else{
 											<i class="fas fa-book-open"></i>
 										</div>
 										<div class="db-info">
-											<h3><?php echo $rank;?></h3>
+											<h3 id="rank"></h3>
 											<h6>Academic Rank</h6>
 										</div>										
 									</div>
 								</div></a>
 							</div>
 						</div>
+						<script>
+                            var source=new EventSource("student-cca-rank.php");
+                             source.onmessage=function(event)
+                             {
+                              document.getElementById("ccarank").innerHTML=event.data;
+                              }
+                        </script>
 
 						<div class="col-xl-3 col-sm-6 col-12 d-flex">
 							<div class="card bg-six w-100">
@@ -186,7 +200,7 @@ else{
 											<i class="fas fa-file-alt"></i>
 										</div>
 										<div class="db-info">
-											<h3><?php echo $ccarank; ?></h3>
+											<h3 id="ccarank"></h3>
 											<h6>CCA Rank</h6>
 										</div>										
 									</div>
@@ -217,6 +231,13 @@ else{
 								</div>
 							</div>
 						</div>
+						<script>
+                            var source=new EventSource("student-ov-rank.php");
+                             source.onmessage=function(event)
+                             {
+                              document.getElementById("ovrank").innerHTML=event.data;
+                              }
+                        </script>
 
 						<div class="col-xl-3 col-sm-6 col-12 d-flex">
 							<div class="card bg-eleven w-100">
@@ -226,7 +247,7 @@ else{
 											<i class="fas fa-clipboard-check"></i>
 										</div>
 										<div class="db-info">
-											<h3><?php echo $ovrank; ?></h3>
+											<h3 id="ovrank"></h3>
 											<h6>Rank</h6>
 										</div>										
 									</div>
@@ -306,7 +327,27 @@ else{
 									</div>
 								</div>
 							</div> -->
-
+							<script>
+                            var source=new EventSource("student-learningactivity-graph-data.php");
+                             source.onmessage=function(event)
+                             {
+								x=event.data;
+								for(i=0;i<x.length;i++){
+								x= x.replace('"','');}
+								x=x.replace('[','');
+								x=x.replace(']','');
+								a=new Array();
+								a = x.split(","); 
+								m=[];					
+								a.forEach(str => {
+                                 m.push(Number(str));
+                                 });
+								 localStorage.m = JSON.stringify(m); 
+							   }
+							   
+		
+							  </script>
+							
 							<div class="row">
 								<div class="col-12 col-lg-12 col-xl-8 d-flex">
 									<div class="card flex-fill">
@@ -334,6 +375,7 @@ else{
                                         <canvas id="acscore"></canvas>
                                             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
                                             <script>
+												 m = JSON.parse(localStorage.m);
 												const ctx = document.getElementById('acscore');
 												const myChart = new Chart(ctx, {
 													type: 'bar',
@@ -342,7 +384,7 @@ else{
 														//echo json_encode($y), 
 														datasets: [{
 															label: 'MARKS SCORED',
-															data:<?php echo json_encode($x) ?>,
+															data:m,
 														//echo json_encode($x),
 
 															backgroundColor: [

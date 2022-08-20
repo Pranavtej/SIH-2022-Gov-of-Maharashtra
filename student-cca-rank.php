@@ -1,9 +1,8 @@
-<?php 
-
+<?php  
 header("Content-Type:text/event-stream");
 header("Cache-Control:no-control");
 session_start();
-include "connect.php";
+include 'connect.php';
 if(empty($_SESSION['STUDENT_ID']))
 {
     echo '<script>document.location="student-login.php"</script>';
@@ -27,21 +26,19 @@ else{
         $student_address = $run['address'];
         $student_dob = $run['date_of_birth'];
         $student_classid= $run['class_id'];
-
-
-      $qu1 = mysqli_query($con , "SELECT student_id,sum(marks) as marks from sports_marks where school_id='$school_id' GROUP BY student_id order by marks desc");
-      $var3=0;
-      foreach($qu1 as $data)
-      {
-          $var3=$var3+1;
-          if($data['student_id']==$student_id)
-          {
-              $rank3 = $var3;
-              break;
-          }
-      }
+        $qu5="select student_id as sid,SUM(marks) as sum from cocircular_marks where class_id='$class_id' and school_id='$school_id' GROUP BY student_id order by sum desc";
+        $re5=mysqli_query($con,$qu5);
+        $varc=0;
+        foreach($re5 as $data)
+        {
+            $varc=$varc+1;
+            if($data['sid']==$student_id)
+            {
+                $ccarank = $varc;
+                break;
+            }
+        }
     }
 }
-echo "data:".$rank3."\n\n";
-
+echo "data:".$ccarank."\n\n";
 ?>

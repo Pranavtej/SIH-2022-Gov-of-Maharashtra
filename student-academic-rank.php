@@ -1,9 +1,8 @@
-<?php 
-
+<?php  
 header("Content-Type:text/event-stream");
 header("Cache-Control:no-control");
 session_start();
-include "connect.php";
+include 'connect.php';
 if(empty($_SESSION['STUDENT_ID']))
 {
     echo '<script>document.location="student-login.php"</script>';
@@ -27,21 +26,24 @@ else{
         $student_address = $run['address'];
         $student_dob = $run['date_of_birth'];
         $student_classid= $run['class_id'];
+     $query1="select eid from exam where status=1";
+	$result1=mysqli_query($con,$query1) or die(mysqli_error);
+	$res = mysqli_fetch_assoc($result1);
+	$eid = $res['eid'];
 
-
-      $qu1 = mysqli_query($con , "SELECT student_id,sum(marks) as marks from sports_marks where school_id='$school_id' GROUP BY student_id order by marks desc");
-      $var3=0;
-      foreach($qu1 as $data)
-      {
-          $var3=$var3+1;
-          if($data['student_id']==$student_id)
-          {
-              $rank3 = $var3;
-              break;
-          }
-      }
+        $qu="select e.student_id as sid from exam_totals e,student s where e.eid='$eid' and e.school_id='$school_id' and e.student_id=s.student_id and s.class_id='$class_id' order by e.total desc";
+        $re=mysqli_query($con,$qu);
+        $var=0;
+        foreach($re as $data)
+        {
+            $var=$var+1;
+            if($data['sid']==$student_id)
+            {
+                $rank = $var;
+                break;
+            }
+        }
     }
 }
-echo "data:".$rank3."\n\n";
-
+echo "data:".$rank."\n\n";
 ?>
