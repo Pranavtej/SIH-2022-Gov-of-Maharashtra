@@ -35,7 +35,7 @@ else{
      foreach($result as $data)
      {
         $y[] = $data['subject_name'];
-        // $x[]=$data['marks'];
+        $x[]=$data['marks'];
     }
 
 	$query="select m.cocircular_name as cn,c.marks as marks from cocircular_marks c,cocircular m where c.student_id='$student_id' and c.school_id='$school_id' and c.class_id='$class_id' and c.cocircular_id = m.cocircular_id";
