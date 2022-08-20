@@ -384,7 +384,8 @@ else{
 														//echo json_encode($y), 
 														datasets: [{
 															label: 'MARKS SCORED',
-															data:<?php echo json_encode($x) ?>,
+															data:m,
+														//echo json_encode($x),
 
 															backgroundColor: [
 																'rgba(255, 99, 132, 0.2)',
