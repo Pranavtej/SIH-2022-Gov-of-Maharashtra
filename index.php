@@ -75,7 +75,7 @@
 </div>
 <div class="col-lg-7 wow fadeInRight" data-wow-delay="0.4s">
 <div class="hero-4-img">
-<a href="" target="_blank"><img src="assets/img/SIh.png" alt=""></a>
+<a href="" target="_blank"><img src="assets/img/SIH.png" alt=""></a>
 </div>
 </div>
 </div>
