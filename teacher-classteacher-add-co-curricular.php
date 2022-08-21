@@ -14,6 +14,7 @@ else
    $student_name = $_GET['sname']; 
    $st="select marks from cocircular_marks where student_id='$student_id'";
    $r1=mysqli_query($con,$st);
+   $r2=mysqli_fetch_assoc($r2);
    if(!empty($_POST['submit']))
    {
       $cocircular_id=$_POST['cocircular_id'];
@@ -77,7 +78,18 @@ else
                         <div class="row">
                         <div class="col-md-12">
                         <h4><b>Name of the Student : </b><?php echo $student_name.'('.$student_id.')';?></h4>
-                        <h4><b>Current Student Points : </b><?php if ($r1['marks']>=0) {echo $r1['marks'];} else {echo '0';}?></h4></div></div>
+                        <h4><b>Current Student Points : </b>
+						<?php 
+						if ($r['marks']>0)
+						   {
+							echo $r['marks'];
+							} 
+							else
+							 {
+								echo '0';
+							  }
+						?>
+						</h4></div></div>
                 </div>
             </div>
     </div>
