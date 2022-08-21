@@ -110,8 +110,17 @@ $class_id = $_SESSION['CLASS_ID'];
                                                                                     
 																					if(this.responseText == "Improving")
 																					{
+																						document.getElementById("'.$j.'").className = "badge badge-success";
 																						document.getElementById("'.$j.'").innerHTML=this.responseText;
 
+																					}
+																					else if(this.responseText == "Poor")
+																					{
+																						document.getElementById("'.$j.'").className = "badge badge-danger";
+																						document.getElementById("'.$j.'").innerHTML=this.responseText;
+
+																					}
+																					else{
 																					}
                                                                                     
 																				}
