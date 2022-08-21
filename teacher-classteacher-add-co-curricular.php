@@ -10,7 +10,10 @@ else
    $stat="select * from cocircular";
    $run=mysqli_query($con,$stat);
    $student_id=$_GET['student_id'];
-   $class_id = $_GET['cid'];   
+   $class_id = $_GET['cid'];  
+   $student_name = $_GET['sname']; 
+   $st="select marks from cocircular_marks where student_id='$student_id'";
+   $r1=mysqli_query($con,$st);
    if(!empty($_POST['submit']))
    {
       $cocircular_id=$_POST['cocircular_id'];
@@ -58,25 +61,26 @@ else
 </head>
 <body>
 
-<?php
-include 'teacher-sidebar.php';
-?>
 <div class="page-wrapper">
-                <div class="content container-fluid">
-				
-					<!-- Page Header -->
-					<div class="page-header">
-						<div class="row align-items-center">
-							<div class="col">
-								<h3 class="page-title">Add Performance</h3>
-								<ul class="breadcrumb">
-									<li class="breadcrumb-item"><a href="#">Activities List</a></li>
-									<li class="breadcrumb-item active">student</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<!-- /Page Header -->
+        <?php include 'teacher-header.php' ?>
+        <?php include 'teacher-sidebar.php' ?>
+            <div class="content container-fluid">
+                <div class="page-header">
+
+                    <div class="row align-items-center">
+                    <div class="row align-items-center">    
+                    <div class="col">
+                        <h3 class="page-title">Teacher Adding Co-Curricular Activities Score for Student</h3>
+                        <ul class="breadcrumb">
+                        <li class="breadcrumb-item">STUDENT</li>
+                        <li class="breadcrumb-item active">Add Performance Marks</li></ul><br>
+                        <div class="row">
+                        <div class="col-md-12">
+                        <h4><b>Name of the Student : </b><?php echo $student_name.'('.$student_id.')';?></h4>
+                        <h4><b>Current Student Points : </b><?php if ($r1['marks']>=0) {echo $r1['marks'];} else {echo '0';}?></h4></div></div>
+                </div>
+            </div>
+    </div>
 				
 					<div class="row">
 						<div class="col-sm-12">

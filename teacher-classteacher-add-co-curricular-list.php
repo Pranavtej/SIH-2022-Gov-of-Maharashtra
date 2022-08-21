@@ -79,7 +79,7 @@ $class_id = $_SESSION['CLASS_ID'];
 													{
 														echo 
 														'<tr><td>'.$res1['student_id'].'</td>
-														<td><a href="teacher-classteacher-add-co-curricular.php?student_id='.$res1['student_id'].'&cid='.$class_id.'">'.$res1['student_name'].'</a></td>
+														<td><a href="teacher-classteacher-add-co-curricular.php?student_id='.$res1['student_id'].'&cid='.$class_id.'&sname='.$res1['student_name'].'">'.$res1['student_name'].'</a></td>
 														</tr>';}?>
 											</tbody>
 										</table>
