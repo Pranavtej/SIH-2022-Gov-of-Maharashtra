@@ -112,12 +112,12 @@ $class_id = $_SESSION['CLASS_ID'];
 																		}
 																	</script>
 																';
-                                                                $rrr= echo "<script>document.writeln(r);</script>";
+                                                                
 																echo 
 																'<tr><td>'.$res1['student_id'].'</td>
 																<td>'.$res1['student_name'].'</td>
 																<td><span id="'.$j.'" class="badge badge-info"></span></td>
-																<td><span class="badge badge-info">'.$rrr.'</span></td>
+																
                                                                 
 																</tr>';
 																$j++;
