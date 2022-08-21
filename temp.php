@@ -103,7 +103,7 @@ $class_id = $_SESSION['CLASS_ID'];
 																			xmlhttp.onreadystatechange=function() {
 																				if (this.readyState==4 && this.status==200) {
                                                                                     window.r = this.responseText;
-                                                                                    r=getdata(r);   
+                                                                                      
 																					console.log(this.responseText);
 																					document.getElementById("'.$j.'").innerHTML=this.responseText;
                                                                                     
