@@ -78,8 +78,7 @@ if(isset($_POST['login']))
 									</div>
 								</form>
 								<!-- /Form -->
-								
-								<div class="text-center forgotpass"><a href="forgot-password.php">Forgot Password?</a></div>
+								<div class="text-center forgotpass"><a href="index.php">Go back </a></div>
 								<div class="login-or">
 									<!-- <span class="or-line"></span> -->
 									<!-- <span class="span-or">or</span> -->

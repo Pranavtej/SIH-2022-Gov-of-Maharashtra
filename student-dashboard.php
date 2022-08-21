@@ -35,7 +35,7 @@ else{
      foreach($result as $data)
      {
         $y[] = $data['subject_name'];
-        // $x[]=$data['marks'];
+        $x[]=$data['marks'];
     }
 
 	$query="select m.cocircular_name as cn,c.marks as marks from cocircular_marks c,cocircular m where c.student_id='$student_id' and c.school_id='$school_id' and c.class_id='$class_id' and c.cocircular_id = m.cocircular_id";
@@ -327,7 +327,7 @@ else{
 									</div>
 								</div>
 							</div> -->
-							<script>
+							<!-- <script>
                             var source=new EventSource("student-learningactivity-graph-data.php");
                              source.onmessage=function(event)
                              {
@@ -346,7 +346,7 @@ else{
 							   }
 							   
 		
-							  </script>
+							  </script> -->
 							
 							<div class="row">
 								<div class="col-12 col-lg-12 col-xl-8 d-flex">
@@ -375,7 +375,7 @@ else{
                                         <canvas id="acscore"></canvas>
                                             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
                                             <script>
-												 m = JSON.parse(localStorage.m);
+												// m = JSON.parse(localStorage.m);
 												const ctx = document.getElementById('acscore');
 												const myChart = new Chart(ctx, {
 													type: 'bar',
@@ -384,7 +384,7 @@ else{
 														//echo json_encode($y), 
 														datasets: [{
 															label: 'MARKS SCORED',
-															data:m,
+															data:<?php echo json_encode($x)?>,
 														//echo json_encode($x),
 
 															backgroundColor: [

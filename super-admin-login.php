@@ -72,6 +72,8 @@ if(isset($_POST['login']))
 										<button class="btn btn-primary btn-block" name="login" type="submit">Login</button>
 									</div>
 								</form>
+								<div class="text-center forgotpass"><a href="index.php">Go back </a></div>
+
 							</div>
                         </div>
                     </div>
