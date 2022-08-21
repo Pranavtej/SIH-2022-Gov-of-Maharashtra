@@ -105,8 +105,8 @@ $class_id = $_SESSION['CLASS_ID'];
 
                                                                                     
 																					console.log(this.responseText);
-                                                                                    var test = this.responseText ;
-                                                                                    window.r = test ;
+                                                                                    
+                                                                                    window.r = this.responseText ;
 																					document.getElementById("'.$j.'").innerHTML=this.responseText;
                                                                                     
 																				}
