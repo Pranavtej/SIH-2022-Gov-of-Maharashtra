@@ -10,7 +10,7 @@
     $sql = mysqli_query($con,"select teacher_name from teacher_info where teacher_id='$teacher_id' and school_id='$school_id'");
     $run = mysqli_fetch_assoc($sql);
 	$sql1= mysqli_query($con,"select avg(marks) as av,sct.class_id as cls,max(marks) as max from exam_marks as e,
-	schoolwise_class_subject_teachers as sct,classes as c where sct.teacher_id='TE0001' and
+	schoolwise_class_subject_teachers as sct,classes as c where sct.teacher_id='$teacher_id' and
 	 e.class_id=sct.class_id and e.subject_id=sct.subject_id group by sct.class_id ");
 	foreach($sql1 as $d){
 		$x[]=$d['av'];
@@ -224,16 +224,14 @@
 													{
 														$nc=0;
 														$pc=0;
-														$pp=0;	
+														$pp=0;
 														$cid = $run1['class_id'];
 														$qu3 = "select count(*) as count1 from student s where class_id ='$cid' and school_id = '$school_id'";
 														$run2 = mysqli_query($con,$qu3);
 														$count2=mysqli_fetch_assoc($run2);
 														$pc=$run1['count'];
-														
 														$nc=$count2['count1'];
-													
-														$pp=($pc/$nc)*100;
+														$pp=($pc/$nc);
 														echo '<li class="feed-item">
 														<div class="feed-date">'.$cid.'</div>
 														<span class="feed-text"><a>'.round($pp).'%</a></span>
@@ -247,7 +245,7 @@
 								</div>
 							</div>
 
-					<div class="col-12 col-lg-4 col-xl-4 d-flex">
+					<!-- <div class="col-12 col-lg-4 col-xl-4 d-flex">
 						<div class="card flex-fill">
 							<div class="card-header">
 								<div class="row align-items-center">
@@ -269,7 +267,7 @@
 							</div>
 						</div>
 					</div>
-					</div>
+					</div> -->
 				</div>
 			</div>
 			<!-- /Teacher Dashboard -->
