@@ -108,7 +108,7 @@ $class_id = $_SESSION['CLASS_ID'];
                                                                                     
                                                                                     window.r = this.responseText ;
                                                                                     
-																					if(this.responseText ==Improving)
+																					if(this.responseText == "Improving")
 																					{
 																						document.getElementById("'.$j.'").innerHTML=this.responseText;
 
