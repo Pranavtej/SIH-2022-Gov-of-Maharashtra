@@ -102,10 +102,11 @@ $class_id = $_SESSION['CLASS_ID'];
 																			var xmlhttp=new XMLHttpRequest();
 																			xmlhttp.onreadystatechange=function() {
 																				if (this.readyState==4 && this.status==200) {
-                                                                                    var r= this.responseText;
-                                                                                    getdata(this.responseText);
+                                                                                    window.r = this.responseText;
+                                                                                    r=getdata(r);   
 																					console.log(this.responseText);
 																					document.getElementById("'.$j.'").innerHTML=this.responseText;
+                                                                                    
 																				}
 																			}
 																			xmlhttp.open("GET","https://stdpyml.herokuapp.com/?m1="+a+"&m2=1&m3="+b+"&m4=1&m5="+c+"&m6=1",true);
@@ -113,16 +114,9 @@ $class_id = $_SESSION['CLASS_ID'];
 																		}
 																	</script>
 																';
-                                                                ?>
-                                                                <script>
-                                                                    function getdata(result)
-                                                                    {
-                                                                        <?php
-                                                                         $result= "<script>document.write(result)</script>";  ?>
+                                                                
+                                                                echo  $result= "<script>document.write(window.result)</script>";
                                                                
-                                                                    }
-                                                                    </script>  
-                                                                <?php
 																echo 
 																'<tr><td>'.$res1['student_id'].'</td>
 																<td>'.$res1['student_name'].'</td>
