@@ -120,9 +120,36 @@ $class_id = $_SESSION['CLASS_ID'];
 																						document.getElementById("'.$j.'").innerHTML=this.responseText;
 
 																					}
-																					else{
+																					else if(this.responseText == "Average")
+																					{
+																						document.getElementById("'.$j.'").className = "badge badge-warning";
+																						document.getElementById("'.$j.'").innerHTML=this.responseText;
+
 																					}
-                                                                                    
+																					else if(this.responseText == "Good")
+																					{
+																						document.getElementById("'.$j.'").className = "badge badge-success";
+																						document.getElementById("'.$j.'").innerHTML=this.responseText;
+
+																					}
+																					else if(this.responseText == "Consistent")
+																					{
+																						document.getElementById("'.$j.'").className = "badge badge-info";
+																						document.getElementById("'.$j.'").innerHTML=this.responseText;
+
+																					}
+																					else if (this.responseText == "Degrading")
+																					{
+																						document.getElementById("'.$j.'").className = "badge badge-danger";
+																						document.getElementById("'.$j.'").innerHTML=this.responseText;
+
+																					}
+																					else(this.responseText == "Very Good ")
+																					{
+																						document.getElementById("'.$j.'").className = "badge badge-success";
+																						document.getElementById("'.$j.'").innerHTML=this.responseText;
+
+																					}
 																				}
 																			}
 																			xmlhttp.open("GET","https://stdpyml.herokuapp.com/?m1="+a+"&m2=1&m3="+b+"&m4=1&m5="+c+"&m6=1",true);
