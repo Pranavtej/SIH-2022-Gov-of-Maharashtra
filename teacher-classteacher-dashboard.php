@@ -34,23 +34,7 @@
  
 }
     
-    // $total=0;
-    // foreach($re as $data)
-    // {
-    //     $y[] = $data['sid'];
-    //     $x[] = $data['TOT'];
-    //     $total=$total+$data['TOT'];
-    // }
-    // $count=mysqli_num_rows($re);
-    // $total=$total/$count;
-    // $i=0;
-    // while($i<=$count)
-    // {
-    //     $z[]=$total;
-    //     $i=$i+1;
-    // }
-
-    
+ 
 
 ?>
 
