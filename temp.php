@@ -109,6 +109,11 @@ $class_id = $_SESSION['CLASS_ID'];
                                                                                     window.r = this.responseText ;
                                                                                     
 																					document.getElementById("'.$j.'").innerHTML=this.responseText;
+																					if(this.responseText ==Improving)
+																					{
+																						document.getElementById("'.$j.'").innerHTML=this.responseText;
+
+																					}
                                                                                     
 																				}
 																			}
@@ -117,12 +122,12 @@ $class_id = $_SESSION['CLASS_ID'];
 																		}
 																
                                                                 </script>';
-																$result= echo '<script>document.write(window.r)</script>';
+
+																//$result= '<script>document.write(window.r)</script>';
 																echo 
 																'<tr><td>'.$res1['student_id'].'</td>
 																<td>'.$res1['student_name'].'</td>
-																<td><span id="'.$j.'" class="badge badge-info"></span></td>
-																<td><span class="badge badge-info">'.$result.'</span></td>
+																<td><span id="'.$j.'" class="badge badge-success"></span></td>
 
 																
                                                                 
