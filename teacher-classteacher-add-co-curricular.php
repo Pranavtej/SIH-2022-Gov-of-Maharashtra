@@ -14,7 +14,7 @@ else
    $student_name = $_GET['sname']; 
    $st="select marks from cocircular_marks where student_id='$student_id'";
    $r1=mysqli_query($con,$st);
-   $r2=mysqli_fetch_assoc($r2);
+   $r2=mysqli_fetch_assoc($r1);
    if(!empty($_POST['submit']))
    {
       $cocircular_id=$_POST['cocircular_id'];
@@ -26,7 +26,7 @@ else
       $score=$res['marks'];
       if(!empty($res))
       {
-        $total=$score+$sport_score;
+        $total=$score+$marks;
         $stat2="UPDATE `cocircular_marks` SET `marks`='$total' WHERE student_id='$student_id' AND cocircular_id='$cocircular_id' and class_id='$class_id'";
         $run2=mysqli_query($con,$stat2);
       }
@@ -97,7 +97,7 @@ else
 											<!-- <div class="col-12 col-sm-6">  
 												<div class="form-group">
 													<label>Student ID</label>
-													<input type="text" name="student_id" value="<?php echo $student_id ?>" disabled="disabled" class="form-control">
+													<input type="text" name="student_id" value="#" disabled="disabled" class="form-control">
 												</div>
 											</div> -->
 											<!-- <div class="col-12 col-sm-6">
