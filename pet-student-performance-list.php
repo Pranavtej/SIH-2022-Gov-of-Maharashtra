@@ -85,12 +85,12 @@ include 'pet-menu.php';
 <li class="breadcrumb-item active">Students</li>
 </ul>
 </div>
-<div class="col-auto text-end float-end ms-auto">
+<!-- <div class="col-auto text-end float-end ms-auto">
 <a href="#" class="btn btn-outline-primary me-2"><i class="fas fa-download"></i> Download</a>
 <a href="add-student.html" class="btn btn-primary"><i class="fas fa-plus"></i></a>
 </div>
 </div>
-</div>
+</div> -->
 <div>
 <h5>Search</h5>
 

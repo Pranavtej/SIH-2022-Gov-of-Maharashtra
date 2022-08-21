@@ -12,28 +12,30 @@ else
    $student_id=$_GET['student_id'];
    $class_id = $_GET['cid'];  
    $student_name = $_GET['sname']; 
-   $st="select marks from cocircular_marks where student_id='$student_id'";
+   $st="select sum(marks) as sum from cocircular_marks where student_id='$student_id'";
    $r1=mysqli_query($con,$st);
-   $r2=mysqli_fetch_assoc($r2);
+   $r2=mysqli_fetch_assoc($r1);
    if(!empty($_POST['submit']))
    {
       $cocircular_id=$_POST['cocircular_id'];
       $marks=$_POST['marks'];
       $school_id=$_SESSION['SCHOOL_ID'];
-      $stat1="SELECT * FROM cocircular_marks WHERE student_id='$student_id' AND cocircular_id='$cocircular_id' AND school_id='$school_id'";
+      $stat1="SELECT marks FROM cocircular_marks WHERE student_id='$student_id' AND cocircular_id='$cocircular_id' AND school_id='$school_id'";
       $run1=mysqli_query($con,$stat1);
       $res=mysqli_fetch_array($run1);
       $score=$res['marks'];
       if(!empty($res))
       {
-        $total=$score+$sport_score;
-        $stat2="UPDATE `cocircular_marks` SET `marks`='$total' WHERE student_id='$student_id' AND cocircular_id='$cocircular_id' and class_id='$class_id'";
+        $total=$score+$marks;
+        $stat2="UPDATE `cocircular_marks` SET `marks`= $total WHERE student_id='$student_id' AND cocircular_id='$cocircular_id' and class_id='$class_id'";
         $run2=mysqli_query($con,$stat2);
+			header('location:teacher-classteacher-add-co-curricular.php?student_id='.$student_id.'&cid='.$class_id.'&sname='.$student_name.'.php');
       }
       else
       {
-        $stat2="INSERT INTO `cocircular_marks`(`student_id`, `class_id`, `school_id`, `cocircular_id`, `marks`)  VALUES ('$student_id','$class_id','$school_id','$cocircular_id',$marks)";
+        $stat2="INSERT INTO `cocircular_marks`(`student_id`, `class_id`, `school_id`, `cocircular_id`, `marks`)  VALUES ('$student_id','$class_id','$school_id','$cocircular_id','$marks')";
         $run2=mysqli_query($con,$stat2);
+		header('location:teacher-classteacher-add-co-curricular.php?student_id='.$student_id.'&cid='.$class_id.'&sname='.$student_name.'.php');
       }
 
    }
@@ -78,6 +80,12 @@ else
                         <div class="row">
                         <div class="col-md-12">
                         <h4><b>Name of the Student : </b><?php echo $student_name.'('.$student_id.')';?></h4>
+						<h4><b>Current points : </b>
+						<?php 
+						if(!empty($r2['sum']))
+						{echo $r2['sum'];}
+						else{ echo '0'; }
+						?></h4>
                         </div></div>
                 </div>
             </div>
@@ -97,7 +105,7 @@ else
 											<!-- <div class="col-12 col-sm-6">  
 												<div class="form-group">
 													<label>Student ID</label>
-													<input type="text" name="student_id" value="<?php echo $student_id ?>" disabled="disabled" class="form-control">
+													<input type="text" name="student_id" value="#" disabled="disabled" class="form-control">
 												</div>
 											</div> -->
 											<!-- <div class="col-12 col-sm-6">
@@ -110,7 +118,7 @@ else
                                             <div class="form-group">
                                                     <label>Curricular Activities</label>
                                                     <?php
-                                                        echo '<select name="sport_id"  id="sport_id" class="form-control form-select" required>
+                                                        echo '<select name="cocircular_id"  id="cocircular_id" class="form-control form-select" required>
                                                                 <option value="">Select Co-Currriculum</option>';
                                                                 while($data = mysqli_fetch_assoc($run))
                                                                 {
