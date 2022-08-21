@@ -115,10 +115,8 @@ $class_id = $_SESSION['CLASS_ID'];
 																			xmlhttp.open("GET","https://stdpyml.herokuapp.com/?m1="+a+"&m2=1&m3="+b+"&m4=1&m5="+c+"&m6=1",true);
 																			xmlhttp.send();
 																		}
-																	
-																';
-                                                                echo  $result= "<script>document.write(window.r);</script>
-                                                                </script>";
+																'. $result.'= <script>document.write(window.r)</script>
+                                                                </script>';
                                                                
 																echo 
 																'<tr><td>'.$res1['student_id'].'</td>
