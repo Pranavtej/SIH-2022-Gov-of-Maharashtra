@@ -103,6 +103,9 @@ $class_id = $_SESSION['CLASS_ID'];
 																			xmlhttp.onreadystatechange=function() {
 																				if (this.readyState==4 && this.status==200) {
                                                                                    var r= this.responseText;
+                                                                                   ';
+                                                                                   $result = "<script>document.write(r)</script>"
+                                                                                   echo'
 																					console.log(this.responseText);
 																					document.getElementById("'.$j.'").innerHTML=this.responseText;
 																				}
@@ -117,6 +120,8 @@ $class_id = $_SESSION['CLASS_ID'];
 																'<tr><td>'.$res1['student_id'].'</td>
 																<td>'.$res1['student_name'].'</td>
 																<td><span id="'.$j.'" class="badge badge-info"></span></td>
+																<td><span class="badge badge-info">'.$result.'</span></td>
+
 																
                                                                 
 																</tr>';
