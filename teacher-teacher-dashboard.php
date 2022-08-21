@@ -224,15 +224,13 @@
 													{
 														$nc=0;
 														$pc=0;
-														$pp=0;	
+														$pp=0;
 														$cid = $run1['class_id'];
 														$qu3 = "select count(*) as count1 from student s where class_id ='$cid' and school_id = '$school_id'";
 														$run2 = mysqli_query($con,$qu3);
 														$count2=mysqli_fetch_assoc($run2);
 														$pc=$run1['count'];
-														
 														$nc=$count2['count1'];
-													
 														$pp=($pc/$nc)*100;
 														echo '<li class="feed-item">
 														<div class="feed-date">'.$cid.'</div>
@@ -247,7 +245,7 @@
 								</div>
 							</div>
 
-					<div class="col-12 col-lg-4 col-xl-4 d-flex">
+					<!-- <div class="col-12 col-lg-4 col-xl-4 d-flex">
 						<div class="card flex-fill">
 							<div class="card-header">
 								<div class="row align-items-center">
@@ -269,7 +267,7 @@
 							</div>
 						</div>
 					</div>
-					</div>
+					</div> -->
 				</div>
 			</div>
 			<!-- /Teacher Dashboard -->
