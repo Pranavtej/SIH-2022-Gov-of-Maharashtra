@@ -1202,19 +1202,6 @@ a:focus {
 	z-index: 99;
 	transition: all 0.4s ease-in-out 0s;
 }
-.header .home-menu {
-	border: none;
-	/* -webkit-transition: padding .5s;
-	-moz-transition: padding .5s;
-	transition: padding .5s; */
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	border-bottom: 1px solid #f0f0f0;
-	padding: 10px 0;
-	background-color: #fff;
-}
 
 .header .navbar.fixed-header {
 	background-color: #fff;
