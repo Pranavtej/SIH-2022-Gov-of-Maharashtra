@@ -1204,9 +1204,9 @@ a:focus {
 }
 .header .home-menu {
 	border: none;
-	-webkit-transition: padding .5s;
+	/* -webkit-transition: padding .5s;
 	-moz-transition: padding .5s;
-	transition: padding .5s;
+	transition: padding .5s; */
 	position: absolute;
 	top: 0;
 	left: 0;
