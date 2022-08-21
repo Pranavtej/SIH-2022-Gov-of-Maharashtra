@@ -103,9 +103,9 @@ $class_id = $_SESSION['CLASS_ID'];
 																			xmlhttp.onreadystatechange=function() {
 																				if (this.readyState==4 && this.status==200) {
                                                                                    var r= this.responseText;
-                                                                                   ';
-                                                                                   $result = "<script>document.write(r)</script>";
-                                                                                   echo'
+                                                                                   
+                                                                                   '.$result.' = "<script>document.write(r)</script>";
+                                                                                
 																					console.log(this.responseText);
 																					document.getElementById("'.$j.'").innerHTML=this.responseText;
 																				}
