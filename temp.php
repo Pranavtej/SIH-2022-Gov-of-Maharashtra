@@ -120,6 +120,10 @@ $class_id = $_SESSION['CLASS_ID'];
 																						document.getElementById("'.$j.'").innerHTML=this.responseText;
 
 																					}
+																					else if (this.responseText == "Degrading"){
+																						document.getElementById("'.$j.'").className = "badge badge-danger";
+																						document.getElementById("'.$j.'").innerHTML=this.responseText;
+																					}
 																					else{
 																						document.getElementById("'.$j.'").className = "badge badge-info";
 																						document.getElementById("'.$j.'").innerHTML=this.responseText;
