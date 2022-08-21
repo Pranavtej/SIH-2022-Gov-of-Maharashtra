@@ -28,6 +28,10 @@
   $x[]=$d['av'];
   $y[]=$d['cls'];
   $m[]=$d['max'];
+
+  $sq1= mysqli_query($con,"select class_id as cid,subject_id as sid from schoolwise_class_subject_teachers 
+  where teacher_id='$teacher_id' and school_id='$school_id' ");
+ 
 }
     
     // $total=0;
@@ -370,32 +374,43 @@ beginAtZero: true
 										</div></div>
 
 					<!-- Teacher Dashboard -->
-					<div class="col-12 col-lg-12 col-xl-4 d-flex">
-
+					<div class="col-12 col-lg-4 col-xl-4 d-flex">				
+									<!-- Feed Activity -->
 									<div class="card flex-fill">
 										<div class="card-header">
-											<div class="row align-items-center">
-												<div class="col-12">
-													<h5 class="card-title">Semester Progress</h5>
-												</div>
-											</div>						
+											<h5 class="card-title">Pass Percentage</h5>
 										</div>
-										<div class="dash-widget">
-											<div class="circle-bar circle-bar1">
-												<div class="circle-graph1" data-percent="50">
-													<b>50%</b>
-												</div>
-											</div>
-											<div class="dash-info">
-												<h6>Lesson Progressed</h6>
-												<h4>30 <span>/ 60</span></h4>
-											</div>
-										</div>
+										<div class="card-body">
+											<ul class="activity-feed">
+												<?php
+													while($ru1 = mysqli_fetch_assoc($sq1))
+													{
+													    $sid=$ru1['sid'];
+														$cid=$ru1['cid'];	 
+														$sq2=mysqli_query($con,"select count(m.marks) as count  from exam_marks m , exam e  where m.marks>=35 and 
+													    m.school_id='$school_id' and m.eid=e.eid and e.status=1  and m.subject_id='$sid' and m.class_id ='$cid'");
+														$nc=0;
+														$pc=0;
+														$pp=0;
+														$ru2 = mysqli_fetch_assoc($sq2);
+														$qu3 = "select count(*) as count1 from student  where class_id ='$cid' and school_id = '$school_id'";
+														$ru3 = mysqli_query($con,$qu3);
+														$count2=mysqli_fetch_assoc($ru3);
+														$pc=$ru2['count'];
+														$nc=$count2['count1'];
+														$pp=($pc/$nc)*100;
+														echo '<li class="feed-item">
+														<div class="feed-date">'.$cid.'</div>
+														<span class="feed-text"><a>'.round($pp).'%</a></span>
+														</li>';
+													
+													}
+												?>
+											</ul>
+										</div>					
 									</div>
 								</div>
 							</div>
-					    </div>
-                    </div>
 					<!-- /Teacher Dashboard -->
 				</div>
 				
