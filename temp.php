@@ -102,9 +102,11 @@ $class_id = $_SESSION['CLASS_ID'];
 																			var xmlhttp=new XMLHttpRequest();
 																			xmlhttp.onreadystatechange=function() {
 																				if (this.readyState==4 && this.status==200) {
-                                                                                    window.r = this.responseText;
-                                                                                      
+
+                                                                                    
 																					console.log(this.responseText);
+                                                                                    var test = this.responseText
+                                                                                    window.r = test ;
 																					document.getElementById("'.$j.'").innerHTML=this.responseText;
                                                                                     
 																				}
