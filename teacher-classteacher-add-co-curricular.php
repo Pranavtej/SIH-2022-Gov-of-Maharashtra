@@ -78,18 +78,7 @@ else
                         <div class="row">
                         <div class="col-md-12">
                         <h4><b>Name of the Student : </b><?php echo $student_name.'('.$student_id.')';?></h4>
-                        <h4><b>Current Student Points : </b>
-						<?php 
-						if ($r['marks']>0)
-						   {
-							echo $r['marks'];
-							} 
-							else
-							 {
-								echo '0';
-							  }
-						?>
-						</h4></div></div>
+                        </div></div>
                 </div>
             </div>
     </div>
