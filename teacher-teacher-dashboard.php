@@ -231,7 +231,7 @@
 														$count2=mysqli_fetch_assoc($run2);
 														$pc=$run1['count'];
 														$nc=$count2['count1'];
-														$pp=($pc/$nc);
+														$pp=($pc/$nc)*100;
 														echo '<li class="feed-item">
 														<div class="feed-date">'.$cid.'</div>
 														<span class="feed-text"><a>'.round($pp).'%</a></span>
