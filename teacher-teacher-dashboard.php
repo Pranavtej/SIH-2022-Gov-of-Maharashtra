@@ -103,32 +103,30 @@
 						</div>
 						<div class="col-xl-3 col-sm-6 col-12 d-flex">
 							<div class="card bg-seven w-100">
-								<div class="card-body">
-									<div class="db-widgets d-flex justify-content-between align-items-center">
-										<div class="db-icon">
-											<i class="fas fa-book-open"></i>
-										</div>
-										<div class="db-info">
-											<h3>30/50</h3>
-											<h6>Total Lessons</h6>
-										</div>										
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-xl-3 col-sm-6 col-12 d-flex">
-							<div class="card bg-eight w-100">
-								<div class="card-body">
+								<a href="teacher-lo-assesment.php"><div class="card-body">
 									<div class="db-widgets d-flex justify-content-between align-items-center">
 										<div class="db-icon">
 											<i class="fas fa-clock"></i>
 										</div>
 										<div class="db-info">
-											<h3>15/20</h3>
-											<h6>Total Hours</h6>
+											<h3>Learning Outcomes</h3>
 										</div>										
 									</div>
-								</div>
+								</div></a>
+							</div>
+						</div>
+						<div class="col-xl-3 col-sm-6 col-12 d-flex">
+							<div class="card bg-eight w-100">
+								<a href="teacher-rating-class-list.php"><div class="card-body">
+									<div class="db-widgets d-flex justify-content-between align-items-center">
+										<div class="db-icon">
+											<i class="fas fa-clock"></i>
+										</div>
+										<div class="db-info">
+											<h3>Class Decorum</h3>
+										</div>										
+									</div>
+								</div></a>
 							</div>
 						</div>
 					</div>
@@ -225,7 +223,7 @@
 													    $sid=$run1['sid'];
 														$cid=$run1['cid'];	 
 														$sql3=mysqli_query($con,"select count(m.marks) as count  from exam_marks m , exam e  where m.marks>=35 and 
-													    m.school_id='$school_id' and m.eid=e.eid and e.status=1  and m.subject_id='$sid' and m.class_id ='$cid'");
+													 m.school_id='$school_id' and m.eid=e.eid and e.status=1  and m.subject_id='$sid' and m.class_id ='$cid'");
 														$nc=0;
 														$pc=0;
 														$pp=0;
