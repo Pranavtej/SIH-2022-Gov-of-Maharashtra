@@ -33,19 +33,25 @@
   where teacher_id='$teacher_id' and school_id='$school_id' ");
  
 }
-$sub=mysqli_query($con,"SELECT subject_name as sn FROM subjects as s WHERE s.subject_id=any(select subject_id from schoolwise_class_subject_teachers where class_id=any(select class_id from schoolwise_class_details where teacher_id='$teacher_id'))");
+$sub=mysqli_query($con,"SELECT subject_name as sn FROM subjects as s WHERE s.subject_id
+=any(select subject_id from schoolwise_class_subject_teachers where class_id=any
+(select class_id from schoolwise_class_details where teacher_id='$teacher_id'))");
  foreach($sub as $d){
 	$s[]=$d['sn'];
     }
- $maxsub=mysqli_query($con,"SELECT max(marks) as m FROM exam_marks as e WHERE e.subject_id=any(select subject_id from schoolwise_class_subject_teachers where class_id=any(select class_id from schoolwise_class_details where teacher_id='$teacher_id')) and e.class_id=any(select class_id from schoolwise_class_details where teacher_id='TE0001') and school_id='SC0001' group by subject_id");
+ $maxsub=mysqli_query($con,"SELECT max(marks) as m FROM exam_marks e,exam m
+  WHERE m.eid=e.eid and m.status=1 and e.subject_id=any(select subject_id from
+   schoolwise_class_subject_teachers where class_id=any(select class_id from schoolwise_class_details
+    where teacher_id='$teacher_id')) and e.class_id=any(select class_id from schoolwise_class_details
+	 where teacher_id='TE0001') and school_id='SC0001' group by subject_id");
  foreach($maxsub as $d){
 	$mx[]=$d['m'];
  }
- $avgsub=mysqli_query($con,"SELECT avg(marks) as a FROM exam_marks as e WHERE e.subject_id=any(select subject_id from schoolwise_class_subject_teachers where class_id=any(select class_id from schoolwise_class_details where teacher_id='$teacher_id')) and e.class_id=any(select class_id from schoolwise_class_details where teacher_id='TE0001') and school_id='SC0001' group by subject_id");
+ $avgsub=mysqli_query($con,"SELECT avg(marks) as a FROM exam_marks e,exam m WHERE m.eid=e.eid and m.status=1 and  e.subject_id=any(select subject_id from schoolwise_class_subject_teachers where class_id=any(select class_id from schoolwise_class_details where teacher_id='$teacher_id')) and e.class_id=any(select class_id from schoolwise_class_details where teacher_id='TE0001') and school_id='SC0001' group by subject_id");
  foreach($avgsub as $d){
 	$ax[]=$d['a'];
  }
- $minsub=mysqli_query($con,"SELECT min(marks) as mn FROM exam_marks as e WHERE e.subject_id=any(select subject_id from schoolwise_class_subject_teachers where class_id=any(select class_id from schoolwise_class_details where teacher_id='$teacher_id')) and e.class_id=any(select class_id from schoolwise_class_details where teacher_id='TE0001') and school_id='SC0001' group by subject_id");
+ $minsub=mysqli_query($con,"SELECT min(marks) as mn FROM exam_marks e,exam m WHERE m.eid=e.eid and m.status=1 and e.subject_id=any(select subject_id from schoolwise_class_subject_teachers where class_id=any(select class_id from schoolwise_class_details where teacher_id='$teacher_id')) and e.class_id=any(select class_id from schoolwise_class_details where teacher_id='TE0001') and school_id='SC0001' group by subject_id");
  foreach($minsub as $d){
 	$mn[]=$d['mn'];
  }
