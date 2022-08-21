@@ -17,9 +17,9 @@
 		$y[]=$d['cls'];
 		$m[]=$d['max'];
 		}
-	$sql2 =  mysqli_query($con," select count(m.marks) as count,m.class_id as class_id from exam_marks m , exam e  where m.marks>=35 and 
-	m.subject_id in (select subject_id from schoolwise_class_subject_teachers where teacher_id = '$teacher_id') 
-	and m.school_id='$school_id' and m.eid=e.eid and e.status=1  group by m.class_id " );
+     $sql2= mysqli_query($con,"select class_id as cid,subject_id as sid from schoolwise_class_subject_teachers 
+	 where teacher_id='$teacher_id' and school_id='$school_id' ");
+	
 	
 ?>
 <!DOCTYPE html>
@@ -222,14 +222,18 @@
 												<?php
 													while($run1 = mysqli_fetch_assoc($sql2))
 													{
+													    $sid=$run1['sid'];
+														$cid=$run1['cid'];	 
+														$sql3=mysqli_query($con,"select count(m.marks) as count  from exam_marks m , exam e  where m.marks>=35 and 
+													    m.school_id='$school_id' and m.eid=e.eid and e.status=1  and m.subject_id='$sid' and m.class_id ='$cid'");
 														$nc=0;
 														$pc=0;
 														$pp=0;
-														$cid = $run1['class_id'];
-														$qu3 = "select count(*) as count1 from student s where class_id ='$cid' and school_id = '$school_id'";
+														$run3 = mysqli_fetch_assoc($sql3);
+														$qu3 = "select count(*) as count1 from student  where class_id ='$cid' and school_id = '$school_id'";
 														$run2 = mysqli_query($con,$qu3);
 														$count2=mysqli_fetch_assoc($run2);
-														$pc=$run1['count'];
+														$pc=$run3['count'];
 														$nc=$count2['count1'];
 														$pp=($pc/$nc)*100;
 														echo '<li class="feed-item">

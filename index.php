@@ -31,9 +31,9 @@
 </div>
 </div>
 
-<header id="home" class="header">
+<header  class="header">
 
-<nav class="navbar navbar-expand-md home-menu hp4">
+<nav class="navbar navbar-expand-md home-menu hp4 fixed-header">
 <div class="container-fluid">
 
 <a class="logo-link smooth-menu header-logo" href="#home">
