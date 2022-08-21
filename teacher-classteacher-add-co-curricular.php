@@ -7,28 +7,28 @@ if(empty($_SESSION['TEACHER_ID'])){
 }
 else
 {
-   $stat="select * from sports";
+   $stat="select * from cocircular";
    $run=mysqli_query($con,$stat);
-  # $student_id=$_GET['student_id'];
-  # $class_id = $_GET['cid'];   
+   $student_id=$_GET['student_id'];
+   $class_id = $_GET['cid'];   
    if(!empty($_POST['submit']))
    {
-      $sport_id=$_POST['sport_id'];
-      $sport_score=$_POST['sport_score'];
+      $cocircular_id=$_POST['cocircular_id'];
+      $marks=$_POST['marks'];
       $school_id=$_SESSION['SCHOOL_ID'];
-      $stat1="SELECT * FROM sports_marks WHERE student_id='$student_id' AND sport_id='$sport_id' AND school_id='$school_id'";
+      $stat1="SELECT * FROM cocircular_marks WHERE student_id='$student_id' AND cocircular_id='$cocircular_id' AND school_id='$school_id'";
       $run1=mysqli_query($con,$stat1);
       $res=mysqli_fetch_array($run1);
       $score=$res['marks'];
       if(!empty($res))
       {
         $total=$score+$sport_score;
-        $stat2="UPDATE `sports_marks` SET `marks`='$total' WHERE student_id='$student_id' AND sport_id='$sport_id' and class_id='$class_id'";
+        $stat2="UPDATE `cocircular_marks` SET `marks`='$total' WHERE student_id='$student_id' AND cocircular_id='$cocircular_id' and class_id='$class_id'";
         $run2=mysqli_query($con,$stat2);
       }
       else
       {
-        $stat2="INSERT INTO sports_marks (student_id,class_id,school_id,sport_id,marks) VALUES ('$student_id','$class_id','$school_id','$sport_id',$sport_score)";
+        $stat2="INSERT INTO `cocircular_marks`(`student_id`, `class_id`, `school_id`, `cocircular_id`, `marks`)  VALUES ('$student_id','$class_id','$school_id','$cocircular_id',$marks)";
         $run2=mysqli_query($con,$stat2);
       }
 
@@ -103,13 +103,13 @@ include 'teacher-sidebar.php';
 											</div> -->
                                             <div class="col-12 col-sm-6"> 
                                             <div class="form-group">
-                                                    <label>Sports</label>
+                                                    <label>Curricular Activities</label>
                                                     <?php
                                                         echo '<select name="sport_id"  id="sport_id" class="form-control form-select" required>
                                                                 <option value="">Select Sport</option>';
                                                                 while($data = mysqli_fetch_assoc($run))
                                                                 {
-                                                                    echo '<option value='.$data['sport_id'].'>'.$data['sport_id'].'-'.$data['sport_name'].'</option>';
+                                                                    echo '<option value='.$data['cocircular_id'].'>'.$data['cocircular_id'].'-'.$data['cocircular_name'].'</option>';
                                                                 }
                                                                 echo '</select></td>';
                                                          ?>
@@ -118,7 +118,7 @@ include 'teacher-sidebar.php';
 											<div class="col-12 col-sm-6">  
 												<div class="form-group">
 													<label>Score</label>
-													<input type="number" name="sport_score" class="form-control">
+													<input type="number" name="marks" class="form-control">
 												</div>
 											</div>
 											
