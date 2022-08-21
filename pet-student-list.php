@@ -11,6 +11,7 @@ else{
     $school_id= $_SESSION['SCHOOL_ID'];
 
     $std=" select *from student where school_id='$school_id'";
+
     
 // if(isset($_POST['submit'])) {
 //     $class=$_POST['select'];
@@ -131,9 +132,11 @@ include 'pet-menu.php';
 <th>Name</th>
 <th>Class</th>
 <th>Gender</th>
-<th>DOB</th>
-<th>EMAIL</th>
-<th>Address</th>
+<th>Kabbadi</th>
+<th>Football</th>
+<th>Basketball</th>
+<th>Cricket</th>
+<th>Totals</th>
 <!-- <th class="text-end">Action</th> -->
 </tr>
 </thead>
@@ -141,13 +144,10 @@ include 'pet-menu.php';
 <?php
 foreach ($result as $data) 
 {
-       $stdname=$data['student_name'];
-       $std_id=$data['student_id'];
-       $date=$data['date_of_birth'];
-       $class_id=$data['class_id'];
-       $gender=$data['gender'];
-       $addres=$data['address'];
-       $mail=$data['email'];
+    $stdname=$data['student_name'];
+    $std_id=$data['student_id'];
+    $class_id=$data['class_id'];
+    $gender=$data['gender'];
     echo
     '<tr>
 <td>'.$std_id.'</td>
@@ -156,11 +156,28 @@ foreach ($result as $data)
 </h2>
 </td>
 <td>'.$class_id.'</td>
-<td>'.$gender.'</td>
-<td>'.$date.'</td>
-<td>'.$mail.'</td>
-<td>'.$addres.'</td>
-<td class="text-end">';
+<td>'.$gender.'</td>';
+    $sport = array("SP0001","SP0002","SP0003","SP0004");
+    foreach($sport as $spid)
+    {
+        $luf="select marks from sports_marks where student_id='$std_id' AND sport_id='$spid'";
+        $res=mysqli_query($con,$luf);
+        $data1=mysqli_fetch_assoc($res);
+        if(!empty($data1))
+        {
+        echo '<td>'.$data1['marks'].'</td>'; 
+        }
+        else{
+            echo '<td>NA</td>';
+        }
+    }  
+ $stat="select totals from sports_totals where student_id='$std_id'";
+ $ace=mysqli_query($con,$stat);
+ $ace=mysqli_fetch_assoc($ace);
+ $total=$ace['totals'];
+ echo '<td>'.$total.'</td>';
+echo '<td class="text-end">';
+
 }
 ?>
 
