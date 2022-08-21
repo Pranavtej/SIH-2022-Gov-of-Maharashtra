@@ -25,7 +25,7 @@
         where student_id='$student_id' and school_id='$school_id'";
         $result2=mysqli_query($con,$query2) or die(mysqli_error);
         if($result2){
-             $qu="INSERT INTO `log_classteacher_addbehaviour`(`student_id`, `teacher_id`, `points`, `purpose`) 
+             $qu="INSERT INTO `log_classteacher_addbehavior`(`student_id`, `teacher_id`, `points`, `purpose`) 
              VALUES ('$student_id','$teacher_id','$nb','$re')";
              $re=mysqli_query($con,$qu) or die(mysqli_error);
              echo "<script>header.location='teacher-classteacher-add-behaviour.php?sid=$student_id&
