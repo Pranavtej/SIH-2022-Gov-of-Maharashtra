@@ -9,16 +9,18 @@
 
     $sql = mysqli_query($con,"select teacher_name from teacher_info where teacher_id='$teacher_id' and school_id='$school_id'");
     $run = mysqli_fetch_assoc($sql);
-	$sql1= mysqli_query($con,"select avg(marks) as av,sct.class_id as cls,max(marks) as max from exam_marks as e,schoolwise_class_subject_teachers as sct,classes as c where sct.teacher_id='TE0001' and e.class_id=sct.class_id and e.subject_id=sct.subject_id group by sct.class_id ");
-    // $sql2= mysqli_query($con,"select max(marks) from exam_marks as e,schoolwise_class_subject_teachers as sct,classes as c where sct.teacher_id='TE0001' and e.class_id=sct.class_id and e.subject_id=sct.subject_id group by sct.class_id)");
+	$sql1= mysqli_query($con,"select avg(marks) as av,sct.class_id as cls,max(marks) as max from exam_marks as e,
+	schoolwise_class_subject_teachers as sct,classes as c where sct.teacher_id='TE0001' and
+	 e.class_id=sct.class_id and e.subject_id=sct.subject_id group by sct.class_id ");
 	foreach($sql1 as $d){
-  $x[]=$d['av'];
-  $y[]=$d['cls'];
-  $m[]=$d['max'];
-}
-//  foreach($sql1 as $d){ 
+		$x[]=$d['av'];
+		$y[]=$d['cls'];
+		$m[]=$d['max'];
+		}
+	$sql2 =  mysqli_query($con," select count(m.marks) as count,m.class_id as class_id from exam_marks m , exam e  where m.marks>=35 and 
+	m.subject_id in (select subject_id from schoolwise_class_subject_teachers where teacher_id = '$teacher_id') 
+	and m.school_id='$school_id' and m.eid=e.eid and e.status=1  group by m.class_id " );
 	
-//   }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -48,54 +50,43 @@
     </head>
     <body>
 	
-		<!-- Main Wrapper -->
-        <div class="main-wrapper">
-			<?php
-			    include 'teacher-teacher-header.php';
-
-				include 'teacher-teacher-sidebar.php';
-			 ?>			
-		
-			<?php include 'teacher-teacher-header.php' ?>
-            			
-			<?php include 'teacher-teacher-sidebar.php' ?>
-			
-			<!-- Page Wrapper -->
-            <div class="page-wrapper">
-			
-                <div class="content container-fluid">
-					<!-- Page Header -->
-					<div class="page-header">
-						<div class="row">
-							<div class="col-sm-12">
-								<h3 class="page-title">Welcome <?php echo $run['teacher_name'];  ?></h3>
-								<ul class="breadcrumb">
-									<h4><li class="breadcrumb-item active">Teacher</li></h4>
-								</ul>
-							</div>
+	<!-- Main Wrapper -->
+	<div class="main-wrapper">	
+		<?php include 'teacher-teacher-header.php' ?>		
+		<?php include 'teacher-teacher-sidebar.php' ?>
+		<!-- Page Wrapper -->
+		<div class="page-wrapper">
+			<div class="content container-fluid">
+				<!-- Page Header -->
+				<div class="page-header">
+					<div class="row">
+						<div class="col-sm-12">
+							<h3 class="page-title">Welcome <?php echo $run['teacher_name'];  ?></h3>
+							<ul class="breadcrumb">
+								<h4><li class="breadcrumb-item active">Teacher</li></h4>
+							</ul>
 						</div>
 					</div>
-					<!-- /Page Header -->
-
-					<!-- Overview Section -->
-					<div class="row">
-						<div class="col-xl-3 col-sm-6 col-12 d-flex">
-							<div class="card bg-five w-100">
-								<div class="card-body">
-									<div class="db-widgets d-flex justify-content-between align-items-center">
-										<div class="db-icon">
-											<i class="fas fa-chalkboard"></i>
-										</div>
-										<div class="db-info">
-											<h3>04/06</h3>
-											<h6>Total Classes</h6>
-										</div>										
+				</div>
+				<!-- /Page Header -->
+				<!-- Overview Section -->
+				<div class="row">
+					<div class="col-xl-3 col-sm-6 col-12 d-flex">
+						<div class="card bg-five w-100">
+							<div class="card-body">
+								<div class="db-widgets d-flex justify-content-between align-items-center">
+									<div class="db-icon">
+										<i class="fas fa-chalkboard"></i>
 									</div>
+									<div class="db-info">
+										<h3>04/06</h3>
+										<h6>Total Classes</h6>
+									</div>										
 								</div>
 							</div>
 						</div>
-
-						<div class="col-xl-3 col-sm-6 col-12 d-flex">
+					</div>
+                    <div class="col-xl-3 col-sm-6 col-12 d-flex">
 							<div class="card bg-six w-100">
 								<div class="card-body">
 									<div class="db-widgets d-flex justify-content-between align-items-center">
@@ -110,7 +101,6 @@
 								</div>
 							</div>
 						</div>
-
 						<div class="col-xl-3 col-sm-6 col-12 d-flex">
 							<div class="card bg-seven w-100">
 								<div class="card-body">
@@ -126,7 +116,6 @@
 								</div>
 							</div>
 						</div>
-
 						<div class="col-xl-3 col-sm-6 col-12 d-flex">
 							<div class="card bg-eight w-100">
 								<div class="card-body">
@@ -144,136 +133,156 @@
 						</div>
 					</div>
 					<!-- /Overview Section -->	
-									
-
 					<!-- Teacher Dashboard -->
 					<div class="row">
 						<div class="col-12 col-lg-12 col-xl-8 d-flex">
-									<div class="card flex-fill">
-										<div class="card-header">
-											<div class="row align-items-center">
-												<div class="col-6">
-													<h5 class="card-title">Class Wise Progress</h5>
-												</div>
-												<!-- <div class="col-6">
-													<ul class="list-inline-group text-end mb-0 ps-0">
-														<li class="list-inline-item">
-															  <div class="form-group mb-0 amount-spent-select">
-																<select class="form-control form-control-sm form-select">
-																  <option>Weekly</option>
-																  <option>Monthly</option>
-																  <option>Yearly</option>
-																</select>
-															</div>
-														</li>
-													</ul>                                        
-												</div> -->
-											</div>						
+							 <div class="card flex-fill">
+								<div class="card-header">
+									<div class="row align-items-center">
+										<div class="col-6">
+											<h5 class="card-title">Class Wise Progress</h5>
 										</div>
-						<div class="card-body">
+									</div>						
+							  </div>
+						           <div class="card-body">
                                         <canvas id="acscore"></canvas>
                                             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
                                             <script>
-const ctx_2 = document.getElementById('acscore');
-const myChart = new Chart(ctx_2, {
-type: 'bar',
-data: {
-labels: <?php echo json_encode($y)?> ,
-datasets: [{
-label: 'Highest Marks',
-data: <?php echo json_encode($m)?>,
-backgroundColor: [
-'rgba(255, 99, 132, 0.2)',
-'rgba(54, 162, 235, 0.2)',
-'rgba(255, 206, 86, 0.2)',
-'rgba(75, 192, 192, 0.2)',
-'rgba(153, 102, 255, 0.2)',
-'rgba(255, 159, 64, 0.2)'
-],
-borderColor: [
-'rgba(255, 99, 132, 1)',
-'rgba(54, 162, 235, 1)',
-'rgba(255, 206, 86, 1)',
-'rgba(75, 192, 192, 1)',
-'rgba(153, 102, 255, 1)',
-'rgba(255, 159, 64, 1)'
-],
-borderWidth: 1
-},
-{
-label: 'Average',
-type: 'line',
-data:<?php echo json_encode($x)?>,
-// this dataset is drawn below0
-order: 2,
-backgroundColor: [
-'rgba(255, 99, 132, 0.2)',
-'rgba(54, 162, 235, 0.2)',
-'rgba(255, 206, 86, 0.2)',
-'rgba(75, 192, 192, 0.2)',
-'rgba(153, 102, 255, 0.2)',
-'rgba(255, 159, 64, 0.2)'
-],
-borderColor: [
-'rgba(255, 99, 132, 1)',
-'rgba(54, 162, 235, 1)',
-'rgba(255, 206, 86, 1)',
-'rgba(75, 192, 192, 1)',
-'rgba(153, 102, 255, 1)',
-'rgba(255, 159, 64, 1)'
-],
-borderWidth: 1
-}]
-},
-options: {
-scales: {
-y: {
-beginAtZero: true
-}
-}
-}
-});
+												const ctx_2 = document.getElementById('acscore');
+												const myChart = new Chart(ctx_2, {
+												type: 'bar',
+												data: {
+												labels: <?php echo json_encode($y)?> ,
+												datasets: [{
+												label: 'Highest Marks',
+												data: <?php echo json_encode($m)?>,
+												backgroundColor: [
+												'rgba(255, 99, 132, 0.2)',
+												'rgba(54, 162, 235, 0.2)',
+												'rgba(255, 206, 86, 0.2)',
+												'rgba(75, 192, 192, 0.2)',
+												'rgba(153, 102, 255, 0.2)',
+												'rgba(255, 159, 64, 0.2)'
+												],
+												borderColor: [
+												'rgba(255, 99, 132, 1)',
+												'rgba(54, 162, 235, 1)',
+												'rgba(255, 206, 86, 1)',
+												'rgba(75, 192, 192, 1)',
+												'rgba(153, 102, 255, 1)',
+												'rgba(255, 159, 64, 1)'
+												],
+												borderWidth: 1
+												},
+												{
+												label: 'Average',
+												type: 'line',
+												data:<?php echo json_encode($x)?>,
+												// this dataset is drawn below0
+												order: 2,
+												backgroundColor: [
+												'rgba(255, 99, 132, 0.2)',
+												'rgba(54, 162, 235, 0.2)',
+												'rgba(255, 206, 86, 0.2)',
+												'rgba(75, 192, 192, 0.2)',
+												'rgba(153, 102, 255, 0.2)',
+												'rgba(255, 159, 64, 0.2)'
+												],
+												borderColor: [
+												'rgba(255, 99, 132, 1)',
+												'rgba(54, 162, 235, 1)',
+												'rgba(255, 206, 86, 1)',
+												'rgba(75, 192, 192, 1)',
+												'rgba(153, 102, 255, 1)',
+												'rgba(255, 159, 64, 1)'
+												],
+												borderWidth: 1
+												}]
+												},
+												options: {
+												scales: {
+												y: {
+												beginAtZero: true
+												}
+												}
+												}
+												});
 
 											</script>
-										</div>
-										</div></div>
-							
-								<div class="col-12 col-lg-4 col-xl-4 d-flex">
+										</div></div></div> 	
+								  
+							<div class="col-12 col-lg-4 col-xl-4 d-flex">				
+									<!-- Feed Activity -->
 									<div class="card flex-fill">
 										<div class="card-header">
-											<div class="row align-items-center">
-												<div class="col-12">
-													<h5 class="card-title">Semester Progres</h5>
-												</div>
-											</div>						
+											<h5 class="card-title">Pass Percentage</h5>
 										</div>
-										<div class="dash-widget">
-											<div class="circle-bar circle-bar1">
-												<div class="circle-graph1" data-percent="50">
-													<b>50%</b>
-												</div>
-											</div>
-											<div class="dash-info">
-												<h6>Lesson Progressed</h6>
-												<h4>30 <span>/ 60</span></h4>
-											</div>
-										</div>
+										<div class="card-body">
+											<ul class="activity-feed">
+												<?php
+													while($run1 = mysqli_fetch_assoc($sql2))
+													{
+														$nc=0;
+														$pc=0;
+														$pp=0;	
+														$cid = $run1['class_id'];
+														$qu3 = "select count(*) as count1 from student s where class_id ='$cid' and school_id = '$school_id'";
+														$run2 = mysqli_query($con,$qu3);
+														$count2=mysqli_fetch_assoc($run2);
+														$pc=$run1['count'];
+														
+														$nc=$count2['count1'];
+													
+														$pp=($pc/$nc)*100;
+														echo '<li class="feed-item">
+														<div class="feed-date">'.$cid.'</div>
+														<span class="feed-text"><a>'.round($pp).'%</a></span>
+														</li>';
+													
+													}
+												?>
+											</ul>
+										</div>					
 									</div>
 								</div>
 							</div>
-					    </div>
-                    </div>
-					<!-- /Teacher Dashboard -->
-				</div>
-				
-				<!-- Footer -->
-				<!-- <footer>
-					<p>Copyright © 2020 Dreamguys.</p>					
-				</footer> -->
-				<!-- /Footer -->
 
+					<div class="col-12 col-lg-4 col-xl-4 d-flex">
+						<div class="card flex-fill">
+							<div class="card-header">
+								<div class="row align-items-center">
+									<div class="col-12">
+										<h5 class="card-title">Semester Progres</h5>
+									</div>
+								</div>						
+							</div>
+							<div class="dash-widget">
+								<div class="circle-bar circle-bar1">
+									<div class="circle-graph1" data-percent="50">
+										<b>50%</b>
+									</div>
+								</div>
+								<div class="dash-info">
+									<h6>Lesson Progressed</h6>
+									<h4>30 <span>/ 60</span></h4>
+								</div>
+							</div>
+						</div>
+					</div>
+					</div>
+				</div>
 			</div>
-			<!-- /Page Wrapper -->
+			<!-- /Teacher Dashboard -->
+		</div>
+		
+		<!-- Footer -->
+		<!-- <footer>
+			<p>Copyright © 2020 Dreamguys.</p>					
+		</footer> -->
+		<!-- /Footer -->
+
+	</div>
+	<!-- /Page Wrapper -->
 
         </div>
 		<!-- /Main Wrapper -->
