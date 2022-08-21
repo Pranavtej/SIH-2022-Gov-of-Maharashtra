@@ -33,6 +33,22 @@
   where teacher_id='$teacher_id' and school_id='$school_id' ");
  
 }
+$sub=mysqli_query($con,"SELECT subject_name as sn FROM subjects as s WHERE s.subject_id=any(select subject_id from schoolwise_class_subject_teachers where class_id=any(select class_id from schoolwise_class_details where teacher_id='$teacher_id'))");
+ foreach($sub as $d){
+	$s[]=$d['sn'];
+    }
+ $maxsub=mysqli_query($con,"SELECT max(marks) as m FROM exam_marks as e WHERE e.subject_id=any(select subject_id from schoolwise_class_subject_teachers where class_id=any(select class_id from schoolwise_class_details where teacher_id='$teacher_id')) and e.class_id=any(select class_id from schoolwise_class_details where teacher_id='TE0001') and school_id='SC0001' group by subject_id");
+ foreach($maxsub as $d){
+	$mx[]=$d['m'];
+ }
+ $avgsub=mysqli_query($con,"SELECT avg(marks) as a FROM exam_marks as e WHERE e.subject_id=any(select subject_id from schoolwise_class_subject_teachers where class_id=any(select class_id from schoolwise_class_details where teacher_id='$teacher_id')) and e.class_id=any(select class_id from schoolwise_class_details where teacher_id='TE0001') and school_id='SC0001' group by subject_id");
+ foreach($avgsub as $d){
+	$ax[]=$d['a'];
+ }
+ $minsub=mysqli_query($con,"SELECT min(marks) as mn FROM exam_marks as e WHERE e.subject_id=any(select subject_id from schoolwise_class_subject_teachers where class_id=any(select class_id from schoolwise_class_details where teacher_id='$teacher_id')) and e.class_id=any(select class_id from schoolwise_class_details where teacher_id='TE0001') and school_id='SC0001' group by subject_id");
+ foreach($minsub as $d){
+	$mn[]=$d['mn'];
+ }
     
  
 
@@ -184,12 +200,12 @@
     
 const ctx_2 = document.getElementById('cpscore');
 const myChart = new Chart(ctx_2, {
-    type: 'line',
+    type: 'bar',
     data: {
-        labels:  ['STUDENT', 'TEACHER', 'PARENT', 'ADMIN'],
+        labels: <?php echo json_encode($s)?>,
         datasets: [{
-            label: 'class performance',
-            data: [100,120,130,140],
+            label: 'maximum',
+            data: <?php echo json_encode($mx)?>,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -211,7 +227,47 @@ const myChart = new Chart(ctx_2, {
         {
         label: 'Average',
         type: 'line',
-           data:[100,120,130,140],
+           data:<?php echo json_encode($ax)?>,
+			backgroundColor: [
+				'rgba(255, 99, 132, 0.2)',
+				'rgba(54, 162, 235, 0.2)',
+				'rgba(255, 206, 86, 0.2)',
+				'rgba(75, 192, 192, 0.2)',
+				'rgba(153, 102, 255, 0.2)',
+				'rgba(255, 159, 64, 0.2)'
+			],
+			borderColor: [
+				'rgba(255, 99, 132, 1)',
+				'rgba(54, 162, 235, 1)',
+				'rgba(255, 206, 86, 1)',
+				'rgba(75, 192, 192, 1)',
+				'rgba(153, 102, 255, 1)',
+				'rgba(255, 159, 64, 1)'
+			],
+			borderWidth: 1,
+           // this dataset is drawn below0
+           border: 2,
+           backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+       }, {
+        label: 'Minimum',
+        type: 'line',
+           data:<?php echo json_encode($mn)?>,
 			backgroundColor: [
 				'rgba(255, 99, 132, 0.2)',
 				'rgba(54, 162, 235, 0.2)',
