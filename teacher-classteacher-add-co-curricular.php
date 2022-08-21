@@ -94,12 +94,12 @@ else
 												<h5 class="form-title"><span>Add Performance</span></h5>
 											</div>
                                           
-											<div class="col-12 col-sm-6">  
+											<!-- <div class="col-12 col-sm-6">  
 												<div class="form-group">
 													<label>Student ID</label>
 													<input type="text" name="student_id" value="<?php echo $student_id ?>" disabled="disabled" class="form-control">
 												</div>
-											</div>
+											</div> -->
 											<!-- <div class="col-12 col-sm-6">
 												<div class="form-group">
 													<label>Last Name</label>
