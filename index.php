@@ -33,7 +33,7 @@
 
 <header id="home" class="header">
 
-<nav class="navbar navbar-expand-md home-menu hp4">
+<nav class="navbar navbar-expand-md home-menu hp4 fixed-header">
 <div class="container-fluid">
 
 <a class="logo-link smooth-menu header-logo" href="#home">
