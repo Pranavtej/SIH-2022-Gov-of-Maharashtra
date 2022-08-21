@@ -51,7 +51,7 @@
 							<li class="submenu">
 								<a href="#"><i class="fas fa-chalkboard"></i> <span>Student Progress</span> <span class="menu-arrow"></span></a>
 								<ul>
-									<li><a href="teacher-classteacher-add-co-curricular.php">Student List</a></li>
+									<li><a href="teacher-classteacher-predict-list.php">Student List</a></li>
 								</ul>
 							</li>
 						</ul>
