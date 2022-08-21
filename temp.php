@@ -102,7 +102,7 @@ $class_id = $_SESSION['CLASS_ID'];
 																			var xmlhttp=new XMLHttpRequest();
 																			xmlhttp.onreadystatechange=function() {
 																				if (this.readyState==4 && this.status==200) {
-                                                                                    r= this.responseText;
+                                                                                    var r= this.responseText;
 																					console.log(this.responseText);
 																					document.getElementById("'.$j.'").innerHTML=this.responseText;
 																				}
@@ -112,7 +112,12 @@ $class_id = $_SESSION['CLASS_ID'];
 																		}
 																	</script>
 																';
-                                                                $result= "<script>document.write(r)</script>";  
+                                                                ?>
+                                                                <script>
+                                                                    <?php
+                                                                $result= "<script>document.write(r)</script>";  ?>
+                                                                </script>
+                                                                <?php
 																echo 
 																'<tr><td>'.$res1['student_id'].'</td>
 																<td>'.$res1['student_name'].'</td>
