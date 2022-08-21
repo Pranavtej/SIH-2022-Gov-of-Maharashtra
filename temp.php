@@ -105,7 +105,7 @@ $class_id = $_SESSION['CLASS_ID'];
 
                                                                                     
 																					console.log(this.responseText);
-                                                                                    var test = this.responseText
+                                                                                    var test = this.responseText ;
                                                                                     window.r = test ;
 																					document.getElementById("'.$j.'").innerHTML=this.responseText;
                                                                                     
@@ -117,7 +117,7 @@ $class_id = $_SESSION['CLASS_ID'];
 																	</script>
 																';
                                                                 
-                                                                echo  $result= "<script>document.write(window.result)</script>";
+                                                                echo  $result= "<script>document.write(window.r)</script>";
                                                                
 																echo 
 																'<tr><td>'.$res1['student_id'].'</td>
