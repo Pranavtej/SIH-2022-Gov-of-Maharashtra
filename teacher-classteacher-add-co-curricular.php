@@ -106,7 +106,7 @@ include 'teacher-sidebar.php';
                                                     <label>Curricular Activities</label>
                                                     <?php
                                                         echo '<select name="sport_id"  id="sport_id" class="form-control form-select" required>
-                                                                <option value="">Select Sport</option>';
+                                                                <option value="">Select Co-Currriculum</option>';
                                                                 while($data = mysqli_fetch_assoc($run))
                                                                 {
                                                                     echo '<option value='.$data['cocircular_id'].'>'.$data['cocircular_id'].'-'.$data['cocircular_name'].'</option>';
