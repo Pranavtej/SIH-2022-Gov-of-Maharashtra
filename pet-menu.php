@@ -158,7 +158,7 @@
 <a href="#"><i class="fas fa-book-reader"></i> <span> Subjects</span> <span class="menu-arrow"></span></a>
 <ul>
 <li><a href="teacher-subjects.php">Subject List</a></li>
-<!-- <li><a href="teacher-subject-add.php">Subject Add</a></li>
+<li><a href="teacher-subject-add.php">Subject Add</a></li>
 <li><a href="teacher-subject-add.php">Subject Edit</a></li>
 </ul>
 </li>-->
