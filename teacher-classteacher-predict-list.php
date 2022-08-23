@@ -34,8 +34,8 @@ $class_id = $_SESSION['CLASS_ID'];
 		
     </head>
     <body>
-         <?php include 'teacher-sidebar.php';
-         include 'teacher-header.php';	?>	
+         <?php 	include 'teacher-sidebar.php';
+         		include 'teacher-header.php';	?>	
 			<!-- Page Wrapper -->
             <div class="page-wrapper">
                 <div class="content container-fluid">

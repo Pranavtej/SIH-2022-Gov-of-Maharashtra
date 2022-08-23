@@ -30,6 +30,8 @@ if(isset($_POST['submit']))
 	$insert = "UPDATE student SET student_name='$name', date_of_birth='$dob', gender='$gender',email='$email',address='$ads',class_id='$class_id' where student_id='$std_id' ";
 	$insert2 = mysqli_query($con,$insert);
 
+	echo "<script>document.location='school-admin-edit-student.php'</script>";
+
   
 }
 
