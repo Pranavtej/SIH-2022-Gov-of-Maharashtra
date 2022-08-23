@@ -22,7 +22,7 @@
 
 	$sql5 = mysqli_query($con,"select count(*) as female from student where school_id='$school_id' and class_id='$class_id' and gender='F'");
 	$run5 = mysqli_fetch_assoc($sql5);
-	$sql1= mysqli_query($con,"select avg(marks) as av,sct.class_id as cls,max(marks) as max from exam_marks as e,schoolwise_class_subject_teachers as sct,classes as c where sct.teacher_id='TE0001' and e.class_id=sct.class_id and e.subject_id=sct.subject_id group by sct.class_id ");
+	$sql1= mysqli_query($con,"select avg(marks) as av,sct.class_id as cls,max(marks) as max from exam_marks as e,schoolwise_class_subject_teachers as sct,classes as c where sct.teacher_id='$teacher_id' and e.class_id=sct.class_id and e.subject_id=sct.subject_id group by sct.class_id ");
     // $sql2= mysqli_query($con,"select max(marks) from exam_marks as e,schoolwise_class_subject_teachers as sct,classes as c where sct.teacher_id='TE0001' and e.class_id=sct.class_id and e.subject_id=sct.subject_id group by sct.class_id)");
 	foreach($sql1 as $d){
   $x[]=$d['av'];
@@ -33,19 +33,32 @@
   where teacher_id='$teacher_id' and school_id='$school_id' ");
  
 }
-$sub=mysqli_query($con,"SELECT subject_name as sn FROM subjects as s WHERE s.subject_id=any(select subject_id from schoolwise_class_subject_teachers where class_id=any(select class_id from schoolwise_class_details where teacher_id='$teacher_id'))");
+$sub=mysqli_query($con,"SELECT subject_name as sn FROM subjects as s WHERE s.subject_id
+=any(select subject_id from schoolwise_class_subject_teachers where class_id=any
+(select class_id from schoolwise_class_details where teacher_id='$teacher_id'))");
  foreach($sub as $d){
 	$s[]=$d['sn'];
     }
- $maxsub=mysqli_query($con,"SELECT max(marks) as m FROM exam_marks as e WHERE e.subject_id=any(select subject_id from schoolwise_class_subject_teachers where class_id=any(select class_id from schoolwise_class_details where teacher_id='$teacher_id')) and e.class_id=any(select class_id from schoolwise_class_details where teacher_id='TE0001') and school_id='SC0001' group by subject_id");
+ $maxsub=mysqli_query($con,"SELECT max(marks) as m FROM exam_marks e,exam m
+  WHERE m.eid=e.eid and m.status=1 and e.subject_id=any(select subject_id from
+   schoolwise_class_subject_teachers where class_id=any(select class_id from schoolwise_class_details
+    where teacher_id='$teacher_id')) and e.class_id=any(select class_id from schoolwise_class_details
+	 where teacher_id='$teacher_id') and school_id='$school_id' group by subject_id");
  foreach($maxsub as $d){
 	$mx[]=$d['m'];
  }
- $avgsub=mysqli_query($con,"SELECT avg(marks) as a FROM exam_marks as e WHERE e.subject_id=any(select subject_id from schoolwise_class_subject_teachers where class_id=any(select class_id from schoolwise_class_details where teacher_id='$teacher_id')) and e.class_id=any(select class_id from schoolwise_class_details where teacher_id='TE0001') and school_id='SC0001' group by subject_id");
+ $avgsub=mysqli_query($con,"SELECT avg(marks) as a FROM exam_marks e,exam m WHERE m.eid=e.eid and m.status=1 and  
+ e.subject_id=any(select subject_id from schoolwise_class_subject_teachers where class_id=any(select class_id from
+  schoolwise_class_details where teacher_id='$teacher_id')) and e.class_id=any(select class_id from schoolwise_class_details 
+  where teacher_id='$teacher_id') and school_id='$school_id' group by subject_id");
  foreach($avgsub as $d){
 	$ax[]=$d['a'];
  }
- $minsub=mysqli_query($con,"SELECT min(marks) as mn FROM exam_marks as e WHERE e.subject_id=any(select subject_id from schoolwise_class_subject_teachers where class_id=any(select class_id from schoolwise_class_details where teacher_id='$teacher_id')) and e.class_id=any(select class_id from schoolwise_class_details where teacher_id='TE0001') and school_id='SC0001' group by subject_id");
+ $minsub=mysqli_query($con,"SELECT min(marks) as mn FROM exam_marks e,exam m WHERE m.eid=e.eid and m.status=1 
+ and e.subject_id=any(select subject_id from schoolwise_class_subject_teachers where class_id=
+ any(select class_id from schoolwise_class_details where teacher_id='$teacher_id')) and 
+ e.class_id=any(select class_id from schoolwise_class_details where teacher_id='$teacher_id') 
+ and school_id='$school_id' group by subject_id");
  foreach($minsub as $d){
 	$mn[]=$d['mn'];
  }

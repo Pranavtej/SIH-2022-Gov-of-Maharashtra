@@ -5,13 +5,15 @@ include 'connect.php';
 session_start();
 
 $school_id = $_GET['school_id'];
-/*$sql = "select * from student where student_id='$student_id'";
+$sql = "select * from school_info where school_id='$school_id'";
 $run = mysqli_fetch_array(mysqli_query($con, $sql));
-$cd=$run['class_id'];
-$sql2 = "select class,section from classes where class_id= '$cd'";
-$run2 = mysqli_query($con, $sql2);
-$run2 = mysqli_fetch_assoc($run2);*/
+$did=$run['district_id'];
+$sql1 = "select * from districts  where district_id='$did'";
+$run1 = mysqli_fetch_array(mysqli_query($con, $sql1));
 
+$sql2= mysqli_query($con,"select sc.class_id as class_id,c.class as cname,c.section as 
+section from school_info  s , classes c , schoolwise_class_details sc where 
+s.school_id ='$school_id' and  sc.class_id = c.class_id and sc.school_id=s.school_id");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,8 +48,8 @@ $run2 = mysqli_fetch_assoc($run2);*/
 		
 			<?php include 'super-admin-menu.php'; ?>
         
-			<!-- Page Wrapper -->
-            <!-- <div class="page-wrapper">
+			Page Wrapper
+             <div class="page-wrapper">
                 <div class="content container-fluid">
 				
 					<div class="page-header">
@@ -56,7 +58,7 @@ $run2 = mysqli_fetch_assoc($run2);*/
 								<h3 class="page-title">Student Details</h3>
 								<ul class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="super-admin-dashboard.php">Dashboard</a></li>
-									<li class="breadcrumb-item"><a href="super-admin-students-list.php">Student</a></li>
+									<li class="breadcrumb-item"><a href="super-admin-school-list.php">SCHOOLS	</a></li>
 									<li class="breadcrumb-item active">Student Details</li>
 								</ul>
 							</div>
@@ -75,42 +77,48 @@ $run2 = mysqli_fetch_assoc($run2);*/
 											<div class="media-body flex-grow-1">
 												<ul>
                                                     <li>
-                                                        <span class="title-span">Full Name : </span>
-                                                        <span class="info-span"><?php echo $run['student_name']; ?></span>
+                                                        <span class="title-span">School Name : </span>
+                                                        <span class="info-span"><?php echo $run['school_name']; ?></span>
                                                     </li>
                                                     <li>
-                                                        <span class="title-span">CLASS : </span>
-                                                        <span class="info-span"><?php echo $run2['class']; ?></span>
-                                                    </li>
-                                                    <li>
-                                                        <span class="title-span">SECTION : </span>
-                                                        <span class="info-span"><?php echo $run2['section']; ?></span>
-                                                    </li>
-                                                    <li>
-                                                        <span class="title-span">Email : </span>
-                                                        <span class="info-span"><?php echo $run['email']; ?></span>
-                                                    </li>
-                                                    <li>
-                                                        <span class="title-span">Gender : </span>
-                                                        <span class="info-span"><?php
-																					if($run['gender']== 'M')
-																					{
-																						echo "MALE";
-																					} 
-																					else
-																					{
-																						echo "FEMALE";
-																					}
-																				?></span>
-                                                    </li>
-                                                    <li>
-                                                        <span class="title-span">DOB : </span>
-                                                        <span class="info-span"><?php echo $run['date_of_birth']; ?></span>
+                                                        <span class="title-span">District : </span>
+                                                        <span class="info-span"><?php echo $run['district_id'].'-'.$run1['district_name'];; ?></span>
                                                     </li>
                                                 </ul>
 											</div>
 										</div>
+										<div class="col-12 col-lg-4 col-xl-4 d-flex">				
 
+									<div class="card flex-fill">
+										<div class="card-header">
+											<h5 class="card-title"><?php echo $run['school_name'];?> Classwise Performance</h5>
+										</div>
+										<div class="card-body">
+											<ul class="activity-feed">
+												<?php
+													while($run2 = mysqli_fetch_assoc($sql2))
+													{
+														$cid=$run2['class_id'];
+														$cname=$run2['cname'];
+														$sec=$run2['section']; 
+														$sql3=mysqli_query($con,"SELECT e.student_id  as student_id, max(e.total) as total from exam_totals e,exam m where e.school_id='$school_id' and e.eid=m.eid and m.status=1 and e.class_id='$cid' 
+														and total=any(select max(e.total) as total from exam_totals e,exam m where e.school_id='$school_id' and e.eid=m.eid and m.status=1 and e.class_id='$cid')");
+														$run3 = mysqli_fetch_assoc($sql3);
+														$sid=$run3['student_id'];
+														echo '<li class="feed-item">
+														<div class="feed-date">'.$cname.'-'.$sec.'</div>
+														<span class="feed-text"><a>'.$sid.'</a></span>
+														</li>';
+													
+													}
+												?>
+											</ul>
+										</div>					
+									</div>
+								</div>
+							</div>
+				
+<!-- 
 										<div class="row mt-3">                                           
 										</div>
 										
@@ -148,14 +156,14 @@ $run2 = mysqli_fetch_assoc($run2);*/
 												<p><?php echo $run['address']; ?></p>
 											</div>                                            
                                         </div>
-									</div>
+									</div> -->
 								</div>								
 							</div>
 						</div>
 					</div>				
 				</div>
 				
-			    Footer -->
+			  <!-- Footer -->
 				<!-- <footer>
 					<p>Copyright © 2020 Dreamguys.</p>					
 				</footer> -->

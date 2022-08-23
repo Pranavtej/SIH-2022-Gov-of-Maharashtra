@@ -31,7 +31,13 @@ else
         $stat2="INSERT INTO sports_marks (student_id,class_id,school_id,sport_id,marks) VALUES ('$student_id','$class_id','$school_id','$sport_id',$sport_score)";
         $run2=mysqli_query($con,$stat2);
       }
-
+      
+	  $ace="select totals from sports_totals where student_id='$student_id'";
+	  $red=mysqli_query($con,$ace);
+	  $red=mysqli_fetch_assoc($red);
+	  $total1=$red['totals']+$sport_score;
+	  $ace1="UPDATE sports_totals SET totals='$total1' WHERE student_id='$student_id'";
+	  $shanks=mysqli_query($con,$ace1);
    }
 }
 ?>
