@@ -76,7 +76,7 @@ if(isset($_POST['submit']))
 					<div class="page-header">
 						<div class="row align-items-center">
 							<div class="col">
-								<h5 class="page-title">Parent-Student-Assessment</h5>
+								<h5 class="page-title">Student-Self-Assessment</h5>
 								<ul class="breadcrumb">
 									<!-- <li class="breadcrumb-item"><a href="school-admin-section-list.php">Section-list</a></li>
 									<li class="breadcrumb-item active">Add Section</li> -->
