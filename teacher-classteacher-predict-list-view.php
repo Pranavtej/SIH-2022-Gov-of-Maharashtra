@@ -129,11 +129,11 @@ while($res2 = mysqli_fetch_assoc($run2))
 												const myChart = new Chart(ctx, {
 													type: 'bar',
 													data: {
-														labels: [10,550,60],
+														labels: <?php echo json_encode($y) ?>,
 														//echo json_encode($y), 
 														datasets: [{
 															label: 'MARKS SCORED',
-															data: [50,65,45],
+															data:<?php echo json_encode($x)?>,
 														//echo json_encode($x),
 
 															backgroundColor: [
@@ -152,15 +152,17 @@ while($res2 = mysqli_fetch_assoc($run2))
 																'rgba(153, 102, 255, 1)',
 																'rgba(255, 159, 64, 1)'
 															],
-															borderWidth: 1,
-                                                            segment: {
-                                                borderColor: ctx => skipped(ctx, 'rgb(0,0,0,0.2)') || down(ctx, 'rgb(192,75,75)'),
-                                                borderDash: ctx => skipped(ctx, [6, 6]),
-                                            },
-                                            spanGaps: true
+															borderWidth: 1
 														}]
 													},
-													options: genericOptions
+													options: {
+														//maintainAspectRatio: true,
+														scales: {
+															y: {
+																beginAtZero: true
+															}
+														}
+													}
 												});
 											</script>
 										</div>
