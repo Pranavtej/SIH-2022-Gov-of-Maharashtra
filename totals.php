@@ -16,7 +16,7 @@ while($data = mysqli_fetch_assoc($sql))
         $run1 = mysqli_fetch_assoc($sql1);
         $tot = $run1['tot'];      
         
-         $sql2 = "INSERT INTO `sports_totals`(`student_id`, `school_id`, `class_id`, `totals`,`academic_year`) VALUES ('$sid','$scid','$cid','$tot','$ac_year`)";
+         $sql2 = "INSERT INTO `sports_totals`(`student_id`, `school_id`, `class_id`, `totals`,`academic_year`) VALUES ('$sid','$scid','$cid','$tot','$ac_year')";
          $run2 = mysqli_query($con,$sql2);
 
         if($run2)
