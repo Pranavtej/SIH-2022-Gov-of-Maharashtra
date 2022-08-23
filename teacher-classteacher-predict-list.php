@@ -136,16 +136,11 @@ $class_id = $_SESSION['CLASS_ID'];
 																
                                                                 </script>';
 
-																//$result= '<script>document.write(window.r)</script>';
 																echo 
 																'<tr><td>'.$res1['student_id'].'</td>
 																<td>'.$res1['student_name'].'</td>
-																<td><span id="'.$j.'" class="badge badge-success"></span></td>
-
-																
-                                                                
+																<td><a href="teacher-classteacher-predict-list-view.php?sid='.$res1['student_id'].'"><span id="'.$j.'" class="badge badge-success"></span></a></td>
 																</tr>';
-                                                            
 																$j++;
 															}
 														}

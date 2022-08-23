@@ -8,7 +8,7 @@ $class_id = $_GET['cid'];
 $school_id = $_SESSION['SCHOOL_ID'];
 $subject_id = $_GET['sid'];
 
-$sql = "select student_id from student where student_id not in (select student_id from learning_outcomes_credits where subject_id='$subject_id' AND class_id='$class_id' and school_id='$school_id') AND class_id='$class_id' AND school_id='$school_id'";
+$sql = "select student_id from student where class_id='$class_id' AND school_id='$school_id'";
 $run = mysqli_query($con,$sql);
 ?>
 
@@ -44,8 +44,8 @@ $run = mysqli_query($con,$sql);
 		<!-- Main Wrapper -->
         <div class="main-wrapper">
 		
-            <?php include 'teacher-teacher-header.php'; ?>
-			<?php include 'teacher-teacher-sidebar.php'; ?>
+            <?php include 'teacher-header.php'; ?>
+			<?php include 'teacher-sidebar.php'; ?>
 
 			
 			<!-- Page Wrapper -->
@@ -81,6 +81,7 @@ $run = mysqli_query($con,$sql);
 												<tr>
 													<th>ID</th>
 													<th>Name</th>
+													<th>Status</th>
                                                     <th>Give Rating</th>
 												</tr>
 											</thead>
@@ -93,9 +94,20 @@ $run = mysqli_query($con,$sql);
 														$run1 = mysqli_fetch_assoc(mysqli_query($con,$query));
 														echo '<tr>
 															<td>'.$id.'</td>
-															<td>'.$run1['student_name'].'</td>
-                                                            <td><a href="teacher-student-give-rating.php?cid='.$class_id.'&sid='.$id.'&suid='.$subject_id.'">Opening Soon!!</a></td>
-														</tr>';
+															<td>'.$run1['student_name'].'</td>';
+                                                        $sql = mysqli_query($con, "select * from learning_outcomes_credits where student_id='$id' and class_id='$class_id' and subject_id='$subject_id'");
+														$cc = mysqli_num_rows($sql);
+														if($cc==0)
+														{
+															echo '<td><span class="badge badge-danger">Not Completed</span></td>';
+															echo '<td><a href="teacher-student-give-rating.php?cid='.$class_id.'&sid='.$id.'&suid='.$subject_id.'">Give Credits Now!!</a></td>';
+														}
+														else
+														{
+															echo '<td><span class="badge badge-success">Completed</span></td>';
+															echo '<td>Already Given</td>';
+														}
+														echo '</tr>';
 													}
                                                 ?>
                                             </tbody>
