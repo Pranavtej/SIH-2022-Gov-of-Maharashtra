@@ -7,6 +7,8 @@ if(empty($_SESSION['STUDENT_ID']))
 }
 else{
 
+	$year_main = $_GET['year'];
+
     $student_id = $_SESSION['STUDENT_ID'];
 	$class_id = $_SESSION['CLASS_ID'];
 	$school_id = $_SESSION['SCHOOL_ID'];
@@ -53,56 +55,6 @@ else{
         $l[] = $d['sport_name'];
         $m[]=$d['marks'];
     }
-    }
-
-	$qu="select e.student_id as sid from exam_totals e,student s where e.eid='$eid' and e.school_id='$school_id' and e.student_id=s.student_id and s.class_id='$class_id' order by e.total desc";
-    $re=mysqli_query($con,$qu);
-    $var=0;
-    foreach($re as $data)
-    {
-        $var=$var+1;
-        if($data['sid']==$student_id)
-        {
-            $rank = $var;
-            break;
-        }
-    }
-
-	$qu1 = mysqli_query($con , "SELECT student_id,sum(marks) as marks from sports_marks where school_id='$school_id' GROUP BY student_id order by marks desc");
-	$var3=0;
-    foreach($qu1 as $data)
-    {
-        $var3=$var3+1;
-        if($data['student_id']==$student_id)
-        {
-            $rank3 = $var3;
-            break;
-        }
-    }
-
-	$qu5="select student_id as sid,SUM(marks) as sum from cocircular_marks where class_id='$class_id' and school_id='$school_id' GROUP BY student_id order by sum desc";
-	$re5=mysqli_query($con,$qu5);
-    $varc=0;
-    foreach($re5 as $data)
-    {
-        $varc=$varc+1;
-        if($data['sid']==$student_id)
-        {
-            $ccarank = $varc;
-            break;
-        }
-    }
-	$qu6="select c.student_id as sid,SUM(c.marks+e.total+s.marks) as sum from cocircular_marks c,exam_totals e,sports_marks s where e.class_id='$class_id' and e.school_id='$school_id' and e.student_id=c.student_id and e.student_id=c.student_id and e.student_id = s.student_id GROUP BY e.student_id order by sum desc";
-	$re9=mysqli_query($con,$qu6);
-    $v = 0;
-    foreach($re9 as $data)
-    {
-        $v = $v+1;
-        if($data['sid']==$student_id)
-        {
-            $ovrank = $v;
-            break;
-        }
     }
 }
 
@@ -153,9 +105,28 @@ else{
                                 </h3>
                                 <div class="col-auto text-end float-end ms-auto">
                                 <div>
-																		<select name="year" class="form-control form-select"required>
+																		<select name="year" id="year" class="form-control form-select" required onchange="redirect()">
 																			<option value="">Academic Year</option>
-																			<option value=>1</option>
+																			<?php
+																				$class = mysqli_query($con, "select class from classes where class_id='$class_id'");
+																				$res = mysqli_fetch_assoc($class);
+																				$cl = $res['class'];
+																				$diff = $cl - 5;
+																				$year = 2022;
+																				while($diff != 0)
+																				{
+																					$diff -= 1;
+																					if($year != $year_main)
+																					{
+																						echo '<option value="'.$year.'">'.$year.'</option>';	
+																					}
+																					else
+																					{
+																						echo '<option value="'.$year.'" selected>'.$year.'</option>';
+																					}
+																					$year -= 1;
+																				}
+																			?>
 
 																		</select>
 																	</div>
@@ -266,97 +237,6 @@ else{
 						</div>
 					</div>
 					<!-- /Overview Section -->				
-
-					<!-- Student Dashboard -->
-					<!-- <div class="row">
-						<div class="col-12 col-lg-12 col-xl-9">
-
-							<div class="card flex-fill">
-								<div class="card-header">
-									<div class="row align-items-center">
-										<div class="col-6">
-											<h5 class="card-title">Today’s Lesson</h5>
-										</div>
-										<div class="col-6">
-											<span class="float-end view-link"><a href="#">View All Courses</a></span>
-										</div>
-									</div>						
-								</div>
-
-								<div class="dash-circle">
-									<div class="row">
-										<div class="col-12 col-lg-6 col-xl-6 dash-widget3">
-											<div class="card-body dash-widget1">
-												<div class="circle-bar circle-bar2">
-													<div class="circle-graph2" data-percent="20">
-														<b>20%</b>
-													</div>
-													<h6>Lesson Learned</h6>
-													<h4>10 <span>/ 50</span></h4>
-												</div>
-												<div class="dash-details">
-													<h4>Facilisi etiam</h4>
-													<ul>
-														<li><i class="fas fa-clock"></i> 2.30pm - 3.30pm</li>
-														<li><i class="fas fa-book-open"></i> 5 Lessons</li>
-														<li><i class="fas fa-hourglass-end"></i> 60 Minutes</li>
-														<li><i class="fas fa-clipboard-check"></i> 5 Asignment</li>
-													</ul>
-													<div class="dash-btn">
-														<button type="submit" class="btn btn-info btn-border">Skip</button>
-														<button type="submit" class="btn btn-info">Continue</button>
-													</div>
-												</div>
-											</div>
-										</div>
-
-										<div class="col-12 col-lg-6 col-xl-6 dash-widget4">
-											<div class="card-body dash-widget1 dash-widget2">
-												<div class="circle-bar circle-bar3">
-													<div class="circle-graph3" data-percent="50">
-														<b>50%</b>
-													</div>
-													<h6>Lesson Learned</h6>
-													<h4>25 <span>/ 50</span></h4>
-												</div>
-												<div class="dash-details">
-													<h4>Augue mauris</h4>
-													<ul>
-														<li><i class="fas fa-clock"></i> 3.30pm - 4.30pm</li>
-														<li><i class="fas fa-book-open"></i> 6 Lessons</li>
-														<li><i class="fas fa-hourglass-end"></i> 60 Minutes</li>
-														<li><i class="fas fa-clipboard-check"></i> 6 Asignment</li>
-													</ul>
-													<div class="dash-btn">
-														<button type="submit" class="btn btn-info btn-border">Skip</button>
-														<button type="submit" class="btn btn-info">Continue</button>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div> -->
-							<!-- <script>
-                            var source=new EventSource("student-learningactivity-graph-data.php");
-                             source.onmessage=function(event)
-                             {
-								x=event.data;
-								for(i=0;i<x.length;i++){
-								x= x.replace('"','');}
-								x=x.replace('[','');
-								x=x.replace(']','');
-								a=new Array();
-								a = x.split(","); 
-								m=[];					
-								a.forEach(str => {
-                                 m.push(Number(str));
-                                 });
-								 localStorage.m = JSON.stringify(m); 
-							   }
-							   
-		
-							  </script> -->
 							
 							<div class="row">
 								<div class="col-12 col-lg-12 col-xl-8 d-flex">
@@ -366,19 +246,7 @@ else{
 												<div class="col-6">
 													<h5 class="card-title">Learning Activity</h5>
 												</div>
-												<!-- <div class="col-6">
-													<ul class="list-inline-group text-end mb-0 ps-0">
-														<li class="list-inline-item">
-															  <div class="form-group mb-0 amount-spent-select">
-																<select class="form-control form-control-sm form-select">
-																  <option>Weekly</option>
-																  <option>Monthly</option>
-																  <option>Yearly</option>
-																</select>
-															</div>
-														</li>
-													</ul>                                        
-												</div> -->
+											
 											</div>						
 										</div>
 										<div class="card-body">
@@ -515,13 +383,6 @@ else{
 <div class="col-6">
 <ul class="list-inline-group text-end mb-0 ps-0">
 <li class="list-inline-item">
-<!-- <div class="form-group mb-0 amount-spent-select"> -->
-<!-- <select class="form-control form-control-sm form-select">
-<option>Weekly</option>
-<option>Monthly</option>
-<option>Yearly</option>
-</select> -->
-<!-- </div> -->
 </li>
 </ul>
 </div>
@@ -593,12 +454,7 @@ const myChartc = new Chart(ctxc, {
 <h5 class="card-title">Your Intrests </h5>
 </div>
 
-<!-- <div class="circle-bar circle-bar3">
-<div class="circle-graph3" data-percent="50"> -->
-<!-- <b>50%</b>
-</div> -
-<h2>Score</h2>
-<h2><?php echo $zzz['total']; ?></h2>-->
+
 <div id="chart" >
 <canvas id="ccscore" width="750" height="750"></canvas>
 <!-- <canvas id="ccscore"></canvas> -->
@@ -651,49 +507,6 @@ const myChartcc = new Chart(ctxcc, {
 </div>
 </div>
 </div>
-						<!-- <div class="col-12 col-lg-12 col-xl-3 d-flex">
-							<div class="card flex-fill">
-								<div class="card-header">
-									<div class="row align-items-center">
-										<div class="col-12">
-											<h5 class="card-title">Calendar</h5>
-										</div>
-									</div>									
-								</div>
-								<div class="card-body">
-									<div id="calendar-doctor" class="calendar-container"></div>
-									<div class="calendar-info calendar-info1">
-										<div class="calendar-details">
-											<p>09 am</p>
-											<h6 class="calendar-blue d-flex justify-content-between align-items-center">Fermentum <span>09am - 10pm</span></h6>
-										</div>
-										<div class="calendar-details">
-											<p>10 am</p>
-											<h6 class="calendar-violet d-flex justify-content-between align-items-center">Pharetra et <span>10am - 11am</span></h6>
-										</div>
-										<div class="calendar-details">
-											<p>11 am</p>
-											<h6 class="calendar-red d-flex justify-content-between align-items-center">Break <span>11am - 11.30am</span></h6>
-										</div>
-										<div class="calendar-details">
-											<p>12 pm</p>
-											<h6 class="calendar-orange d-flex justify-content-between align-items-center">Massa <span>11.30am - 12.00pm</span></h6>
-										</div>
-										<div class="calendar-details">
-											<p>09 am</p>
-											<h6 class="calendar-blue d-flex justify-content-between align-items-center">Fermentum <span>09am - 10pm</span></h6>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>	
-					</div> -->
-					<!-- /Student Dashboard -->
-			
-				
-				<!-- Footer -->
-				
-				<!-- /Footer -->
 
 			</div>
 			<!-- /Page Wrapper -->
@@ -723,6 +536,14 @@ const myChartcc = new Chart(ctxcc, {
 
 		<!-- Custom JS -->
 		<script src="assets/js/script.js"></script>
+
+		<script>
+			function redirect() {
+				let year = document.getElementById('year').value;
+				document.location = "student-dashboard-test.php?year="+year;
+
+			}
+		</script>
 		
     </body>
 </html>
