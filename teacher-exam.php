@@ -22,6 +22,7 @@ if(isset($_POST['give']))
         {
             $correct = 0;
             $count = 0;
+            $credits = 0;
             foreach($qid as $id1)
             {
                 ++$count;
@@ -36,7 +37,8 @@ if(isset($_POST['give']))
             }
             $markperquestion = 5/$count;
             $credits = $markperquestion * $correct;
-            $insert = mysqli_query($con,"INSERT INTO `learning_outcomes_credits` (`school_id`, `class_id`, `student_id`, `subject_id`, `loc_id`, `credits`) VALUES ('$school_id', '$class_id', '$student_id', 'SUB0104', '$loc_id', $credits)") or die(mysqli_error()); 
+            echo "<script>alert($credits)</script>";
+            $insert = mysqli_query($con,"INSERT INTO `learning_outcomes_credits` (`school_id`, `class_id`, `student_id`, `subject_id`, `loc_id`, `credits`) VALUES ('$school_id', '$class_id', '$student_id', 'SUB0104', '$locid', $credits)") or die(mysqli_error()); 
         }
     }   
 
