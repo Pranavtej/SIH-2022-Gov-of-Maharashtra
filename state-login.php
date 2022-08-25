@@ -1,7 +1,7 @@
 <?php session_start(); 
 
-include 'connect2.php';
-
+include 'connect.php';
+$stat="select * from  "
 if(isset($_POST['login']))
 {
     if(true)

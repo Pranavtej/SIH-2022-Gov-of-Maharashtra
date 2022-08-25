@@ -1,6 +1,6 @@
 <?php 
 session_start();
-include "connect2.php";
+include "connect.php";
 $state_id=$_SESSION['STATE_ID'];
 $sql=mysqli_query($con,"select count(district_id) as total from districts where state_id='$state_id'");
 $sql1=mysqli_fetch_assoc($sql);
