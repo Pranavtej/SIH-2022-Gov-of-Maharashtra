@@ -209,19 +209,19 @@ body {
                                     <div class="col-12 col-md-6 col-lg-4 d-flex">
                                     <div class="card flex-fill">
                                     <div class="card-header">
-                                   <h4> Question 6 : Identify the number by listening to audio</h4><br>
+                                   <h4> Question 6 : Identify the number by listening to the tiger audio</h4><br>
                                     <h6>(Learning Outcome : able to distinguish the numbers)</h6>              
                                     </div><div class="card-body">
                                     <p class="card-text"><img src="exam/img/tiger.png"  onclick="sound('tiger')"> <input type="text" name="Q13">
 </p> <script>
   var audio;
-  audio = new Audio("exam/img/tiger.mp3");
+  audio = new Audio("exam/img/eight.aac");
   
   function sound(snd)
   {
     audio.pause();
     audio.currentTime = 0;
-    audio = new Audio("exam/img/" + snd +".mp3");
+    audio = new Audio("exam/img/" + snd +".aac");
     audio.play();
   }
  </script> 
