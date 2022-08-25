@@ -89,10 +89,10 @@ if(isset($_POST['give']))
 					<!-- Page Header -->
 					<div class="page-header">
 						<div class="row align-items-center">
-							<div class="col-lg-8">
+							<div class="col-lg-10">
 								<h3 class="page-title" align="center">Learning Outcome Assessment Examination </h3>
 </div>      
-                        <div class="col-lg-4">
+                        <div class="col-lg-2">
                                 <button type="button" class="btn btn-sm btn-default" style="color: red;"><i class="fa fa-signal" aria-hidden="true"></i>&nbsp&nbspNot Connected</button>
 
                             
@@ -180,5 +180,19 @@ if(isset($_POST['give']))
 		
 		<!-- Custom JS -->
 		<script src="assets/js/script.js"></script>
+        <script >
+setInterval(function() {
+    if (navigator.onLine){
+    document.getElementById('signal0').style.display = "none";
+    document.getElementById('signal1').style.display = "block";
+  }
+  else{
+    document.getElementById('signal0').style.display = "block";
+    document.getElementById('signal1').style.display = "none";
+  }
+
+},1000);
+
+        </script>
     </body>
 </html>
