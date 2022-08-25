@@ -107,7 +107,7 @@ if(isset($_POST['give']))
                         <div class="row">
                             <?php
                                 $i = 0;
-                                $j = 2;
+                                $j = 1;
                                 while($run1 = mysqli_fetch_assoc($loc))
                                 {
                                     $query = mysqli_query($con, "select loc from learning_outcomes where loc_id='{$run1['loc_id']}'");
