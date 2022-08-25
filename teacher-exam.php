@@ -68,34 +68,33 @@ $loc = mysqli_query($con, "SELECT question_id,question,options,loc_id,image_path
 					<!-- /Page Header -->
 				
                     <div class="row">
-					<form action="" method="post">
-                                                <?php
-                                                    $i = 0;
-													while($run1 = mysqli_fetch_assoc($loc))
-													{
-														// echo '<tr>
-														// 	<td>'.++$i.'</td>
-														// 	<td>'.$run1['question'].'</td>
-                                                        //     <td><input type="number" name="'.$run1['question_id'].'"></td>
-														// </tr>';
+                        <form action="" method="post">
+                            <?php
+                                $i = 0;
+                                while($run1 = mysqli_fetch_assoc($loc))
+                                {
+                                    // echo '<tr>
+                                    // 	<td>'.++$i.'</td>
+                                    // 	<td>'.$run1['question'].'</td>
+                                    //     <td><input type="number" name="'.$run1['question_id'].'"></td>
+                                    // </tr>';
 
-                                                        echo'
-                                                        <div class="col-12 col-md-6 col-lg-4 d-flex">
-                                                        <div class="card flex-fill">
-                                                        <div class="card-header">
-                                                        '.$run1['question'].'
-                                                        </div>
-                                                        <div class="card-body">
-                                                        <p class="card-text"><input type="text" name="'.$run1['question_id'].'"></p>
-                                                        </div>
-                                                        </div>
-                                                        </div>
-                                                        </div>';
-													}
-                                                ?>
-                                            <input type="submit" name="give">
-                                            </form>	
-                                                </div>				
+                                    echo'
+                                    <div class="col-12 col-md-6 col-lg-4 d-flex">
+                                    <div class="card flex-fill">
+                                    <div class="card-header">
+                                    '.$run1['question'].'
+                                    </div>
+                                    <div class="card-body">
+                                    <p class="card-text"><input type="text" name="'.$run1['question_id'].'"></p>
+                                    </div>
+                                    </div>
+                                    </div>';
+                                }
+                            ?>
+                        <input type="submit" name="give">
+                        </form>	
+                    </div>				
 				</div>
 
 				<!-- Footer -->
