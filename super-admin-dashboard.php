@@ -48,7 +48,7 @@ $teach_count = mysqli_fetch_assoc($run2);
 					<div class="page-header">
 						<div class="row">
 							<div class="col-sm-12">
-								<h3 class="page-title">Welcome SuperAdmin!</h3>
+								<h3 class="page-title">Welcome Block-official!</h3>
 								<ul class="breadcrumb">
 									<li class="breadcrumb-item active">Dashboard</li>
 								</ul>

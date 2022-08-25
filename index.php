@@ -96,6 +96,8 @@
 <div class="demo-wrap mb-0" data-aos="fade-up">
 <div class="demo-tabs">
 <ul class="nav nav-tabs">
+<li class="nav-item"><a  href="state-login.php">State&nbspOfficial</a></li>
+<li class="nav-item"><a  href="district-login.php">District&nbspOfficial</a></li>
 <li class="nav-item"><a  href="school-login.php">School&nbspAdmin</a></li>
 <li class="nav-item"><a  href="teacher-login.php">Teacher</a></li>
 <li class="nav-item"><a  href="student-login.php">Student</a></li>
