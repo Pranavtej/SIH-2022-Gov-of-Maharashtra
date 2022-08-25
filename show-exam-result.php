@@ -98,6 +98,7 @@ session_start();
 																echo '<span class="fa fa-star"></span>';
 															}
 															echo '</td>';
+                                                            echo '<td><a href="exam-result-view.php?&sid='.$sid.'&suid=SUB0104">View</a></td>';
 															echo '</tr>';
 														}
 													}
