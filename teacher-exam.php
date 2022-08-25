@@ -88,6 +88,9 @@ if(isset($_POST['give']))
 						<div class="row align-items-center">
 							<div class="col">
 								<h3 class="page-title">Examination </h3>
+                                <h3 class="text-end">Marks : </h3>
+                                <h3 class="text-end">type : </h3>
+                                <h3 class="page-title">: </h3>
 								<ul class="breadcrumb">
 									
 								</ul>
