@@ -83,7 +83,6 @@ if(isset($_POST['give']))
                 $i = 0;
 				while($get = mysqli_fetch_array($run))
 				{
-					// echo 'dataT.'.$get['ci'].'= '.$get['ca'].'; ';
                     echo 'dataT['.$i.'] = "'.$get['ci'].'";';
                     $i++;
 				}
@@ -178,7 +177,7 @@ if(isset($_POST['give']))
                     </div>	
                     			
 				</div>
-                <button class="btn btn-info btn-lg" id="submit">Submit</button>
+                <button class="btn btn-info btn-lg" name="give" id="submit">Submit</button>
                 </form>	
 
 				<!-- Footer -->
@@ -233,6 +232,22 @@ submitButton.onclick = event => {
             {
                 dataA[i] = document.getElementById(dataT[i]).value;
             }
+
+
+            var xmlhttp=new XMLHttpRequest();
+            xmlhttp.onreadystatechange=function() {
+                if (this.readyState==4 && this.status==200) {
+                    console.log(this.responseText);
+                    // document.getElementById("").value=this.responseText;
+                }
+            }
+            xmlhttp.open("GET","generate_pid.php?d1="+dataA[0]+"d2="+dataA[1]+"d3="+dataA[2]+"d4="+dataA[3]+"d5="+dataA[4]+"d6="+dataA[5]+"d7="+dataA[6]+"d8="+dataA[7]+"d9="+dataA[8]+"d0="+dataA[9],true);
+            xmlhttp.send();
+
+
+
+
+
             alert(dataA);
             alert("Test submitted successfully!!");
             localStorage.clear()
