@@ -112,7 +112,7 @@ body {
                                     <div class="col-12 col-md-6 col-lg-4 d-flex">
                                     <div class="card flex-fill">
                                     <div class="card-header">
-                                   <h4> Question 1:1. Find the shape Rectangle from Below</h4><br>
+                                   <h4> Question:1. Find the shape Rectangle from Below</h4><br>
                                     <h6>(Learning Outcome : able to count objects using numbers 1 to 9)</h6>              
                                     </div>
                                     <div id='q10'>
@@ -138,7 +138,7 @@ body {
                                     <div class="col-12 col-md-6 col-lg-4 d-flex">
                                     <div class="card flex-fill">
                                     <div class="card-header">
-                                   <h4> Question 2: 2. Find the result of this addition?</h4><br>
+                                   <h4> Question 2: Find the result of this addition?</h4><br>
                                     <h6>(Learning Outcome : able to count objects using numbers 1 to 9)</h6>              
                                     </div><h2>4+4= </h2><div class="card-body">
                                     <p class="card-text">Answer: <input type="text" name="Q11"></p>
