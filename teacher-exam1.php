@@ -109,7 +109,7 @@ if(isset($_POST['give']))
         <div class="alert" id="alert" style="font-size: 38px; color: blue"></div>
 
         <div>
-                                <p>Grade : 1</p>&nbsp&nbsp&nbsp&nbsp<p>Subject : Mathematics </p>
+                                <b>Grade :</b><p> 1</p>&nbsp&nbsp&nbsp&nbsp<p>Subject : Mathematics </p>
 								<ul class="breadcrumb">
 									
 								</ul>
@@ -211,6 +211,7 @@ const formId = "save-later-form"; // ID of the form
 
 submitButton.onclick = event => {
         if (navigator.onLine) {
+
             alert("Test submitted successfully!!");
             localStorage.clear()
         }
