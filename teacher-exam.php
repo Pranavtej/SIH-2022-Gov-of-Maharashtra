@@ -67,22 +67,7 @@ $loc = mysqli_query($con, "SELECT question_id,question,options,loc_id,image_path
 					</div>
 					<!-- /Page Header -->
 				
-					<div class="row">
-						<div class="col-sm-12">
-						
-							<div class="card card-table">
-								<div class="card-body">
-									<div class="table-responsive">
-										<table class="table table-hover table-center">
-											<thead>
-												<tr>
-													<th>S. No.</th>
-													<th>Question</th>
-                                                    <th>Answer</th>
-												</tr>
-											</thead>
-                                            <form action="" method="post">
-                                            <tbody>
+					<form action="" method="post">
                                                 <?php
                                                     $i = 0;
 													while($run1 = mysqli_fetch_assoc($loc))
@@ -111,15 +96,8 @@ $loc = mysqli_query($con, "SELECT question_id,question,options,loc_id,image_path
                                                         </div>';
 													}
                                                 ?>
-                                            </tbody>
                                             <input type="submit" name="give">
-                                            </form>
-										</table>
-									</div>
-								</div>
-							</div>							
-						</div>					
-					</div>					
+                                            </form>					
 				</div>
 
 				<!-- Footer -->
