@@ -24,7 +24,6 @@ if(isset($_POST['give']))
             $count = 0;
             foreach($qid as $id1)
             {
-                ++$count;
                 $ques = $id1['qid'];
                 $ans = $_POST[$ques];
                 $answer = mysqli_query($con, "select answer from teacher_exam_question where question_id='$ques'");
@@ -33,6 +32,7 @@ if(isset($_POST['give']))
                 {
                     $correct += 1;
                 }
+                $count++;
             }
             $markperquestion = 5/$count;
             $credits = $markperquestion * $correct;
