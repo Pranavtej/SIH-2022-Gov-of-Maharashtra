@@ -140,7 +140,7 @@ body {
                                     <div class="card-header">
                                    <h4> Question 2: 2. Find the result of this addition?</h4><br>
                                     <h6>(Learning Outcome : able to count objects using numbers 1 to 9)</h6>              
-                                    </div><h2>4+4= <input type="text" name="Q11"></h2><div class="card-body">
+                                    </div><h2>4+4= </h2><div class="card-body">
                                     <p class="card-text">Answer: <input type="text" name="Q11"></p>
                                     </div>
                                     </div>
@@ -148,30 +148,61 @@ body {
                                     <div class="col-12 col-md-6 col-lg-4 d-flex">
                                     <div class="card flex-fill">
                                     <div class="card-header">
-                                   <h4> Question 3: Write the digit '1' in word form?</h4><br>
+                                   <h4> Question 3:Match the appropriate comparison symbol</h4><br>
                                     <h6>(Learning Outcome : able to identify number)</h6>              
                                     </div><div class="card-body">
-                                    <p class="card-text">Answer: <input type="text" name="Q12"></p>
+                                    <p class="card-text">Answer: <div id='q12'>
+
+<h2>39 
+<select name='q12' id='q12'>
+<option value='='>=</option>
+<option value='>'>></option>
+<option value='<'><</option>
+</select>
+41</h2>
+</div></p>
                                     </div>
                                     </div>
                                     </div>
                                     <div class="col-12 col-md-6 col-lg-4 d-flex">
                                     <div class="card flex-fill">
                                     <div class="card-header">
-                                   <h4> Question 4: Insert <,>,= : 35  __  45</h4><br>
+                                   <h4> Question 4: Find the number of green apples from below.</h4><br>
                                     <h6>(Learning Outcome : able to distinguish between larger and smaller numbers)</h6>              
                                     </div><div class="card-body">
-                                    <p class="card-text">Answer: <input type="text" name="Q15"></p>
+                                    <p class="card-text">Answer: <img src="exam/img/2/1.png" class="hvr-wobble-to-top-right"> <input type="text" name="Q13">
+</p>
                                     </div>
                                     </div>
                                     </div>
                                     <div class="col-12 col-md-6 col-lg-4 d-flex">
                                     <div class="card flex-fill">
                                     <div class="card-header">
-                                   <h4> Question 5: Insert <,>,= : 55 __  45</h4><br>
+                                   <h4> Question 5: Match the following</h4><br>
                                     <h6>(Learning Outcome : able to distinguish between larger and smaller numbers)</h6>              
                                     </div><div class="card-body">
-                                    <p class="card-text">Answer: <input type="text" name="Q16"></p>
+                                    <p class="card-text">Answer: 
+<div id='q14'>
+1) ONE -
+<select name='q131' id='q131'>
+<option value='1'>1</option>
+<option value='5'>5</option>
+<option value='8'>8</option>
+</select> <br>
+
+2) FIVE -
+<select name='q132' id='q132'>
+<option value='1'>1</option>
+<option value='5'>5</option>
+<option value='8'>8</option>
+</select> <br>
+
+3) EIGHT -
+<select name='q133' id='q133'>
+<option value='1'>1</option>
+<option value='5'>5</option>
+<option value='8'>8</option>
+</select></p>
                                     </div>
                                     </div>
                                     </div>
