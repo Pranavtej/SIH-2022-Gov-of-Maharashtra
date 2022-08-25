@@ -109,6 +109,9 @@ if(isset($_POST['give']))
                                     '.$run1['question'].'
                                     '.$run1['loc_id'].'
                                     </div>';
+                                    $query = mysqli_query($con, "select loc from learning_outcomes where loc_id='{$run1['loc_id']}'");
+                                    $a = mysqli_fetch_assoc($query);
+                                    echo '<h5>'.$a['loc'].'</h5>';
                                     if(!empty($run1['options']))
                                     {
                                         echo '<h6>'.$run1['options'].'</h6>';
