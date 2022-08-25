@@ -156,19 +156,19 @@ if(isset($_POST['give']))
 <div style='text-align:center;' id='teams1'>
 <label id='l1'>
   <input type="radio" name="mno1" id="no1" class="mno" value="mi">
-  <img src="exam/img/circle.jpg" class="hvr-wobble-to-top-right" >
+  <img src="exam/img/m.png" class="hvr-wobble-to-top-right" >
 </label>
 <label id='l2'>
   <input type="radio" name="mno1" id="no2" class="mno" value="dc">
-  <img src="exam/img/triangle.png" class="hvr-wobble-to-top-right" >
+  <img src="exam/img/2.png" class="hvr-wobble-to-top-right" >
 </label>
 <label id='l3'>
   <input type="radio" name="mno1" id="no3" class="mno" value="rcb">
-  <img src="img/ipl/rcb.png" class="hvr-wobble-to-top-right">
+  <img src="exam/img/3.png" class="hvr-wobble-to-top-right">
 </label>
 <label id='l4'>
   <input type="radio" name="mno1" id="no4" class="mno" value="srh">
-  <img src="http://mcr.org.in/bopages/img/ipl/srh.png" class="hvr-wobble-to-top-right" >
+  <img src="exam/img/4.png" class="hvr-wobble-to-top-right" >
 </label>
 </div>
 	
@@ -196,7 +196,7 @@ if(isset($_POST['give']))
                                     {
                                         echo '<img src="exam/img/'.$run1['image_path'].'" alt="image not loaded" class="card-img">';
                                     }  
-                                    $num1=$run1['question_id'];   
+                                    
                                     echo '<div class="card-body">
                                     <p class="card-text">Answer: <input type="text" name="'.$run1['question_id'].'"></p>
                                     </div>
