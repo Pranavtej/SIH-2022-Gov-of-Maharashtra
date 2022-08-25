@@ -206,18 +206,9 @@ body {
                                     </div>
                                     </div>
                                     </div>
-                                    </div>
+                                    
 
-                                    <div class="col-12 col-md-6 col-lg-4 d-flex">
-                                    <div class="card flex-fill">
-                                    <div class="card-header">
-                                   <h4> Question 6: Identify the number from below?</h4><br>
-                                    <h6>(Learning Outcome : able to identify number)</h6>              
-                                    </div><h6>a)A  b)?  c)5</h6><div class="card-body">
-                                    <p class="card-text">Answer: <input type="text" name="Q21"></p>
-                                    </div>
-                                    </div>
-                                    </div>                     
+                                                         
                     </div>	
                     			
 				</div>
