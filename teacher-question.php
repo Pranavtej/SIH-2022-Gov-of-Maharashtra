@@ -1,8 +1,33 @@
 <?php
 include 'connect.php';
-$sql ="SELECT DISTINCT(c.class) as class1   from classes c";
+$subject_id=$_GET['subject_id'];
+$class_id=$_GET['class_id'];
+$school_id=$_GET['school_id'];
+$exam_id=autoincemp();
+function autoincemp()
+{
+    global $value2;
+    global $con;
+    $query = "select exam_id from teacher_exam_question order by exam_id desc LIMIT 1";
+    $stmt = mysqli_query($con,$query);
+    $rowcount=$stmt->num_rows;
+    if ($rowcount > 0) {
+        $row = mysqli_fetch_assoc($stmt);
+        $value2 = $row['exam_id'];
+        $value2 = substr($value2,1);
+        $value2 = (int)$value2 + 1;
+        $str="E";
+        $value2 = "E".sprintf('%s',$value2);
+        $value = $value2;
+        return $value;
+    } else {
+        $value2 = "E10";
+        $value = $value2;
+        return $value;
+    }
+}
+$sql="SELECT * FROM `teacher_exam_question` WHERE  exam_id='$exam_id' and  `class_id`='$class_id' and `school_id`='$school_id'";
 $run=mysqli_query($con,$sql);
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,12 +67,12 @@ $run=mysqli_query($con,$sql);
 							<div class="col">
 								<h3 class="page-title">Classwise Subjects List</h3>
 								<ul class="breadcrumb">
-									<li class="breadcrumb-item"><a href="super-admin-dashboard.php">SuperAdmin Dashboard</a></li>
-									<li class="breadcrumb-item active">Classwise Subjects List</li>
+									<li class="breadcrumb-item"><a href="teacher-classteacher-dashboard.php">Teacher Dashboard</a></li>
+									<li class="breadcrumb-item active">exam question list</li>
 								</ul>
 							</div>
 							<div class="col-auto text-end float-end ms-auto">
-								<a href="#" class="btn btn-outline-primary me-2"><i class="fas fa-download"></i> Download</a>
+								<a href="teacher-add-question.php?exam_id=<?php echo $exam_id;?>&class_id=<?php echo $class_id;?>&school_id=<?php echo $school_id;?>&subject_id=<?php echo $subject_id;?>" class="btn btn-outline-primary me-2"><i class="fas fa-add"></i> ADD</a>
 							</div>
 						</div>
 					</div>
@@ -55,39 +80,33 @@ $run=mysqli_query($con,$sql);
 				
 					<div class="row">
 						<div class="col-sm-12">
-                        <?php
-                        while($res=mysqli_fetch_assoc($run))
-                        {
-							echo "<div class='card card-table'>
+                        <div class='card card-table'>
 								<div class='card-body'>
 									<div class='table-responsive'>
-										<table class='table table-hover table-center mb-0 datatable'>";
-                                               echo '<b>'.$res['class1'].'</b>';
-										       echo'<thead>
+										<table class='table table-hover table-center mb-0 datatable'>
+										       <thead>
 												<tr>
-													<th>SUBJECT ID</th>
-													<th>SUBJECT NAME</th>
-													<th>Learning Outcomes List</th>
+													<th>QUESTION ID</th>
+                                                    <th>QUESTION</th>
+                                                    <th>ANSWER</th>
 												</tr>
 											   </thead>
+											   <?php
+											   echo'
 											    <tbody>';
-                                                    $cid= $res['class1'];
-													$sql1="SELECT DISTINCT(s.subject_id) as subject_id , su.subject_name as name FROM schoolwise_class_subject_teachers s,subjects su,
-                                                    classes c where c.class_id=s.class_id and c.class='$cid' and s.subject_id=su.subject_id order by s.subject_id";
-													$run1=mysqli_query($con,$sql1);
-													while($res1=mysqli_fetch_assoc($run1))
+													while($res1=mysqli_fetch_assoc($run))
 													{ 
 														echo 
-														'<tr><td>'.$res1['subject_id'].'</td>
-                                                        <td>'.$res1['name'].'</td>
-                                                        <td><a href="super-admin-learning-outcomes.php?subject_id='.$res1['subject_id'].'&cid='.$cid.'">view learning outcomes</a></td>
+														'<tr><td>'.$res1['question_id'].'</td>
+                                                        <td>'.$res1['question'].'</td>
+                                                        <td>'.$res1['answer'].'</td>
                                                         </tr>';
                                                      }
-											       echo'</tbody>
+											  echo'</tbody>';?>
 										</table>
 									</div>
 								</div>
-							</div>';}	?>								
+							</div>							
 						</div>		
 					</div>					
 				</div>			
