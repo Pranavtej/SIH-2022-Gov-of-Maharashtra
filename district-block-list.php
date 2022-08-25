@@ -76,7 +76,7 @@ $did=$_SESSION['DISTRICT_ID']
                                                     
 														echo 
 														'<tr><td>'.$did.'</td>
-														<td><a href="district-block-view.php?bid='.$res['block_id'].'">'.$sid.'</a><b/td>
+														<td><a href="district-block-view.php?id='.$res['block_id'].'">'.$sid.'</a><b/td>
 													
                                                         <td class="text-end">
 														<div class="actions">

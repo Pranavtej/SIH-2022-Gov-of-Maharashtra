@@ -63,7 +63,7 @@ foreach($sql3 as $data2)
 					<div class="page-header">
 						<div class="row">
 							<div class="col-sm-12">
-								<h3 class="page-title">School wise NO.OF Students and Pass Percentage of Each School</h3>
+								<h3 class="page-title">School wise NO.OF Students and Pass Percentage of Each School <?php echo json_encode($y) ?></h3>
 								<ul class="breadcrumb">
 									<li class="breadcrumb-item active"></li>
 								</ul>
@@ -159,16 +159,19 @@ foreach($sql3 as $data2)
                                             <script>
 												// m = JSON.parse(localStorage.m);
 												const ctx1 = document.getElementById('pscore');
+                                                var ctxP = ctx1.getContext('2d');
 												const myChart1 = new Chart(ctx1, {
 													type: 'bar',
 													data: {
-														labels: <?php '<a href='school-login.php'>echo json_encode($y) ?></a>,
-														//echo json_encode($y), 
+														labels: <?php echo json_encode($y) ?>,
+														 
+                                                        
+
 														datasets: [{
 															label: 'PASS PERCENT FOR EACH SCHOOL',
 															data:<?php echo json_encode($m)?>,
-														//echo json_encode($x),
-
+													
+                                                            labelLinks: ['https//:www.google.com','https//:www.youtube.com'],
 															backgroundColor: [
 																'rgba(255, 99, 132, 0.2)',
 																'rgba(54, 162, 235, 0.2)',
@@ -190,6 +193,7 @@ foreach($sql3 as $data2)
 													},
 													options: {
 														//maintainAspectRatio: true,
+                                                        indexAxis : 'y',
 														scales: {
 															y: {
 																beginAtZero: true
@@ -197,6 +201,29 @@ foreach($sql3 as $data2)
 														}
 													}
 												});
+//                                                 myChart1.canvas.addEventListener('click',(e) => {
+//                                                 clickableScales(myChart1,e)
+//                                                    });
+//                                                    function clickableScales(chart,click){
+//     const{ctx,canvas,scales:{x,y}}=chart;
+//    const top=y.top
+//   const left=y.left
+//   const right=y.right
+//   const bottom=y.bottom
+//   const height=y.height/ y.ticks.length;
+//   // mouse coordinates
+//   let rect=canvas.getBoundingClientRect();
+//   const xCoor=click.clientX-rect.left;
+//   const yCoor=click.clientY-rect.top;
+//   for(let i=0;i < y.ticks.length;i++){
+//     if(xCoor>=left && xCoor<=right && yCoor>=top+(height*i)&&
+//        yCoor<=top+height+(height*i)){
+//     window.open(chart.data.datasets[0].labelLinks[i]);
+      
+// }
+//    }
+// }
+
 											</script>
 										</div>
                                         </div>
