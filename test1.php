@@ -196,7 +196,7 @@ if(isset($_POST['give']))
                                     {
                                         echo '<img src="exam/img/'.$run1['image_path'].'" alt="image not loaded" class="card-img">';
                                     }  
-                                    $num1=$run1['question_id'];   
+                                    
                                     echo '<div class="card-body">
                                     <p class="card-text">Answer: <input type="text" name="'.$run1['question_id'].'"></p>
                                     </div>
