@@ -14,7 +14,9 @@ $std=" select teacher_id , teacher_name ,teacher_dob,teacher_email from teacher_
 $result=mysqli_query($con,$std) or die(mysqli_error);
 $counter=mysqli_num_rows($result);
 }
-
+$sql="select school_name from school_info where school_id='$school_id'";
+$run = mysqli_fetch_assoc(mysqli_query($con,$sql));
+$school_name=$run['school_name'];
 ?> 
 
 
@@ -42,20 +44,24 @@ $counter=mysqli_num_rows($result);
 
 
 <div class="main-wrapper">
-<?php include 'school-admin-header.php';?>
-			<?php include 'school-admin-sidebar.php';?>
-<div class="page-wrapper">
-<div class="content container-fluid">
+    <?php include 'school-admin-header.php';?>
+                <?php include 'school-admin-sidebar.php';?>
+    <div class="page-wrapper">
+    <div class="content container-fluid">
+    <div class="content container-fluid">
+    
+    <div class="page-header">
+        <div class="row">
+            <div class="col-sm-12">
+                <h3 class="page-title"><?php echo $school_name; ?></h3>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="school-admin-dashboard.php">SchoolAdmin Dashboard</a></li>
+                    <li class="breadcrumb-item active">School Teachers List</li>
+                </ul>
+            </div>
+        </div>
+    </div>
 
-<div class="page-header">
-<div class="row align-items-center">
-<div class="col">
-<h3 class="page-title">Teachers</h3>
-<ul class="breadcrumb">
-<li class="breadcrumb-item"><a href="teacher-dashboard.php">Dashboard</a></li>
-<li class="breadcrumb-item active">Teachers</li>
-</ul>
-</div>
 <div class="col-auto text-end float-end ms-auto">
 <a href="#" class="btn btn-outline-primary me-2"><i class="fas fa-download"></i> Download</a>
 <a href="add-student.php" class="btn btn-primary"><i class="fas fa-plus"></i></a>
