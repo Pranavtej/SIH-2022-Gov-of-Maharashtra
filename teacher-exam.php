@@ -89,7 +89,7 @@ if(isset($_POST['give']))
 							<div class="col">
 								<h3 class="page-title" align="center">Learning Outcome Assessment Examination </h3>
                                 <h3 class="page-title" align="left">Type : Learning Outcomes</h3>
-                                <h3 class="page-title">Subject : Mathematics </h3>
+                                <h3 class="page-title"align="right">Subject : Mathematics </h3>
                                 <h3 class="page-title">Grade : 1</h3>
 								<ul class="breadcrumb">
 									
