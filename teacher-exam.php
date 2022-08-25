@@ -6,7 +6,37 @@ session_start();
 
 $exam_id = $_GET['eid'];
 
-$loc = mysqli_query($con, "SELECT question_id,question,options,loc_id,image_path FROM `teacher_exam_question` WHERE exam_id='$exam_id'");
+$loc = mysqli_query($con, "SELECT question_id,question,options,loc_id,image_path FROM `teacher_exam_question` WHERE exam_id='$exam_id' order by question_id");
+
+if(isset($_POST['give']))
+{
+    $loc = mysqli_query($con, "select distinct(loc_id) as loc_id from teacher_exam_question where exam_id='$exam_id'");
+    foreach($loc as $id)
+    {
+        $locid = $id['loc_id'];
+        $qid = mysqli_query($con, "select question_id as qid from teacher_exam_question where loc_id='$locid'");
+        {
+            $correct = 0;
+            $count = 0;
+            foreach($qid as $id1)
+            {
+                ++$count;
+                $ques = $id1['qid'];
+                $ans = $_POST[$ques];
+                $answer = mysqli_query($con, "select answer from teacher_exam_question where question_id='$ques'");
+                $answer2 = mysqli_fetch_assoc($answer);
+                if($answer2 == strtoupper($ans))
+                {
+                    $correct += 1;
+                }
+            }
+            $markperquestion = 5/$count;
+            $credits = $markperquestion + $correct;
+            echo "<script>alert($credits)</script>";
+        }
+    }   
+
+}
 
 ?>
 
