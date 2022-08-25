@@ -174,5 +174,6 @@ $class_id = $_SESSION['CLASS_ID'];
 		
 		<!-- Custom JS -->
 		<script src="assets/js/script.js"></script>
+		
     </body>
 </html>
