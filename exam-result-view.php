@@ -1,15 +1,21 @@
 <?php
+
 include 'connect.php';
-$sql ="SELECT DISTINCT(c.class) as class1   from classes c";
-$run=mysqli_query($con,$sql);
+
+session_start();
+
+$student_id = $_GET['sid'];
+$subject_id = $_GET['suid'];
+
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-        <title>super-admin-classwise-subject-list</title>
+        <title>VIEW CREDITS</title>
 		
 		<!-- Favicon -->
         <link rel="shortcut icon" href="assets/img/favicon.png">
@@ -31,7 +37,14 @@ $run=mysqli_query($con,$sql);
         <link rel="stylesheet" href="assets/css/style.css">
     </head>
     <body>
-         <?php include 'super-admin-menu.php';	?>	
+		
+		<!-- Main Wrapper -->
+        <div class="main-wrapper">
+		
+            <?php //include 'teacher-header.php'; ?>
+			<?php //include 'teacher-sidebar.php'; ?>
+
+			
 			<!-- Page Wrapper -->
             <div class="page-wrapper">
                 <div class="content container-fluid">
@@ -40,57 +53,67 @@ $run=mysqli_query($con,$sql);
 					<div class="page-header">
 						<div class="row align-items-center">
 							<div class="col">
-								<h3 class="page-title">Classwise Subjects List</h3>
+								<h3 class="page-title">Students</h3>
 								<ul class="breadcrumb">
-									<li class="breadcrumb-item"><a href="super-admin-dashboard.php">SuperAdmin Dashboard</a></li>
-									<li class="breadcrumb-item active">Classwise Subjects List</li>
+									<li class="breadcrumb-item active">Dashboard</a></li>
+									<li class="breadcrumb-item active">Students</li>
 								</ul>
 							</div>
-							<div class="col-auto text-end float-end ms-auto">
+							<!-- <div class="col-auto text-end float-end ms-auto">
 								<a href="#" class="btn btn-outline-primary me-2"><i class="fas fa-download"></i> Download</a>
-							</div>
+								<a href="add-student.html" class="btn btn-primary"><i class="fas fa-plus"></i></a>
+							</div> -->
 						</div>
 					</div>
 					<!-- /Page Header -->
 				
 					<div class="row">
 						<div class="col-sm-12">
-                        <?php
-                        while($res=mysqli_fetch_assoc($run))
-                        {
-							echo "<div class='card card-table'>
-								<div class='card-body'>
-									<div class='table-responsive'>
-										<table class='table table-hover table-center mb-0 datatable'>";
-                                               echo '<b>'.$res['class1'].'</b>';
-										       echo'<thead>
+						
+							<div class="card card-table">
+								<div class="card-body">
+									<div class="table-responsive">
+										<table class="table table-hover table-center mb-0">
+											<thead>
 												<tr>
-													<th>SUBJECT ID</th>
-													<th>SUBJECT NAME</th>
-													<th>Learning Outcomes List</th>
+													<th>S. No.</th>
+													<th>Learning Outcome</th>
+													<th>Credits Obtained</th>
 												</tr>
-											   </thead>
-											    <tbody>';
-                                                    $cid= $res['class1'];
-													$sql1="SELECT DISTINCT(s.subject_id) as subject_id , su.subject_name as name FROM schoolwise_class_subject_teachers s,subjects su,
-                                                    classes c where c.class_id=s.class_id and c.class='$cid' and s.subject_id=su.subject_id order by s.subject_id";
-													$run1=mysqli_query($con,$sql1);
-													while($res1=mysqli_fetch_assoc($run1))
-													{ 
-														echo 
-														'<tr><td>'.$res1['subject_id'].'</td>
-                                                        <td>'.$res1['name'].'</td>
-                                                        <td><a href="super-admin-learning-outcomes.php?subject_id='.$res1['subject_id'].'&cid='.$cid.'">view learning outcomes</a></td>
+											</thead>
+											<tbody>
+											<style>
+												.checked {
+													color: orange;
+													}
+											</style>
+												<?php
+                                                    $query = "select o.loc as loc,l.credits as credits from learning_outcomes_credits l,learning_outcomes o where l.student_id = '$student_id' and l.subject_id='$subject_id' and l.loc_id = o.loc_id";
+                                                    $run = mysqli_query($con, $query);
+                                                    $i = 0;
+                                                    foreach($run as $d)
+                                                    {
+                                                        echo '<tr>
+                                                            <td>'.++$i.'</td>
+                                                            <td>'.$d['loc'].'</td>
+                                                            <td>'.$d['credits'].'</td>
                                                         </tr>';
-                                                     }
-											       echo'</tbody>
+                                                    }													
+												?>
+											</tbody>
 										</table>
 									</div>
 								</div>
-							</div>';}	?>								
-						</div>		
+							</div>							
+						</div>					
 					</div>					
-				</div>			
+				</div>
+
+				<!-- Footer -->
+				<!-- <footer>
+					<p>Copyright © 2020 Dreamguys.</p>					
+				</footer> -->
+				<!-- /Footer -->				
 			</div>
 			<!-- /Page Wrapper -->
 			

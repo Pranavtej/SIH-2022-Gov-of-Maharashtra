@@ -54,6 +54,12 @@
 									<li><a href="teacher-classteacher-predict-list.php">Student List</a></li>
 								</ul>
 							</li>
+							<li class="submenu">
+								<a href="#"><i class="fas fa-book-reader"></i> <span>Exam</span> <span class="menu-arrow"></span></a>
+								<ul>
+									<li><a href="teacher-create-list.php">Create Exam</a></li>
+								</ul>
+							</li>
 						</ul>
 					</div>
                 </div>
