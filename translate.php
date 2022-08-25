@@ -139,9 +139,11 @@ else{
 <div class="main-wrapper">
 		
 	
-		<?php include 'student-menu.php'; ?>
+		<?php include 'parent-menu.php'; ?>
 			
 			<!-- Page Wrapper -->
+            
+
             <div class="page-wrapper">
 			
                 <div class="content container-fluid">
@@ -149,7 +151,22 @@ else{
 					<div class="page-header">
 						<div class="row">
 							<div class="col-sm-12">
-								<h3 class="page-title">Welcome ! <?php echo $student_name ?></h3>
+                            <div id="google_translate_element"></div>
+                            <script type="text/javascript">
+		function googleTranslateElementInit() {
+			new google.translate.TranslateElement(
+				{pageLanguage: 'en'},
+				'google_translate_element'
+			);
+		}
+	</script>
+	
+	<script type="text/javascript" src=
+"https://translate.google.com/translate_a/element.js?
+		cb=googleTranslateElementInit">
+	</script>
+	
+								<h3 class="page-title">Welcome Parent !!</h3>
                                 </h3>
 								<ul class="breadcrumb">
 									<li class="breadcrumb-item"><a href="">Dashboard</a></li>
@@ -161,13 +178,6 @@ else{
 					<!-- /Page Header -->
 
 					<!-- Overview Section -->
-					<script>
-                            var source=new EventSource("student-academic-rank.php");
-                             source.onmessage=function(event)
-                             {
-                              document.getElementById("rank").innerHTML=event.data;
-                              }
-                     </script>
 					<div class="row">
 						<div class="col-xl-3 col-sm-6 col-12 d-flex">
 							<div class="card bg-nine w-100">
@@ -177,20 +187,13 @@ else{
 											<i class="fas fa-book-open"></i>
 										</div>
 										<div class="db-info">
-											<h3 id="rank"></h3>
+											<h3><?php echo $rank;?></h3>
 											<h6>Academic Rank</h6>
 										</div>										
 									</div>
 								</div></a>
 							</div>
 						</div>
-						<script>
-                            var source=new EventSource("student-cca-rank.php");
-                             source.onmessage=function(event)
-                             {
-                              document.getElementById("ccarank").innerHTML=event.data;
-                              }
-                        </script>
 
 						<div class="col-xl-3 col-sm-6 col-12 d-flex">
 							<div class="card bg-six w-100">
@@ -200,21 +203,13 @@ else{
 											<i class="fas fa-file-alt"></i>
 										</div>
 										<div class="db-info">
-											<h3 id="ccarank"></h3>
+											<h3><?php echo $ccarank; ?></h3>
 											<h6>CCA Rank</h6>
 										</div>										
 									</div>
 								</div>
 							</div>
 						</div>
-						
-						<script>
-                            var source=new EventSource("student-sports-rank.php");
-                             source.onmessage=function(event)
-                             {
-                              document.getElementById("srank").innerHTML=event.data;
-                              }
-                        </script>
 
 						<div class="col-xl-3 col-sm-6 col-12 d-flex">
 							<div class="card bg-ten w-100">
@@ -224,20 +219,13 @@ else{
 											<i class="fas fa-clipboard-list"></i>
 										</div>
 										<div class="db-info">
-											<h3 id="srank"></h3>
+											<h3><?php echo $rank3;?></h3>
 											<h6>Sports Rank</h6>
 										</div>										
 									</div>
 								</div>
 							</div>
 						</div>
-						<script>
-                            var source=new EventSource("student-ov-rank.php");
-                             source.onmessage=function(event)
-                             {
-                              document.getElementById("ovrank").innerHTML=event.data;
-                              }
-                        </script>
 
 						<div class="col-xl-3 col-sm-6 col-12 d-flex">
 							<div class="card bg-eleven w-100">
@@ -247,7 +235,7 @@ else{
 											<i class="fas fa-clipboard-check"></i>
 										</div>
 										<div class="db-info">
-											<h3 id="ovrank"></h3>
+											<h3><?php echo $ovrank; ?></h3>
 											<h6>Rank</h6>
 										</div>										
 									</div>
@@ -327,27 +315,7 @@ else{
 									</div>
 								</div>
 							</div> -->
-							<!-- <script>
-                            var source=new EventSource("student-learningactivity-graph-data.php");
-                             source.onmessage=function(event)
-                             {
-								x=event.data;
-								for(i=0;i<x.length;i++){
-								x= x.replace('"','');}
-								x=x.replace('[','');
-								x=x.replace(']','');
-								a=new Array();
-								a = x.split(","); 
-								m=[];					
-								a.forEach(str => {
-                                 m.push(Number(str));
-                                 });
-								 localStorage.m = JSON.stringify(m); 
-							   }
-							   
-		
-							  </script> -->
-							
+
 							<div class="row">
 								<div class="col-12 col-lg-12 col-xl-8 d-flex">
 									<div class="card flex-fill">
@@ -375,7 +343,6 @@ else{
                                         <canvas id="acscore"></canvas>
                                             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
                                             <script>
-												// m = JSON.parse(localStorage.m);
 												const ctx = document.getElementById('acscore');
 												const myChart = new Chart(ctx, {
 													type: 'bar',
@@ -384,7 +351,7 @@ else{
 														//echo json_encode($y), 
 														datasets: [{
 															label: 'MARKS SCORED',
-															data:<?php echo json_encode($x)?>,
+															data:<?php echo json_encode($x) ?>,
 														//echo json_encode($x),
 
 															backgroundColor: [
@@ -470,7 +437,7 @@ else{
 								$cc = (int)$id['num'];
 								$sum = mysqli_query($con, "SELECT type FROM `conclusion` WHERE id='$cc'");
 								echo'
-								<div class="col-12 col-md-6 col-lg-4 d-flex"><a href="student-detailed-view.php?suid='.$id['subject_id'].'">
+								<div class="col-12 col-md-6 col-lg-4 d-flex"><a href="student-detailed-view.php?suid=SUB0603">
 									<div class="card flex-fill">
 										<div class="card-header">
 											<h5 class="card-title mb-0">'.$id['subject_name'].'<br><br>Credits : ';
@@ -500,7 +467,7 @@ else{
 <div class="card-header">
 <div class="row align-items-center">
 <div class="col-6">
-<h5 class="card-title">cocircular</h5>
+<h5 class="card-title">Academeic Marks</h5>
 </div>
 <div class="col-6">
 <ul class="list-inline-group text-end mb-0 ps-0">

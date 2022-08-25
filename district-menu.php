@@ -63,38 +63,33 @@
                         <li class="submenu active">
                             <a href="#"><i class="fas fa-graduate"></i><span> Dashboard</span> <span class="menu-arrow"></span></a>
                             <ul>
-                                <li><a href="super-admin-dashboard.php" class="active">Admin Dashboard</a></li>
+                                <li><a href="district-dashboard.php" class="active">Admin Dashboard</a></li>
+                            </ul>
+                        </li>
+                        <li class="submenu">
+                            <a href="#"> <i class="fas fa-building"></i><span> Blocks</span> <span class="menu-arrow"></span></a>
+                            <ul>
+                                <li><a href="district-block-list.php">Blocks List</a></li>
+                                <!-- <li><a href="super-admin-add-school.php">Schools Add</a></li> -->
                             </ul>
                         </li>
                         <li class="submenu">
                             <a href="#"> <i class="fas fa-building"></i><span> Schools</span> <span class="menu-arrow"></span></a>
                             <ul>
-                                <li><a href="super-admin-school-list.php">Schools List</a></li>
-                                <li><a href="super-admin-add-school.php">Schools Add</a></li>
+                                <li><a href="district-school-list.php">Schools List</a></li>
+                                <!-- <li><a href="super-admin-add-school.php">Schools Add</a></li> -->
                             </ul>
                         </li>
                         <li class="submenu">
                             <a href="#"><i class="fas fa-chalkboard-teacher"></i> <span> Teachers</span> <span class="menu-arrow"></span></a>
                             <ul>
-                                <li><a href="super-admin-teachers-list.php">Teachers List</a></li>
+                                <li><a href="district-teacher-list.php">Teachers List</a></li>
                             </ul>
                         </li>
                          <li class="submenu">
                             <a href="#"><i class="fas fa-user-graduate"></i> <span> Students</span> <span class="menu-arrow"></span></a>
                             <ul>
-                                <li><a href="super-admin-students-list.php">Students List</a></li>
-                            </ul>
-                        </li>
-                        <li class="submenu">
-                            <a href="#"><i class="fas fa-user-graduate"></i> <span> Syllabus</span> <span class="menu-arrow"></span></a>
-                            <ul>
-                                <li><a href="super-admin-state-syllabus.php">syllabus</a></li>
-                            </ul>
-                        </li>
-                        <li class="submenu">
-                            <a href="#"><i class="fas fa-user-graduate"></i> <span>Learning Outcomes</span> <span class="menu-arrow"></span></a>
-                            <ul>
-                                <li><a href="super-admin-learning-outcomes-list.php">Classwise Subjects Data</a></li>
+                                <li><a href="district-student-list.php">Students List</a></li>
                             </ul>
                         </li>
                 </div>

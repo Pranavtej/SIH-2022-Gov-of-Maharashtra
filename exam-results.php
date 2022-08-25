@@ -4,15 +4,7 @@ include 'connect.php';
 
 session_start();
 
-$class_id = $_GET['cid'];
-$school_id = $_SESSION['SCHOOL_ID'];
-$subject_id = $_GET['sid'];
-
-$sql = "select student_id from student where class_id='$class_id' AND school_id='$school_id'";
-$run = mysqli_query($con,$sql);
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -44,8 +36,8 @@ $run = mysqli_query($con,$sql);
 		<!-- Main Wrapper -->
         <div class="main-wrapper">
 		
-            <?php include 'teacher-header.php'; ?>
-			<?php include 'teacher-sidebar.php'; ?>
+            <?php //include 'teacher-header.php'; ?>
+			<?php //include 'teacher-sidebar.php'; ?>
 
 			
 			<!-- Page Wrapper -->
@@ -69,48 +61,57 @@ $run = mysqli_query($con,$sql);
 						</div>
 					</div>
 					<!-- /Page Header -->
+					<style>
+						.checked {
+							color: orange;
+							}
+					</style>
 				
 					<div class="row">
 						<div class="col-sm-12">
-						
 							<div class="card card-table">
 								<div class="card-body">
 									<div class="table-responsive">
-										<table class="table table-hover table-center">
+										<table class="table table-hover table-center mb-0">
 											<thead>
 												<tr>
-													<th>ID</th>
-													<th>Name</th>
-													<th>Status</th>
-                                                    <th>Give Rating</th>
+													<th>Student Name</th>
+													<th>Credits</th>
+													<th>Rating</th>
+													<th>View More details</th>
 												</tr>
 											</thead>
-                                            <tbody>
-                                                <?php
-													foreach($run as $id)
+											<tbody>
+												<?php
+													$sid = mysqli_query($con,"select distinct(student_id) as sid from learning_outcomes_credits where subject_id='SUB0104'");
+													foreach($sid as $id)
 													{
-														$id = $id['student_id'];
-														$query = "select student_name from student where school_id='$school_id' and class_id='$class_id' and student_id='$id'";
-														$run1 = mysqli_fetch_assoc(mysqli_query($con,$query));
-														echo '<tr>
-															<td>'.$id.'</td>
-															<td>'.$run1['student_name'].'</td>';
-                                                        $sql = mysqli_query($con, "select * from learning_outcomes_credits where student_id='$id' and class_id='$class_id' and subject_id='$subject_id'");
-														$cc = mysqli_num_rows($sql);
-														if($cc==0)
+														$sid = $id['sid'];
+														$query = "select s.student_name as student_name, ROUND(sum(l.credits)/4) as num from student s,learning_outcomes_credits l where l.subject_id='SUB0104' and l.student_id='$sid' and l.student_id=s.student_id";
+														$run = mysqli_query($con,$query);
+														foreach($run as $r)
 														{
-															echo '<td><span class="badge badge-danger">Not Completed</span></td>';
-															echo '<td><a href="teacher-student-give-rating.php?cid='.$class_id.'&sid='.$id.'&suid='.$subject_id.'">Give Credits Now!!</a></td>';
+															echo '<tr>
+																<td>'.$r['student_name'].'</td>
+																<td>'.$r['num'].'</td>';
+															$cc = (int)$r['num'];
+															echo '<td>';
+															for($i=1;$i<=$cc;$i++)
+															{
+																echo '<span class="fa fa-star checked"></span>';
+															}
+															$k = 6 - $i;
+															for($i=0;$i<$k;$i++)
+															{
+																echo '<span class="fa fa-star"></span>';
+															}
+															echo '</td>';
+															echo '<td><a href="exam-result-view.php?&sid='.$sid.'&suid=SUB0104">View</a></td>';
+															echo '</tr>';
 														}
-														else
-														{
-															echo '<td><span class="badge badge-success">Completed</span></td>';
-															echo '<td>Already Given</td>';
-														}
-														echo '</tr>';
 													}
-                                                ?>
-                                            </tbody>
+												?>
+											</tbody>
 										</table>
 									</div>
 								</div>

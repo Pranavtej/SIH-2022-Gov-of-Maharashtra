@@ -4,21 +4,22 @@ include 'connect.php';
 
 session_start();
 
-$class_id = $_GET['cid'];
-$school_id = $_SESSION['SCHOOL_ID'];
-$subject_id = $_GET['sid'];
+$school_id = $_SESSION['SCHOOL_ID']; 
+$teacher_id = $_SESSION['TEACHER_ID'];
 
-$sql = "select student_id from student where class_id='$class_id' AND school_id='$school_id'";
-$run = mysqli_query($con,$sql);
+$sql = "select su.subject_id as sid, su.subject_name as subject_name,c.class as class,c.section as section,scst.class_id as class_id 
+		from schoolwise_class_subject_teachers as scst, subjects su ,classes c where scst.school_id = '$school_id' 
+		and scst.teacher_id = '$teacher_id' and su.subject_id = scst.subject_id and scst.class_id = c.class_id";
+$run = mysqli_query($con, $sql);
+
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-        <title>Preskool - Students</title>
+        <title>Subjects</title>
 		
 		<!-- Favicon -->
         <link rel="shortcut icon" href="assets/img/favicon.png">
@@ -44,9 +45,8 @@ $run = mysqli_query($con,$sql);
 		<!-- Main Wrapper -->
         <div class="main-wrapper">
 		
-            <?php include 'teacher-header.php'; ?>
+			<?php include 'teacher-header.php'; ?>
 			<?php include 'teacher-sidebar.php'; ?>
-
 			
 			<!-- Page Wrapper -->
             <div class="page-wrapper">
@@ -56,16 +56,12 @@ $run = mysqli_query($con,$sql);
 					<div class="page-header">
 						<div class="row align-items-center">
 							<div class="col">
-								<h3 class="page-title">Students</h3>
+								<h3 class="page-title">Subjects Teaching</h3>
 								<ul class="breadcrumb">
-									<li class="breadcrumb-item active">Dashboard</a></li>
-									<li class="breadcrumb-item active">Students</li>
+									<li class="breadcrumb-item"><a href="#">Teacher Dashboard</a></li>
+									<li class="breadcrumb-item active">Subjects Teaching</li>
 								</ul>
 							</div>
-							<!-- <div class="col-auto text-end float-end ms-auto">
-								<a href="#" class="btn btn-outline-primary me-2"><i class="fas fa-download"></i> Download</a>
-								<a href="add-student.html" class="btn btn-primary"><i class="fas fa-plus"></i></a>
-							</div> -->
 						</div>
 					</div>
 					<!-- /Page Header -->
@@ -76,38 +72,28 @@ $run = mysqli_query($con,$sql);
 							<div class="card card-table">
 								<div class="card-body">
 									<div class="table-responsive">
-										<table class="table table-hover table-center">
+										<table class="table table-hover">
 											<thead>
 												<tr>
-													<th>ID</th>
-													<th>Name</th>
-													<th>Status</th>
-                                                    <th>Give Rating</th>
+													<th>S. No.</th>
+													<th>Subject</th>
+													<th>Class</th>
+                                                    <th>Section</th>
+                                                    <th>Create Exam</th>
 												</tr>
 											</thead>
-                                            <tbody>
+											<tbody>
                                                 <?php
-													foreach($run as $id)
+													$i = 0;
+													while($run1 = mysqli_fetch_assoc($run))
 													{
-														$id = $id['student_id'];
-														$query = "select student_name from student where school_id='$school_id' and class_id='$class_id' and student_id='$id'";
-														$run1 = mysqli_fetch_assoc(mysqli_query($con,$query));
 														echo '<tr>
-															<td>'.$id.'</td>
-															<td>'.$run1['student_name'].'</td>';
-                                                        $sql = mysqli_query($con, "select * from learning_outcomes_credits where student_id='$id' and class_id='$class_id' and subject_id='$subject_id'");
-														$cc = mysqli_num_rows($sql);
-														if($cc==0)
-														{
-															echo '<td><span class="badge badge-danger">Not Completed</span></td>';
-															echo '<td><a href="teacher-student-give-rating.php?cid='.$class_id.'&sid='.$id.'&suid='.$subject_id.'">Give Credits Now!!</a></td>';
-														}
-														else
-														{
-															echo '<td><span class="badge badge-success">Completed</span></td>';
-															echo '<td>Already Given</td>';
-														}
-														echo '</tr>';
+															<td>'.++$i.'</td>
+															<td>'.$run1['subject_name'].'</td>
+															<td>'.$run1['class'].'</td>
+															<td>'.$run1['section'].'</td>
+                                                            <td><a href="teacher-question.php?subject_id='.$run1['sid'].'&class_id='.$run1['class_id'].'&school_id='.$school_id.'">Create Exam</a></td>
+														</tr>';
 													}
                                                 ?>
                                             </tbody>
@@ -123,7 +109,8 @@ $run = mysqli_query($con,$sql);
 				<!-- <footer>
 					<p>Copyright © 2020 Dreamguys.</p>					
 				</footer> -->
-				<!-- /Footer -->				
+				<!-- /Footer -->
+				
 			</div>
 			<!-- /Page Wrapper -->
 			
@@ -137,8 +124,8 @@ $run = mysqli_query($con,$sql);
         <script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 		
 		<!-- Slimscroll JS -->
-		<script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-		
+        <script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
 		<!-- Datatables JS -->
 		<script src="assets/plugins/datatables/datatables.min.js"></script>
 		

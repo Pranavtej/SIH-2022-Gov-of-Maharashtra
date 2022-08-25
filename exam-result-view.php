@@ -4,21 +4,18 @@ include 'connect.php';
 
 session_start();
 
-$class_id = $_GET['cid'];
-$school_id = $_SESSION['SCHOOL_ID'];
-$subject_id = $_GET['sid'];
+$student_id = $_GET['sid'];
+$subject_id = $_GET['suid'];
 
-$sql = "select student_id from student where class_id='$class_id' AND school_id='$school_id'";
-$run = mysqli_query($con,$sql);
+
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-        <title>Preskool - Students</title>
+        <title>VIEW CREDITS</title>
 		
 		<!-- Favicon -->
         <link rel="shortcut icon" href="assets/img/favicon.png">
@@ -44,8 +41,8 @@ $run = mysqli_query($con,$sql);
 		<!-- Main Wrapper -->
         <div class="main-wrapper">
 		
-            <?php include 'teacher-header.php'; ?>
-			<?php include 'teacher-sidebar.php'; ?>
+            <?php //include 'teacher-header.php'; ?>
+			<?php //include 'teacher-sidebar.php'; ?>
 
 			
 			<!-- Page Wrapper -->
@@ -76,41 +73,34 @@ $run = mysqli_query($con,$sql);
 							<div class="card card-table">
 								<div class="card-body">
 									<div class="table-responsive">
-										<table class="table table-hover table-center">
+										<table class="table table-hover table-center mb-0">
 											<thead>
 												<tr>
-													<th>ID</th>
-													<th>Name</th>
-													<th>Status</th>
-                                                    <th>Give Rating</th>
+													<th>S. No.</th>
+													<th>Learning Outcome</th>
+													<th>Credits Obtained</th>
 												</tr>
 											</thead>
-                                            <tbody>
-                                                <?php
-													foreach($run as $id)
-													{
-														$id = $id['student_id'];
-														$query = "select student_name from student where school_id='$school_id' and class_id='$class_id' and student_id='$id'";
-														$run1 = mysqli_fetch_assoc(mysqli_query($con,$query));
-														echo '<tr>
-															<td>'.$id.'</td>
-															<td>'.$run1['student_name'].'</td>';
-                                                        $sql = mysqli_query($con, "select * from learning_outcomes_credits where student_id='$id' and class_id='$class_id' and subject_id='$subject_id'");
-														$cc = mysqli_num_rows($sql);
-														if($cc==0)
-														{
-															echo '<td><span class="badge badge-danger">Not Completed</span></td>';
-															echo '<td><a href="teacher-student-give-rating.php?cid='.$class_id.'&sid='.$id.'&suid='.$subject_id.'">Give Credits Now!!</a></td>';
-														}
-														else
-														{
-															echo '<td><span class="badge badge-success">Completed</span></td>';
-															echo '<td>Already Given</td>';
-														}
-														echo '</tr>';
+											<tbody>
+											<style>
+												.checked {
+													color: orange;
 													}
-                                                ?>
-                                            </tbody>
+											</style>
+												<?php
+                                                    $query = "select o.loc as loc,l.credits as credits from learning_outcomes_credits l,learning_outcomes o where l.student_id = '$student_id' and l.subject_id='$subject_id' and l.loc_id = o.loc_id";
+                                                    $run = mysqli_query($con, $query);
+                                                    $i = 0;
+                                                    foreach($run as $d)
+                                                    {
+                                                        echo '<tr>
+                                                            <td>'.++$i.'</td>
+                                                            <td>'.$d['loc'].'</td>
+                                                            <td>'.$d['credits'].'</td>
+                                                        </tr>';
+                                                    }													
+												?>
+											</tbody>
 										</table>
 									</div>
 								</div>
