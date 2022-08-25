@@ -29,8 +29,8 @@ if(isset($_POST['give']))
                 echo "<script>alert($ans)</script>";
                 $answer = mysqli_query($con, "select answer from teacher_exam_question where question_id='$ques'");
                 $answer2 = mysqli_fetch_assoc($answer);
-                echo "<script>alert($answer2)</script>";
-                if($answer2 == strtoupper($ans))
+                echo "<script>alert($answer2['answer'])</script>";
+                if($answer2['answer'] == strtoupper($ans))
                 {
                     $correct += 1;
                     echo "<script>alert($correct)</script>";
