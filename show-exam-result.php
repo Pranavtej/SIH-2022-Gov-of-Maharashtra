@@ -86,19 +86,6 @@ session_start();
 															echo '<tr>
 																<td>'.$r['student_name'].'</td>
 																<td>'.$r['num'].'</td>';
-															$cc = (int)$r['num'];
-															echo '<td>';
-															for($i=1;$i<=$cc;$i++)
-															{
-																echo '<span class="fa fa-star checked"></span>';
-															}
-															$k = 6 - $i;
-															for($i=0;$i<$k;$i++)
-															{
-																echo '<span class="fa fa-star"></span>';
-															}
-															echo '</td>';
-															echo '<td><a href="exam-result-view.php?&sid='.$sid.'&suid=SUB0104">View</a></td>';
 															echo '</tr>';
 														}
 													}
