@@ -156,7 +156,7 @@ if(isset($_POST['give']))
 <div style='text-align:center;' id='teams1'>
 <label id='l1'>
   <input type="radio" name="mno1" id="no1" class="mno" value="mi">
-  <img src="exam/img/1.png" class="hvr-wobble-to-top-right" >
+  <img src="exam/img/m.png" class="hvr-wobble-to-top-right" >
 </label>
 <label id='l2'>
   <input type="radio" name="mno1" id="no2" class="mno" value="dc">
