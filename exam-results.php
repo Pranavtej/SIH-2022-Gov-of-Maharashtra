@@ -74,14 +74,13 @@ include 'connect.php';
 										<table class="table table-hover table-center mb-0">
 											<thead>
 												<tr>
-													<th>STUDENT Name</th>
+													<th>Student Name</th>
 													<th>Credits</th>
 													<th>Rating</th>
 													<th>View More details</th>
 												</tr>
 											</thead>
 											<tbody>
-											
 												<?php
 													$sid = mysqli_query($con,"select distinct(student_id) as sid from learning_outcomes_credits where subject_id='SUB0104'");
 													foreach($sid as $id)
