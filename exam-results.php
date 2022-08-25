@@ -4,6 +4,8 @@ include "connect.php";
 
 session_start();
 
+$sid = mysqli_query($con,"select distinct(student_id) as sid from learning_outcomes_credits where subject_id='SUB0104'");
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -75,7 +77,6 @@ session_start();
 											</thead>
 											<tbody>
 												<?php
-													$sid = mysqli_query($con,"select distinct(student_id) as sid from learning_outcomes_credits where subject_id='SUB0104'");
 													foreach($sid as $id)
 													{
 														$sid = $id['sid'];
