@@ -3,7 +3,7 @@
 include 'connect.php';
 
 
-$query = mysqli_query($con, "select l.student_id as student_id,o.loc as loc,l.credits as credits from learning_outcomes_credits l,learning_outcomes o where l.subject_id='SUB0104' and l.loc_id = o.loc_id");
+$query = mysqli_query($con, "select distinct(student_id) as student_id from learning_outcomes_credits where subject_id='SUB0104'");
 
 
 
@@ -33,11 +33,16 @@ $query = mysqli_query($con, "select l.student_id as student_id,o.loc as loc,l.cr
 												<?php
 													foreach($query as $r)
                                                     {
-                                                        echo '<tr>
-                                                    <td>'.$r['student_id'].'</td>
-                                                    <td>'.$r['loc'].'</td>
-                                                    <td>'.$r['credits'].'</td>
-                                                    </tr>';
+														$sid = $r['student_id'];
+                                                        $run = mysqli_query($con, "select s.student_name as student_name,o.loc as loc,l.credits as credits from learning_outcomes_credits l,student s,learning_outcomes o where l.student_id='$sid' and l.subject_id='SUB0104' and l.loc_id = o.loc_id and l.student_id = s.student_id");
+														foreach($run as $rr)
+														{
+															echo '<tr>
+															<td>'.$rr['student_name'].'</td>
+															<td>'.$rr['loc'].'</td>
+															<td>'.$rr['credits'].'</td>
+															</tr>';
+														}
                                                     }
 													
 												?>
