@@ -1,14 +1,43 @@
 <?php
 session_start();
 include 'connect.php';
+$loc_id=autoincemp();
+function autoincemp()
+{
+    global $value2;
+    global $con;
+    $query = "select loc_id from learning_outcomes order by loc_id desc LIMIT 1";
+    $stmt = mysqli_query($con,$query);
+    $rowcount=$stmt->num_rows;
+    if ($rowcount > 0) {
+        $row = mysqli_fetch_assoc($stmt);
+        $value2 = $row['loc_id'];
+        $value2 = substr($value2,2);
+        $value2 = (int)$value2 + 1;
+        $str="LC";
+        $value2 = "LC".sprintf('%s',$value2);
+        $value = $value2;
+        return $value;
+    } else {
+        $value2 = "LC100";
+        $value = $value2;
+        return $value;
+    }
+}
+      
 $subject_id=$_GET['subject_id'];
 $class=$_GET['class'];
 if(isset($_POST['submit']))
     {
-        $loc_id=$_POST['loc_id'];
         $loc=$_POST['loc'];
         $stat2="INSERT INTO `learning_outcomes`(`loc_id`, `class`, `subject_id`, `loc`) VALUES ('$loc_id','$class','$subject_id','$loc')";
-        $run2=mysqli_query($con,$stat2);}
+        $run2=mysqli_query($con,$stat2);
+        if($run2){
+            echo "<script>document.location('super-admin-learning-outcomes.php?subject_id='$subject_id'&cic='$class');</script>";
+        }
+    }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -60,13 +89,13 @@ if(isset($_POST['submit']))
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Learning Outcome_id</label>
-                                    <input type="text"  name="loc_id" class="form-control">
+                                    <input type="text" VALUE=<?php echo $loc_id;?> class="form-control" disabled readonly="readonly">
                                 </div>
                             </div>
                             <div class="col-md-6 ">
                                 <div class="form-group">
-                                    <label>Learning Outcome_id</label>
-                                    <input type="text"  name="loc" class="form-control">
+                                    <label>Learning Outcome</label>
+                                    <input type="text" name="loc" class="form-control">
                                 </div>
                             </div>
                         </div>
