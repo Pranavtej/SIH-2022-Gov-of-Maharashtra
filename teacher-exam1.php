@@ -105,7 +105,8 @@ if(isset($_POST['give']))
 
                                     <button type="button" class="btn btn-sm btn-default" style="color: green;" id='signal1'><i class="fa fa-signal" aria-hidden="true"></i>&nbsp&nbspConnected</button>
                                   
-                                    
+        </div>
+        <div>
                                 <h5 align="left"  >Grade : 1</h5><h5 align="right">Subject : Mathematics </h5>
 								<ul class="breadcrumb">
 									
@@ -187,17 +188,41 @@ if(isset($_POST['give']))
 		<!-- Custom JS -->
 		<script src="assets/js/script.js"></script>
         <script >
-setInterval(function() {
-    if (navigator.onLine){
-    document.getElementById('signal0').style.display = "none";
-    document.getElementById('signal1').style.display = "block";
-  }
-  else{
-    document.getElementById('signal0').style.display = "block";
-    document.getElementById('signal1').style.display = "none";
-  }
+// setInterval(function() {
+//     if (navigator.onLine){
+//     document.getElementById('signal0').style.display = "none";
+//     document.getElementById('signal1').style.display = "block";
+//   }
+//   else{
+//     document.getElementById('signal0').style.display = "block";
+//     document.getElementById('signal1').style.display = "none";
+//   }
 
-},1000);
+// },1000);
+function updateConnectionStatus() {  
+    if(navigator.onLine) {
+        document.getElementById('signal0').style.display = "none";
+        document.getElementById('signal1').style.display = "block";
+    }
+    else{
+        document.getElementById('signal0').style.display = "block";
+        document.getElementById('signal1').style.display = "none";
+    }
+}
+window.addEventListener("load", updateConnectionStatus);
+    
+// Attaching event handler for the online event
+window.addEventListener("online", function(e) {
+    updateConnectionStatus();
+    hint.innerHTML = "And we're back!";
+});
+
+// Attaching event handler for the offline event
+window.addEventListener("offline", function(e) {        
+    updateConnectionStatus();
+    hint.innerHTML = "Hey, it looks like you're offline.";
+});
+
 
         </script>
     </body>
