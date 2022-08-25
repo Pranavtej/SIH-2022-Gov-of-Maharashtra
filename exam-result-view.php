@@ -2,13 +2,20 @@
 
 include 'connect.php';
 
+session_start();
+
+$student_id = $_GET['sid'];
+$subject_id = $_GET['suid'];
+
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-        <title>Preskool - Students</title>
+        <title>VIEW CREDITS</title>
 		
 		<!-- Favicon -->
         <link rel="shortcut icon" href="assets/img/favicon.png">
@@ -69,10 +76,9 @@ include 'connect.php';
 										<table class="table table-hover table-center mb-0">
 											<thead>
 												<tr>
-													<th>STUDENT Name</th>
-													<th>Credits</th>
-													<th>Rating</th>
-													<th>View More details</th>
+													<th>S. No.</th>
+													<th>Learning Outcome</th>
+													<th>Credits Obtained</th>
 												</tr>
 											</thead>
 											<tbody>
@@ -82,33 +88,17 @@ include 'connect.php';
 													}
 											</style>
 												<?php
-													$sid = mysqli_query($con,"select distinct(student_id) as sid from learning_outcomes_credits where subject_id='SUB0104'");
-													foreach($sid as $id)
-													{
-														$sid = $id['sid'];
-														$query = "select s.student_name as student_name, ROUND(sum(l.credits)/4) as num from student s,learning_outcomes_credits l where l.subject_id='SUB0104' and l.student_id='$sid' and l.student_id=s.student_id";
-														$run = mysqli_query($con,$query);
-														foreach($run as $r)
-														{
-															echo '<tr>
-																<td>'.$r['student_name'].'</td>
-																<td>'.$r['num'].'</td>';
-															$cc = (int)$r['num'];
-															echo '<td>';
-															for($i=1;$i<=$cc;$i++)
-															{
-																echo '<span class="fa fa-star checked"></span>';
-															}
-															$k = 6 - $i;
-															for($i=0;$i<$k;$i++)
-															{
-																echo '<span class="fa fa-star"></span>';
-															}
-															echo '</td>';
-															echo '<td><a href="exam-result-view.php?&sid='.$sid.'&suid=SUB0104">View</a></td>';
-															echo '</tr>';
-														}
-													}
+                                                    $query = "select o.loc as loc,l.credits as credits from learning_outcomes_credits l,learning_outcomes o where l.student_id = '$student_id' and l.subject_id='$subject_id' and l.loc_id = o.loc_id";
+                                                    $run = mysqli_query($con, $query);
+                                                    $i = 0;
+                                                    foreach($run as $d)
+                                                    {
+                                                        echo '<tr>
+                                                            <td>'.++$i.'</td>
+                                                            <td>'.$d['loc'].'</td>
+                                                            <td>'.$d['credits'].'</td>
+                                                        </tr>';
+                                                    }													
 												?>
 											</tbody>
 										</table>
