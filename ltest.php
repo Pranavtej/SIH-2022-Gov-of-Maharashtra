@@ -221,7 +221,7 @@ body {
   {
     audio.pause();
     audio.currentTime = 0;
-    audio = new Audio("sounds/" + snd +".mp3");
+    audio = new Audio("exam/img/" + snd +".mp3");
     audio.play();
   }
  </script> 
