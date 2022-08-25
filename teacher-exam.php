@@ -6,7 +6,7 @@ session_start();
 
 $exam_id = $_GET['eid'];
 
-$loc = mysqli_query($con, "SELECT question_id,question,answer,loc_id,image_path FROM `teacher_exam_question` WHERE exam_id='$exam_id'");
+$loc = mysqli_query($con, "SELECT question_id,question,options,loc_id,image_path FROM `teacher_exam_question` WHERE exam_id='$exam_id'");
 
 ?>
 
