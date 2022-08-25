@@ -89,7 +89,7 @@ $loc = mysqli_query($con, "SELECT question_id,question,options,loc_id,image_path
                                     <p class="card-text"><input type="text" name="'.$run1['question_id'].'"></p>
                                     </div>
                                     </div>
-                                    </div>';
+                                    ';
                                 }
                             ?>
                         <input type="submit" name="give">
