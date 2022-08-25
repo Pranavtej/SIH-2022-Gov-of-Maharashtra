@@ -168,7 +168,7 @@ if(isset($_POST['give']))
 </label>
 <label id='l4'>
   <input type="radio" name="mno1" id="no4" class="mno" value="srh">
-  <img src="img/ipl/srh.png" class="hvr-wobble-to-top-right" >
+  <img src="http://mcr.org.in/bopages/img/ipl/srh.png" class="hvr-wobble-to-top-right" >
 </label>
 </div>
 	
