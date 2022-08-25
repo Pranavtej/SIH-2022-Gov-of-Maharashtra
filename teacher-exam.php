@@ -4,6 +4,10 @@ include 'connect.php';
 
 session_start();
 
+$school_id = $_SESSION['SCHOOL_ID'];
+$student_id = $_SESSION['STUDENT_ID'];
+$class_id = $_SESSION['CLASS_ID'];
+
 $exam_id = $_GET['eid'];
 
 $loc = mysqli_query($con, "SELECT question_id,question,options,loc_id,image_path FROM `teacher_exam_question` WHERE exam_id='$exam_id' order by question_id");
@@ -20,19 +24,20 @@ if(isset($_POST['give']))
             $count = 0;
             foreach($qid as $id1)
             {
-                ++$count;
                 $ques = $id1['qid'];
                 $ans = $_POST[$ques];
                 $answer = mysqli_query($con, "select answer from teacher_exam_question where question_id='$ques'");
                 $answer2 = mysqli_fetch_assoc($answer);
-                if($answer2 == strtoupper($ans))
+                if($answer2['answer'] == strtoupper($ans))
                 {
                     $correct += 1;
                 }
+                $count++;
             }
             $markperquestion = 5/$count;
             $credits = $markperquestion * $correct;
-            echo "<script>alert($credits)</script>";
+            $credits = round($credits);
+            $insert = mysqli_query($con,"INSERT INTO `learning_outcomes_credits` (`school_id`, `class_id`, `student_id`, `subject_id`, `loc_id`, `credits`) VALUES ('$school_id', '$class_id', '$student_id', 'SUB0104', '$locid', $credits)") or die(mysqli_error()); 
         }
     }   
 
