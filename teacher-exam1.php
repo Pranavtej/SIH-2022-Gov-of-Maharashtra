@@ -73,6 +73,14 @@ if(isset($_POST['give']))
 		
 		<!-- Main CSS -->
         <link rel="stylesheet" href="assets/css/style.css">
+        <style>
+            #signal0 {
+				display : none;
+			}
+            #signal1 {
+				display : none;
+			}
+        </style>
     </head>
     <body>
 		
