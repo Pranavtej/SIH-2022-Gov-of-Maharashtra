@@ -71,22 +71,20 @@ if(isset($_POST['give']))
 		<!-- Main Wrapper -->
         <div class="main-wrapper">
 		
-            <?php include 'teacher-header.php'; ?>
-			<?php include 'teacher-sidebar.php'; ?>
+         
 
 			
 			<!-- Page Wrapper -->
-            <div class="page-wrapper">
+            
                 <div class="content container-fluid">
 				
 					<!-- Page Header -->
 					<div class="page-header">
 						<div class="row align-items-center">
 							<div class="col">
-								<h3 class="page-title">Students</h3>
+								<h3 class="page-title">Examination </h3>
 								<ul class="breadcrumb">
-									<li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-									<li class="breadcrumb-item active">Students</li>
+									
 								</ul>
 							</div>
 							<!-- <div class="col-auto text-end float-end ms-auto">
@@ -110,6 +108,11 @@ if(isset($_POST['give']))
                                     <div class="card-header">
                                     '.$run1['question'].'
                                     </div>';
+                                    $locid = $run1['loc_id'];
+                                    $query = mysqli_query($con, "select loc from learning_outcomes where loc_id='$locid'");
+                                    $loo = mysqli_fetch_assoc($query);
+                                    $kk = $loo['loc'];
+                                    echo "<script>alert($kk)</script>";
                                     if(!empty($run1['options']))
                                     {
                                         echo '<h6>'.$run1['options'].'</h6>';
