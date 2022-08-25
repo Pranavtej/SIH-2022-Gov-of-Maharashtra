@@ -26,15 +26,19 @@ if(isset($_POST['give']))
             {
                 $ques = $id1['qid'];
                 $ans = $_POST[$ques];
+                echo "<script>alert($ans)</script>";
                 $answer = mysqli_query($con, "select answer from teacher_exam_question where question_id='$ques'");
                 $answer2 = mysqli_fetch_assoc($answer);
+                echo "<script>alert($answer2)</script>";
                 if($answer2 == strtoupper($ans))
                 {
                     $correct += 1;
+                    echo "<script>alert($correct)</script>";
                 }
                 $count++;
             }
             $markperquestion = 5/$count;
+            echo "<script>alert($markperquestion)</script>";
             $credits = $markperquestion * $correct;
             echo "<script>alert($credits)</script>";
             $insert = mysqli_query($con,"INSERT INTO `learning_outcomes_credits` (`school_id`, `class_id`, `student_id`, `subject_id`, `loc_id`, `credits`) VALUES ('$school_id', '$class_id', '$student_id', 'SUB0104', '$locid', $credits)") or die(mysqli_error()); 
