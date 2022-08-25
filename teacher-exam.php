@@ -85,14 +85,16 @@ $loc = mysqli_query($con, "SELECT question_id,question,options,loc_id,image_path
                                     <div class="card flex-fill">
                                     <div class="card-header">
                                     '.$run1['question'].'
-                                    </div>
-                                    <div class="card-body">
+                                    </div>';
+                                    if(!empty($run1['options']))
+                                    {
+                                        echo '<h5>'.$run1['options'].'</h5>';
+                                    }    
+                                    echo '<div class="card-body">
                                     <p class="card-text"><input type="text" name="'.$run1['question_id'].'"></p>
                                     </div>
                                     </div>
-                                    </div>
-                                    
-                                    ';
+                                    </div>';
                                 }
                             ?>
                      
