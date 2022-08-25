@@ -107,7 +107,7 @@ if(isset($_POST['give']))
                                   
         </div>
         <div>
-                                <h5 align="left"  >Grade : 1</h5><h5 align="right">Subject : Mathematics </h5>
+                                <p align="left"  >Grade : 1</p><p align="right">Subject : Mathematics </p>
 								<ul class="breadcrumb">
 									
 								</ul>
