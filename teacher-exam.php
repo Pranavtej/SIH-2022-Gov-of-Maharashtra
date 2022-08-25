@@ -80,10 +80,7 @@ if(isset($_POST['give']))
 
 			
 			<!-- Page Wrapper -->
-           <div class="page-wrapper">
-		
-                            
-             
+            
                 <div class="content container-fluid">
 				
 					<!-- Page Header -->
@@ -94,6 +91,7 @@ if(isset($_POST['give']))
                                
                                 <h5 align="left"  >Grade : 1</h5><h5 align="right">Subject : Mathematics </h5>
 								<ul class="breadcrumb">
+									
 								</ul>
 							</div>
 							<!-- <div class="col-auto text-end float-end ms-auto">
@@ -109,17 +107,16 @@ if(isset($_POST['give']))
                         <div class="row">
                             <?php
                                 $i = 0;
-                                $j=1;
+                                $j = 2;
                                 while($run1 = mysqli_fetch_assoc($loc))
                                 {
-                                    
                                     $query = mysqli_query($con, "select loc from learning_outcomes where loc_id='{$run1['loc_id']}'");
                                     $a = mysqli_fetch_assoc($query);
                                     echo'
                                     <div class="col-12 col-md-6 col-lg-4 d-flex">
                                     <div class="card flex-fill">
                                     <div class="card-header">
-                                   <h4> Question '.$j.' : '.$run1['question'].'</h4><br>
+                                   <h4> Question '.$j++.': '.$run1['question'].'</h4><br>
                                     <h6>(Learning Outcome : '.$a['loc'].')</h6>              
                                     </div>';
                                     if(!empty($run1['options']))
@@ -135,7 +132,6 @@ if(isset($_POST['give']))
                                     </div>
                                     </div>
                                     </div>';
-                                    $j++;
                                 }
                             ?>
                      

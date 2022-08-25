@@ -59,6 +59,11 @@ include 'connect.php';
 						</div>
 					</div>
 					<!-- /Page Header -->
+					<style>
+												.checked {
+													color: orange;
+													}
+											</style>
 				
 					<div class="row">
 						<div class="col-sm-12">
@@ -76,11 +81,7 @@ include 'connect.php';
 												</tr>
 											</thead>
 											<tbody>
-											<style>
-												.checked {
-													color: orange;
-													}
-											</style>
+											
 												<?php
 													$sid = mysqli_query($con,"select distinct(student_id) as sid from learning_outcomes_credits where subject_id='SUB0104'");
 													foreach($sid as $id)
