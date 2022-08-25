@@ -18,6 +18,7 @@ while($res2 = mysqli_fetch_assoc($run2))
 {
     echo $res2['total'];
     $marks[$i] = $res2['total'];
+	$lable[$i]=[" "];
     $i++;																	
 }
 
@@ -109,6 +110,39 @@ while($res2 = mysqli_fetch_assoc($run2))
 
 										<div class="row mt-3">                                           
 										</div>
+										<div class="card-body">
+<canvas id="acscore"></canvas>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+const genericOptions = {
+  fill: false,
+  interaction: {
+    intersect: false
+  },
+  radius: 0,
+};
+const skipped = (ctx, value) => ctx.p0.skip || ctx.p1.skip ? value : undefined;
+const down = (ctx, value) => ctx.p0.parsed.y > ctx.p1.parsed.y ? value : undefined;
+const ctx = document.getElementById('acscore');
+const myChart = new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels:<?php echo json_encode($lable) ?> ,
+    datasets: [{
+      label: '',
+      data: <?php echo json_encode($marks) ?>,
+      borderColor: 'rgb(0, 129, 0 )',
+      segment: {
+        borderColor: ctx => skipped(ctx, 'rgb(100,0,0)') || down(ctx, 'rgb(255,0,0)'),
+        borderDash: ctx => skipped(ctx, [6, 6]),
+      },
+      spanGaps: true
+    }]
+  },
+  options: genericOptions
+});
+</script>
+</div>
 
                                         <div class="row">
 								<div class="col-12 col-lg-12 col-xl-8 d-flex">
