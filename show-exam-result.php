@@ -1,3 +1,9 @@
+<?php
+
+include "connect.php";
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -67,7 +73,7 @@
 												</tr>
 											</thead>
 											<tbody>
-												
+                                                
 											</tbody>
 										</table>
 									</div>
