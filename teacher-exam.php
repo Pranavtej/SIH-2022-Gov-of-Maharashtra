@@ -106,7 +106,6 @@ $loc = mysqli_query($con, "SELECT question_id,question,options,loc_id,image_path
                                                         <div class="card-footer text-muted">
                                                         This is my footer
                                                         </div>
-                                                        </div>
                                                         </div>';
 													}
                                                 ?>
