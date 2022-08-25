@@ -3,7 +3,7 @@
 include 'connect.php';
 
 
-$query = mysqli_query($con, "select l.student_id as student_id,o.loc as loc,l.credits as credits from learning_outcomes_credits l,learning_outcomes o where l.subject_id='SUB0104' and l.loc_id = o.loc_id");
+$query = mysqli_query($con, "select l.student_id as student_id,o.loc as loc,l.credits as credits from learning_outcomes_credits l,learning_outcomes o where l.subject_id='SUB0104' and l.loc_id = o.loc_id group by l.student_id");
 
 
 
