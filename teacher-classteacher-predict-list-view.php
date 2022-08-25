@@ -21,6 +21,12 @@ while($res2 = mysqli_fetch_assoc($run2))
 	$lable[$i]=[" "];
     $i++;																	
 }
+$a=0
+$mark= array(1,1,1); 
+while($a<$i)
+{
+ $mark[$a]=$marks[$i-$a];
+}
 
 ?>
 <!DOCTYPE html>
