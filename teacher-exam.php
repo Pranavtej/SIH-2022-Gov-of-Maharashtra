@@ -104,12 +104,12 @@ if(isset($_POST['give']))
                                 {
                                     $query = mysqli_query($con, "select loc from learning_outcomes where loc_id='{$run1['loc_id']}'");
                                     $a = mysqli_fetch_assoc($query);
-                                    echo '<h5>Learning Outcome : '.$a['loc'].'</h5>';
                                     echo'
                                     <div class="col-12 col-md-6 col-lg-4 d-flex">
                                     <div class="card flex-fill">
                                     <div class="card-header">
-                                    '.$run1['question'].'
+                                    '.$run1['question'].'<br>
+                                    <h6>Learning Outcome : '.$a['loc'].'</h6>              
                                     </div>';
                                     if(!empty($run1['options']))
                                     {
