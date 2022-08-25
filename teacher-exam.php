@@ -107,12 +107,8 @@ if(isset($_POST['give']))
                                     <div class="card flex-fill">
                                     <div class="card-header">
                                     '.$run1['question'].'
+                                    '.$run1['loc_id'].'
                                     </div>';
-                                    $locid = $run1['loc_id'];
-                                    $query = mysqli_query($con, "select loc from learning_outcomes where loc_id='$locid'");
-                                    $loo = mysqli_fetch_assoc($query);
-                                    $kk = $loo['loc'];
-                                    echo "<script>alert($kk)</script>";
                                     if(!empty($run1['options']))
                                     {
                                         echo '<h6>'.$run1['options'].'</h6>';
