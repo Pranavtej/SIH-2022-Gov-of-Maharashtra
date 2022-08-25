@@ -52,10 +52,10 @@ body {
 }
 		
 	 </style>
-		<link rel="stylesheet" href="vendor/animate/animate.css">
+		<link rel="stylesheet" href="assets/css/style.css">
 
 		<!-- Hover CSS - Demo Purpose Only -->
-		<link rel="stylesheet" href="vendor/hover/hover.css" />
+		<!-- <link rel="stylesheet" href="vendor/hover/hover.css" /> -->
 		
 		
     </head>
