@@ -164,6 +164,8 @@ else{
 					<div class="page-header">
 						<div class="row">
 							<div class="col-sm-12">
+                            <div id="google_translate_element"></div>
+
 								<h3 class="page-title">Welcome Parent !!</h3>
                                 </h3>
 								<ul class="breadcrumb">
