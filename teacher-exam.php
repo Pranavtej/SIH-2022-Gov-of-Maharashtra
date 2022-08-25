@@ -113,7 +113,7 @@ if(isset($_POST['give']))
                                     <div class="col-12 col-md-6 col-lg-4 d-flex">
                                     <div class="card flex-fill">
                                     <div class="card-header">
-                                   <h4> Question : '.$run1['question'].'</h4><br><br>
+                                   <h4> Question : '.$run1['question'].'</h4><br>
                                     <h6>(Learning Outcome : '.$a['loc'].')</h6>              
                                     </div>';
                                     if(!empty($run1['options']))
