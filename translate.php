@@ -142,8 +142,17 @@ else{
 		<?php include 'parent-menu.php'; ?>
 			
 			<!-- Page Wrapper -->
-            <div id="google_translate_element">test</div>
-<script type="text/javascript">
+            
+
+            <div class="page-wrapper">
+			
+                <div class="content container-fluid">
+					<!-- Page Header -->
+					<div class="page-header">
+						<div class="row">
+							<div class="col-sm-12">
+                            <div id="google_translate_element"></div>
+                            <script type="text/javascript">
 		function googleTranslateElementInit() {
 			new google.translate.TranslateElement(
 				{pageLanguage: 'en'},
@@ -157,15 +166,6 @@ else{
 		cb=googleTranslateElementInit">
 	</script>
 	
-            <div class="page-wrapper">
-			
-                <div class="content container-fluid">
-					<!-- Page Header -->
-					<div class="page-header">
-						<div class="row">
-							<div class="col-sm-12">
-                            <div id="google_translate_element"></div>
-
 								<h3 class="page-title">Welcome Parent !!</h3>
                                 </h3>
 								<ul class="breadcrumb">
