@@ -211,47 +211,7 @@ body {
                                     <div class="col-12 col-md-6 col-lg-4 d-flex">
                                     <div class="card flex-fill">
                                     <div class="card-header">
-                                   <h4> Question 6: Add : 9 + 7 = __</h4><br>
-                                    <h6>(Learning Outcome : able to add,subract and multiply digits)</h6>              
-                                    </div><div class="card-body">
-                                    <p class="card-text">Answer: <input type="text" name="Q17"></p>
-                                    </div>
-                                    </div>
-                                    </div>
-                                    <div class="col-12 col-md-6 col-lg-4 d-flex">
-                                    <div class="card flex-fill">
-                                    <div class="card-header">
-                                   <h4> Question 7: Subract : 5 - 4 = __</h4><br>
-                                    <h6>(Learning Outcome : able to add,subract and multiply digits)</h6>              
-                                    </div><div class="card-body">
-                                    <p class="card-text">Answer: <input type="text" name="Q18"></p>
-                                    </div>
-                                    </div>
-                                    </div>
-                                    <div class="col-12 col-md-6 col-lg-4 d-flex">
-                                    <div class="card flex-fill">
-                                    <div class="card-header">
-                                   <h4> Question 8: Multiply: 2 x 2 = __</h4><br>
-                                    <h6>(Learning Outcome : able to add,subract and multiply digits)</h6>              
-                                    </div><div class="card-body">
-                                    <p class="card-text">Answer: <input type="text" name="Q19"></p>
-                                    </div>
-                                    </div>
-                                    </div>
-                                    <div class="col-12 col-md-6 col-lg-4 d-flex">
-                                    <div class="card flex-fill">
-                                    <div class="card-header">
-                                   <h4> Question 9: How do you write TWELEVE using digits?</h4><br>
-                                    <h6>(Learning Outcome : able to identify number)</h6>              
-                                    </div><div class="card-body">
-                                    <p class="card-text">Answer: <input type="text" name="Q20"></p>
-                                    </div>
-                                    </div>
-                                    </div>
-                                    <div class="col-12 col-md-6 col-lg-4 d-flex">
-                                    <div class="card flex-fill">
-                                    <div class="card-header">
-                                   <h4> Question 10: Identify the number from below?</h4><br>
+                                   <h4> Question 6: Identify the number from below?</h4><br>
                                     <h6>(Learning Outcome : able to identify number)</h6>              
                                     </div><h6>a)A  b)?  c)5</h6><div class="card-body">
                                     <p class="card-text">Answer: <input type="text" name="Q21"></p>
