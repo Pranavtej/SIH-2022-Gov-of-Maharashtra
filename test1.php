@@ -192,7 +192,7 @@ body {
 		<footer class="card-footer">
 			<div class="row">
 			<div class="col-md-12 text-right">
-			<button class="btn btn-success modal-dismiss" onclick="location.reload();">OK</button>
+			<button class="btn btn-primary" >Submit</button>
 			</div>
 			</div>
 		</footer>
