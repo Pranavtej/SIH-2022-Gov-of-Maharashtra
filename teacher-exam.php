@@ -67,6 +67,7 @@ $loc = mysqli_query($con, "SELECT question_id,question,options,loc_id,image_path
 					</div>
 					<!-- /Page Header -->
 				
+                    <div class="row">
 					<form action="" method="post">
                                                 <?php
                                                     $i = 0;
@@ -78,7 +79,7 @@ $loc = mysqli_query($con, "SELECT question_id,question,options,loc_id,image_path
                                                         //     <td><input type="number" name="'.$run1['question_id'].'"></td>
 														// </tr>';
 
-                                                        echo'<div class="row">
+                                                        echo'
                                                         <div class="col-12 col-md-6 col-lg-4 d-flex">
                                                         <div class="card flex-fill">
                                                         <div class="card-header">
@@ -93,7 +94,8 @@ $loc = mysqli_query($con, "SELECT question_id,question,options,loc_id,image_path
 													}
                                                 ?>
                                             <input type="submit" name="give">
-                                            </form>					
+                                            </form>	
+                                                </div>				
 				</div>
 
 				<!-- Footer -->
