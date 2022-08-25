@@ -69,50 +69,7 @@ if(isset($_POST['give']))
 		<link rel="stylesheet" href="assets/plugins/datatables/datatables.min.css">
 		
 		<!-- Main CSS -->
-
         <link rel="stylesheet" href="assets/css/style.css">
-        <style>
-        /* HIDE RADIO */
-[type=radio] { 
-  position: absolute;
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-/* IMAGE STYLES */
-[type=radio] + img {
-  cursor: pointer;
-  width:60px;
-}
-
-/* CHECKED STYLES */
-[type=radio]:checked + img {
-  outline: 2px solid #000000;
-  width:100px;
-}
-
-/* IMAGE STYLES */
-.mno + img {
-  cursor: pointer;
-  width:100px;
-}
-
-/* CHECKED STYLES */
-.mno:checked + img {
-  outline: 0px solid #000000;
-  width:100px;
-  background-color:#ffc7b0;
-  border-radius:100px;
-}
-
-#teams1, #teams2, #teams3, #teams4, #super
-{
-  width:100%;	
-  text-align:center;	
-}
-</style>
-
     </head>
     <body>
 		
@@ -123,10 +80,7 @@ if(isset($_POST['give']))
 
 			
 			<!-- Page Wrapper -->
-           <div class="page-wrapper">
-		
-                            
-             
+            
                 <div class="content container-fluid">
 				
 					<!-- Page Header -->
@@ -137,6 +91,7 @@ if(isset($_POST['give']))
                                
                                 <h5 align="left"  >Grade : 1</h5><h5 align="right">Subject : Mathematics </h5>
 								<ul class="breadcrumb">
+									
 								</ul>
 							</div>
 							<!-- <div class="col-auto text-end float-end ms-auto">
@@ -150,63 +105,18 @@ if(isset($_POST['give']))
                    
                         <form action="" method="post">
                         <div class="row">
-                        <div class="input-group">
-    <span class="q">1. identify the shape square ?</span>
-
-<div style='text-align:center;' id='teams1'>
-<label id='l1'>
-  <input type="radio" name="mno1" id="no1" class="mno" value="mi">
-  <img src="exam/img/m.png" class="hvr-wobble-to-top-right" >
-</label>
-<label id='l2'>
-  <input type="radio" name="mno1" id="no2" class="mno" value="dc">
-  <img src="exam/img/2.png" class="hvr-wobble-to-top-right" >
-</label>
-<label id='l3'>
-  <input type="radio" name="mno1" id="no3" class="mno" value="rcb">
-  <img src="exam/img/3.png" class="hvr-wobble-to-top-right">
-</label>
-<label id='l4'>
-  <input type="radio" name="mno1" id="no4" class="mno" value="srh">
-  <img src="exam/img/4.png" class="hvr-wobble-to-top-right" >
-</label>
-</div>
-	
-
-<span class="q">1. identify the ?</span>
-
-<div style='text-align:center;' id='teams1'>
-<label id='l1'>
-  <input type="radio" name="mno1" id="no1" class="mno" value="mi">
-  <img src="exam/img/m.png" class="hvr-wobble-to-top-right" >
-</label>
-<label id='l2'>
-  <input type="radio" name="mno1" id="no2" class="mno" value="dc">
-  <img src="exam/img/2.png" class="hvr-wobble-to-top-right" >
-</label>
-<label id='l3'>
-  <input type="radio" name="mno1" id="no3" class="mno" value="rcb">
-  <img src="exam/img/3.png" class="hvr-wobble-to-top-right">
-</label>
-<label id='l4'>
-  <input type="radio" name="mno1" id="no4" class="mno" value="srh">
-  <img src="exam/img/4.png" class="hvr-wobble-to-top-right" >
-</label>
-</div>
-</div>	
                             <?php
                                 $i = 0;
-                                $j=1;
+                                $j = 1;
                                 while($run1 = mysqli_fetch_assoc($loc))
                                 {
-                                    
                                     $query = mysqli_query($con, "select loc from learning_outcomes where loc_id='{$run1['loc_id']}'");
                                     $a = mysqli_fetch_assoc($query);
                                     echo'
                                     <div class="col-12 col-md-6 col-lg-4 d-flex">
                                     <div class="card flex-fill">
                                     <div class="card-header">
-                                   <h4> Question '.$j.' : '.$run1['question'].'</h4><br>
+                                   <h4> Question '.$j++.': '.$run1['question'].'</h4><br>
                                     <h6>(Learning Outcome : '.$a['loc'].')</h6>              
                                     </div>';
                                     if(!empty($run1['options']))
@@ -216,14 +126,12 @@ if(isset($_POST['give']))
                                     if(!empty($run1['image_path']))
                                     {
                                         echo '<img src="exam/img/'.$run1['image_path'].'" alt="image not loaded" class="card-img">';
-                                    }  
-                                    
+                                    }    
                                     echo '<div class="card-body">
                                     <p class="card-text">Answer: <input type="text" name="'.$run1['question_id'].'"></p>
                                     </div>
                                     </div>
                                     </div>';
-                                    $j++;
                                 }
                             ?>
                      
