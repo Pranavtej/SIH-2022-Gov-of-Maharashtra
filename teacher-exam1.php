@@ -12,7 +12,7 @@ $exam_id = $_GET['eid'];
 
 $loc = mysqli_query($con, "SELECT question_id,question,options,loc_id,image_path FROM `teacher_exam_question` WHERE exam_id='$exam_id' order by question_id");
 
-if(isset($_POST['give']))
+post()
 {
     $loc = mysqli_query($con, "select distinct(loc_id) as loc_id from teacher_exam_question where exam_id='$exam_id'");
     foreach($loc as $id)
@@ -39,8 +39,7 @@ if(isset($_POST['give']))
             $credits = round($credits);
             $insert = mysqli_query($con,"INSERT INTO `learning_outcomes_credits` (`school_id`, `class_id`, `student_id`, `subject_id`, `loc_id`, `credits`) VALUES ('$school_id', '$class_id', '$student_id', 'SUB0104', '$locid', $credits)") or die(mysqli_error()); 
         }
-    }   
-
+    }
 }
 
 ?>
@@ -227,28 +226,7 @@ const formId = "save-later-form"; // ID of the form
 
 submitButton.onclick = event => {
         if (navigator.onLine) {
-            const dataA = [];
-            for(let i=0;i<=9;i++)
-            {
-                dataA[i] = document.getElementById(dataT[i]).value;
-            }
-
-
-            var xmlhttp=new XMLHttpRequest();
-            xmlhttp.onreadystatechange=function() {
-                if (this.readyState==4 && this.status==200) {
-                    console.log(this.responseText);
-                    // document.getElementById("").value=this.responseText;
-                }
-            }
-            xmlhttp.open("GET","generate_pid.php?d1="+dataA[0]+"d2="+dataA[1]+"d3="+dataA[2]+"d4="+dataA[3]+"d5="+dataA[4]+"d6="+dataA[5]+"d7="+dataA[6]+"d8="+dataA[7]+"d9="+dataA[8]+"d0="+dataA[9],true);
-            xmlhttp.send();
-
-
-
-
-
-            alert(dataA);
+            document.write('<?php post(); ?>');
             alert("Test submitted successfully!!");
             localStorage.clear()
         }
