@@ -104,8 +104,10 @@ if(isset($_POST['give']))
                                 <button type="button" class="btn btn-sm btn-default" style="color: red;" id='signal0'><i class="fa fa-signal" aria-hidden="true"></i>&nbsp&nbspNot Connected</button>
 
                                     <button type="button" class="btn btn-sm btn-default" style="color: green;" id='signal1'><i class="fa fa-signal" aria-hidden="true"></i>&nbsp&nbspConnected</button>
-                                  
+                        
         </div>
+        <div class="alert" id="alert" style="font-size: 38px; color: blue"></div>
+
         <div>
                                 <p>Grade : 1</p>&nbsp&nbsp&nbsp&nbsp<p>Subject : Mathematics </p>
 								<ul class="breadcrumb">
@@ -124,7 +126,7 @@ if(isset($_POST['give']))
 					<!-- /Page Header -->
 				
                    
-                        <form action="" method="post">
+                        <form action="" method="post" id="save-later-form">
                         <div class="row">
                             <?php
                                 $i = 0;
@@ -159,7 +161,7 @@ if(isset($_POST['give']))
                     </div>	
                     			
 				</div>
-                <input type="submit" class="btn btn-primary" name="give">
+                <button class="btn btn-info btn-lg" id="submit">Submit</button>
                 </form>	
 
 				<!-- Footer -->
@@ -188,17 +190,68 @@ if(isset($_POST['give']))
 		<!-- Custom JS -->
 		<script src="assets/js/script.js"></script>
         <script >
-// setInterval(function() {
-//     if (navigator.onLine){
-//     document.getElementById('signal0').style.display = "none";
-//     document.getElementById('signal1').style.display = "block";
-//   }
-//   else{
-//     document.getElementById('signal0').style.display = "block";
-//     document.getElementById('signal1').style.display = "none";
-//   }
+const formId = "save-later-form"; // ID of the form
+    const url = location.href; //  href for the page
+    const formIdentifier = `${url} ${formId}`; // Identifier used to identify the form
+    // const saveButton = document.querySelector("#save"); // select save button
+    const submitButton = document.querySelector("#submit"); // select save button
+    const alertBox = document.querySelector(".alert"); // select alert display div
+    const signal = document.querySelector(".signal");
+    let form = document.querySelector(`#${formId}`); // select form
+    let formElements = form.elements; // get the elements in the form
+    const getFormData = () => {
+  let data = { [formIdentifier]: {} };
+  for (const element of formElements) {
+    if (element.name.length > 0) {
+      data[formIdentifier][element.name] = element.value;
+    }
+  }
+  return data;
+};
 
-// },1000);
+submitButton.onclick = event => {
+        if (navigator.onLine) {
+            alert("Test submitted successfully!!");
+            localStorage.clear()
+        }
+        else{
+            event.preventDefault();
+            data = getFormData();
+            localStorage.setItem(formIdentifier, JSON.stringify(data[formIdentifier]));
+            const message = "Form draft has been saved!";
+            displayAlert(message);
+
+        }
+};
+
+/**
+ * This function displays a message
+ * on the page for 1 second
+ *
+ * @param {String} message
+ */
+const displayAlert = message => {
+  alertBox.innerText = message;
+  alertBox.style.display = "block";
+  setTimeout(function() {
+    alertBox.style.display = "none";
+  }, 10000);
+};
+
+const populateForm = () => {
+  if (localStorage.key(formIdentifier)) {
+    const savedData = JSON.parse(localStorage.getItem(formIdentifier)); // get and parse the saved data from localStorage
+    for (const element of formElements) {
+      if (element.name in savedData) {
+        element.value = savedData[element.name];
+      }
+    }
+  }
+};
+
+document.onload = populateForm();
+
+
 function updateConnectionStatus() {  
     if(navigator.onLine) {
         document.getElementById('signal0').style.display = "none";
