@@ -76,13 +76,14 @@ if(isset($_POST['give']))
 
         <script>
 			
-			const dataT = {};
+			const dataT = [];
 			<?php 
 				$get = "select question_id as ci from teacher_exam_question where exam_id='$exam_id'";
 				$run = mysqli_query($con, $get);
 				while($get = mysqli_fetch_array($run))
 				{
-					echo 'dataT.'.$get['ci'].'= '.$get['ca'].'; ';
+					// echo 'dataT.'.$get['ci'].'= '.$get['ca'].'; ';
+                    echo 'dataT[$i] = '.$get['ci'].';';
 				}
 			?>
 		</script>
