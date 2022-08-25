@@ -67,8 +67,9 @@ $loc = mysqli_query($con, "SELECT question_id,question,options,loc_id,image_path
 					</div>
 					<!-- /Page Header -->
 				
-                    <div class="row">
+                   
                         <form action="" method="post">
+                        <div class="row">
                             <?php
                                 $i = 0;
                                 while($run1 = mysqli_fetch_assoc($loc))
