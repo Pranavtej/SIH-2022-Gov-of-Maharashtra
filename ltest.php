@@ -136,8 +136,8 @@ body {
                                     </div>
                                     </div>
                                     <div class="col-12 col-md-6 col-lg-4 d-flex">
-                                    <div class="card flex-fill">
-                                    <div class="card-header" style="background-color: #bbb;">
+                                    <div class="card flex-fill" style="background-color:  #99ddff;">
+                                    <div class="card-header" >
                                    <h4> Question 2: Find the result of this addition?</h4><br>
                                     <h6>(Learning Outcome : able to count objects using numbers 1 to 9)</h6>              
                                     </div><h2>4+4= </h2><div class="card-body">
