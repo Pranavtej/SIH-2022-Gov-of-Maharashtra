@@ -93,14 +93,16 @@ body {
 					</header>
 
 					<!-- start: page -->
-					<div class="row">
+					<!-- <div class="row">
 						<div class="col-lg-8 mb-4">
 							<section class="card">
 								<div class="card-body">
 									<div class="row">
-										<div class="col-xl-12">
+										<div class="col-xl-12"> -->
                                             
-                                        
+    <div class="col-12 col-md-6 col-lg-4 d-flex">
+<div class="card flex-fill">
+<div class="card-header">                                      
 <div class="form-group mb-3">
    <div class="input-group">
     <span class="q">1. Find the shape Rectangle from Below<br><br></span>
@@ -125,6 +127,9 @@ body {
 </div>
 	
 </div>	<br>
+</div>
+</div>
+</div>
 
 
 <div class="form-group mb-3">
