@@ -79,7 +79,7 @@ session_start();
                                                     foreach($sid as $id)
 													{
 														$sid = $id['sid'];
-														$query = "select s.student_name as student_name,ROUND(SUM(c.credits)/4) from student s,learning_outcomes_credits c where c.student_id='$sid' and c.subject_id='SUB0104' and s.student_id=c.student_id GROUP by student_name";
+														$query = "select s.student_name as student_name,ROUND(SUM(c.credits)/4) as num from student s,learning_outcomes_credits c where c.student_id='$sid' and c.subject_id='SUB0104' and s.student_id=c.student_id GROUP by student_name";
 														$run = mysqli_query($con,$query);
 														foreach($run as $r)
 														{
