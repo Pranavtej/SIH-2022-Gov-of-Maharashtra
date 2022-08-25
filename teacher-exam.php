@@ -102,16 +102,15 @@ if(isset($_POST['give']))
                                 $i = 0;
                                 while($run1 = mysqli_fetch_assoc($loc))
                                 {
+                                    $query = mysqli_query($con, "select loc from learning_outcomes where loc_id='{$run1['loc_id']}'");
+                                    $a = mysqli_fetch_assoc($query);
+                                    echo '<h5>Learning Outcome : '.$a['loc'].'</h5>';
                                     echo'
                                     <div class="col-12 col-md-6 col-lg-4 d-flex">
                                     <div class="card flex-fill">
                                     <div class="card-header">
                                     '.$run1['question'].'
-                                    '.$run1['loc_id'].'
                                     </div>';
-                                    $query = mysqli_query($con, "select loc from learning_outcomes where loc_id='{$run1['loc_id']}'");
-                                    $a = mysqli_fetch_assoc($query);
-                                    echo '<h5>'.$a['loc'].'</h5>';
                                     if(!empty($run1['options']))
                                     {
                                         echo '<h6>'.$run1['options'].'</h6>';
