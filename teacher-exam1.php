@@ -168,7 +168,7 @@ if(isset($_POST['give']))
                                         echo '<img src="exam/img/'.$run1['image_path'].'" alt="image not loaded" class="card-img">';
                                     }    
                                     echo '<div class="card-body">
-                                    <p class="card-text">Answer: <input type="text" name="'.$run1['question_id'].'"></p>
+                                    <p class="card-text">Answer: <input type="text" name="'.$run1['question_id'].'" id="'.$run1['question_id'].'"></p>
                                     </div>
                                     </div>
                                     </div>';
@@ -228,7 +228,13 @@ const formId = "save-later-form"; // ID of the form
 
 submitButton.onclick = event => {
         if (navigator.onLine) {
-
+            const dataA = [];
+            let k = 0;
+            for(let i=0;i<10;i++)
+            {
+                dataA[k] = document.getElementById(dataT[k]).value;
+            }
+            alert(dataA);
             alert("Test submitted successfully!!");
             localStorage.clear()
         }
