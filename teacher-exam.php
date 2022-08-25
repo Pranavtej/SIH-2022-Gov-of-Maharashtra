@@ -94,20 +94,6 @@ if(isset($_POST['give']))
                                
                                 <h5 align="left"  >Grade : 1</h5><h5 align="right">Subject : Mathematics </h5>
 								<ul class="breadcrumb">
-                                <div id="google_translate_element"></div>
-                                <script type="text/javascript">
-		function googleTranslateElementInit() {
-			new google.translate.TranslateElement(
-				{pageLanguage: 'en'},
-				'google_translate_element'
-			);
-		}
-	</script>
-	
-	<script type="text/javascript" src=
-"https://translate.google.com/translate_a/element.js?
-		cb=googleTranslateElementInit">
-	</script>
 								</ul>
 							</div>
 							<!-- <div class="col-auto text-end float-end ms-auto">
