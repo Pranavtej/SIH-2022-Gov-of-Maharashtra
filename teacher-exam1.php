@@ -83,7 +83,8 @@ if(isset($_POST['give']))
 				while($get = mysqli_fetch_array($run))
 				{
 					// echo 'dataT.'.$get['ci'].'= '.$get['ca'].'; ';
-                    echo 'dataT[$i] = '.$get['ci'].';';
+                    echo 'dataT['.$i.'] = '.$get['ci'].';';
+                    $i++;
 				}
 			?>
 		</script>
