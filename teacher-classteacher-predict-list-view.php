@@ -108,6 +108,18 @@ while($res2 = mysqli_fetch_assoc($run2))
 											</div>
 										</div>
 
+										
+
+                                        <div class="row">
+								<div class="col-12 col-lg-12 col-xl-8 d-flex">
+									<div class="card flex-fill">
+										<div class="card-header">
+											<div class="row align-items-center">
+												<div class="col-6">
+													<h5 class="card-title">Learning Curve over Years</h5>
+												</div>
+											</div>						
+										</div>
 										<div class="row mt-3">                                           
 										</div>
 										<div class="card-body">
@@ -144,17 +156,6 @@ const myChart = new Chart(ctx, {
 });
 </script>
 </div>
-
-                                        <div class="row">
-								<div class="col-12 col-lg-12 col-xl-8 d-flex">
-									<div class="card flex-fill">
-										<div class="card-header">
-											<div class="row align-items-center">
-												<div class="col-6">
-													<h5 class="card-title">Learning Curve over Years</h5>
-												</div>
-											</div>						
-										</div>
 										<div class="card-body">
                                         <canvas id="acscore"></canvas>
                                             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
