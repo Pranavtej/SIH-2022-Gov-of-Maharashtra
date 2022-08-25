@@ -87,11 +87,27 @@ $loc = mysqli_query($con, "SELECT question_id,question,options,loc_id,image_path
                                                     $i = 0;
 													while($run1 = mysqli_fetch_assoc($loc))
 													{
-														echo '<tr>
-															<td>'.++$i.'</td>
-															<td>'.$run1['question'].'</td>
-                                                            <td><input type="number" name="'.$run1['question_id'].'"></td>
-														</tr>';
+														// echo '<tr>
+														// 	<td>'.++$i.'</td>
+														// 	<td>'.$run1['question'].'</td>
+                                                        //     <td><input type="number" name="'.$run1['question_id'].'"></td>
+														// </tr>';
+
+                                                        echo'<div class="row">
+                                                        <div class="col-12 col-md-6 col-lg-4 d-flex">
+                                                        <div class="card flex-fill">
+                                                        <div class="card-header">
+                                                        '.$run1['question'].'
+                                                        </div>
+                                                        <div class="card-body">
+                                                        <h5 class="card-title">Special title treatment</h5>
+                                                        <p class="card-text"><input type="number" name="'.$run1['question_id'].'"></p>
+                                                        </div>
+                                                        <div class="card-footer text-muted">
+                                                        This is my footer
+                                                        </div>
+                                                        </div>
+                                                        </div>';
 													}
                                                 ?>
                                             </tbody>
