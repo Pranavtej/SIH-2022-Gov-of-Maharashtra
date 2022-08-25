@@ -2,6 +2,7 @@
 
 include "connect.php";
 
+session_start();
 
 ?>
 <!DOCTYPE html>
@@ -73,7 +74,11 @@ include "connect.php";
 												</tr>
 											</thead>
 											<tbody>
-                                                
+                                                <?php
+                                                    $sid = mysqli_query($con , "SELECT DISTINCT(student_id) AS sid FROM learning_outcomes_credits where subject_id='SUB0104'");
+
+
+                                                ?>
 											</tbody>
 										</table>
 									</div>
