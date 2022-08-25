@@ -4,9 +4,44 @@ include 'connect.php';
 
 session_start();
 
+$school_id = $_SESSION['SCHOOL_ID'];
+$student_id = $_SESSION['STUDENT_ID'];
+$class_id = $_SESSION['CLASS_ID'];
+
 $exam_id = $_GET['eid'];
 
-$loc = mysqli_query($con, "SELECT question_id,question,options,loc_id,image_path FROM `teacher_exam_question` WHERE exam_id='$exam_id'");
+$loc = mysqli_query($con, "SELECT question_id,question,options,loc_id,image_path FROM `teacher_exam_question` WHERE exam_id='$exam_id' order by question_id");
+
+if(isset($_POST['give']))
+{
+    $loc = mysqli_query($con, "select distinct(loc_id) as loc_id from teacher_exam_question where exam_id='$exam_id'");
+    foreach($loc as $id)
+    {
+        $locid = $id['loc_id'];
+        $qid = mysqli_query($con, "select question_id as qid from teacher_exam_question where loc_id='$locid'");
+        {
+            $correct = 0;
+            $count = 0;
+            foreach($qid as $id1)
+            {
+                $ques = $id1['qid'];
+                $ans = $_POST[$ques];
+                $answer = mysqli_query($con, "select answer from teacher_exam_question where question_id='$ques'");
+                $answer2 = mysqli_fetch_assoc($answer);
+                if($answer2['answer'] == strtoupper($ans))
+                {
+                    $correct += 1;
+                }
+                $count++;
+            }
+            $markperquestion = 5/$count;
+            $credits = $markperquestion * $correct;
+            $credits = round($credits);
+            $insert = mysqli_query($con,"INSERT INTO `learning_outcomes_credits` (`school_id`, `class_id`, `student_id`, `subject_id`, `loc_id`, `credits`) VALUES ('$school_id', '$class_id', '$student_id', 'SUB0104', '$locid', $credits)") or die(mysqli_error()); 
+        }
+    }   
+
+}
 
 ?>
 
@@ -41,22 +76,22 @@ $loc = mysqli_query($con, "SELECT question_id,question,options,loc_id,image_path
 		<!-- Main Wrapper -->
         <div class="main-wrapper">
 		
-            <?php include 'teacher-header.php'; ?>
-			<?php include 'teacher-sidebar.php'; ?>
+         
 
 			
 			<!-- Page Wrapper -->
-            <div class="page-wrapper">
+            
                 <div class="content container-fluid">
 				
 					<!-- Page Header -->
 					<div class="page-header">
 						<div class="row align-items-center">
 							<div class="col">
-								<h3 class="page-title">Students</h3>
+								<h3 class="page-title" align="center">Learning Outcome Assessment Examination </h3>
+                               
+                                <h5 align="left" >Grade : 1</h5><h5 align="right">Subject : Mathematics </h5>
 								<ul class="breadcrumb">
-									<li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-									<li class="breadcrumb-item active">Students</li>
+									
 								</ul>
 							</div>
 							<!-- <div class="col-auto text-end float-end ms-auto">
@@ -74,24 +109,25 @@ $loc = mysqli_query($con, "SELECT question_id,question,options,loc_id,image_path
                                 $i = 0;
                                 while($run1 = mysqli_fetch_assoc($loc))
                                 {
-                                    // echo '<tr>
-                                    // 	<td>'.++$i.'</td>
-                                    // 	<td>'.$run1['question'].'</td>
-                                    //     <td><input type="number" name="'.$run1['question_id'].'"></td>
-                                    // </tr>';
-
+                                    $query = mysqli_query($con, "select loc from learning_outcomes where loc_id='{$run1['loc_id']}'");
+                                    $a = mysqli_fetch_assoc($query);
                                     echo'
                                     <div class="col-12 col-md-6 col-lg-4 d-flex">
                                     <div class="card flex-fill">
                                     <div class="card-header">
-                                    '.$run1['question'].'
+                                   <h4> Question : '.$run1['question'].'</h4><br>
+                                    <h6>(Learning Outcome : '.$a['loc'].')</h6>              
                                     </div>';
                                     if(!empty($run1['options']))
                                     {
-                                        echo '<h5>'.$run1['options'].'</h5>';
+                                        echo '<h6>'.$run1['options'].'</h6>';
+                                    }
+                                    if(!empty($run1['image_path']))
+                                    {
+                                        echo '<img src="exam/img/'.$run1['image_path'].'" alt="image not loaded" class="card-img">';
                                     }    
                                     echo '<div class="card-body">
-                                    <p class="card-text"><input type="text" name="'.$run1['question_id'].'"></p>
+                                    <p class="card-text">Answer: <input type="text" name="'.$run1['question_id'].'"></p>
                                     </div>
                                     </div>
                                     </div>';
