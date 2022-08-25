@@ -52,19 +52,19 @@ $run1 = mysqli_query($con, $sql1);
             <div class="page-wrapper">
                 <div class="content container-fluid">
 				
-					<div class="page-header">
+                    <div class="page-header">
 						<div class="row">
 							<div class="col-sm-12">
-								<h3 class="page-title">Teacher Details</h3>
+							    <h3 class="page-title"><?php echo $run['school_name']; ?></h3>
 								<ul class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="super-admin-dashboard.php">Dashboard</a></li>
-									<li class="breadcrumb-item"><a href="super-admin-teachers-list.php">Teacher</a></li>
-									<li class="breadcrumb-item active">Teacher Details</li>
-								</ul>
+								    <li class="breadcrumb-item"><a href="school-admin-dashboard.php">SchoolAdmin Dashboard</a></li>
+									<li class="breadcrumb-item "><a href="school-admin-teacher-list.php">School Teachers List</a></li>
+                                    <li class="breadcrumb-item active">Teacher</li>
+								</ul><br>
+								<h3 class="page-title"><b>Teacher Details</b></h3>
 							</div>
 						</div>
 					</div>
-					
 					<div class="card">
 						<div class="card-body">
 							<div class="row">

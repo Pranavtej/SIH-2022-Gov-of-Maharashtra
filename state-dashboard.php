@@ -1,25 +1,23 @@
 <?php 
+session_start();
 include "connect.php";
-$sql=mysqli_query($con,"select count(DISTINCT(d.district_id)) as total,d.district_id as d_id  from districts as d,blocks as b where d.district_id=b.district_id");
+$state_id=$_SESSION['STATE_ID'];
+$sql=mysqli_query($con,"select count(district_id) as total from districts where state_id='$state_id'");
 $sql1=mysqli_fetch_assoc($sql);
-$sql2=mysqli_query($con,"select count(block_id) as total,block_id from blocks ");
+$sql2=mysqli_query($con,"select count(block_id) as total from blocks where state_id='$state_id'");
 $sql3=mysqli_fetch_assoc($sql2);
-$sql4=mysqli_query($con,"select count(teacher_id) as total,teacher_id from teacher_info");
+$sql4=mysqli_query($con,"select count(teacher_id) as total from teacher_info where school_id=ANY(select school_id from school_info where state_id='$state_id')");
 $sql5=mysqli_fetch_assoc($sql4);
-$sql6=mysqli_query($con,"select count(student_id) as total,student_id from student");
+$sql6=mysqli_query($con,"select count(student_id) as total from student where school_id=ANY(select school_id from school_info where state_id='$state_id')");
 $sql7=mysqli_fetch_assoc($sql6);
-$sql8=mysqli_query($con,"select count(school_id) as total,school_id from school_info");
+$sql8=mysqli_query($con,"select count(school_id) as total from school_info WHERE state_id='$state_id'");
 $sql9=mysqli_fetch_assoc($sql8);
-$sql10=mysqli_query($con,"select count(student_id) as total from student group by school_id");
-foreach($sql10 as $data)
+$sql10=mysqli_query($con,"select count(s.student_id) as total,e.school_name,s.school_id from student s,school_info e where s.school_id=ANY(select school_id from school_info where state_id='$state_id') AND s.school_id=e.school_id GROUP BY school_name;");
+while($data=mysqli_fetch_assoc($sql10))
 {
    
    $x[]=$data['total'];
-}
-$sql11=mysqli_query($con,"select school_name from school_info");
-foreach($sql11 as $data)
-{
-   $y[] = $data['school_name'];
+   $y[]=$data['school_name'];
 }
 ?>
 <!DOCTYPE html>
@@ -60,7 +58,7 @@ foreach($sql11 as $data)
 							<div class="col-sm-12">
 								<h3 class="page-title">Welcome!</h3>
 								<ul class="breadcrumb">
-									<li class="breadcrumb-item active">Public Dashboard</li>
+									<li class="breadcrumb-item active">State Authority Dashboard</li>
 								</ul>
 							</div>
 						</div>
@@ -193,7 +191,7 @@ foreach($sql11 as $data)
 														labels: <?php echo json_encode($y) ?>,
 														//echo json_encode($y), 
 														datasets: [{
-															label: 'MARKS SCORED',
+															label: 'No Of Students',
 															data:<?php echo json_encode($x)?>,
 														//echo json_encode($x),
 

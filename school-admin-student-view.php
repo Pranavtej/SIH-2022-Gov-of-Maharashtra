@@ -14,7 +14,9 @@ $run = mysqli_fetch_array(mysqli_query($con, $sql));
 $sql2 = "select class,section from classes where class_id='$class_id'";
 $run2 = mysqli_query($con, $sql2);
 $run2 = mysqli_fetch_assoc($run2);
-
+$sq="select school_name from school_info where school_id='$school_id'";
+$ru = mysqli_fetch_assoc(mysqli_query($con,$sq));
+$school_name=$ru['school_name'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,20 +49,22 @@ $run2 = mysqli_fetch_assoc($run2);
 		<!-- Main Wrapper -->
         <div class="main-wrapper">
 		
-			<?php include 'student-menu.php'; ?>
+		<?php include 'school-admin-header.php';?>
+		<?php include 'school-admin-sidebar.php';?>
         
 			<!-- Page Wrapper -->
             <div class="page-wrapper">
                 <div class="content container-fluid">
-				
 					<div class="page-header">
 						<div class="row">
 							<div class="col-sm-12">
-								<h3 class="page-title">Student Details</h3>
+							    <h3 class="page-title"><?php echo $school_name; ?></h3>
 								<ul class="breadcrumb">
-									<li class="breadcrumb-item"><a href="">Student</a></li>
-									<li class="breadcrumb-item active">Student Details</li>
-								</ul>
+								    <li class="breadcrumb-item"><a href="school-admin-dashboard.php">SchoolAdmin Dashboard</a></li>
+									<li class="breadcrumb-item "><a href="school-admin-student-list.php">School Students List</a></li>
+									<li class="breadcrumb-item active">Student</a></li>
+								</ul><br>
+								<h3 class="page-title"><b>Student Details</b></h3>
 							</div>
 						</div>
 					</div>
