@@ -35,11 +35,7 @@ session_start();
 		
 		<!-- Main Wrapper -->
         <div class="main-wrapper">
-		
-            <?php //include 'teacher-header.php'; ?>
-			<?php //include 'teacher-sidebar.php'; ?>
-
-			
+					
 			<!-- Page Wrapper -->
             <div class="page-wrapper">
                 <div class="content container-fluid">
