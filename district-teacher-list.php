@@ -1,6 +1,7 @@
 <?php session_start();
 include 'connect.php';
-$did=$_SESSION['DISTRICT_ID']
+$did=$_SESSION['DISTRICT_ID'];
+error_reporting(E_ERROR | E_PARSE);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,7 +30,7 @@ $did=$_SESSION['DISTRICT_ID']
         <link rel="stylesheet" href="assets/css/style.css">
     </head>
     <body>
-         <?php include 'super-admin-menu.php';	?>	
+         <?php include 'district-menu.php';	?>	
 			<!-- Page Wrapper -->
             <div class="page-wrapper">
                 <div class="content container-fluid">
@@ -38,10 +39,10 @@ $did=$_SESSION['DISTRICT_ID']
 					<div class="page-header">
 						<div class="row align-items-center">
 							<div class="col">
-								<h3 class="page-title">Blocks</h3>
+								<h3 class="page-title">Teacher List</h3>
 								<ul class="breadcrumb">
 									<li class="breadcrumb-item"><a href="super-admin-dashboard.php">Dashboard</a></li>
-									<li class="breadcrumb-item active"> Blocks</li>
+									<li class="breadcrumb-item active"> Teacher</li>
 								</ul>
 							</div>
 					
@@ -58,25 +59,38 @@ $did=$_SESSION['DISTRICT_ID']
 										<table class="table table-hover table-center mb-0 datatable">
 											<thead>
 												<tr>
-													<th>BLOCK ID</th>
-													<th>BLOCK NAME</th>
+													<th>TEACHER ID</th>
+													<th>TEACHER NAME</th>
+                                                    <th>TEACHER EMAIL</th>
+													<th>TEACHER Subject</th>
+                                                    <th>TEACHER MOB</th>
+                                                    
 													
 												</tr>
 											</thead>
 											<tbody>
 													<?php
-													$sql2=mysqli_query($con,"select block_id,block_name from blocks where district_id='$did'");
+													$sql2=mysqli_query($con,"select teacher_id,teacher_name,teacher_email,teacher_mob from teacher_info where school_id=ANY(select school_id from school_info where district_id='$did')");
                                                     
 												
 													foreach($sql2 as $res)
 													{
-                                                        $did=$res['block_id'];
-                                                        $sid=$res['block_name'];
+                                                        $did=$res['teacher_id'];
+                                                        $sid=$res['teacher_name'];
+                                                        $mail=$res['teacher_email'];
+                                                        $mob=$res['teacher_mob'];
+                                                        $sql="select distinct subject_name from subjects as s,schoolwise_class_subject_teachers as st,teacher_info as t where st.teacher_id='$did' and st.subject_id=s.subject_id";
+                                                        $res=mysqli_query($con,$sql);
+                                                        $res1=mysqli_fetch_assoc($res);
+                                                        $m=implode("",$res1);
                                                         
                                                     
 														echo 
 														'<tr><td>'.$did.'</td>
-														<td><a href="district-block-view.php?bid='.$res['block_id'].'">'.$sid.'</a><b/td>
+														<td><a href="district-teacher-view.php?tid='.$did.'">'.$sid.'</a><b/td>
+                                                        <td>'.$mail.'</td>
+                                                        <td>'.$mob.'</td>
+                                                        <td>'.$m.'</td>
 													
                                                         <td class="text-end">
 														<div class="actions">

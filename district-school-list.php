@@ -1,11 +1,13 @@
-<?php
-include 'connect.php';?>
+<?php session_start();
+include 'connect.php';
+$district_id=$_SESSION['DISTRICT_ID'];?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-        <title>super-admin-Schools-list</title>
+        <title>District-Schools-list</title>
 		
 		<!-- Favicon -->
         <link rel="shortcut icon" href="assets/img/favicon.png">
@@ -27,7 +29,7 @@ include 'connect.php';?>
         <link rel="stylesheet" href="assets/css/style.css">
     </head>
     <body>
-         <?php include 'super-admin-menu.php';	?>	
+         <?php include 'district-menu.php';	?>	
 			<!-- Page Wrapper -->
             <div class="page-wrapper">
                 <div class="content container-fluid">
@@ -36,15 +38,13 @@ include 'connect.php';?>
 					<div class="page-header">
 						<div class="row align-items-center">
 							<div class="col">
-								<h3 class="page-title">Schools</h3>
+								<h3 class="page-title">Schools-list</h3>
 								<ul class="breadcrumb">
 									<li class="breadcrumb-item"><a href="super-admin-dashboard.php">Dashboard</a></li>
 									<li class="breadcrumb-item active"> SCHOOLS</li>
 								</ul>
 							</div>
-							<div class="col-auto text-end float-end ms-auto">
-								<a href="#" class="btn btn-outline-primary me-2"><i class="fas fa-download"></i> Download</a>
-							</div>
+							
 						</div>
 					</div>
 					<!-- /Page Header -->
@@ -68,7 +68,8 @@ include 'connect.php';?>
 											<tbody>
 													<?php
 													$query="SELECT `school_id`, `state_id`, `district_id`,
-                                                     `school_name`, `school_address` FROM `school_info` WHERE district_id='.$district_id.'";
+                                                     `school_name`, `school_address` FROM `school_info` WHERE district_id='$district_id'";
+
 													$run=mysqli_query($con,$query);
 													while($res=mysqli_fetch_assoc($run))
 													{
@@ -89,11 +90,7 @@ include 'connect.php';?>
 														<td>'.$res1['district_name'].'</td>
 														<td>'.$res2['state_name'].'</td>
                                                         <td class="text-end">
-														<div class="actions">
-															<a href="super-admin-edit-school.php?statename='.$res2['state_name'].'&districtname='.$res1['district_name'].'&schoolid='.$res['school_id'].'&stateid='.$res['state_id'].'&districtid='.$res['district_id'].'&schooladdress='.$res['school_address'].'&schoolname='.$res['school_name'].'" class="btn btn-sm bg-success-light me-">
-																<i class="fas fa-pen"></i>
-															</a>
-														</div>
+														
 													</td>
 													</tr>';
                                                      }?>
