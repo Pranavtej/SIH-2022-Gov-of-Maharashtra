@@ -144,10 +144,9 @@ body {
                                     <p class="card-text">Answer: <input type="text" name="Q11"></p>
                                     </div>
                                     </div>
-                                    </div>
-                                    <div class="col-12 col-md-6 col-lg-4 d-flex">
-                                    <div class="card flex-fill">
-                                    <div class="card-header">
+                                    <div class="col-12 col-md-6 col-lg-4 d-flex" style="background-color: #e6ffff;">
+                                    <div class="card flex-fill" style="background-color:  #e6ffff;">
+                                    <div class="card-header" style="background-color:  #e6ffff;">
                                    <h4> Question 3:Match the appropriate comparison symbol</h4><br>
                                     <h6>(Learning Outcome : able to identify number)</h6>              
                                     </div><div class="card-body">
