@@ -212,7 +212,7 @@ body {
                                    <h4> Question 6 : Identify the number by listening to audio</h4><br>
                                     <h6>(Learning Outcome : able to distinguish the numbers)</h6>              
                                     </div><div class="card-body">
-                                    <p class="card-text">Answer: <img src="exam/img/tiger.png" class="hvr-wobble-to-top-right"  onclick="sound('tiger')"> <input type="text" name="Q13">
+                                    <p class="card-text"><img src="exam/img/tiger.png"  onclick="sound('tiger')"> <input type="text" name="Q13">
 </p> <script>
   var audio;
   audio = new Audio("exam/img/tiger.mp3");
