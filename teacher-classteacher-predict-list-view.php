@@ -128,7 +128,6 @@ while($res2 = mysqli_fetch_assoc($run2))
 <script>
 const genericOptions = {
   fill: false,
-  maintainAspectRatio: false,
   interaction: {
     intersect: false
   },
