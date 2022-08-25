@@ -12,7 +12,7 @@ $exam_id = $_GET['eid'];
 
 $loc = mysqli_query($con, "SELECT question_id,question,options,loc_id,image_path FROM `teacher_exam_question` WHERE exam_id='$exam_id' order by question_id");
 
-post()
+function post()
 {
     $loc = mysqli_query($con, "select distinct(loc_id) as loc_id from teacher_exam_question where exam_id='$exam_id'");
     foreach($loc as $id)
