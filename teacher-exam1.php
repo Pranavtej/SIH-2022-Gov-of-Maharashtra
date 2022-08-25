@@ -229,10 +229,9 @@ const formId = "save-later-form"; // ID of the form
 submitButton.onclick = event => {
         if (navigator.onLine) {
             const dataA = [];
-            let k = 0;
-            for(let i=0;i<10;i++)
+            for(let i=0;i<=9;i++)
             {
-                dataA[k] = document.getElementById(dataT[k]).value;
+                dataA[i] = document.getElementById(dataT[i]).value;
             }
             alert(dataA);
             alert("Test submitted successfully!!");
