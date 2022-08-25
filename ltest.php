@@ -109,9 +109,9 @@ body {
                         <form action="" method="post">
                         <div class="row">
                             
-                                    <div class="col-12 col-md-6 col-lg-4 d-flex">
-                                    <div class="card flex-fill">
-                                    <div class="card-header">
+                        <div class="col-12 col-md-6 col-lg-4 d-flex" style="background-color: #e6ffff;">
+                                    <div class="card flex-fill" style="background-color:  #e6ffff;">
+                                    <div class="card-header" style="background-color:  #e6ffff;">
                                    <h4> Question:1. Find the shape Rectangle from Below</h4><br>
                                     <h6>(Learning Outcome : able to count objects using numbers 1 to 9)</h6>              
                                     </div>
@@ -164,9 +164,9 @@ body {
                                     </div>
                                     </div>
                                     </div>
-                                    <div class="col-12 col-md-6 col-lg-4 d-flex">
-                                    <div class="card flex-fill">
-                                    <div class="card-header">
+                                    <div class="col-12 col-md-6 col-lg-4 d-flex" style="background-color: #e6ffff;">
+                                    <div class="card flex-fill" style="background-color:  #e6ffff;">
+                                    <div class="card-header" style="background-color:  #e6ffff;">
                                    <h4> Question 4: Find the number of green apples from below.</h4><br>
                                     <h6>(Learning Outcome : able to distinguish between larger and smaller numbers)</h6>              
                                     </div><div class="card-body">
@@ -175,9 +175,9 @@ body {
                                     </div>
                                     </div>
                                     </div>
-                                    <div class="col-12 col-md-6 col-lg-4 d-flex">
-                                    <div class="card flex-fill">
-                                    <div class="card-header">
+                                    <div class="col-12 col-md-6 col-lg-4 d-flex" style="background-color: #e6ffff;">
+                                    <div class="card flex-fill" style="background-color:  #e6ffff;">
+                                    <div class="card-header" style="background-color:  #e6ffff;">
                                    <h4> Question 5: Match the following</h4><br>
                                     <h6>(Learning Outcome : able to distinguish between larger and smaller numbers)</h6>              
                                     </div><div class="card-body">
@@ -206,9 +206,9 @@ body {
                                     </div>
                                     </div>
                                     </div>
-                                    <div class="col-12 col-md-6 col-lg-4 d-flex">
-                                    <div class="card flex-fill">
-                                    <div class="card-header">
+                                    <div class="col-12 col-md-6 col-lg-4 d-flex" style="background-color: #e6ffff;">
+                                    <div class="card flex-fill" style="background-color:  #e6ffff;">
+                                    <div class="card-header" style="background-color:  #e6ffff;">
                                    <h4> Question 6 : Identify the number by listening to the tiger audio</h4><br>
                                     <h6>(Learning Outcome : able to distinguish the numbers)</h6>              
                                     </div><div class="card-body">
