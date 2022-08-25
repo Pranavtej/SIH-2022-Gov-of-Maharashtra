@@ -500,7 +500,7 @@ else{
 <div class="card-header">
 <div class="row align-items-center">
 <div class="col-6">
-<h5 class="card-title">co cocircular</h5>
+<h5 class="card-title">cocircular</h5>
 </div>
 <div class="col-6">
 <ul class="list-inline-group text-end mb-0 ps-0">
