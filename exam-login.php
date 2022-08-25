@@ -1,6 +1,19 @@
-<?php session_start(); 
+<?php 
+
+session_start(); 
 
 include 'connect.php';
+
+$eid = $_GET['eid'];
+
+// if(empty($_GET['eid']))
+// {
+//     echo "<script>document.location=error.php</script>";
+// }
+// else
+// {
+//     $eid = $_GET['eid'];
+// }
 
 if(isset($_POST['login']))
 {
@@ -12,7 +25,7 @@ if(isset($_POST['login']))
         $_SESSION['SCHOOL_ID'] = $run['school_id'];
         $_SESSION['STUDENT_ID'] = $_POST['student_id'];
         $_SESSION['CLASS_ID'] = $run['class_id'];
-		echo "<script>document.location='student-dashboard.php'</script>";
+		echo "<script>document.location='teacher-exam.php?eid=$eid'</script>";
     }
     else
     {
@@ -34,7 +47,7 @@ if(isset($_POST['login']))
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-        <title>Student  - Login</title>
+        <title>Student Exam - Login</title>
 		
 		<!-- Favicon -->
         <link rel="shortcut icon" href="assets/img/favicon.png">
