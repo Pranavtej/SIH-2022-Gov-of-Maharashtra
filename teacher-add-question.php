@@ -29,8 +29,6 @@ function autoincemp()
         return $value;
     }
 }
-$sq="SELECT loc_id,loc FROM learning_outcomes WHERE subject_id='$subject_id'";
-$r1=mysqli_query($con,$sq);
  if(isset($_POST['submit']))
     {
         $question=$_POST['question'];
@@ -39,7 +37,8 @@ $r1=mysqli_query($con,$sq);
         $stat2="INSERT INTO `teacher_exam_question` VALUES ('$exam_id','$question_id','$question','$options','$loc_id','$image_path','$class_id','$school_id')";
         $run2=mysqli_query($con,$stat2);
     }
-
+$qu=mysqli_query($con,"select loc_id , loc from learning_outcomes where subject_id = '$subject_id' ");
+$data=mysqli_fetch_assoc($qu);
 
 ?>
 
@@ -99,7 +98,7 @@ $r1=mysqli_query($con,$sq);
                             <div class="col-md-6 ">
                                 <div class="form-group">
                                     <label>question</label>
-                                    <input type="text" name="question_id" class="form-control">
+                                    <input type="text" name="question" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-6 ">
@@ -108,21 +107,19 @@ $r1=mysqli_query($con,$sq);
                                     <input type="text" name="answer" class="form-control">
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-12 col-sm-6"> 
-                            <div class="form-group">
-                                    <label>Learning Outcomes</label>
-                                    <?php
-                                        echo '<select name="loc_id"  id="loc_id" class="form-control form-select">
-                                                <option value="">Select Learning outcome</option>';
-                                                while($data=mysqli_fetch_assoc($r1))
-                                                {
-                                                    echo '<option value='.$data['loc_id'].'>'.$data['loc_id'].'-'.$data['loc'].'</option>';
-                                                }
-                                                echo '</select></td>';
-                                            ?>
-                                </div>
-                            </div>
+                        <div class="col-md-6 ">
+                        <div class="form-group">
+                        <label>Learning Outcomes</label>
+                        <?php
+                            echo '<select name="loc_id"  id="loc_id" class="form-control form-select">
+                                    <option value="">Select Learning Outcomes</option>';
+                                    while($data = mysqli_fetch_assoc($qu))
+                                    {
+                                        echo '<option value='.$data['loc_id'].'>'.$data['loc_id'].'-'.$data['loc'].'</option>';
+                                    }
+                                    echo '</select>';
+                         ?>
+                       </div></div>
                      <div class="col-12">
                         <button type="submit" name="submit" class="btn btn-primary">Submit</button>
                      </div>
