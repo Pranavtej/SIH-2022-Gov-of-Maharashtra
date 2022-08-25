@@ -212,16 +212,16 @@ body {
                                    <h4> Question 6 : Identify the number by listening to the tiger audio</h4><br>
                                     <h6>(Learning Outcome : able to distinguish the numbers)</h6>              
                                     </div><div class="card-body">
-                                    <p class="card-text"><img src="exam/img/tiger.png"  onclick="sound('tiger')"> <input type="text" name="Q13">
+                                    <p class="card-text"><img src="exam/img/tiger.png"  onclick="sound('one')"> <input type="text" name="Q13">
 </p> <script>
   var audio;
-  audio = new Audio("exam/img/eight.aac");
+  audio = new Audio("exam/img/one.mp3");
   
   function sound(snd)
   {
     audio.pause();
     audio.currentTime = 0;
-    audio = new Audio("exam/img/" + snd +".aac");
+    audio = new Audio("exam/img/" + snd +".mp3");
     audio.play();
   }
  </script> 

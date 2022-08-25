@@ -163,7 +163,11 @@ if(empty($_SESSION['SCHOOL_ID'])){
 					<!-- /Overview Section -->				
 			
 							<!-- Student Chart -->
-							<div class="card-body">
+					  <div class="card">
+						 <div class="card-body">
+							 <div class="row">
+							  <div class="col-md-12">
+							  <div class="card-body">
 								<canvas id="acscore"></canvas>
 									<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 									<script>
@@ -208,7 +212,10 @@ if(empty($_SESSION['SCHOOL_ID'])){
 										});
 									</script>
 								 </div>
-	
+								</div>
+								</div>
+							</div>
+						</div>
 							<!-- /Student Chart -->							
 					
 					
