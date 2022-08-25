@@ -62,14 +62,13 @@ session_start();
 					</div>
 					<!-- /Page Header -->
 					<style>
-												.checked {
-													color: orange;
-													}
-											</style>
+						.checked {
+							color: orange;
+							}
+					</style>
 				
 					<div class="row">
 						<div class="col-sm-12">
-						
 							<div class="card card-table">
 								<div class="card-body">
 									<div class="table-responsive">
