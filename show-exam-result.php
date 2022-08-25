@@ -4,14 +4,13 @@ include "connect.php";
 
 session_start();
 
-$sid = mysqli_query($con,"select distinct(student_id) as sid from learning_outcomes_credits where subject_id='SUB0104'");
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+        <meta http-equiv="refresh" content="3">
         <title>Preskool - Students</title>
 		
 		<!-- Favicon -->
@@ -76,18 +75,19 @@ $sid = mysqli_query($con,"select distinct(student_id) as sid from learning_outco
 												</tr>
 											</thead>
 											<tbody>
-												<?php
-													foreach($sid as $id)
+                                                <?php
+                                                    $sid = mysqli_query($con , "SELECT DISTINCT(student_id) AS sid FROM learning_outcomes_credits where subject_id='SUB0104'");
+                                                    foreach($sid as $id)
 													{
 														$sid = $id['sid'];
-														$query = "select s.student_name as student_name, ROUND(sum(l.credits)/4) as num from student s,learning_outcomes_credits l where l.subject_id='SUB0104' and l.student_id='$sid' and l.student_id=s.student_id";
+														$query = "select s.student_name as student_name,ROUND(SUM(c.credits)/4) as num from student s,learning_outcomes_credits c where c.student_id='$sid' and c.subject_id='SUB0104' and s.student_id=c.student_id GROUP by student_name";
 														$run = mysqli_query($con,$query);
 														foreach($run as $r)
 														{
 															echo '<tr>
 																<td>'.$r['student_name'].'</td>
 																<td>'.$r['num'].'</td>';
-															$cc = (int)$r['num'];
+                                                            $cc = (int)$r['num'];
 															echo '<td>';
 															for($i=1;$i<=$cc;$i++)
 															{
@@ -99,11 +99,12 @@ $sid = mysqli_query($con,"select distinct(student_id) as sid from learning_outco
 																echo '<span class="fa fa-star"></span>';
 															}
 															echo '</td>';
-															echo '<td><a href="exam-result-view.php?&sid='.$sid.'&suid=SUB0104">View</a></td>';
+                                                            echo '<td><a href="exam-result-view.php?&sid='.$sid.'&suid=SUB0104">View</a></td>';
 															echo '</tr>';
 														}
 													}
-												?>
+
+                                                ?>
 											</tbody>
 										</table>
 									</div>

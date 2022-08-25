@@ -2,7 +2,10 @@
 
 
 include'connect.php';
-
+$school_id=$_SESSION['SCHOOL_ID'];
+$sql="select school_name from school_info where school_id='$school_id'";
+$run = mysqli_fetch_assoc(mysqli_query($con,$sql));
+$school_name=$run['school_name'];
 if(empty($_SESSION['SCHOOL_ID']))
 {
     header('location:school-login.php');
@@ -52,7 +55,7 @@ $counter=mysqli_num_rows($result);
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-<title>Preskool - Students</title>
+<title>Students</title>
 
 <link rel="shortcut icon" href="assets/img/favicon.png">
 
@@ -77,25 +80,17 @@ $counter=mysqli_num_rows($result);
  
 <div class="page-wrapper">
 <div class="content container-fluid">
-
-<div class="page-header">
-<div class="row align-items-center">
-<!-- <div class="col">
-<h3 class="page-title">Students</h3>
-<ul class="breadcrumb">
-<li class="breadcrumb-item"><a href="teacher-dashboard.php">Dashboard</a></li>
-<li class="breadcrumb-item active">Students</li>
-</ul>
-</div> -->
-<!-- <div class="col-auto text-end float-end ms-auto">
-<a href="#" class="btn btn-outline-primary me-2"><i class="fas fa-download"></i> Download</a>
-<a href="add-student.php" class="btn btn-primary"><i class="fas fa-plus"></i></a>
-</div> -->
-</div>
-</div> 
-
-
-<div>
+    <div class="page-header">
+        <div class="row">
+            <div class="col-sm-12">
+                <h3 class="page-title"><?php echo $school_name; ?></h3>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="school-admin-dashboard.php">SchoolAdmin Dashboard</a></li>
+                    <li class="breadcrumb-item active">School Students List</li>
+                </ul>
+            </div>
+        </div>
+    </div>
 <form class="filteroption" action="" method="post">
     <select id="select" class="form-control form-select" name="select" >
 
@@ -123,8 +118,7 @@ $counter=mysqli_num_rows($result);
 <tr>
 <th>ID</th>
 <th>Name</th>
-<th>Class</th>
-<th>Section</th>
+<th>Class_id</th>
 <th>DOB</th>
 <th>EMAIL</th>
 <th>Address</th>
@@ -138,9 +132,7 @@ foreach ($result as $data)
        $stdname=$data['student_name'];
        $student_id=$data['student_id'];
        $date=$data['date_of_birth'];
-       $class=$data['class'];
        $class_id=$data['class_id'];
-       $section = $data['section'];
        $addres=$data['address'];
        $mail=$data['email'];
     echo
@@ -150,8 +142,7 @@ foreach ($result as $data)
 <a href="school-admin-student-view.php?student_id='.$student_id.'&class_id='.$class_id.'">'.$stdname.'</a>
 </h2>
 </td>
-<td>'.$class.'</td>
-<td>'.$section.'</td>
+<td>'.$class_id.'</td>
 <td>'.$date.'</td>
 <td>'.$mail.'</td>
 <td>'.$addres.'</td>
