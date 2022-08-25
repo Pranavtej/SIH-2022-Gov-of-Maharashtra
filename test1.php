@@ -156,11 +156,11 @@ if(isset($_POST['give']))
 <div style='text-align:center;' id='teams1'>
 <label id='l1'>
   <input type="radio" name="mno1" id="no1" class="mno" value="mi">
-  <img src="http://mcr.org.in/bopages/img/ipl/mi.png" class="hvr-wobble-to-top-right" >
+  <img src="exam/img/circle.jpg" class="hvr-wobble-to-top-right" >
 </label>
 <label id='l2'>
   <input type="radio" name="mno1" id="no2" class="mno" value="dc">
-  <img src="img/ipl/dc.png" class="hvr-wobble-to-top-right" >
+  <img src="exam/img/triangle.png" class="hvr-wobble-to-top-right" >
 </label>
 <label id='l3'>
   <input type="radio" name="mno1" id="no3" class="mno" value="rcb">
