@@ -133,10 +133,10 @@ const genericOptions = {
   },
   radius: 0,
 };
-const skipped = (ctx, value) => ctx.p0.skip || ctx.p1.skip ? value : undefined;
-const down = (ctx, value) => ctx.p0.parsed.y > ctx.p1.parsed.y ? value : undefined;
-const ctx = document.getElementById('acscore');
-const myChart = new Chart(ctx, {
+const skipped = (ctx3, value) => ctx3.p0.skip || ctx3.p1.skip ? value : undefined;
+const down = (ctx3, value) => ctx3.p0.parsed.y > ctx3.p1.parsed.y ? value : undefined;
+const ctx3 = document.getElementById('acscore');
+const myChart = new Chart(ctx3, {
   type: 'line',
   data: {
     labels:<?php echo json_encode($lable) ?> ,
@@ -145,8 +145,8 @@ const myChart = new Chart(ctx, {
       data: <?php echo json_encode($marks) ?>,
       borderColor: 'rgb(0, 129, 0 )',
       segment: {
-        borderColor: ctx => skipped(ctx, 'rgb(100,0,0)') || down(ctx, 'rgb(255,0,0)'),
-        borderDash: ctx => skipped(ctx, [6, 6]),
+        borderColor: ctx3 => skipped(ctx3, 'rgb(100,0,0)') || down(ctx3, 'rgb(255,0,0)'),
+        borderDash: ctx3 => skipped(ctx3, [6, 6]),
       },
       spanGaps: true
     }]
@@ -160,8 +160,8 @@ const myChart = new Chart(ctx, {
                                             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
                                             <script>
 												// m = JSON.parse(localStorage.m);
-												const ctx = document.getElementById('acscore');
-												const myChart = new Chart(ctx, {
+												const ctx2 = document.getElementById('acscore');
+												const myChart = new Chart(ctx2, {
 													type: 'bar',
 													data: {
 														labels: <?php echo json_encode($y) ?>,
