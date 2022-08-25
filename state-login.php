@@ -1,6 +1,6 @@
 <?php session_start(); 
 
-include 'connect.php';
+include 'connect2.php';
 
 if(isset($_POST['login']))
 {

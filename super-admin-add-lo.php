@@ -18,7 +18,8 @@ function autoincemp()
         $value2 = "LC".sprintf('%s',$value2);
         $value = $value2;
         return $value;
-    } else {
+    } else 
+    {
         $value2 = "LC100";
         $value = $value2;
         return $value;
