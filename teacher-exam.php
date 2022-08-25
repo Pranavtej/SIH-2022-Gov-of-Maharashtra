@@ -99,7 +99,7 @@ $loc = mysqli_query($con, "SELECT question_id,question,options,loc_id,image_path
                     </div>	
                     			
 				</div>
-                <input type="submit" name="give">
+                <input type="submit" class="btn btn-primary" name="give">
                 </form>	
 
 				<!-- Footer -->
