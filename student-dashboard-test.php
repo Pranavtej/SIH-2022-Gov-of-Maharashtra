@@ -1,6 +1,7 @@
 <?php  session_start();
 
 include 'connect.php';
+
 if(empty($_SESSION['STUDENT_ID']))
 {
     echo '<script>document.location="student-login.php"</script>';
@@ -12,7 +13,9 @@ else{
     $student_id = $_SESSION['STUDENT_ID'];
 	$class_id = $_SESSION['CLASS_ID'];
 	$school_id = $_SESSION['SCHOOL_ID'];
- 
+
+  if($year_main=="2022") 
+  {
     $sql="select * from student where student_id='$student_id'";
     $run = mysqli_query($con,$sql)or die(''.__LINE__.'<br>'.mysqli_error($con));
     $run = mysqli_fetch_assoc($run);
@@ -57,6 +60,55 @@ else{
     }
     }
 }
+else{
+	include "connect2.php";
+	$sql="select * from student where student_id='$student_id'";
+    $run = mysqli_query($con,$sql)or die(''.__LINE__.'<br>'.mysqli_error($con));
+    $run = mysqli_fetch_assoc($run);
+    if(!empty($run))
+    {
+        $school_id = $run['school_id'];
+        $student_id = $run['student_id'];
+        $student_name = $run['student_name'];
+        $student_email = $run['email'];
+        $student_password = $run['gender'];
+        $student_address = $run['address'];
+        $student_dob = $run['date_of_birth'];
+        $student_classid= $run['class_id'];
+
+	$query1="select eid from exam where status=1";
+	$result1=mysqli_query($con,$query1) or die(mysqli_error);
+	$res = mysqli_fetch_assoc($result1);
+	$eid = $res['eid'];
+
+    $query="select S.subject_name, M.marks from exam_marks M,subjects S where M.student_id='$student_id' and M.subject_id=S.subject_id and eid='$eid'";
+    $result=mysqli_query($con,$query) or die(mysqli_error);
+     foreach($result as $data)
+     {
+        $y[] = $data['subject_name'];
+        $x[]=$data['marks'];
+    }
+
+	$query="select m.cocircular_name as cn,c.marks as marks from cocircular_marks c,cocircular m where c.student_id='$student_id' and c.school_id='$school_id' and c.class_id='$class_id' and c.cocircular_id = m.cocircular_id";
+    $result=mysqli_query($con,$query) or die(mysqli_error);
+     foreach($result as $data)
+     {
+        $cn[] = $data['cn'];
+        $ma[]=$data['marks'];
+    }
+
+	$q="SELECT e.marks,s.sport_name FROM sports_marks e,sports s WHERE student_id='$student_id' AND s.sport_id=e.sport_id;";
+    $r=mysqli_query($con,$q) or die(mysqli_error);
+     foreach($r as $d)
+     {
+        $l[] = $d['sport_name'];
+        $m[]=$d['marks'];
+    }
+    }
+	
+}
+}
+
 
 ?>
 
@@ -101,7 +153,7 @@ else{
 					<div class="page-header">
 						<div class="row">
 							<div class="col-sm-12">
-								<h3 class="page-title">Welcome ! <?php echo $student_name ?></h3>
+								<h3 class="page-title">Welcome ! <?php echo $student_name;?></h3>
                                 </h3>
                                 <div class="col-auto text-end float-end ms-auto">
                                 <div>
@@ -125,6 +177,7 @@ else{
 																						echo '<option value="'.$year.'" selected>'.$year.'</option>';
 																					}
 																					$year -= 1;
+																					$y=1;
 																				}
 																			?>
 
