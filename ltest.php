@@ -135,7 +135,7 @@ body {
                                     </div>
                                     </div>
                                     </div>
-                                    <div class="col-12 col-md-6 col-lg-4 d-flex">
+                                    <div class="col-12 col-md-6 col-lg-4 d-flex" style="background-color:  #99ddff;">
                                     <div class="card flex-fill" style="background-color:  #99ddff;">
                                     <div class="card-header" >
                                    <h4> Question 2: Find the result of this addition?</h4><br>
