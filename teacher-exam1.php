@@ -64,6 +64,9 @@ if(isset($_POST['give']))
 		<!-- Fontawesome CSS -->
 		<link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css">
 		<link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
 
 		<!-- Datatables CSS -->
 		<link rel="stylesheet" href="assets/plugins/datatables/datatables.min.css">
@@ -88,12 +91,21 @@ if(isset($_POST['give']))
 						<div class="row align-items-center">
 							<div class="col">
 								<h3 class="page-title" align="center">Learning Outcome Assessment Examination </h3>
-                               
+                            
+                                    <button type="button" class="btn btn-sm btn-default" style="color: red;"><i class="fa fa-signal" aria-hidden="true"></i>&nbsp&nbspNot Connected</button>
+                                    
+                                  
+                                    <button type="button" class="btn btn-sm btn-default" style="color: green;"><i class="fa fa-signal" aria-hidden="true"></i>&nbsp&nbspConnected</button>
+                                  
+                                    
                                 <h5 align="left"  >Grade : 1</h5><h5 align="right">Subject : Mathematics </h5>
 								<ul class="breadcrumb">
 									
 								</ul>
 							</div>
+                        
+                                    
+                                    
 							<!-- <div class="col-auto text-end float-end ms-auto">
 								<a href="#" class="btn btn-outline-primary me-2"><i class="fas fa-download"></i> Download</a>
 								<a href="add-student.html" class="btn btn-primary"><i class="fas fa-plus"></i></a>
