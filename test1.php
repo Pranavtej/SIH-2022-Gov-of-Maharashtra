@@ -52,6 +52,27 @@ body {
 }
 		
 	 </style>
+     <!-- Favicon -->
+     <link rel="shortcut icon" href="assets/img/favicon.png">
+	
+    <!-- Fontfamily -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;0,700;1,400&display=swap">
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
+    
+    <!-- Fontawesome CSS -->
+    <link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css">
+    <link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
+
+    <!-- Datatables CSS -->
+    <link rel="stylesheet" href="assets/plugins/datatables/datatables.min.css">
+    
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
 		<link rel="stylesheet" href="assets/css/style.css">
 
 		<!-- Hover CSS - Demo Purpose Only -->
