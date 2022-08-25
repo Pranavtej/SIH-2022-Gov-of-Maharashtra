@@ -144,6 +144,7 @@ body {
                                     <p class="card-text">Answer: <input type="text" name="Q11"></p>
                                     </div>
                                     </div>
+                                    </div>
                                     <div class="col-12 col-md-6 col-lg-4 d-flex" style="background-color: #e6ffff;">
                                     <div class="card flex-fill" style="background-color:  #e6ffff;">
                                     <div class="card-header" style="background-color:  #e6ffff;">
