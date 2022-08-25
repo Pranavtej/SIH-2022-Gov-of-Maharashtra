@@ -89,11 +89,13 @@ if(isset($_POST['give']))
 					<!-- Page Header -->
 					<div class="page-header">
 						<div class="row align-items-center">
-							<div class="col">
+							<div class="col-lg-8">
 								<h3 class="page-title" align="center">Learning Outcome Assessment Examination </h3>
+</div>      
+                        <div class="col-lg-4">
+                                <button type="button" class="btn btn-sm btn-default" style="color: red;"><i class="fa fa-signal" aria-hidden="true"></i>&nbsp&nbspNot Connected</button>
+
                             
-                                    <button type="button" class="btn btn-sm btn-default" style="color: red;"><i class="fa fa-signal" aria-hidden="true"></i>&nbsp&nbspNot Connected</button>
-                                    
                                   
                                     <button type="button" class="btn btn-sm btn-default" style="color: green;"><i class="fa fa-signal" aria-hidden="true"></i>&nbsp&nbspConnected</button>
                                   
