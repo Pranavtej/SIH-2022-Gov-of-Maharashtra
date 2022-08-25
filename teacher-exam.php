@@ -111,13 +111,14 @@ if(isset($_POST['give']))
                                 $i = 0;
                                 while($run1 = mysqli_fetch_assoc($loc))
                                 {
+                                    $i=1;
                                     $query = mysqli_query($con, "select loc from learning_outcomes where loc_id='{$run1['loc_id']}'");
                                     $a = mysqli_fetch_assoc($query);
                                     echo'
                                     <div class="col-12 col-md-6 col-lg-4 d-flex">
                                     <div class="card flex-fill">
                                     <div class="card-header">
-                                   <h4> Question : '.$run1['question'].'</h4><br>
+                                   <h4> Question :'.$i.' '.$run1['question'].'</h4><br>
                                     <h6>(Learning Outcome : '.$a['loc'].')</h6>              
                                     </div>';
                                     if(!empty($run1['options']))
@@ -133,6 +134,7 @@ if(isset($_POST['give']))
                                     </div>
                                     </div>
                                     </div>';
+                                    $i++;
                                 }
                             ?>
                      
