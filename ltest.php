@@ -182,7 +182,7 @@ body {
                                     <h6>(Learning Outcome : able to distinguish between larger and smaller numbers)</h6>              
                                     </div><div class="card-body">
                                     <p class="card-text">Answer: 
-<div id='q14'>
+
 1) ONE -
 <select name='q131' id='q131'>
 <option value='1'>1</option>
@@ -206,6 +206,8 @@ body {
                                     </div>
                                     </div>
                                     </div>
+                                    </div>
+
                                     <div class="col-12 col-md-6 col-lg-4 d-flex">
                                     <div class="card flex-fill">
                                     <div class="card-header">
