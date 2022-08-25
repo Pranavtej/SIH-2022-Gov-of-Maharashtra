@@ -7,7 +7,7 @@ if(isset($_POST['login']))
     if(true)
     {
         $_SESSION['STATE_ID'] = $_POST['username'];
-        echo "<script>document.location='district-dashboard.php'</script>";
+        echo "<script>document.location='state-dashboard.php'</script>";
     }
     else
     {
@@ -27,7 +27,7 @@ if(isset($_POST['login']))
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-        <title>District Official Login</title>
+        <title>State Official Login</title>
 		
 		<!-- Favicon -->
         <link rel="shortcut icon" href="assets/img/favicon.png">
@@ -57,7 +57,7 @@ if(isset($_POST['login']))
                         </div>
                         <div class="login-right">
 							<div class="login-right-wrap">
-								<h1>District Official Login</h1>
+								<h1>State Official Login</h1>
 								<p class="account-subtitle">Access to our dashboard</p>
 								
 								<!-- Form -->
