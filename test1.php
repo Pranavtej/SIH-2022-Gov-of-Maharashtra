@@ -1,78 +1,17 @@
-<?php
 
-include 'connect.php';
-
-session_start();
-
-$school_id = $_SESSION['SCHOOL_ID'];
-$student_id = $_SESSION['STUDENT_ID'];
-$class_id = $_SESSION['CLASS_ID'];
-
-$exam_id = $_GET['eid'];
-
-$loc = mysqli_query($con, "SELECT question_id,question,options,loc_id,image_path FROM `teacher_exam_question` WHERE exam_id='$exam_id' order by question_id");
-
-if(isset($_POST['give']))
-{
-    $loc = mysqli_query($con, "select distinct(loc_id) as loc_id from teacher_exam_question where exam_id='$exam_id'");
-    foreach($loc as $id)
-    {
-        $locid = $id['loc_id'];
-        $qid = mysqli_query($con, "select question_id as qid from teacher_exam_question where loc_id='$locid'");
-        {
-            $correct = 0;
-            $count = 0;
-            foreach($qid as $id1)
-            {
-                $ques = $id1['qid'];
-                $ans = $_POST[$ques];
-                $answer = mysqli_query($con, "select answer from teacher_exam_question where question_id='$ques'");
-                $answer2 = mysqli_fetch_assoc($answer);
-                if($answer2['answer'] == strtoupper($ans))
-                {
-                    $correct += 1;
-                }
-                $count++;
-            }
-            $markperquestion = 5/$count;
-            $credits = $markperquestion * $correct;
-            $credits = round($credits);
-            $insert = mysqli_query($con,"INSERT INTO `learning_outcomes_credits` (`school_id`, `class_id`, `student_id`, `subject_id`, `loc_id`, `credits`) VALUES ('$school_id', '$class_id', '$student_id', 'SUB0104', '$locid', $credits)") or die(mysqli_error()); 
-        }
-    }   
-
-}
-
-?>
-
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-        <title>Preskool - Students</title>
-		
-		<!-- Favicon -->
-        <link rel="shortcut icon" href="assets/img/favicon.png">
+<!doctype html>
+<html class="sidebar-light fixed sidebar-left-collapsed">
+	<head>
 	
-		<!-- Fontfamily -->
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;0,700;1,400&display=swap">
-		
-		<!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
-		
-		<!-- Fontawesome CSS -->
-		<link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css">
-		<link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
+	<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+<style>
+body {
+    font-family: 'Montserrat';font-size: 22px;
+}
+</style>
+	 <style>
 
-		<!-- Datatables CSS -->
-		<link rel="stylesheet" href="assets/plugins/datatables/datatables.min.css">
-		
-		<!-- Main CSS -->
-
-        <link rel="stylesheet" href="assets/css/style.css">
-        <style>
-        /* HIDE RADIO */
+/* HIDE RADIO */
 [type=radio] { 
   position: absolute;
   opacity: 0;
@@ -111,152 +50,160 @@ if(isset($_POST['give']))
   width:100%;	
   text-align:center;	
 }
-</style>
+		
+	 </style>
+		<link rel="stylesheet" href="vendor/animate/animate.css">
 
+		<!-- Hover CSS - Demo Purpose Only -->
+		<link rel="stylesheet" href="vendor/hover/hover.css" />
+		
+		
     </head>
-    <body>
-		
-		<!-- Main Wrapper -->
-        <div class="main-wrapper">
-		
-         
+	<body>
+	<section class="body">
+            <?php //include "header.php"; ?>
+			<div class="inner-wrapper">
+			<!-- start: sidebar -->
+				<!-- end: sidebar -->
 
-			
-			<!-- Page Wrapper -->
-           <div class="page-wrapper">
-		
-                            
-             
-                <div class="content container-fluid">
-				
-					<!-- Page Header -->
-					<div class="page-header">
-						<div class="row align-items-center">
-							<div class="col">
-								<h3 class="page-title" align="center">Learning Outcome Assessment Examination </h3>
-                               
-                                <h5 align="left"  >Grade : 1</h5><h5 align="right">Subject : Mathematics </h5>
-								<ul class="breadcrumb">
-								</ul>
-							</div>
-							<!-- <div class="col-auto text-end float-end ms-auto">
-								<a href="#" class="btn btn-outline-primary me-2"><i class="fas fa-download"></i> Download</a>
-								<a href="add-student.html" class="btn btn-primary"><i class="fas fa-plus"></i></a>
-							</div> -->
-						</div>
-					</div>
-					<!-- /Page Header -->
-				
-                   
-                        <form action="" method="post">
-                        <div class="row">
-                        <div class="input-group">
-    <span class="q">1. identify the shape square ?</span>
+				<section role="main" class="content-body">
+					<header class="page-header">
+						<h2>GRADE I - MATHEMATICS SAMPLE EXAM</h2>
+					</header>
 
-<div style='text-align:center;' id='teams1'>
+					<!-- start: page -->
+					<div class="row">
+						<div class="col-lg-8 mb-4">
+							<section class="card">
+								<div class="card-body">
+									<div class="row">
+										<div class="col-xl-12">
+							
+
+<div class="form-group mb-3">
+   <div class="input-group">
+    <span class="q">1. Find the shape Rectangle from Below<br><br></span>
+
+<div id='q10'>
 <label id='l1'>
-  <input type="radio" name="mno1" id="no1" class="mno" value="mi">
-  <img src="exam/img/m.png" class="hvr-wobble-to-top-right" >
+  <input type="radio" name="Q10" id="no1" class="mno" value="1">
+  <img src="img/1/1.png" class="hvr-wobble-to-top-right">
 </label>
 <label id='l2'>
-  <input type="radio" name="mno1" id="no2" class="mno" value="dc">
-  <img src="exam/img/2.png" class="hvr-wobble-to-top-right" >
+  <input type="radio" name="mno1" id="no2" class="mno" value="2">
+  <img src="img/1/2.png" class="hvr-wobble-to-top-right">
 </label>
 <label id='l3'>
-  <input type="radio" name="mno1" id="no3" class="mno" value="rcb">
-  <img src="exam/img/3.png" class="hvr-wobble-to-top-right">
+  <input type="radio" name="mno1" id="no3" class="mno" value="3">
+  <img src="img/1/3.png" class="hvr-wobble-to-top-right">
 </label>
 <label id='l4'>
-  <input type="radio" name="mno1" id="no4" class="mno" value="srh">
-  <img src="exam/img/4.png" class="hvr-wobble-to-top-right" >
+  <input type="radio" name="mno1" id="no4" class="mno" value="4">
+  <img src="img/1/4.png" class="hvr-wobble-to-top-right">
 </label>
 </div>
 	
+</div>	
 
-<span class="q">1. identify the ?</span>
 
-<div style='text-align:center;' id='teams1'>
-<label id='l1'>
-  <input type="radio" name="mno1" id="no1" class="mno" value="mi">
-  <img src="exam/img/m.png" class="hvr-wobble-to-top-right" >
-</label>
-<label id='l2'>
-  <input type="radio" name="mno1" id="no2" class="mno" value="dc">
-  <img src="exam/img/2.png" class="hvr-wobble-to-top-right" >
-</label>
-<label id='l3'>
-  <input type="radio" name="mno1" id="no3" class="mno" value="rcb">
-  <img src="exam/img/3.png" class="hvr-wobble-to-top-right">
-</label>
-<label id='l4'>
-  <input type="radio" name="mno1" id="no4" class="mno" value="srh">
-  <img src="exam/img/4.png" class="hvr-wobble-to-top-right" >
-</label>
+<div class="form-group mb-3">
+   <div class="input-group">
+    <span class="q">2. Find the result of this addition?</span>
+
+<div id='q11'>
+
+<h2>4+4= <input type="text" name="Q11"></h2>
+</div>
+	
+</div>	
+
+
+<div class="form-group mb-3">
+   <div class="input-group">
+    <span class="q">3. Match the appropriate comparison symbol</span>
+
+<div id='q12'>
+
+<h2>39 
+<select name='q12' id='q12'>
+<option value='='>=</option>
+<option value='>'>></option>
+<option value='<'><</option>
+</select>
+41</h2>
 </div>
 </div>	
-                            <?php
-                                $i = 0;
-                                $j=1;
-                                while($run1 = mysqli_fetch_assoc($loc))
-                                {
-                                    
-                                    $query = mysqli_query($con, "select loc from learning_outcomes where loc_id='{$run1['loc_id']}'");
-                                    $a = mysqli_fetch_assoc($query);
-                                    echo'
-                                    <div class="col-12 col-md-6 col-lg-4 d-flex">
-                                    <div class="card flex-fill">
-                                    <div class="card-header">
-                                   <h4> Question '.$j.' : '.$run1['question'].'</h4><br>
-                                    <h6>(Learning Outcome : '.$a['loc'].')</h6>              
-                                    </div>';
-                                    if(!empty($run1['options']))
-                                    {
-                                        echo '<h6>'.$run1['options'].'</h6>';
-                                    }
-                                    if(!empty($run1['image_path']))
-                                    {
-                                        echo '<img src="exam/img/'.$run1['image_path'].'" alt="image not loaded" class="card-img">';
-                                    }  
-                                    
-                                    echo '<div class="card-body">
-                                    <p class="card-text">Answer: <input type="text" name="'.$run1['question_id'].'"></p>
-                                    </div>
-                                    </div>
-                                    </div>';
-                                    $j++;
-                                }
-                            ?>
-                     
-                    </div>	
-                    			
-				</div>
-                <input type="submit" class="btn btn-primary" name="give">
-                </form>	
 
-				<!-- Footer -->
-				<!-- <footer>
-					<p>Copyright © 2020 Dreamguys.</p>					
-				</footer> -->
-				<!-- /Footer -->				
+
+<div class="form-group mb-3">
+   <div class="input-group">
+    <span class="q">4. Find the number of green apples from below.</span>
+
+<div id='q13'>
+<img src="img/2/1.png" class="hvr-wobble-to-top-right">
+</div>
+</div>	
+
+<div class="form-group mb-3">
+   <div class="input-group">
+    <span class="q">5. Match the following</span>
+
+<div id='q13'>
+1) ONE -
+<select name='q131' id='q131'>
+<option value='1'>1</option>
+<option value='5'>5</option>
+<option value='8'>8</option>
+</select> <br>
+
+2) FIVE -
+<select name='q132' id='q132'>
+<option value='1'>1</option>
+<option value='5'>5</option>
+<option value='8'>8</option>
+</select> <br>
+
+3) EIGHT -
+<select name='q133' id='q133'>
+<option value='1'>1</option>
+<option value='5'>5</option>
+<option value='8'>8</option>
+</select>
+
+</div>
+</div>	
+
+
+
+
+
+
+
+
+		        </p>
+
+
+
+
+
+				</div>
 			</div>
-			<!-- /Page Wrapper -->
-			
-        </div>
-		<!-- /Main Wrapper -->
+		</div>
+		<footer class="card-footer">
+			<div class="row">
+			<div class="col-md-12 text-right">
+			<button class="btn btn-success modal-dismiss" onclick="location.reload();">OK</button>
+			</div>
+			</div>
+		</footer>
+		</section>
 		
-		<!-- jQuery -->
-        <script src="assets/js/jquery-3.6.0.min.js"></script>
+		</div>
 		
-		<!-- Bootstrap Core JS -->
-        <script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+					
+				</section>
+
+		</section>
 		
-		<!-- Slimscroll JS -->
-		<script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-		
-		<!-- Datatables JS -->
-		<script src="assets/plugins/datatables/datatables.min.js"></script>
-		
-		<!-- Custom JS -->
-		<script src="assets/js/script.js"></script>
-    </body>
+	</body>
 </html>
