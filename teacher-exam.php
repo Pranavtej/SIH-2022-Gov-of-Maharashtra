@@ -4,6 +4,10 @@ include 'connect.php';
 
 session_start();
 
+$school_id = $_SESSION['SCHOOL_ID'];
+$student_id = $_SESSION['STUDENT_ID'];
+$class_id = $_SESSION['CLASS_ID'];
+
 $exam_id = $_GET['eid'];
 
 $loc = mysqli_query($con, "SELECT question_id,question,options,loc_id,image_path FROM `teacher_exam_question` WHERE exam_id='$exam_id' order by question_id");
@@ -32,7 +36,7 @@ if(isset($_POST['give']))
             }
             $markperquestion = 5/$count;
             $credits = $markperquestion * $correct;
-            echo "<script>alert($credits)</script>";
+            $insert = mysqli_query($con,"INSERT INTO `learning_outcomes_credits` (`school_id`, `class_id`, `student_id`, `subject_id`, `loc_id`, `credits`) VALUES ('$school_id', '$class_id', '$student_id', 'SUB0104', '$loc_id', $credits)") or die(mysqli_error()); 
         }
     }   
 
