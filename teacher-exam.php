@@ -74,12 +74,6 @@ $loc = mysqli_query($con, "SELECT question_id,question,options,loc_id,image_path
                                 $i = 0;
                                 while($run1 = mysqli_fetch_assoc($loc))
                                 {
-                                    // echo '<tr>
-                                    // 	<td>'.++$i.'</td>
-                                    // 	<td>'.$run1['question'].'</td>
-                                    //     <td><input type="number" name="'.$run1['question_id'].'"></td>
-                                    // </tr>';
-
                                     echo'
                                     <div class="col-12 col-md-6 col-lg-4 d-flex">
                                     <div class="card flex-fill">
@@ -89,6 +83,10 @@ $loc = mysqli_query($con, "SELECT question_id,question,options,loc_id,image_path
                                     if(!empty($run1['options']))
                                     {
                                         echo '<h6>'.$run1['options'].'</h6>';
+                                    }
+                                    if(!empty($run1['image_path']))
+                                    {
+                                        echo '<img src="'.$run1['image_path'].'" alt="image not loaded" class="card-img">';
                                     }    
                                     echo '<div class="card-body">
                                     <p class="card-text"><input type="text" name="'.$run1['question_id'].'"></p>
