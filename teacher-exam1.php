@@ -80,6 +80,7 @@ if(isset($_POST['give']))
 			<?php 
 				$get = "select question_id as ci from teacher_exam_question where exam_id='$exam_id'";
 				$run = mysqli_query($con, $get);
+                $i = 0;
 				while($get = mysqli_fetch_array($run))
 				{
 					// echo 'dataT.'.$get['ci'].'= '.$get['ca'].'; ';
