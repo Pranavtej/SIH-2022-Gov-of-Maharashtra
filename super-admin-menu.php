@@ -85,6 +85,18 @@
                                 <li><a href="super-admin-students-list.php">Students List</a></li>
                             </ul>
                         </li>
+                        <li class="submenu">
+                            <a href="#"><i class="fas fa-user-graduate"></i> <span> Syllabus</span> <span class="menu-arrow"></span></a>
+                            <ul>
+                                <li><a href="super-admin-state-syllabus.php">syllabus</a></li>
+                            </ul>
+                        </li>
+                        <li class="submenu">
+                            <a href="#"><i class="fas fa-user-graduate"></i> <span>Learning Outcomes</span> <span class="menu-arrow"></span></a>
+                            <ul>
+                                <li><a href="super-admin-learning-outcomes-list.php">Classwise Subjects Data</a></li>
+                            </ul>
+                        </li>
                 </div>
             </div>
         </div>
