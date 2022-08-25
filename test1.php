@@ -99,8 +99,12 @@ body {
 								<div class="card-body">
 									<div class="row">
 										<div class="col-xl-12">
-							
 
+
+                                        <div class="row">
+                                        <div class="col-12 col-md-6 col-lg-4 d-flex">
+                                    <div class="card flex-fill">
+                                    <div class="card-header">
 <div class="form-group mb-3">
    <div class="input-group">
     <span class="q">1. Find the shape Rectangle from Below<br><br></span>
@@ -127,6 +131,15 @@ body {
 </div>	<br>
 
 
+</div></div></div>
+
+
+
+
+<div class="row">
+                                        <div class="col-12 col-md-6 col-lg-4 d-flex">
+                                    <div class="card flex-fill">
+                                    <div class="card-header">
 <div class="form-group mb-3">
    <div class="input-group">
     <span class="q">2. Find the result of this addition?</span>
@@ -137,7 +150,7 @@ body {
 </div>
 	
 </div>	
-
+</div></div></div>
 
 <div class="form-group mb-3">
    <div class="input-group">
@@ -161,7 +174,7 @@ body {
     <span class="q">4. Find the number of green apples from below.</span>
 
 <div id='q13'>
-<img src="exam/img/2/1.png" class="hvr-wobble-to-top-right"> <input type="text" name="Q1">
+<img src="exam/img/2/1.png" class="hvr-wobble-to-top-right"> <input type="text" name="Q13">
 </div>
 </div>	
 
@@ -169,7 +182,7 @@ body {
    <div class="input-group">
     <span class="q">5. Match the following</span><br>
 
-<div id='q13'>
+<div id='q14'>
 1) ONE -
 <select name='q131' id='q131'>
 <option value='1'>1</option>
