@@ -95,9 +95,10 @@ $loc = mysqli_query($con, "SELECT question_id,question,options,loc_id,image_path
                                     ';
                                 }
                             ?>
-                        <input type="submit" name="give">
-                        </form>	
-                    </div>				
+                     
+                    </div>	
+                    <input type="submit" name="give">
+                        </form>				
 				</div>
 
 				<!-- Footer -->
