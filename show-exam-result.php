@@ -76,7 +76,32 @@ session_start();
 											<tbody>
                                                 <?php
                                                     $sid = mysqli_query($con , "SELECT DISTINCT(student_id) AS sid FROM learning_outcomes_credits where subject_id='SUB0104'");
-
+                                                    foreach($sid as $id)
+													{
+														$sid = $id['sid'];
+														$query = "select s.student_name as student_name, ROUND(sum(l.credits)/4) as num from student s,learning_outcomes_credits l where l.subject_id='SUB0104' and l.student_id='$sid' and l.student_id=s.student_id";
+														$run = mysqli_query($con,$query);
+														foreach($run as $r)
+														{
+															echo '<tr>
+																<td>'.$r['student_name'].'</td>
+																<td>'.$r['num'].'</td>';
+															$cc = (int)$r['num'];
+															echo '<td>';
+															for($i=1;$i<=$cc;$i++)
+															{
+																echo '<span class="fa fa-star checked"></span>';
+															}
+															$k = 6 - $i;
+															for($i=0;$i<$k;$i++)
+															{
+																echo '<span class="fa fa-star"></span>';
+															}
+															echo '</td>';
+															echo '<td><a href="exam-result-view.php?&sid='.$sid.'&suid=SUB0104">View</a></td>';
+															echo '</tr>';
+														}
+													}
 
                                                 ?>
 											</tbody>
