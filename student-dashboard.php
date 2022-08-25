@@ -470,7 +470,7 @@ else{
 								$cc = (int)$id['num'];
 								$sum = mysqli_query($con, "SELECT type FROM `conclusion` WHERE id='$cc'");
 								echo'
-								<div class="col-12 col-md-6 col-lg-4 d-flex"><a href="student-detailed-view.php?suid='.$id['subject_id']">
+								<div class="col-12 col-md-6 col-lg-4 d-flex"><a href="student-detailed-view.php?suid='.$id['subject_id'].'">
 									<div class="card flex-fill">
 										<div class="card-header">
 											<h5 class="card-title mb-0">'.$id['subject_name'].'<br><br>Credits : ';
