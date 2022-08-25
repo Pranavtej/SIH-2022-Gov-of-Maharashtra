@@ -72,7 +72,7 @@ if(empty($_SESSION['SCHOOL_ID'])){
 	     <?php include 'school-admin-header.php';?>
 		<?php include 'school-admin-sidebar.php';?>
 			<!-- Page Wrapper -->
-            <div class="page-wrapper">
+             <div class="page-wrapper">
 			
                 <div class="content container-fluid">
 					<!-- Page Header -->
@@ -81,7 +81,7 @@ if(empty($_SESSION['SCHOOL_ID'])){
 							<div class="col-sm-12">
 								<h3 class="page-title">Welcome <?php echo $school_name; ?></h3>
 								<ul class="breadcrumb">
-									<li class="breadcrumb-item active">Dashboard</li>
+									<li class="breadcrumb-item active">School Dashboard</li>
 								</ul>
 							</div>
 						</div>
@@ -164,63 +164,63 @@ if(empty($_SESSION['SCHOOL_ID'])){
 			
 							<!-- Student Chart -->
 							<div class="card-body">
-                                        <canvas id="acscore"></canvas>
-                                            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-                                            <script>
-												const ctx = document.getElementById('acscore');
-												const myChart = new Chart(ctx, {
-													type: 'bar',
-													data: {
-														labels: <?php echo json_encode($r) ?>,
-														//echo json_encode($y), 
-														datasets: [{
-															label: 'No.of Students',
-															data:<?php echo json_encode($r1) ?>,
-														//echo json_encode($x),
+								<canvas id="acscore"></canvas>
+									<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+									<script>
+										const ctx = document.getElementById('acscore');
+										const myChart = new Chart(ctx, {
+											type: 'bar',
+											data: {
+												labels: <?php echo json_encode($r) ?>,
+												//echo json_encode($y), 
+												datasets: [{
+													label: 'No.of Students',
+													data:<?php echo json_encode($r1) ?>,
+												//echo json_encode($x),
 
-															backgroundColor: [
-																'rgba(255, 99, 132, 0.2)',
-																'rgba(54, 162, 235, 0.2)',
-																'rgba(255, 206, 86, 0.2)',
-																'rgba(75, 192, 192, 0.2)',
-																'rgba(153, 102, 255, 0.2)',
-																'rgba(255, 159, 64, 0.2)'
-															],
-															borderColor: [
-																'rgba(255, 99, 132, 1)',
-																'rgba(54, 162, 235, 1)',
-																'rgba(255, 206, 86, 1)',
-																'rgba(75, 192, 192, 1)',
-																'rgba(153, 102, 255, 1)',
-																'rgba(255, 159, 64, 1)'
-															],
-															borderWidth: 1
-														}]
-													},
-													options: {
-														//maintainAspectRatio: true,
-														scales: {
-															y: {
-																beginAtZero: true
-															}
-														}
+													backgroundColor: [
+														'rgba(255, 99, 132, 0.2)',
+														'rgba(54, 162, 235, 0.2)',
+														'rgba(255, 206, 86, 0.2)',
+														'rgba(75, 192, 192, 0.2)',
+														'rgba(153, 102, 255, 0.2)',
+														'rgba(255, 159, 64, 0.2)'
+													],
+													borderColor: [
+														'rgba(255, 99, 132, 1)',
+														'rgba(54, 162, 235, 1)',
+														'rgba(255, 206, 86, 1)',
+														'rgba(75, 192, 192, 1)',
+														'rgba(153, 102, 255, 1)',
+														'rgba(255, 159, 64, 1)'
+													],
+													borderWidth: 1
+												}]
+											},
+											options: {
+												//maintainAspectRatio: true,
+												scales: {
+													y: {
+														beginAtZero: true
 													}
-												});
-											</script>
-										</div>
+												}
+											}
+										});
+									</script>
+								 </div>
 	
 							<!-- /Student Chart -->							
 					
 					
-											</div>
-
 			</div>
-			<!-- /Page Wrapper -->
 
-			
+		</div>
+		<!-- /Page Wrapper -->
+
 		
-        </div>
-		<!-- /Main Wrapper -->
+
+	</div>
+	<!-- /Main Wrapper -->
 		
 		<!-- jQuery -->
         <script src="assets/js/jquery-3.6.0.min.js"></script>
