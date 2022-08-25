@@ -101,11 +101,11 @@ if(isset($_POST['give']))
 								<h3 class="page-title" align="center">Learning Outcome Assessment Examination </h3>
 </div>      
                         <div class="col-lg-2">
-                                <button type="button" class="btn btn-sm btn-default" style="color: red;"><i class="fa fa-signal" aria-hidden="true"></i>&nbsp&nbspNot Connected</button>
+                                <button type="button" class="btn btn-sm btn-default" style="color: red;" id='signal0'><i class="fa fa-signal" aria-hidden="true"></i>&nbsp&nbspNot Connected</button>
 
                             
                                   
-                                    <button type="button" class="btn btn-sm btn-default" style="color: green;"><i class="fa fa-signal" aria-hidden="true"></i>&nbsp&nbspConnected</button>
+                                    <button type="button" class="btn btn-sm btn-default" style="color: green;" id='signal1'><i class="fa fa-signal" aria-hidden="true"></i>&nbsp&nbspConnected</button>
                                   
                                     
                                 <h5 align="left"  >Grade : 1</h5><h5 align="right">Subject : Mathematics </h5>
