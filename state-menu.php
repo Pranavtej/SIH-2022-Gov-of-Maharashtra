@@ -9,8 +9,7 @@
                 <a href="super-admin-dashboard.php" class="logo logo-small">
                     <img src="assets/img/logo-small.png" alt="Logo" width="30" height="30">
                 </a>
-            </div>
-            <!-- /Logo -->
+</div>
             
             <a href="javascript:void(0);" id="toggle_btn">
                 <i class="fas fa-align-left"></i>
@@ -90,13 +89,13 @@
                         <li class="submenu">
                             <a href="#"><i class="fas fa-chalkboard-teacher"></i> <span> Teachers</span> <span class="menu-arrow"></span></a>
                             <ul>
-                                <li><a href="state-teachers-list.php">Teachers List</a></li>
+                                <li><a href="state-school-teacher-list.php">Teachers List</a></li>
                             </ul>
                         </li>
                          <li class="submenu">
                             <a href="#"><i class="fas fa-user-graduate"></i> <span> Students</span> <span class="menu-arrow"></span></a>
                             <ul>
-                                <li><a href="state-students-list.php">Students List</a></li>
+                                <li><a href="state-school-student-list.php">Students List</a></li>
                             </ul>
                         </li>
                 </div>

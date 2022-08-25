@@ -1,13 +1,17 @@
 <?php session_start(); 
 
 include 'connect.php';
-$stat="select * from  "
 if(isset($_POST['login']))
 {
     if(true)
     {
-        $_SESSION['STATE_ID'] = $_POST['username'];
+        $st_id=$_SESSION['STATE_ID'] = $_POST['username'];
+        $stat="select * from states where state_id='$st_id'";
+        $ace=mysqli_query($con,$stat);
+        if($ace)
+        {
         echo "<script>document.location='state-dashboard.php'</script>";
+        }
     }
     else
     {
