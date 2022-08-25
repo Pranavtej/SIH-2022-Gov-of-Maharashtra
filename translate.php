@@ -156,7 +156,7 @@ else{
 		function googleTranslateElementInit() {
 			new google.translate.TranslateElement(
 				{pageLanguage: 'en'},
-				'page-title'
+				'google_translate_element'
 			);
 		}
 	</script>
