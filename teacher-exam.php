@@ -90,7 +90,7 @@ $loc = mysqli_query($con, "SELECT question_id,question,answer,loc_id,image_path 
 														echo '<tr>
 															<td>'.++$i.'</td>
 															<td>'.$run1['question'].'</td>
-                                                            <td><input type="number" name="'.$run1['loc_id'].'"></td>
+                                                            <td><input type="number" name="'.$run1['question_id'].'"></td>
 														</tr>';
 													}
                                                 ?>
