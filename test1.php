@@ -140,7 +140,7 @@ body {
     <span class="q">4. Find the number of green apples from below.</span>
 
 <div id='q13'>
-<img src="img/2/1.png" class="hvr-wobble-to-top-right">
+<img src="exam/img/2/1.png" class="hvr-wobble-to-top-right">
 </div>
 </div>	
 
