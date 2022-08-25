@@ -31,7 +31,7 @@ if(isset($_POST['give']))
                 }
             }
             $markperquestion = 5/$count;
-            $credits = $markperquestion + $correct;
+            $credits = $markperquestion * $correct;
             echo "<script>alert($credits)</script>";
         }
     }   
