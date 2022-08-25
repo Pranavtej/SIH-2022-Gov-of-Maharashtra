@@ -113,7 +113,7 @@ if(isset($_POST['give']))
                                     <div class="col-12 col-md-6 col-lg-4 d-flex">
                                     <div class="card flex-fill">
                                     <div class="card-header">
-                                    
+                                    '.$run1['question'].'<br><br>
                                     <h6>Learning Outcome : '.$a['loc'].'</h6>              
                                     </div>';
                                     if(!empty($run1['options']))
@@ -125,8 +125,7 @@ if(isset($_POST['give']))
                                         echo '<img src="exam/img/'.$run1['image_path'].'" alt="image not loaded" class="card-img">';
                                     }    
                                     echo '<div class="card-body">
-                                    <p class="card-text"><input type="text" name="'.$run1['question_id'].'"></p>4
-                                    <br><br>'.$run1['question'].'
+                                    <p class="card-text"><input type="text" name="'.$run1['question_id'].'"></p>
                                     </div>
                                     </div>
                                     </div>';
