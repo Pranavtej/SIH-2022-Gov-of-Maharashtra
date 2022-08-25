@@ -103,8 +103,6 @@ if(isset($_POST['give']))
                         <div class="col-lg-2">
                                 <button type="button" class="btn btn-sm btn-default" style="color: red;" id='signal0'><i class="fa fa-signal" aria-hidden="true"></i>&nbsp&nbspNot Connected</button>
 
-                            
-                                  
                                     <button type="button" class="btn btn-sm btn-default" style="color: green;" id='signal1'><i class="fa fa-signal" aria-hidden="true"></i>&nbsp&nbspConnected</button>
                                   
                                     
