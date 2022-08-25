@@ -85,11 +85,7 @@ $loc = mysqli_query($con, "SELECT question_id,question,options,loc_id,image_path
                                                         '.$run1['question'].'
                                                         </div>
                                                         <div class="card-body">
-                                                        <h5 class="card-title">Special title treatment</h5>
-                                                        <p class="card-text"><input type="number" name="'.$run1['question_id'].'"></p>
-                                                        </div>
-                                                        <div class="card-footer text-muted">
-                                                        This is my footer
+                                                        <p class="card-text"><input type="text" name="'.$run1['question_id'].'"></p>
                                                         </div>
                                                         </div>
                                                         </div>
