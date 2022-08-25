@@ -124,7 +124,7 @@ body {
 </label>
 </div>
 	
-</div>	
+</div>	<br>
 
 
 <div class="form-group mb-3">
@@ -161,13 +161,13 @@ body {
     <span class="q">4. Find the number of green apples from below.</span>
 
 <div id='q13'>
-<img src="exam/img/2/1.png" class="hvr-wobble-to-top-right">
+<img src="exam/img/2/1.png" class="hvr-wobble-to-top-right"> <input type="text" name="Q1">
 </div>
 </div>	
 
 <div class="form-group mb-3">
    <div class="input-group">
-    <span class="q">5. Match the following</span>
+    <span class="q">5. Match the following</span><br>
 
 <div id='q13'>
 1) ONE -
