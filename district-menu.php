@@ -69,7 +69,7 @@
                         <li class="submenu">
                             <a href="#"> <i class="fas fa-building"></i><span> Blocks</span> <span class="menu-arrow"></span></a>
                             <ul>
-                                <li><a href="distrct-block-list.php">Blocks List</a></li>
+                                <li><a href="district-block-list.php">Blocks List</a></li>
                                 <!-- <li><a href="super-admin-add-school.php">Schools Add</a></li> -->
                             </ul>
                         </li>
@@ -83,13 +83,13 @@
                         <li class="submenu">
                             <a href="#"><i class="fas fa-chalkboard-teacher"></i> <span> Teachers</span> <span class="menu-arrow"></span></a>
                             <ul>
-                                <li><a href="district-teachers-list.php">Teachers List</a></li>
+                                <li><a href="district-teacher-list.php">Teachers List</a></li>
                             </ul>
                         </li>
                          <li class="submenu">
                             <a href="#"><i class="fas fa-user-graduate"></i> <span> Students</span> <span class="menu-arrow"></span></a>
                             <ul>
-                                <li><a href="district-students-list.php">Students List</a></li>
+                                <li><a href="district-student-list.php">Students List</a></li>
                             </ul>
                         </li>
                 </div>

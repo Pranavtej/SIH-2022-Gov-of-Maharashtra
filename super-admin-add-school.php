@@ -96,7 +96,7 @@ if(isset($_POST['add-school']))
 																{
 																	echo '<option value='.$data['state_id'].'>'.$data['state_id'].'-'.$data['state_name'].'</option>';
 																}
-																echo '</select></td>';
+																echo '</select>';
                                                          ?>
 												</div>
 												<div class="form-group">

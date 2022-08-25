@@ -1,13 +1,21 @@
-<?php session_start();
+<?php
+
 include 'connect.php';
-$did=$_SESSION['DISTRICT_ID']
+
+session_start();
+
+$student_id = $_GET['sid'];
+$subject_id = $_GET['suid'];
+
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-        <title>Blocks-list</title>
+        <title>VIEW CREDITS</title>
 		
 		<!-- Favicon -->
         <link rel="shortcut icon" href="assets/img/favicon.png">
@@ -29,7 +37,14 @@ $did=$_SESSION['DISTRICT_ID']
         <link rel="stylesheet" href="assets/css/style.css">
     </head>
     <body>
-         <?php include 'super-admin-menu.php';	?>	
+		
+		<!-- Main Wrapper -->
+        <div class="main-wrapper">
+		
+            <?php //include 'teacher-header.php'; ?>
+			<?php //include 'teacher-sidebar.php'; ?>
+
+			
 			<!-- Page Wrapper -->
             <div class="page-wrapper">
                 <div class="content container-fluid">
@@ -38,53 +53,53 @@ $did=$_SESSION['DISTRICT_ID']
 					<div class="page-header">
 						<div class="row align-items-center">
 							<div class="col">
-								<h3 class="page-title">Blocks</h3>
+								<h3 class="page-title">Students</h3>
 								<ul class="breadcrumb">
-									<li class="breadcrumb-item"><a href="super-admin-dashboard.php">Dashboard</a></li>
-									<li class="breadcrumb-item active"> Blocks</li>
+									<li class="breadcrumb-item active">Dashboard</a></li>
+									<li class="breadcrumb-item active">Students</li>
 								</ul>
 							</div>
-					
+							<!-- <div class="col-auto text-end float-end ms-auto">
+								<a href="#" class="btn btn-outline-primary me-2"><i class="fas fa-download"></i> Download</a>
+								<a href="add-student.html" class="btn btn-primary"><i class="fas fa-plus"></i></a>
+							</div> -->
 						</div>
 					</div>
 					<!-- /Page Header -->
 				
 					<div class="row">
 						<div class="col-sm-12">
-					 
+						
 							<div class="card card-table">
 								<div class="card-body">
 									<div class="table-responsive">
-										<table class="table table-hover table-center mb-0 datatable">
+										<table class="table table-hover table-center mb-0">
 											<thead>
 												<tr>
-													<th>BLOCK ID</th>
-													<th>BLOCK NAME</th>
-													
+													<th>S. No.</th>
+													<th>Learning Outcome</th>
+													<th>Credits Obtained</th>
 												</tr>
 											</thead>
 											<tbody>
-													<?php
-													$sql2=mysqli_query($con,"select block_id,block_name from blocks where district_id='$did'");
-                                                    
-												
-													foreach($sql2 as $res)
-													{
-                                                        $did=$res['block_id'];
-                                                        $sid=$res['block_name'];
-                                                        
-                                                    
-														echo 
-														'<tr><td>'.$did.'</td>
-														<td><a href="district-block-view.php?bid='.$res['block_id'].'">'.$sid.'</a><b/td>
-													
-                                                        <td class="text-end">
-														<div class="actions">
-															
-														</div>
-													</td>
-													</tr>';
-                                                     }?>
+											<style>
+												.checked {
+													color: orange;
+													}
+											</style>
+												<?php
+                                                    $query = "select o.loc as loc,l.credits as credits from learning_outcomes_credits l,learning_outcomes o where l.student_id = '$student_id' and l.subject_id='$subject_id' and l.loc_id = o.loc_id";
+                                                    $run = mysqli_query($con, $query);
+                                                    $i = 0;
+                                                    foreach($run as $d)
+                                                    {
+                                                        echo '<tr>
+                                                            <td>'.++$i.'</td>
+                                                            <td>'.$d['loc'].'</td>
+                                                            <td>'.$d['credits'].'</td>
+                                                        </tr>';
+                                                    }													
+												?>
 											</tbody>
 										</table>
 									</div>
@@ -92,7 +107,13 @@ $did=$_SESSION['DISTRICT_ID']
 							</div>							
 						</div>					
 					</div>					
-				</div>			
+				</div>
+
+				<!-- Footer -->
+				<!-- <footer>
+					<p>Copyright © 2020 Dreamguys.</p>					
+				</footer> -->
+				<!-- /Footer -->				
 			</div>
 			<!-- /Page Wrapper -->
 			
