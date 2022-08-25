@@ -87,19 +87,19 @@ body {
 <div id='q10'>
 <label id='l1'>
   <input type="radio" name="Q10" id="no1" class="mno" value="1">
-  <img src="img/1/1.png" class="hvr-wobble-to-top-right">
+  <img src="exam/img/1/1.png" class="hvr-wobble-to-top-right">
 </label>
 <label id='l2'>
   <input type="radio" name="mno1" id="no2" class="mno" value="2">
-  <img src="img/1/2.png" class="hvr-wobble-to-top-right">
+  <img src="exam/img/1/2.png" class="hvr-wobble-to-top-right">
 </label>
 <label id='l3'>
   <input type="radio" name="mno1" id="no3" class="mno" value="3">
-  <img src="img/1/3.png" class="hvr-wobble-to-top-right">
+  <img src="exam/img/1/3.png" class="hvr-wobble-to-top-right">
 </label>
 <label id='l4'>
   <input type="radio" name="mno1" id="no4" class="mno" value="4">
-  <img src="img/1/4.png" class="hvr-wobble-to-top-right">
+  <img src="exam/img/1/4.png" class="hvr-wobble-to-top-right">
 </label>
 </div>
 	
