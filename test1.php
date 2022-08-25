@@ -113,7 +113,7 @@ body {
   <img src="exam/img/1/1.png" class="hvr-wobble-to-top-right">
 </label>
 <label id='l2'>
-  <input type="radio" name="Q10" id="no2" class="mno" value="2">
+  <input type="radio"   name="Q10" id="no2" class="mno" value="2">
   <img src="exam/img/1/2.png" class="hvr-wobble-to-top-right">
 </label>
 <label id='l3'>
