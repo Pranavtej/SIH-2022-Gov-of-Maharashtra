@@ -150,6 +150,27 @@ if(isset($_POST['give']))
                    
                         <form action="" method="post">
                         <div class="row">
+                        <div class="input-group">
+    <span class="q">1. identify the shape square ?</span>
+
+<div style='text-align:center;' id='teams1'>
+<label id='l1'>
+  <input type="radio" name="mno1" id="no1" class="mno" value="mi">
+  <img src="https://i.pinimg.com/564x/4e/cb/32/4ecb32278c0957cadb90e9769b836087.jpg" class="hvr-wobble-to-top-right" >
+</label>
+<label id='l2'>
+  <input type="radio" name="mno1" id="no2" class="mno" value="dc">
+  <img src="https://i.pinimg.com/originals/f8/cb/05/f8cb058aa93da6f0a6ee4d1b8101bb6c.jpg" class="hvr-wobble-to-top-right" >
+</label>
+<label id='l3'>
+  <input type="radio" name="mno1" id="no3" class="mno" value="rcb">
+  <img src="img/ipl/rcb.png" class="hvr-wobble-to-top-right">
+</label>
+<label id='l4'>
+  <input type="radio" name="mno1" id="no4" class="mno" value="srh">
+  <img src="img/ipl/srh.png" class="hvr-wobble-to-top-right" >
+</label>
+</div>
      	
                             <?php
                                 $i = 0;
@@ -183,27 +204,7 @@ if(isset($_POST['give']))
                                     $j++;
                                 }
                             ?>
-            <div class="input-group">
-    <span class="q">1. identify the shape square ?</span>
-
-<div style='text-align:center;' id='teams1'>
-<label id='l1'>
-  <input type="radio" name="mno1" id="no1" class="mno" value="mi">
-  <img src="https://i.pinimg.com/564x/4e/cb/32/4ecb32278c0957cadb90e9769b836087.jpg" class="hvr-wobble-to-top-right" >
-</label>
-<label id='l2'>
-  <input type="radio" name="mno1" id="no2" class="mno" value="dc">
-  <img src="https://i.pinimg.com/originals/f8/cb/05/f8cb058aa93da6f0a6ee4d1b8101bb6c.jpg" class="hvr-wobble-to-top-right" >
-</label>
-<label id='l3'>
-  <input type="radio" name="mno1" id="no3" class="mno" value="rcb">
-  <img src="img/ipl/rcb.png" class="hvr-wobble-to-top-right">
-</label>
-<label id='l4'>
-  <input type="radio" name="mno1" id="no4" class="mno" value="srh">
-  <img src="img/ipl/srh.png" class="hvr-wobble-to-top-right" >
-</label>
-</div>
+       
 	
 </div>
                      
