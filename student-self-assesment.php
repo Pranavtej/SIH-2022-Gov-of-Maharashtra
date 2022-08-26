@@ -65,7 +65,7 @@ if(isset($_POST['submit']))
 		<!-- Main Wrapper -->
         <div class="main-wrapper">
 			
-		<?php include 'parent-menu.php'; ?>
+		<?php include 'student-menu.php'; ?>
 		
 				
 			<!-- Page Wrapper -->
