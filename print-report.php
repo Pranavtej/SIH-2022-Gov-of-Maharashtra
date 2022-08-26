@@ -153,25 +153,9 @@ $query="select S.subject_name, M.marks from exam_marks M,subjects S where M.stud
 								<ul class="breadcrumb">
 									<li class="breadcrumb-item"><a href="">Student</a></li>
 									<li class="breadcrumb-item active">Student Report card</li>
-									<script type="text/javascript">
-							function googleTranslateElementInit() {
-								new google.translate.TranslateElement(
-									{pageLanguage: 'en'},
-									'google_translate_element'
-								);
-							}
-						</script>
-						
-						<script type="text/javascript" src=
-					"https://translate.google.com/translate_a/element.js?
-							cb=googleTranslateElementInit">
-						</script>
-								</ul>
-							</div>
-						</div>
-					</div>
-					
-					<div class="card">
+
+
+<div class="card">
 						<div class="card-body">
 							<div class="row">
 								<div class="col-md-12">
