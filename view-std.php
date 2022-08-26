@@ -76,8 +76,11 @@ $loc = mysqli_query($con, "SELECT question_id,question,options,loc_id,image_path
                                 $j = 1;
                                 while($run1 = mysqli_fetch_assoc($loc))
                                 {
+                                    $qid = $run1['question_id'];
                                     $query = mysqli_query($con, "select loc from learning_outcomes where loc_id='{$run1['loc_id']}'");
                                     $a = mysqli_fetch_assoc($query);
+                                    $query2 = mysqli_query($con,"select answer from exam_answers where exam_id='$exam_id' and student_id='$student_id' and question_id='$qid'");
+                                    $a = mysqli_fetch_assoc($query2);
                                     echo'
                                     <div class="col-12 col-md-6 col-lg-4 d-flex">
                                     <div class="card flex-fill">
@@ -94,7 +97,7 @@ $loc = mysqli_query($con, "SELECT question_id,question,options,loc_id,image_path
                                         echo '<img src="exam/img/'.$run1['image_path'].'" alt="image not loaded" class="card-img">';
                                     }    
                                     echo '<div class="card-body">
-                                    <p class="card-text">Answer: <input type="text" name="'.$run1['question_id'].'"></p>
+                                    <p class="card-text">Student Answer: <input type="text" disabled>'.$a['answer'].'</p>
                                     </div>
                                     </div>
                                     </div>';
