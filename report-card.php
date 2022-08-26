@@ -170,7 +170,7 @@ foreach($re9 as $data)
 
 										<div class="row mt-3">                                           
 										</div>
-										\<!-- <div class="row mt-2">
+										<!-- <div class="row mt-2">
 											<div class="col-md-12">
 												<h5>Permanent Address</h5>
 												<p><?php echo $run['address']; ?></p>
@@ -207,7 +207,7 @@ foreach($re9 as $data)
 								<div class="col-12 col-md-6 col-lg-4 d-flex">
 									<div class="card flex-fill">
 										<div class="card-header">
-											<h5 class="card-title mb-0">'.$id['subject_name'].'<br><br>Credits : ';
+											<h5 class="card-title mb-0">'.$id['subject_name'].'<br><br>Rating : ';
 											for($i=1;$i<=$cc;$i++)
 											{
 												echo '<span class="fa fa-star checked"></span>';
@@ -222,7 +222,7 @@ foreach($re9 as $data)
 										<div class="card-body">
 											<h6 class="card-text" >Your Score </h6><br>
 											<h3 class="card-text" >'.$id['num'].'/5</h3>';
-											
+                                            
 											echo '<a class="card-link" href="student-detailed-view.php?suid='.$id['subject_id'].'">View detailed credits</a>
 										</div>
 									</div>

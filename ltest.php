@@ -1,5 +1,49 @@
+<?php
 
+include 'connect.php';
 
+session_start();
+
+$school_id = $_SESSION['SCHOOL_ID'];
+$student_id = $_SESSION['STUDENT_ID'];
+$class_id = $_SESSION['CLASS_ID'];
+
+$exam_id = $_GET['eid'];
+
+//$loc = mysqli_query($con, "SELECT question_id,question,options,loc_id,image_path FROM `teacher_exam_question` WHERE exam_id='$exam_id' order by question_id");
+
+if(isset($_POST['give']))
+{
+    $loc = mysqli_query($con, "select distinct(loc_id) as loc_id from teacher_exam_question where exam_id='$exam_id'");
+    foreach($loc as $id)
+    {
+        $locid = $id['loc_id'];
+        $qid = mysqli_query($con, "select question_id as qid from teacher_exam_question where loc_id='$locid'");
+        {
+            $correct = 0;
+            $count = 0;
+            foreach($qid as $id1)
+            {
+                $ques = $id1['qid'];
+                $ans = $_POST[$ques];
+                $answer = mysqli_query($con, "select answer from teacher_exam_question where question_id='$ques'");
+                $answer2 = mysqli_fetch_assoc($answer);
+                if($answer2['answer'] == strtoupper($ans))
+                {
+                    $correct += 1;
+                }
+                $count++;
+            }
+            $markperquestion = 5/$count;
+            $credits = $markperquestion * $correct;
+            $credits = round($credits);
+            $insert = mysqli_query($con,"INSERT INTO `learning_outcomes_credits` (`school_id`, `class_id`, `student_id`, `subject_id`, `loc_id`, `credits`) VALUES ('$school_id', '$class_id', '$student_id', 'SUB0104', '$locid', $credits)") or die(mysqli_error()); 
+        }
+    }   
+    echo "<script>document.location='index.php'</script>";
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -113,23 +157,23 @@ body {
                                     <div class="card flex-fill" style="background-color:  #e6ffff;">
                                     <div class="card-header" style="background-color:  #e6ffff;">
                                    <h4> Question:1. Find the shape Rectangle from Below</h4><br>
-                                    <h6>(Learning Outcome : able to count objects using numbers 1 to 9)</h6>              
+                                    <h6>(Learning Outcome : able to identify shapes)</h6>              
                                     </div>
                                     <div id='q10'>
 <label id='l1'>
-  <input type="radio" name="Q10" id="no1" class="mno" value="1">
+  <input type="radio" name="Q22" id="no1" class="mno" value="1">
   <img src="exam/img/1/1.png" class="hvr-wobble-to-top-right">
 </label>
 <label id='l2'>
-  <input type="radio"   name="Q10" id="no2" class="mno" value="2">
+  <input type="radio"   name="Q22" id="no2" class="mno" value="2">
   <img src="exam/img/1/2.png" class="hvr-wobble-to-top-right">
 </label>
 <label id='l3'>
-  <input type="radio" name="Q10" id="no3" class="mno" value="3">
+  <input type="radio" name="Q22" id="no3" class="mno" value="3">
   <img src="exam/img/1/3.png" class="hvr-wobble-to-top-right">
 </label>
 <label id='l4'>
-  <input type="radio" name="Q10" id="no4" class="mno" value="4">
+  <input type="radio" name="Q22" id="no4" class="mno" value="4">
   <img src="exam/img/1/4.png" class="hvr-wobble-to-top-right">
 </label>
                                     </div>
@@ -139,9 +183,9 @@ body {
                                     <div class="card flex-fill" style="background-color:  #e6ffff;">
                                     <div class="card-header" style="background-color:  #e6ffff;">
                                    <h4> Question 2: Find the result of this addition?</h4><br>
-                                    <h6>(Learning Outcome : able to count objects using numbers 1 to 9)</h6>              
+                                    <h6>(Learning Outcome : able to add,subtract,multiply numbers)</h6>              
                                     </div><h2>4+4= </h2><div class="card-body">
-                                    <p class="card-text">Answer: <input type="text" name="Q11"></p>
+                                    <p class="card-text">Answer: <input type="text" name="Q23"></p>
                                     </div>
                                     </div>
                                     </div>
@@ -149,12 +193,12 @@ body {
                                     <div class="card flex-fill" style="background-color:  #e6ffff;">
                                     <div class="card-header" style="background-color:  #e6ffff;">
                                    <h4> Question 3:Match the appropriate comparison symbol</h4><br>
-                                    <h6>(Learning Outcome : able to identify number)</h6>              
+                                    <h6>(Learning Outcome : able to distingush between larger and smaller numbers)</h6>              
                                     </div><div class="card-body">
                                     <p class="card-text">Answer: <div id='q12'>
 
 <h2>39 
-<select name='q12' id='q12'>
+<select name='Q24' id='q12'>
 <option value='='>=</option>
 <option value='>'>></option>
 <option value='<'><</option>
@@ -168,9 +212,9 @@ body {
                                     <div class="card flex-fill" style="background-color:  #e6ffff;">
                                     <div class="card-header" style="background-color:  #e6ffff;">
                                    <h4> Question 4: Find the number of green apples from below.</h4><br>
-                                    <h6>(Learning Outcome : able to distinguish between larger and smaller numbers)</h6>              
+                                    <h6>(Learning Outcome : able to count the objects using numbers)</h6>              
                                     </div><div class="card-body">
-                                    <p class="card-text">Answer: <img src="exam/img/2/1.png" class="hvr-wobble-to-top-right"> <input type="text" name="Q13">
+                                    <p class="card-text">Answer: <img src="exam/img/2/1.png" class="hvr-wobble-to-top-right"> <input type="text" name="Q25">
 </p>
                                     </div>
                                     </div>
@@ -179,12 +223,12 @@ body {
                                     <div class="card flex-fill" style="background-color:  #e6ffff;">
                                     <div class="card-header" style="background-color:  #e6ffff;">
                                    <h4> Question 5: Match the following</h4><br>
-                                    <h6>(Learning Outcome : able to distinguish between larger and smaller numbers)</h6>              
+                                    <h6>(Learning Outcome : able to indentify the numbers)</h6>              
                                     </div><div class="card-body">
                                     <p class="card-text">Answer: 
 
 1) ONE -
-<select name='q131' id='q131'>
+<select name='Q26' id='q131'>
 <option value='1'>1</option>
 <option value='5'>5</option>
 <option value='8'>8</option>
@@ -206,13 +250,13 @@ body {
                                     </div>
                                     </div>
                                     </div>
-                                    <div class="col-12 col-md-6 col-lg-4 d-flex" style="background-color: #e6ffff;">
-                                    <div class="card flex-fill" style="background-color:  #e6ffff;">
-                                    <div class="card-header" style="background-color:  #e6ffff;">
+                                    <div class="col-12 col-md-6 col-lg-4 d-flex" >
+                                    <div class="card flex-fill" >
+                                    <div class="card-header" >
                                    <h4> Question 6 : Identify the number by listening to the tiger audio</h4><br>
-                                    <h6>(Learning Outcome : able to distinguish the numbers)</h6>              
+                                    <h6>(Learning Outcome : able to indentify the numbers)</h6>              
                                     </div><div class="card-body">
-                                    <p class="card-text"><img src="exam/img/tiger.png"  onclick="sound('one')"> <input type="text" name="Q13">
+                                    <p class="card-text"><img src="exam/img/tiger.png"  onclick="sound('one')"> <input type="text" name="Q28">
 </p> <script>
   var audio;
   audio = new Audio("exam/img/one.mp3");
@@ -234,6 +278,28 @@ body {
                     </div>	
                     			
 				</div>
+        <div class="col-12 col-md-6 col-lg-4 d-flex" style="background-color: #e6ffff;">
+                                    <div class="card flex-fill" style="background-color:  #e6ffff;">
+                                    <div class="card-header" style="background-color:  #e6ffff;">
+                                   <h4> Question 7: Find the result of this multiplication?</h4><br>
+                                    <h6>(Learning Outcome : able to add,subtract,multiply numbers)</h6>              
+                                    </div><h2>2*2= </h2><div class="card-body">
+                                    <p class="card-text">Answer: <input type="text" name="Q29"></p>
+                                    </div>
+                                    </div>
+                                    </div>
+
+                                    <div class="col-12 col-md-6 col-lg-4 d-flex" style="background-color: #e6ffff;">
+                                    <div class="card flex-fill" style="background-color:  #e6ffff;">
+                                    <div class="card-header" style="background-color:  #e6ffff;">
+                                   <h4> Question 8: Find the result of this subtraction?</h4><br>
+                                    <h6>(Learning Outcome : able to add,subtract,multiply numbers)</h6>              
+                                    </div><h2>4-2= </h2><div class="card-body">
+                                    <p class="card-text">Answer: <input type="text" name="Q30"></p>
+                                    </div>
+                                    </div>
+                                    </div>
+                                    
                 <input type="submit" class="btn btn-primary" name="give">
                 </form>	
 
