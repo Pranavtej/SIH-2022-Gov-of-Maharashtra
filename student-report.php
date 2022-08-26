@@ -111,7 +111,7 @@ foreach($re9 as $data)
 					<div class="page-header">
 						<div class="row">
 							<div class="col-sm-12">
-								<h3 class="page-title">Student Details</h3>
+								<h3 class="page-title">Student Report card</h3>
 								<div id="google_translate_element"></div>
 								<ul class="breadcrumb">
 									<li class="breadcrumb-item"><a href="">Student</a></li>
