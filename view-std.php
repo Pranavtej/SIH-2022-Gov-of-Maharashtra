@@ -81,7 +81,7 @@ $loc = mysqli_query($con, "SELECT question_id,question,options,loc_id,image_path
                                     $a = mysqli_fetch_assoc($query);
                                     $query2 = mysqli_query($con,"select answer from exam_answers where exam_id='$exam_id' and student_id='$student_id' and question_id='$qid'");
                                     $a = mysqli_fetch_assoc($query2);
-                                    $query3 = mysqli_query($con, "select answer from teacher_exam_question where exam_id='$exam_id' and student_id='$student_id' and question_id='$qid'");
+                                    $query3 = mysqli_query($con, "select answer from teacher_exam_question where exam_id='$exam_id' and question_id='$qid'");
                                     $b = mysqli_fetch_assoc($query3);
                                     echo'
                                     <div class="col-12 col-md-6 col-lg-4 d-flex">
