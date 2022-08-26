@@ -112,9 +112,23 @@ foreach($re9 as $data)
 						<div class="row">
 							<div class="col-sm-12">
 								<h3 class="page-title">Student Details</h3>
+								<div id="google_translate_element"></div>
 								<ul class="breadcrumb">
 									<li class="breadcrumb-item"><a href="">Student</a></li>
-									<li class="breadcrumb-item active">Student Details</li>
+									<li class="breadcrumb-item active">Student Report card</li>
+									<script type="text/javascript">
+		function googleTranslateElementInit() {
+			new google.translate.TranslateElement(
+				{pageLanguage: 'en'},
+				'google_translate_element'
+			);
+		}
+	</script>
+	
+	<script type="text/javascript" src=
+"https://translate.google.com/translate_a/element.js?
+		cb=googleTranslateElementInit">
+	</script>
 								</ul>
 							</div>
 						</div>
@@ -125,7 +139,7 @@ foreach($re9 as $data)
 							<div class="row">
 								<div class="col-md-12">
 									<div class="about-info">
-										<h4>About Me</h4>
+										<h4>Z P School</h4>
 										
 										<div class="media mt-3 d-flex">
 											<img src="assets/img/user.jpg" class="me-3 flex-shrink-0" alt="...">
