@@ -439,7 +439,9 @@ beginAtZero: true
 													while($ru1 = mysqli_fetch_assoc($sq1))
 													{
 													    $sid=$ru1['sid'];
-														$cid=$ru1['cid'];	 
+														$cid=$ru1['cid'];	
+														$sql5=mysqli_query($con,"select class,section from classes where class_id='$cid'");
+														$r=mysqli_fetch_assoc($sql5); 
 														$sq2=mysqli_query($con,"select count(m.marks) as count  from exam_marks m , exam e  where m.marks>=35 and 
 													    m.school_id='$school_id' and m.eid=e.eid and e.status=1  and m.subject_id='$sid' and m.class_id ='$cid'");
 														$nc=0;
@@ -453,7 +455,7 @@ beginAtZero: true
 														$nc=$count2['count1'];
 														$pp=($pc/$nc)*100;
 														echo '<li class="feed-item">
-														<div class="feed-date">'.$cid.'</div>
+														<div class="feed-date">'.$r['class'].''.$r['section'].'</div>
 														<span class="feed-text"><a>'.round($pp).'%</a></span>
 														</li>';
 													
