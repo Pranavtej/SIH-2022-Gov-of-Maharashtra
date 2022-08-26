@@ -78,17 +78,18 @@ $loc = mysqli_query($con, "SELECT question_id,question,options,loc_id,image_path
                                 {
                                     $qid = $run1['question_id'];
                                     $query = mysqli_query($con, "select loc from learning_outcomes where loc_id='{$run1['loc_id']}'");
-                                    $a = mysqli_fetch_assoc($query);
+                                    $aa = mysqli_fetch_assoc($query);
                                     $query2 = mysqli_query($con,"select answer from exam_answers where exam_id='$exam_id' and student_id='$student_id' and question_id='$qid'");
                                     $a = mysqli_fetch_assoc($query2);
                                     $query3 = mysqli_query($con, "select answer from teacher_exam_question where exam_id='$exam_id' and question_id='$qid'");
                                     $b = mysqli_fetch_assoc($query3);
+
                                     echo'
                                     <div class="col-12 col-md-6 col-lg-4 d-flex">
                                     <div class="card flex-fill">
                                     <div class="card-header">
                                    <h4> Question '.$j++.': '.$run1['question'].'</h4><br>
-                                    <h6>(Learning Outcome : '.$a['loc'].')</h6>              
+                                    <h6>(Learning Outcome : '.$aa['loc'].')</h6>              
                                     </div>';
                                     if(!empty($run1['options']))
                                     {
