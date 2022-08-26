@@ -115,14 +115,13 @@ function post()
 							<div class="col-lg-10">
 								<h3 class="page-title" align="center">Learning Outcome Assessment Examination </h3>
 </div>      
-                        
-        <div class="alert" id="alert" style="font-size: 38px; color: blue"></div>
-        <div>
+                        <div class="col-lg-2">
                                 <button type="button" class="btn btn-sm btn-default" style="color: red;" id='signal0'><i class="fa fa-signal" aria-hidden="true"></i>&nbsp&nbspNot Connected</button>
 
                                     <button type="button" class="btn btn-sm btn-default" style="color: green;" id='signal1'><i class="fa fa-signal" aria-hidden="true"></i>&nbsp&nbspConnected</button>
                         
         </div>
+        <div class="alert" id="alert" style="font-size: 38px; color: blue"></div>
 
         <div>
                                 <p style="font-weight: bold;">Grade: 1</p>&nbsp&nbsp&nbsp&nbsp<p style="font-weight: bold;">Subject: Mathematics </p>
@@ -177,7 +176,9 @@ function post()
                     </div>	
                     			
 				</div>
-                <button class="btn btn-info btn-lg" name="give" id="submit">Submit</button>
+                <button class="btn btn-info btn-lg" name="give" id='submit'>Submit</button>
+                <button class="btn btn-info btn-lg" id='submit1'>Save</button></td>
+                
                 </form>	
 
 				<!-- Footer -->
@@ -273,6 +274,8 @@ function updateConnectionStatus() {
     if(navigator.onLine) {
         document.getElementById('signal0').style.display = "none";
         document.getElementById('signal1').style.display = "block";
+        document.getElementById('submit').style.display = "none";
+        document.getElementById('submit1').style.display = "none";
     }
     else{
         document.getElementById('signal0').style.display = "block";
