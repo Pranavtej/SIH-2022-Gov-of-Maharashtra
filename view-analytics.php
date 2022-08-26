@@ -11,6 +11,13 @@ $query = mysqli_query($con, "select s.student_name as student_name,s.student_id 
 $q2 = mysqli_query($con, "select loc from learning_outcomes where loc_id='$loc_id'");
 $rrr = mysqli_fetch_assoc($q2);
 
+$kk = array("5","4","3","2","1");
+for($i=0;$i<size($kk);$i++)
+{
+    $ksn = mysqli_query($con, "select count(student_id) as cc from learning_outcomes_credits where student_id='$sid' and subject_id='SUB0104' and credits='$i'");
+    $ksn1 = mysqli_fetch_assoc($ksn);
+    $m[] = $ksn1['cc'];
+}
 
 ?>
 
@@ -113,6 +120,71 @@ $rrr = mysqli_fetch_assoc($q2);
 						</div>					
 					</div>
 				
+                    <div class="col-12 col-lg-12 col-xl-4 d-flex">
+<div class="card flex-fill">
+<div class="card-header">
+<h5 class="card-title">Sports </h5>
+</div>
+
+<!-- <div class="circle-bar circle-bar3">
+<div class="circle-graph3" data-percent="50"> -->
+<!-- <b>50%</b>
+</div> -
+<h2>Score</h2>-->
+
+<div id="chart" >
+<canvas id="ccscore" width="750" height="750"></canvas>
+<!-- <canvas id="ccscore"></canvas> -->
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    
+const ctxcc = document.getElementById('ccscore');
+const myChartcc = new Chart(ctxcc, {
+    type: 'doughnut',
+    data: {
+        labels:  [5,4,3,2,1], 
+        datasets: [{
+            label: 'MARKS SCORED',
+            data: <?php echo json_encode($m)?>,
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        maintainAspectRatio: true,
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+
+</script>
+</div>
+</div>
+</div>
+</div>
+</div>
+
 									
 				</div>
 
