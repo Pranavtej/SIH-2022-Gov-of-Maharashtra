@@ -149,7 +149,14 @@ $query="select S.subject_name, M.marks from exam_marks M,subjects S where M.stud
 						<div class="row">
 							<div class="col-sm-12">
 								<h3 class="page-title">Student Report card</h3>
+								<div class="col-auto text-end float-end ms-auto">
+								  <button  class="btn btn-primary">Print</button>
+								</div>
+									
 								<div id="google_translate_element"></div>
+								
+                                
+												
 								<ul class="breadcrumb">
 									<li class="breadcrumb-item"><a href="">Student</a></li>
 									<li class="breadcrumb-item active">Student Report card</li>
@@ -179,7 +186,7 @@ $query="select S.subject_name, M.marks from exam_marks M,subjects S where M.stud
 										<h4>Z P School</h4>
 										
 										<div class="media mt-3 d-flex">
-											<img src="assets/img/user1.png" class="me-3 flex-shrink-0" alt="...">
+											<img src="assets/img/user.jpg" class="me-3 flex-shrink-0" alt="...">
 											<div class="media-body flex-grow-1">
 												<ul>
                                                     <li>

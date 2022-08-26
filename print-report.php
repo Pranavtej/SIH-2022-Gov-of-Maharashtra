@@ -163,7 +163,7 @@ $query="select S.subject_name, M.marks from exam_marks M,subjects S where M.stud
 										<h4>Z P School</h4>
 										
 										<div class="media mt-3 d-flex">
-											<img src="assets/img/user1.png" class="me-3 flex-shrink-0" alt="...">
+											<img src="assets/img/user.jpg" class="me-3 flex-shrink-0" alt="...">
 											<div class="media-body flex-grow-1">
 												<ul>
                                                     <li>
