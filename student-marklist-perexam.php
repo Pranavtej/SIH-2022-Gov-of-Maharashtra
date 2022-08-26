@@ -69,8 +69,6 @@ $exam_id=$_GET['eid'];
 						<?php
                             //$eid = array($eid);
                             $eid=$_GET['eid'];
-                            while($eid)
-                            {
                                 $i = 0;
                                 $query="select S.subject_name as sn, M.marks as mm from exam_marks M,subjects S where M.student_id='$student_id' and M.subject_id=S.subject_id and eid='$eid'";
                                 $result=mysqli_query($con,$query) or die(mysqli_error);
@@ -108,7 +106,6 @@ $exam_id=$_GET['eid'];
                                             </div>
                                         </div>
                                     </div>';
-                            }
                         ?>
 					</div>
 				
