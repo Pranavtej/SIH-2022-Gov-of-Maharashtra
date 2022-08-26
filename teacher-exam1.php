@@ -88,14 +88,14 @@ function post()
 			?>
 		</script>
 
-        <style>
+        <!-- <style>
             #signal0 {
 				display : none;
 			}
             #signal1 {
 				display : none;
 			}
-        </style>
+        </style> -->
     </head>
     <body>
 		
@@ -141,7 +141,7 @@ function post()
 					<!-- /Page Header -->
 				
                    
-                        <form action="" method="post" id="save-later-form">
+                        <form action="" method="post" id="save-later-form"> 
                         <div class="row">
                             <?php
                                 $i = 0;
