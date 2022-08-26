@@ -84,6 +84,7 @@ $run = mysqli_fetch_array($query);
 													<th>Class</th>
 													<th>Subject</th>
 													<th>Marks Obtained</th>
+													<th>Comparitive Analytics</th>
 													<th>Percentage</th>
 												</tr>
 											</thead>
@@ -106,6 +107,7 @@ $run = mysqli_fetch_array($query);
 															<td>Class 1</td>
 															<td>Mathematics</td>
                                                             <td><a href="view-std.php?sid='.$student_id.'&loc_id='.$d['locid'].'&eid=E10">'.$d['credits'].'/5</a></td>
+															<td><a href="index.php">Press Here</a></td>
 															<td>'.$per.'%</td>
                                                         </tr>';
                                                     }													
