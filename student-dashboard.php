@@ -37,7 +37,12 @@ else{
         $y[] = $data['subject_name'];
         $x[]=$data['marks'];
     }
-
+	foreach($result as $data)
+	{ 
+		if($data['subject_name']!="MARATHI"&&$data['subject_name']!="ENGLISH"&&$data['subject_name']!="HINDI"){
+	   $sub[] = $data['subject_name'];
+	}
+}
 	$query="select m.cocircular_name as cn,c.marks as marks from cocircular_marks c,cocircular m where c.student_id='$student_id' and c.school_id='$school_id' and c.class_id='$class_id' and c.cocircular_id = m.cocircular_id";
     $result=mysqli_query($con,$query) or die(mysqli_error);
      foreach($result as $data)
@@ -104,6 +109,10 @@ else{
             break;
         }
     }
+}
+$sql = mysqli_query($con ,"SELECT (loc.credits/5)*100 as percent  FROM `learning_outcomes_credits` loc , `learning_outcomes` lo where loc.class_id='$class_id' AND loc.school_id='$school_id' and loc.student_id='$student_id' and loc.loc_id = lo.loc_id");
+foreach($sql as $data){
+   $per[]=$data['percent'];
 }
 
 ?>
@@ -408,7 +417,7 @@ else{
 													},
 													options: {
 														//maintainAspectRatio: true,
-														indexAxis: 'y',
+														
 														scales: {
 															y: {
 																beginAtZero: true
@@ -528,12 +537,12 @@ else{
 												const myChart3 = new Chart(ctx3, {
 													type: 'bar',
 													data: {
-														labels: <?php echo json_encode($y) ?>,
+														labels: <?php echo json_encode($sub) ?>,
 														//echo json_encode($y), 
 														datasets: [{
 															label: 'MARKS SCORED',
-															data:<?php echo json_encode($x)?>,
-															labelLinks: ["https//:google.com","https//:youtube.com","https//:heroku.com","https//:nike.com","https//:reeebok.com","https//:amazon.com","https//:google.com"],
+															data:<?php echo json_encode($per)?>,
+															labelLinks: ["view-learning-outcome.php?suid=SUB0604","view-learning-outcome.php?suid=SUB0605","view-learning-outcome.php?suid=SUB0606","view-learning-outcome.php?suid=SUB0607"],
 														//echo json_encode($x),
 
 															backgroundColor: [
