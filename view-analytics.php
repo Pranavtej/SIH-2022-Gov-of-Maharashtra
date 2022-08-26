@@ -6,7 +6,7 @@ $loc_id = $_GET['locid'];
 $eid = $_GET['eid'];
 $sid = $_GET['sid'];
 
-$query = mysqli_query($con, "select s.student_name as student_name,l.credits as credits from student s,learning_outcomes_credits l where l.subject_id='SUB0104' and l.loc_id='$loc_id' and l.student_id = s.student_id order by credits desc");
+$query = mysqli_query($con, "select s.student_name as student_name,s.student_id as sid,l.credits as credits from student s,learning_outcomes_credits l where l.subject_id='SUB0104' and l.loc_id='$loc_id' and l.student_id = s.student_id order by credits desc");
 
 $q2 = mysqli_query($con, "select loc from learning_outcomes where loc_id='$loc_id'");
 $rrr = mysqli_fetch_assoc($q2);
@@ -85,11 +85,24 @@ $rrr = mysqli_fetch_assoc($q2);
                                                     $i = 0;
 													while($ru = mysqli_fetch_assoc($query))
 													{  
-                                                        echo '<tr>
+                                                        if($sid != $ru['sid'])
+                                                        {
+                                                            echo '<tr>
+                                                                <td>'.++$i.'</td>
+                                                                <td>'.$ru['student_name'].'</td>
+                                                                <td>'.$ru['credits'].'</td>
+                                                            </tr>';
+
+                                                        }
+                                                        else
+                                                        {
+                                                            echo '<tr style="color:red;">
                                                             <td>'.++$i.'</td>
                                                             <td>'.$ru['student_name'].'</td>
                                                             <td>'.$ru['credits'].'</td>
                                                         </tr>';
+                                                        }
+                                                        
 													}
                                                 ?>
                                             </tbody>
