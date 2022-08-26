@@ -141,7 +141,7 @@ function post()
 					<!-- /Page Header -->
 				
                    
-                        <form action="" method="post" id="save-later-form">
+                        <form action="" method="post" id="save-later-form"> 
                         <div class="row">
                             <?php
                                 $i = 0;
@@ -283,13 +283,11 @@ window.addEventListener("load", updateConnectionStatus);
 // Attaching event handler for the online event
 window.addEventListener("online", function(e) {
     updateConnectionStatus();
-    hint.innerHTML = "And we're back!";
 });
 
 // Attaching event handler for the offline event
 window.addEventListener("offline", function(e) {        
     updateConnectionStatus();
-    hint.innerHTML = "Hey, it looks like you're offline.";
 });
 
 

@@ -39,7 +39,7 @@ else{
     }
 	foreach($result as $data)
 	{ 
-		if($data['subject_name']!="MARATHI"&&$data['subject_name']!="ENGLISH"&&$data['subject_name']!="HINDI"){
+		if($data['subject_name']!="MARATHI"&&$data['subject_name']!="HINDI"){
 	   $sub[] = $data['subject_name'];
 	}
 }
@@ -540,9 +540,9 @@ foreach($sql as $data){
 														labels: <?php echo json_encode($sub) ?>,
 														//echo json_encode($y), 
 														datasets: [{
-															label: 'MARKS SCORED',
+															label: 'LEARNING OUTCOME PERCENTAGE',
 															data:<?php echo json_encode($per)?>,
-															labelLinks: ["view-learning-outcome.php?suid=SUB0604","view-learning-outcome.php?suid=SUB0605","view-learning-outcome.php?suid=SUB0606","view-learning-outcome.php?suid=SUB0607"],
+															labelLinks: ["view-learning-outcome.php?suid=SUB0603","view-learning-outcome.php?suid=SUB0604","view-learning-outcome.php?suid=SUB0605","view-learning-outcome.php?suid=SUB0606","view-learning-outcome.php?suid=SUB0607"],
 														//echo json_encode($x),
 
 															backgroundColor: [
