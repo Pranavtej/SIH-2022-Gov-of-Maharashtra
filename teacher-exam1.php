@@ -88,14 +88,14 @@ function post()
 			?>
 		</script>
 
-        <!-- <style>
+        <style>
             #signal0 {
 				display : none;
 			}
             #signal1 {
 				display : none;
 			}
-        </style> -->
+        </style>
     </head>
     <body>
 		
@@ -283,13 +283,11 @@ window.addEventListener("load", updateConnectionStatus);
 // Attaching event handler for the online event
 window.addEventListener("online", function(e) {
     updateConnectionStatus();
-    hint.innerHTML = "And we're back!";
 });
 
 // Attaching event handler for the offline event
 window.addEventListener("offline", function(e) {        
     updateConnectionStatus();
-    hint.innerHTML = "Hey, it looks like you're offline.";
 });
 
 
