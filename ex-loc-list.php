@@ -53,7 +53,9 @@ $res=mysqli_query($con,$ace);
 		<!-- Main Wrapper -->
         <div class="main-wrapper">
 		
-			<?php include 'student-menu.php'; ?>
+			
+		<?php include 'teacher-teacher-header.php'; ?>
+			<?php include 'teacher-teacher-sidebar.php'; ?>
 			
 			<!-- Page Wrapper -->
             <div class="page-wrapper">
