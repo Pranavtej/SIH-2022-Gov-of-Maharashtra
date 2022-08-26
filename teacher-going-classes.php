@@ -88,7 +88,7 @@ $run = mysqli_query($con, $sql);
 													{
 														echo '<tr>
 															<td>'.++$i.'</td>
-															<td>'.$run1['subject_name'].'</td>
+															<td><a href="ex-loc-list.php?subject_name='.$run1['subject_name'].'&class='.$run1['class'].'&section='.$run1['section'].'">'.$run1['subject_name'].'</td>
 															<td>'.$run1['class'].'</td>
 															<td>'.$run1['section'].'</td>
 														</tr>';

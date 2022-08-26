@@ -3,15 +3,23 @@
 include 'connect.php';
 
 session_start();
+$teacher_id=$_SESSION['TEACHER_ID'];
+$school_id = $_SESSION['SCHOOL_ID'];
+$class_id = $_SESSION['CLASS_ID'];
 
-$school_id = $_SESSION['SCHOOL_ID']; 
-$teacher_id = $_SESSION['TEACHER_ID'];
+$subject_name=$_GET['subject_name'];
 
-$sql = "select su.subject_id as sid, su.subject_name as subject_name,c.class as class,c.section as section,scst.class_id as class_id 
-		from schoolwise_class_subject_teachers as scst, subjects su ,classes c where scst.school_id = '$school_id' 
-		and scst.teacher_id = '$teacher_id' and su.subject_id = scst.subject_id and scst.class_id = c.class_id";
-$run = mysqli_query($con, $sql);
-
+$class=$_GET['class'];
+$section=$_GET['section'];
+$sql12=mysqli_query($con,"select class_id from classes where class='$class' AND section='$section'");
+$sql12=mysqli_fetch_assoc($sql12);
+$class_id1=$sql12['class_id'];
+$stat="select subject_id from schoolwise_class_subject_teachers where teacher_id='$teacher_id' AND class_id=ANY(select class_id from classes where class='$class' AND section='$section')";
+$run = mysqli_query($con, $stat);
+$run=mysqli_fetch_assoc($run);
+$subject_id=$run['subject_id'];
+$ace="select * from learning_outcomes where subject_id='$subject_id' AND loc_id=ANY(select loc_id from learning_outcomes_credits where subject_id='$subject_id')";
+$res=mysqli_query($con,$ace);
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +27,7 @@ $run = mysqli_query($con, $sql);
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-        <title>Subjects</title>
+        <title>Preskool - Subjects</title>
 		
 		<!-- Favicon -->
         <link rel="shortcut icon" href="assets/img/favicon.png">
@@ -45,8 +53,7 @@ $run = mysqli_query($con, $sql);
 		<!-- Main Wrapper -->
         <div class="main-wrapper">
 		
-			<?php include 'teacher-header.php'; ?>
-			<?php include 'teacher-sidebar.php'; ?>
+			<?php include 'student-menu.php'; ?>
 			
 			<!-- Page Wrapper -->
             <div class="page-wrapper">
@@ -56,10 +63,10 @@ $run = mysqli_query($con, $sql);
 					<div class="page-header">
 						<div class="row align-items-center">
 							<div class="col">
-								<h3 class="page-title">Subjects Teaching</h3>
+								<h3 class="page-title"><?php echo $subject_name ;?></h3>
 								<ul class="breadcrumb">
-									<li class="breadcrumb-item"><a href="#">Teacher Dashboard</a></li>
-									<li class="breadcrumb-item active">Subjects Teaching</li>
+									<li class="breadcrumb-item"><a href="index.html">Analysis</a></li>
+									<li class="breadcrumb-item active">Learning Outcomes</li>
 								</ul>
 							</div>
 						</div>
@@ -76,23 +83,28 @@ $run = mysqli_query($con, $sql);
 											<thead>
 												<tr>
 													<th>S. No.</th>
-													<th>Subject</th>
-													<th>Class</th>
-                                                    <th>Section</th>
+													<th>Loc Id</th>
+													<th>Learning Outcome</th>
+                                                    <th>Average</th>
 												</tr>
 											</thead>
 											<tbody>
                                                 <?php
-													$i = 0;
-													while($run1 = mysqli_fetch_assoc($run))
-													{
-														echo '<tr>
-															<td>'.++$i.'</td>
-															<td><a href="ex-loc-list.php?subject_name='.$run1['subject_name'].'&class='.$run1['class'].'&section='.$run1['section'].'">'.$run1['subject_name'].'</a></td>
-															<td>'.$run1['class'].'</td>
-															<td>'.$run1['section'].'</td>
-														</tr>';
-													}
+                                                    $i = 0;
+                                                    while($data = mysqli_fetch_array($res))
+                                                    {
+														$loc_id=$data['loc_id'];
+														$luffy="select sum(credits) as sum,count(credits) as total from learning_outcomes_credits where school_id='$school_id' AND loc_id='$loc_id'";
+														$san=mysqli_query($con,$luffy);
+														$san=mysqli_fetch_assoc($san);
+														$avg=round($san['sum']/$san['total'],1);
+                                                        echo '<tr>
+                                                        <td>'.++$i.'</td>
+                                                        <td>'.$data['loc_id'].'</td>
+                                                        <td><a href="loc-list.php?subject_id='.$subject_id.'&loc_id='.$loc_id.'&class_id='.$class_id1.'&avg='.$avg.'&subject_name='.$subject_name.'">'.$data['loc'].'</a></td>
+                                                        <td>'.$avg.'/5</td>
+                                                        </tr>';
+                                                    }
                                                 ?>
                                             </tbody>
 										</table>
