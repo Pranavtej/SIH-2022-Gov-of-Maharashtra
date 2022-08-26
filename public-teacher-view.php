@@ -4,24 +4,23 @@ include 'connect.php';
 
 session_start();
 
-$student_id = $_SESSION['STUDENT_ID'];
-$school_id  = $_SESSION['SCHOOL_ID'];
-$class_id = $_SESSION['CLASS_ID'];
+$teacher_id = $_GET['teacher_id'];
 
-$sql = "select * from student where student_id='$student_id' and school_id='$school_id'";
+$sql = "SELECT s.school_id as school_id,s.school_name as school_name, t.teacher_id as teacher_id, t.teacher_name as teacher_name, 
+t.teacher_dob as teacher_dob, t.teacher_email as teacher_email, t.teacher_mob as teacher_mob
+FROM teacher_info t,school_info s WHERE teacher_id='$teacher_id' and s.school_id = t.school_id";
 $run = mysqli_fetch_array(mysqli_query($con, $sql));
-
-$sql2 = "select class,section from classes where class_id='$class_id'";
-$run2 = mysqli_query($con, $sql2);
-$run2 = mysqli_fetch_assoc($run2);
-
+$sid=$run['school_id'];
+$sql1=" SELECT DISTINCT(s.subject_name) from schoolwise_class_subject_teachers sw,subjects s 
+where sw.teacher_id='$teacher_id' and sw.school_id='$sid' and sw.subject_id=s.subject_id ";
+$run1 = mysqli_query($con, $sql1);
 ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-        <title>Preskool - Student Details</title>
+        <title>Teacher Details</title>
 		
 		<!-- Favicon -->
         <link rel="shortcut icon" href="assets/img/favicon.png">
@@ -47,7 +46,7 @@ $run2 = mysqli_fetch_assoc($run2);
 		<!-- Main Wrapper -->
         <div class="main-wrapper">
 		
-			<?php include 'parent-menu.php'; ?>
+			<?php include 'public-menu.php'; ?>
         
 			<!-- Page Wrapper -->
             <div class="page-wrapper">
@@ -56,10 +55,11 @@ $run2 = mysqli_fetch_assoc($run2);
 					<div class="page-header">
 						<div class="row">
 							<div class="col-sm-12">
-								<h3 class="page-title">Student Details</h3>
+								<h3 class="page-title">Teacher Details</h3>
 								<ul class="breadcrumb">
-									<li class="breadcrumb-item"><a href="">Student</a></li>
-									<li class="breadcrumb-item active">Student Details</li>
+                                    <li class="breadcrumb-item"><a href="super-admin-dashboard.php">Dashboard</a></li>
+									<li class="breadcrumb-item"><a href="super-admin-teachers-list.php">Teacher</a></li>
+									<li class="breadcrumb-item active">Teacher Details</li>
 								</ul>
 							</div>
 						</div>
@@ -70,44 +70,40 @@ $run2 = mysqli_fetch_assoc($run2);
 							<div class="row">
 								<div class="col-md-12">
 									<div class="about-info">
-										<h4>About Me</h4>
+										<h4>About Teacher</h4>
 										
 										<div class="media mt-3 d-flex">
 											<img src="assets/img/user.jpg" class="me-3 flex-shrink-0" alt="...">
 											<div class="media-body flex-grow-1">
 												<ul>
                                                     <li>
-                                                        <span class="title-span">Full Name : </span>
-                                                        <span class="info-span"><?php echo $run['student_name']; ?></span>
+                                                        <span class="title-span">Teacher Name :</span>
+                                                        <span class="info-span"><?php echo $run['teacher_name']; ?></span>
                                                     </li>
                                                     <li>
-                                                        <span class="title-span">CLASS : </span>
-                                                        <span class="info-span"><?php echo $run2['class']; ?></span>
+                                                        <span class="title-span">School Name :</span>
+                                                        <span class="info-span"><?php echo $run['school_name']; ?></span>
                                                     </li>
                                                     <li>
-                                                        <span class="title-span">SECTION : </span>
-                                                        <span class="info-span"><?php echo $run2['section']; ?></span>
+                                                        <span class="title-span">Email :</span>
+                                                        <span class="info-span"><?php echo $run['teacher_email']; ?></span>
                                                     </li>
                                                     <li>
-                                                        <span class="title-span">Email : </span>
-                                                        <span class="info-span"><?php echo $run['email']; ?></span>
+                                                        <span class="title-span">DOB :</span>
+                                                        <span class="info-span"><?php echo $run['teacher_dob']; ?></span>
                                                     </li>
                                                     <li>
-                                                        <span class="title-span">Gender : </span>
-                                                        <span class="info-span"><?php
-																					if($run['gender']== 'M')
-																					{
-																						echo "MALE";
-																					} 
-																					else
-																					{
-																						echo "FEMALE";
-																					}
-																				?></span>
+                                                        <span class="title-span">Mobile Number :</span>
+                                                        <span class="info-span"><?php echo $run['teacher_mob']; ?></span>
                                                     </li>
                                                     <li>
-                                                        <span class="title-span">DOB : </span>
-                                                        <span class="info-span"><?php echo $run['date_of_birth']; ?></span>
+                                                        <span class="title-span">SUBJECTS :</span>
+                                                        <?php
+                                                             echo'<ul>';
+                                                             while($data = mysqli_fetch_array($run1)){
+                                                                 echo'<li><span class="info-span">'.$data['subject_name'].'</span></li>';
+                                                                }
+                                                             echo'</ul>';                                                         ?>
                                                     </li>
                                                 </ul>
 											</div>
@@ -116,19 +112,8 @@ $run2 = mysqli_fetch_assoc($run2);
 										<div class="row mt-3">                                           
 										</div>
 										
-																			<div class="row mt-2">
-											<div class="col-md-12">
-												<h5>Permanent Address</h5>
-												<p><?php echo $run['address']; ?></p>
-											</div>                                            
-                                        </div>
-
-                                        <div class="row mt-2">
-											<div class="col-md-12">
-												<h5>Present Address</h5>
-												<p><?php echo $run['address']; ?></p>
-											</div>                                            
-                                        </div>
+									
+										
 									</div>
 								</div>								
 							</div>

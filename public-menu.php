@@ -1,45 +1,35 @@
 
-        <!-- Header -->
-        <div class="header">
-        
+<div class="header">
+			
             <!-- Logo -->
             <div class="header-left">
-                <a href="parent-dashboard.php" class="logo">
+                <a href="super-admin-dashboard.php" class="logo">
                     <img src="assets/img/logo.png" alt="Logo">
                 </a>
-                <a href="parent-dashboard.php" class="logo logo-small">
+                <a href="super-admin-dashboard.php" class="logo logo-small">
                     <img src="assets/img/logo-small.png" alt="Logo" width="30" height="30">
                 </a>
-            </div>
-            <!-- /Logo -->
+</div>
             
             <a href="javascript:void(0);" id="toggle_btn">
                 <i class="fas fa-align-left"></i>
             </a>
-              <!-- Mobile Menu Toggle -->
-              <a class="mobile_btn" id="mobile_btn">
+            
+            
+            <!-- Mobile Menu Toggle -->
+            <a class="mobile_btn" id="mobile_btn">
                 <i class="fas fa-bars"></i>
             </a>
             <!-- /Mobile Menu Toggle -->
             
-            <!-- Search Bar -->
-            <!-- <div class="top-nav-search">
-                <form>
-                    <input type="text" class="form-control" placeholder="Search here">
-                    <button class="btn" type="submit"><i class="fas fa-search"></i></button>
-                </form>
-            </div> -->
-            <!-- /Search Bar -->
-            
             <!-- Header Right Menu -->
             <ul class="nav user-menu">
-                
                 <!-- User Menu -->
                 <li class="nav-item dropdown has-arrow">
                     <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
                         <span class="user-img"><img class="rounded-circle" src="assets/img/profiles/avatar-01.jpg" width="31" alt="Ryan Taylor"></span>
                     </a>
-                    <div class="dropdown-menu">
+                    <!-- <div class="dropdown-menu">
                         <div class="user-header">
                             <div class="avatar avatar-sm">
                                 <img src="assets/img/profiles/avatar-01.jpg" alt="User Image" class="avatar-img rounded-circle">
@@ -50,10 +40,9 @@
                             </div>
                         </div>
                         <a class="dropdown-item" href="profile.html">My Profile</a>
-                        <a class="dropdown-item" href="#">Inbox</a>
                         <a class="dropdown-item" href="logout.php">Logout</a>
                     </div>
-                </li>
+                </li> -->
                 <!-- /User Menu -->
                 
             </ul>
@@ -70,48 +59,47 @@
                         <li class="menu-title"> 
                             <span>Main Menu</span>
                         </li>
-                        <li class="submenu">
-                            <a href="#"><i class="fas fa-user-graduate"></i> <span> Dashboard</span> <span class="menu-arrow"></span></a>
+                        <li class="submenu active">
+                            <a href="#"><i class="fas fa-graduate"></i><span> Public View</span> <span class="menu-arrow"></span></a>
                             <ul>
-                                <!-- <li><a href="index.html">Admin Dashboard</a></li> -->
-                                <!-- <li><a href="teacher-dashboard.html">Teacher Dashboard</a></li> -->
-                                <li><a href="parent-dashboard.php">Parent Dashboard</a></li>
+                                <li><a href="public-view.php" class="active">Public Dashboard</a></li>
                             </ul>
                         </li>
                         <li class="submenu">
-                            <a href="#"><i class="fas fa-user-graduate"></i> <span> Marks</span> <span class="menu-arrow"></span></a>
+                            <a href="#"> <i class="fas fa-building"></i><span> Districts</span> <span class="menu-arrow"></span></a>
                             <ul>
-                                <li><a href="parent-student-marks.php">Marks List</a></li>
+                                <li><a href="public-district-list.php">Districts List</a></li>
+                                <!-- <li><a href="super-admin-add-school.php">Schools Add</a></li> -->
                             </ul>
                         </li>
                         <li class="submenu">
+                            <a href="#"> <i class="fas fa-building"></i><span> Blocks</span> <span class="menu-arrow"></span></a>
+                            <ul>
+                                <li><a href="public-block-list.php">Blocks List</a></li>
+                                <!-- <li><a href="super-admin-add-school.php">Schools Add</a></li> -->
+                            </ul>
+                        </li>
+                        <li class="submenu">
+                            <a href="#"> <i class="fas fa-building"></i><span> Schools</span> <span class="menu-arrow"></span></a>
+                            <ul>
+                                <li><a href="public-school-list.php">Schools List</a></li>
+                                <!-- <li><a href="super-admin-add-school.php">Schools Add</a></li> -->
+                            </ul>
+                        </li>
+                        <li class="submenu">
+                            <a href="#"><i class="fas fa-chalkboard-teacher"></i> <span> Teachers</span> <span class="menu-arrow"></span></a>
+                            <ul>
+                                <li><a href="public-teacher-list.php">Teachers List</a></li>
+                            </ul>
+                        </li>
+                         <li class="submenu">
                             <a href="#"><i class="fas fa-user-graduate"></i> <span> Students</span> <span class="menu-arrow"></span></a>
                             <ul>
-                                <li><a href="parent-student-view.php">Student View</a></li>
+                                <li><a href="public-student-list.php">Students List</a></li>
                             </ul>
                         </li>
-                        <li class="submenu">
-                            <a href="#"><i class="fas fa-book-reader"></i> <span> Subjects</span> <span class="menu-arrow"></span></a>
-                            <ul>
-                                <li><a href="parent-student-subjects.php">Subject List</a></li>
-                            </ul>
-                        </li>
-                        <li class="submenu">
-                            <a href=""><i class="fas fa-book-reader"></i> <span> Assessments</span> <span class="menu-arrow"></span></a>
-                            <ul>
-                                <li><a href="parent-student-assessment.php">Child-
-                                    Assessment</a></li>
-                            </ul>
-                        </li>
-                        <li class="submenu">
-                            <a href="#"><i class="fas fa-user-graduate"></i> <span>Report Card</span> <span class="menu-arrow"></span></a>
-                            <ul>
-                            <li><a href="parent-student-report.php">Academic Report</a></li>
-
-                            </ul>
-                        </li>
-                    </ul>
                 </div>
             </div>
         </div>
         <!-- /Sidebar -->
+        

@@ -4,14 +4,11 @@ include 'connect.php';
 
 session_start();
 
-$student_id = $_SESSION['STUDENT_ID'];
-$school_id  = $_SESSION['SCHOOL_ID'];
-$class_id = $_SESSION['CLASS_ID'];
-
-$sql = "select * from student where student_id='$student_id' and school_id='$school_id'";
+$student_id = $_GET['student_id'];
+$sql = "select * from student where student_id='$student_id'";
 $run = mysqli_fetch_array(mysqli_query($con, $sql));
-
-$sql2 = "select class,section from classes where class_id='$class_id'";
+$cd=$run['class_id'];
+$sql2 = "select class,section from classes where class_id= '$cd'";
 $run2 = mysqli_query($con, $sql2);
 $run2 = mysqli_fetch_assoc($run2);
 
@@ -21,7 +18,7 @@ $run2 = mysqli_fetch_assoc($run2);
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-        <title>Preskool - Student Details</title>
+        <title>Student Details</title>
 		
 		<!-- Favicon -->
         <link rel="shortcut icon" href="assets/img/favicon.png">
@@ -47,7 +44,7 @@ $run2 = mysqli_fetch_assoc($run2);
 		<!-- Main Wrapper -->
         <div class="main-wrapper">
 		
-			<?php include 'parent-menu.php'; ?>
+			<?php include 'district-menu.php'; ?>
         
 			<!-- Page Wrapper -->
             <div class="page-wrapper">
@@ -58,7 +55,8 @@ $run2 = mysqli_fetch_assoc($run2);
 							<div class="col-sm-12">
 								<h3 class="page-title">Student Details</h3>
 								<ul class="breadcrumb">
-									<li class="breadcrumb-item"><a href="">Student</a></li>
+                                    <li class="breadcrumb-item"><a href="super-admin-dashboard.php">Dashboard</a></li>
+									<li class="breadcrumb-item"><a href="super-admin-students-list.php">Student</a></li>
 									<li class="breadcrumb-item active">Student Details</li>
 								</ul>
 							</div>
@@ -116,7 +114,8 @@ $run2 = mysqli_fetch_assoc($run2);
 										<div class="row mt-3">                                           
 										</div>
 										
-																			<div class="row mt-2">
+										
+										<div class="row mt-2">
 											<div class="col-md-12">
 												<h5>Permanent Address</h5>
 												<p><?php echo $run['address']; ?></p>
