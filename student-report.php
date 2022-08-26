@@ -263,6 +263,7 @@ foreach($re9 as $data)
                                                                 <th>S. No.</th>
                                                                 <th>Subject</th>
                                                                 <th>Marks</th>
+																<th>Max Marks</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>';
@@ -273,6 +274,7 @@ foreach($re9 as $data)
                                                                     <td>'.++$i.'</td>
                                                                     <td>'.$data['sn'].'</td>
                                                                     <td>'.$data['mm'].'</td>
+																	<td>100</td>
                                                                 </tr>';
                                                             }
                                 echo '                  </tbody>
