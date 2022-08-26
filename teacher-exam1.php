@@ -176,9 +176,7 @@ function post()
                     </div>	
                     			
 				</div>
-                <button class="btn btn-info btn-lg" name="give" id='submit'>Submit</button>
-                <button class="btn btn-info btn-lg" id='submit1'>Save</button></td>
-                
+                <button class="btn btn-info btn-lg" name="give" id="submit">Submit</button>
                 </form>	
 
 				<!-- Footer -->
@@ -274,8 +272,6 @@ function updateConnectionStatus() {
     if(navigator.onLine) {
         document.getElementById('signal0').style.display = "none";
         document.getElementById('signal1').style.display = "block";
-        document.getElementById('submit').style.display = "none";
-        document.getElementById('submit1').style.display = "none";
     }
     else{
         document.getElementById('signal0').style.display = "block";
