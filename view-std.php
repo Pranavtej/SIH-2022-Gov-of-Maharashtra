@@ -97,11 +97,20 @@ $loc = mysqli_query($con, "SELECT question_id,question,options,loc_id,image_path
                                     if(!empty($run1['image_path']))
                                     {
                                         echo '<img src="exam/img/'.$run1['image_path'].'" alt="image not loaded" class="card-img">';
-                                    }    
+                                    }
                                     echo '<div class="card-body">
                                     <p class="card-text">Right Answer: '.$b['answer'].'</p>
-                                    <p class="card-text">Student Answer: '.$a['answer'].'</p>
-                                    </div>
+                                    <p class="card-text">Student Answer: '.$a['answer'].'</p>';
+                                    if($b['answer']==$a['answer'])
+                                    {
+                                        echo '<p class="card-text" style="color:green">Correct</p>';
+                                    }
+                                    else
+                                    {
+                                        echo '<p class="card-text" style="color:red">Wromg</p>';
+
+                                    }
+                                    echo '</div>
                                     </div>
                                     </div>';
                                 }
