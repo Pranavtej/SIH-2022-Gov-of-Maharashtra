@@ -660,6 +660,10 @@ const myChartcc = new Chart(ctxcc, {
 		
 		<!-- Custom JS -->
 		<script  src="assets/js/script.js"></script>
+
+        <script>
+            setTimeout("print()", 1000);
+        </script>
 		
     </body>
 </html>
