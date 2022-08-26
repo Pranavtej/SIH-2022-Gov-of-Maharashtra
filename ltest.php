@@ -250,9 +250,9 @@ body {
                                     </div>
                                     </div>
                                     </div>
-                                    <div class="col-12 col-md-6 col-lg-4 d-flex" style="background-color: #e6ffff;">
-                                    <div class="card flex-fill" style="background-color:  #e6ffff;">
-                                    <div class="card-header" style="background-color:  #e6ffff;">
+                                    <div class="col-12 col-md-6 col-lg-4 d-flex" >
+                                    <div class="card flex-fill" >
+                                    <div class="card-header" >
                                    <h4> Question 6 : Identify the number by listening to the tiger audio</h4><br>
                                     <h6>(Learning Outcome : able to indentify the numbers)</h6>              
                                     </div><div class="card-body">
