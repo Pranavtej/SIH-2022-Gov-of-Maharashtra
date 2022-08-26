@@ -88,9 +88,10 @@ $r=mysqli_query($con,$q) or die(mysqli_error);
 	}
 
 
-	$sql = mysqli_query($con ,"SELECT (loc.credits/5)*100 as percent  FROM `learning_outcomes_credits` loc , `learning_outcomes` lo where loc.class_id='$class_id' AND loc.school_id='$school_id' and loc.student_id='$student_id' and loc.loc_id = lo.loc_id");
+	$sql = mysqli_query($con ,"SELECT s.subject_name  as subject_name,ROUND(sum(credits)/5) as num,loc.subject_id as subject_id FROM `learning_outcomes_credits` loc,subjects s WHERE class_id='$class_id' and student_id='$student_id' and s.subject_id=loc.subject_id GROUP BY loc.subject_id");
 foreach($sql as $data){
-   $per[]=$data['percent'];
+	$n = $data['num']/5 * 100;
+   $per[]=$n;
 }
 
 $query="select S.subject_name, M.marks from exam_marks M,subjects S where M.student_id='$student_id' and M.subject_id=S.subject_id and eid='$eid'";
@@ -149,7 +150,14 @@ $query="select S.subject_name, M.marks from exam_marks M,subjects S where M.stud
 						<div class="row">
 							<div class="col-sm-12">
 								<h3 class="page-title">Student Report card</h3>
+								<div class="col-auto text-end float-end ms-auto">
+								<input type="button" class="btn btn-primary" value="Print" onclick="window.open('print-report.php','popUpWindow','height=920,width=720,left=100,top=100,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no, status=yes');">
+								</div>
+									
 								<div id="google_translate_element"></div>
+								
+                                
+												
 								<ul class="breadcrumb">
 									<li class="breadcrumb-item"><a href="">Student</a></li>
 									<li class="breadcrumb-item active">Student Report card</li>

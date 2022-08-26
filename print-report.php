@@ -137,22 +137,13 @@ $query="select S.subject_name, M.marks from exam_marks M,subjects S where M.stud
     <body>
 	
 		<!-- Main Wrapper -->
-        <div class="main-wrapper">
-		
-			<?php include 'student-menu.php'; ?>
-        
-			<!-- Page Wrapper -->
-            <div class="page-wrapper">
+
                 <div class="content container-fluid">
 				
 					<div class="page-header">
 						<div class="row">
 							<div class="col-sm-12">
 								<h3 class="page-title">Student Report card</h3>
-								<div id="google_translate_element"></div>
-								<ul class="breadcrumb">
-									<li class="breadcrumb-item"><a href="">Student</a></li>
-									<li class="breadcrumb-item active">Student Report card</li>
 
 
 <div class="card">
@@ -160,7 +151,8 @@ $query="select S.subject_name, M.marks from exam_marks M,subjects S where M.stud
 							<div class="row">
 								<div class="col-md-12">
 									<div class="about-info">
-										<h4>Z P School</h4>
+                                        <h4>GOVERNMENT OF MAHARASHTRA</h4>
+										<h4>Z P School,Pune</h4>
 										
 										<div class="media mt-3 d-flex">
 											<img src="assets/img/user.jpg" class="me-3 flex-shrink-0" alt="...">
@@ -668,6 +660,10 @@ const myChartcc = new Chart(ctxcc, {
 		
 		<!-- Custom JS -->
 		<script  src="assets/js/script.js"></script>
+
+        <script>
+            setTimeout("print()", 1000);
+        </script>
 		
     </body>
 </html>
