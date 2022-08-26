@@ -40,7 +40,7 @@ if(isset($_POST['give']))
             $insert = mysqli_query($con,"INSERT INTO `learning_outcomes_credits` (`school_id`, `class_id`, `student_id`, `subject_id`, `loc_id`, `credits`) VALUES ('$school_id', '$class_id', '$student_id', 'SUB0104', '$locid', $credits)") or die(mysqli_error()); 
         }
     }   
-
+    echo "<script>document.location='index.php'</script>";
 }
 
 ?>
