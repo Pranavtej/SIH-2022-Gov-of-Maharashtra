@@ -36,7 +36,7 @@ else{
     
 // }
 $result=mysqli_query($con,$std) or die(mysqli_error);
-    $counter=mysqli_num_rows($result);
+    
 }
 ?>
 
@@ -48,7 +48,7 @@ $result=mysqli_query($con,$std) or die(mysqli_error);
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-<title>Preskool - Students</title>
+<title>Students</title>
 
 <link rel="shortcut icon" href="assets/img/favicon.png">
 
@@ -86,7 +86,7 @@ include 'pet-menu.php';
 <div class="col">
 <h3 class="page-title">Students</h3>
 <ul class="breadcrumb">
-<li class="breadcrumb-item"><a href="teacher-dashboard.php">Dashboard</a></li>
+<li class="breadcrumb-item"><a href="pet-dashboard.php">Dashboard</a></li>
 <li class="breadcrumb-item active">Students</li>
 </ul>
 </div>
@@ -142,7 +142,7 @@ include 'pet-menu.php';
 </thead>
 <tbody>
 <?php
-foreach ($result as $data) 
+while($data=mysqli_fetch_assoc($result)) 
 {
     $stdname=$data['student_name'];
     $std_id=$data['student_id'];
