@@ -137,10 +137,7 @@ $query="select S.subject_name, M.marks from exam_marks M,subjects S where M.stud
     <body>
 	
 		<!-- Main Wrapper -->
-        <div class="main-wrapper">
-        
-			<!-- Page Wrapper -->
-            <div class="page-wrapper">
+
                 <div class="content container-fluid">
 				
 					<div class="page-header">
