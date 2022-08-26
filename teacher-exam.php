@@ -28,7 +28,7 @@ if(isset($_POST['give']))
                 $ans = $_POST[$ques];
                 $answer = mysqli_query($con, "select answer from teacher_exam_question where question_id='$ques'");
                 $answer2 = mysqli_fetch_assoc($answer);
-                if($answer2['answer'] == strtoupper($ans))
+                if(strtoupper($answer2['answer']) == strtoupper($ans))
                 {
                     $correct += 1;
 

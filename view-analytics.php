@@ -12,11 +12,11 @@ $q2 = mysqli_query($con, "select loc from learning_outcomes where loc_id='$loc_i
 $rrr = mysqli_fetch_assoc($q2);
 
 $kk = array("5","4","3","2","1");
-for($i=0;$i<size($kk);$i++)
+for($i=0;$i<sizeof($kk);$i++)
 {
     $ksn = mysqli_query($con, "select count(student_id) as cc from learning_outcomes_credits where student_id='$sid' and subject_id='SUB0104' and credits='$i'");
-    $ksn1 = mysqli_fetch_assoc($ksn);
-    $m[] = $ksn1['cc'];
+    $ksn1 = mysqli_fetch_array($ksn);
+    $m[$i] = $ksn1['cc'];
 }
 
 ?>
