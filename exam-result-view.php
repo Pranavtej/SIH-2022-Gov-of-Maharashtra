@@ -44,8 +44,8 @@ $run = mysqli_fetch_array($query);
 		<!-- Main Wrapper -->
         <div class="main-wrapper">
 		
-            <?php //include 'teacher-header.php'; ?>
-			<?php //include 'teacher-sidebar.php'; ?>
+            <?php include 'teacher-header.php'; ?>
+			<?php include 'teacher-sidebar.php'; ?>
 
 			
 			<!-- Page Wrapper -->
