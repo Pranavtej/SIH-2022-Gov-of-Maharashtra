@@ -57,20 +57,7 @@
                     <section class="card">
 
                         <div class="card-body">
-                        <div class="row">
-                        <div class="col-lg-4">
-                        </div>
-                        <div class="col-lg-6">
-                        </div>
-                        <div class="col-lg-2">
-                        <div class="card-body" id="signal0">
-                        <button type="button" class="btn btn-sm btn-default" style="color: red;"><i class="fa fa-signal" aria-hidden="true"></i>&nbsp&nbspNot Connected</button>
-                        </div>
-                        <div class="card-body" id="signal1">
-                        <button type="button" class="btn btn-sm btn-default" style="color: green;"><i class="fa fa-signal" aria-hidden="true"></i>&nbsp&nbspConnected</button>
-                        </div>
-                        </div>
-                        </div>
+                
                         <div class="alert class-body" id="alert" style="font-size: 38px; color: blue"></div>
 										<form class="form-horizontal form-bordered" id="save-later-form" action="insert.php" method="post">
                                             
@@ -108,6 +95,12 @@
 													<input type="text" class="form-control" name="ans4" id="ans4" placeholder="Answer 4">
 												</div>
 											</div>
+                                            <div class="card-body" id="signal0">
+                        <button type="button" class="btn btn-sm btn-default" style="color: red;"><i class="fa fa-signal" aria-hidden="true"></i>&nbsp&nbspNot Connected</button>
+                        </div>
+                        <div class="card-body" id="signal1">
+                        <button type="button" class="btn btn-sm btn-default" style="color: green;"><i class="fa fa-signal" aria-hidden="true"></i>&nbsp&nbspConnected</button>
+                        </div>
 
                                             <div class="form-group row">
 												<label class="col-lg-3 control-label text-lg-right pt-2" for="inputDefault">Number BETWEEN 5 and 7</label>
@@ -154,7 +147,7 @@
 submitButton.onclick = event => {
   
         if (navigator.onLine) {
-
+            alert('data saved successfully');
             localStorage.clear()
         }
         else{
