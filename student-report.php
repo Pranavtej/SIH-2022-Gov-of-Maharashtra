@@ -117,18 +117,18 @@ foreach($re9 as $data)
 									<li class="breadcrumb-item"><a href="">Student</a></li>
 									<li class="breadcrumb-item active">Student Report card</li>
 									<script type="text/javascript">
-		function googleTranslateElementInit() {
-			new google.translate.TranslateElement(
-				{pageLanguage: 'en'},
-				'google_translate_element'
-			);
-		}
-	</script>
-	
-	<script type="text/javascript" src=
-"https://translate.google.com/translate_a/element.js?
-		cb=googleTranslateElementInit">
-	</script>
+							function googleTranslateElementInit() {
+								new google.translate.TranslateElement(
+									{pageLanguage: 'en'},
+									'google_translate_element'
+								);
+							}
+						</script>
+						
+						<script type="text/javascript" src=
+					"https://translate.google.com/translate_a/element.js?
+							cb=googleTranslateElementInit">
+						</script>
 								</ul>
 							</div>
 						</div>
@@ -238,6 +238,53 @@ foreach($re9 as $data)
 						</div>
 					</div>	
 					
+					
+					<div class="row">
+						<?php
+                            $eid = array("UT1","FA1","UT2","FA2","AEE");
+                            foreach($eid as $id)
+                            {
+                                $i = 0;
+                                $query="select S.subject_name as sn, M.marks as mm from exam_marks M,subjects S where M.student_id='$student_id' and M.subject_id=S.subject_id and eid='$id'";
+                                $result=mysqli_query($con,$query) or die(mysqli_error);
+                                $query1="select ename from exam where eid='$id'";
+                                $result2=mysqli_query($con,$query1) or die(mysqli_error);
+                                $res = mysqli_fetch_assoc($result2);
+                                echo '<div class="col-sm-12">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h5 class="card-title mb-2">'.$res['ename'].'</h5>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="table-responsive">
+                                                    <table class="table table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>S. No.</th>
+                                                                <th>Subject</th>
+                                                                <th>Marks</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>';
+                                                            while($data = mysqli_fetch_array($result))
+                                                            {
+                                                                echo '
+                                                                <tr>
+                                                                    <td>'.++$i.'</td>
+                                                                    <td>'.$data['sn'].'</td>
+                                                                    <td>'.$data['mm'].'</td>
+                                                                </tr>';
+                                                            }
+                                echo '                  </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>';
+                            }
+                        ?>
+					</div>
+
 					<div class="row">
 					<style>
 						.checked {
@@ -292,6 +339,8 @@ foreach($re9 as $data)
 				<!-- /Footer -->
 			</div>
 			<!-- /Page Wrapper -->
+
+			
 		
         </div>
 		<!-- /Main Wrapper -->
