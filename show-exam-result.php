@@ -33,6 +33,8 @@ session_start();
         <link rel="stylesheet" href="assets/css/style.css">
     </head>
     <body>
+			<?php include 'teacher-header.php'; ?>
+			<?php include 'teacher-sidebar.php'; ?>
 		
 		<!-- Main Wrapper -->
         <div class="main-wrapper">
