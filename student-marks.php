@@ -87,6 +87,7 @@ $student_id = $_SESSION['STUDENT_ID'];
                                                                 <th>S. No.</th>
                                                                 <th>Subject</th>
                                                                 <th>Marks</th>
+                                                                <th>Max Marks</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>';
@@ -97,6 +98,7 @@ $student_id = $_SESSION['STUDENT_ID'];
                                                                     <td>'.++$i.'</td>
                                                                     <td>'.$data['sn'].'</td>
                                                                     <td>'.$data['mm'].'</td>
+                                                                    <td>100</td>
                                                                 </tr>';
                                                             }
                                 echo '                  </tbody>
