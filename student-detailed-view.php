@@ -74,7 +74,7 @@ $sql = mysqli_query($con ,"SELECT lo.loc as locs, loc.credits as credits FROM `l
 												<tr>
 													<th>S. No.</th>
 													<th>Learning Outcome</th>
-													<th>Credit</th>
+													<th>percentage</th>
 												</tr>
 											</thead>
 											<tbody>
