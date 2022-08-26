@@ -5,6 +5,7 @@ include "connect.php";
 $loc_id = $_GET['locid'];
 $eid = $_GET['eid'];
 
+$query = mysqli_query($con, "select s.student_id as student_id,l.credits as credits from student s,learning_outcomes_credits l where l.subject_id='SUB0104' and l.loc_id='$loc_id' and l.student_id = s.student_id order by credits desc");
 
 ?>
 
@@ -59,6 +60,40 @@ $eid = $_GET['eid'];
 						</div>
 					</div>
 					<!-- /Page Header -->
+
+                    <div class="row">
+						<div class="col-sm-12">
+						
+							<div class="card card-table">
+								<div class="card-body">
+									<div class="table-responsive">
+										<table class="table table-hover">
+											<thead>
+												<tr>
+													<th>Rank</th>
+													<th>Student Name</th>
+                                                    <th>Marks Obtained</th>
+												</tr>
+											</thead>
+											<tbody>
+                                                <?php
+                                                    $i = 0;
+													while($ru = mysqli_fetch_assoc($query))
+													{  
+                                                        echo '<tr>
+                                                            <td>'.++$i.'</td>
+                                                            <td>'.$ru['student_name'].'</td>
+                                                            <td>'.$ru['credits'].'</td>
+                                                        </tr>'
+													}
+                                                ?>
+                                            </tbody>
+										</table>
+									</div>
+								</div>
+							</div>							
+						</div>					
+					</div>
 				
 									
 				</div>
