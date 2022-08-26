@@ -18,7 +18,7 @@ if(isset($_POST['give']))
     foreach($loc as $id)
     {
         $locid = $id['loc_id'];
-        $qid = mysqli_query($con, "select question_id as qid from teacher_exam_question where loc_id='$locid'");
+        $qid = mysqli_query($con, "select question_id as qid from teacher_exam_question where loc_id='$locid' and exam_id='$exam_id'");
         {
             $correct = 0;
             $count = 0;
@@ -34,8 +34,7 @@ if(isset($_POST['give']))
 
                 }
                 $count++;
-                 $insert1 = mysqli_query($con,"INSERT INTO `exam_answers` (`student_id`,`school_id`,`exam_id`, `question_id`, `loc_id`,`answer`,`class_id`,`subject_id`) VALUES ('$student_id','$school_id','$exam_id' , '$ques','$locid', '$ans' ,'$class_id','SUB0104')") or die(mysqli_error()); 
-
+                $insert1 = mysqli_query($con,"INSERT INTO `exam_answers` (`student_id`,`school_id`,`exam_id`, `question_id`, `loc_id`,`answer`,`class_id`,`subject_id`) VALUES ('$student_id','$school_id','$exam_id' , '$ques','$locid', '$ans' ,'$class_id','SUB0104')") or die(mysqli_error()); 
             }
             $markperquestion = 5/$count;
             $credits = $markperquestion * $correct;
