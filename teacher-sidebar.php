@@ -60,6 +60,12 @@
 									<li><a href="teacher-create-list.php">Create Exam</a></li>
 								</ul>
 							</li>
+							<li class="submenu">
+								<a href="#"><i class="fas fa-book-reader"></i> <span>View Exam result </span> <span class="menu-arrow"></span></a>
+								<ul>
+									<li><a href="show-exam-result.php">Learning Outcome Assessment for grade 1</a></li>
+								</ul>
+							</li>
 						</ul>
 					</div>
                 </div>

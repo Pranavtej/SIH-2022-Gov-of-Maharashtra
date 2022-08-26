@@ -7,6 +7,9 @@ session_start();
 $student_id = $_GET['sid'];
 $subject_id = $_GET['suid'];
 
+$query = mysqli_query($con,"select student_name as sn from student where student_id='$student_id'");
+$run = mysqli_fetch_array($query);
+
 
 ?>
 
@@ -41,8 +44,8 @@ $subject_id = $_GET['suid'];
 		<!-- Main Wrapper -->
         <div class="main-wrapper">
 		
-            <?php //include 'teacher-header.php'; ?>
-			<?php //include 'teacher-sidebar.php'; ?>
+            <?php include 'teacher-header.php'; ?>
+			<?php include 'teacher-sidebar.php'; ?>
 
 			
 			<!-- Page Wrapper -->
@@ -53,10 +56,10 @@ $subject_id = $_GET['suid'];
 					<div class="page-header">
 						<div class="row align-items-center">
 							<div class="col">
-								<h3 class="page-title">Students</h3>
+								<h3 class="page-title">Student Name: <?php echo $run['sn']; ?></h3>
 								<ul class="breadcrumb">
-									<li class="breadcrumb-item active">Dashboard</a></li>
-									<li class="breadcrumb-item active">Students</li>
+									<li class="breadcrumb-item active">Class 1</a></li>
+									<li class="breadcrumb-item active">Mathematics</li>
 								</ul>
 							</div>
 							<!-- <div class="col-auto text-end float-end ms-auto">
@@ -78,7 +81,10 @@ $subject_id = $_GET['suid'];
 												<tr>
 													<th>S. No.</th>
 													<th>Learning Outcome</th>
-													<th>Credits Obtained</th>
+													<th>Class</th>
+													<th>Subject</th>
+													<th>Marks Obtained</th>
+													<th>Percentage</th>
 												</tr>
 											</thead>
 											<tbody>
@@ -93,10 +99,14 @@ $subject_id = $_GET['suid'];
                                                     $i = 0;
                                                     foreach($run as $d)
                                                     {
+														$per = ($d['credits']/5) * 100;
                                                         echo '<tr>
                                                             <td>'.++$i.'</td>
                                                             <td>'.$d['loc'].'</td>
-                                                            <td>'.$d['credits'].'</td>
+															<td>Class 1</td>
+															<td>Mathematics</td>
+                                                            <td>'.$d['credits'].'/5</td>
+															<td>'.$per.'%</td>
                                                         </tr>';
                                                     }													
 												?>
