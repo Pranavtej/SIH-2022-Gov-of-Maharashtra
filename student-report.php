@@ -324,7 +324,7 @@ foreach($re9 as $data)
 											{
 												echo '<p class="card-text">'.$su['type'].'</p>';
 											}
-											echo '<a class="card-link" href="student-detailed-view.php?suid='.$id['subject_id'].'">View detailed credits</a>
+											echo '<a class="card-link" href="student-detailed-view.php?suid='.$id['subject_id'].'">View detailed outcomes</a>
 										</div>
 									</div>
 								</div>
