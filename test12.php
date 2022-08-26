@@ -154,7 +154,7 @@
 submitButton.onclick = event => {
   
         if (navigator.onLine) {
-
+            alert('data saved successfully');
             localStorage.clear()
         }
         else{
