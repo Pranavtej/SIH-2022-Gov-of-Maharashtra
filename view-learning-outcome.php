@@ -9,8 +9,9 @@ $school_id  = $_SESSION['SCHOOL_ID'];
 $class_id = $_SESSION['CLASS_ID'];
 
 $sql = mysqli_query($con ,"SELECT lo.loc as locs, loc.credits as credits FROM `learning_outcomes_credits` loc , `learning_outcomes` lo where loc.class_id='$class_id' AND loc.school_id='$school_id' and loc.student_id='$student_id' and loc.subject_id='$subject_id' and loc.loc_id = lo.loc_id");
-$sql1=mysqli_query($con,"SELECT subject_name from subjects where subject_id='.$subject_id.'");
-$sql1=mysqli_fetch_assoc($sql1);
+$sql1=mysqli_query($con ,"SELECT subject_name from subjects where subject_id='$subject_id'");
+$sql2=mysqli_fetch_assoc($sql1);
+
 
 ?>
 
@@ -55,7 +56,7 @@ $sql1=mysqli_fetch_assoc($sql1);
 					<div class="page-header">
 						<div class="row align-items-center">
 							<div class="col">
-								<h3 class="page-title">Learning Outcomes</h3>
+								<h3 class="page-title"><?php echo $sql2['subject_name']?> Learning Outcomes</h3>
 								<ul class="breadcrumb">
 									<li class="breadcrumb-item"><a href="teacher-classteacher-dashboard.php">Dashboard</a></li>
 									<li class="breadcrumb-item active">Learning Outcomes</li>
