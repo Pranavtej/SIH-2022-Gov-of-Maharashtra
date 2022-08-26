@@ -138,8 +138,6 @@ $query="select S.subject_name, M.marks from exam_marks M,subjects S where M.stud
 	
 		<!-- Main Wrapper -->
         <div class="main-wrapper">
-		
-			<?php include 'student-menu.php'; ?>
         
 			<!-- Page Wrapper -->
             <div class="page-wrapper">
