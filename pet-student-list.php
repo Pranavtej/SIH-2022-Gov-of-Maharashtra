@@ -86,7 +86,7 @@ include 'pet-menu.php';
 <div class="col">
 <h3 class="page-title">Students</h3>
 <ul class="breadcrumb">
-<li class="breadcrumb-item"><a href="teacher-dashboard.php">Dashboard</a></li>
+<li class="breadcrumb-item"><a href="pet-dashboard.php">Dashboard</a></li>
 <li class="breadcrumb-item active">Students</li>
 </ul>
 </div>
