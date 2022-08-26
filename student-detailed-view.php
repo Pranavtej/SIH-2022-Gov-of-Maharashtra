@@ -88,7 +88,7 @@ $sql = mysqli_query($con ,"SELECT lo.loc as locs, loc.credits as credits FROM `l
 															<td>'.++$i.'</td>
 															<td>'.$run1['locs'].'</td>
 															<td>'.$run1['credits'].'</td>
-															<td>'.$per.'</td>
+															<td>'.$per.'%</td>
 														</tr>';
 													}
                                                 ?>
