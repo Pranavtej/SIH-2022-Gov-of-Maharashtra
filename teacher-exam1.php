@@ -12,7 +12,7 @@ $exam_id = $_GET['eid'];
 
 $loc = mysqli_query($con, "SELECT question_id,question,options,loc_id,image_path FROM `teacher_exam_question` WHERE exam_id='$exam_id' order by question_id");
 
-if(isset($_POST['give']))
+function post()
 {
     $loc = mysqli_query($con, "select distinct(loc_id) as loc_id from teacher_exam_question where exam_id='$exam_id'");
     foreach($loc as $id)
@@ -39,8 +39,7 @@ if(isset($_POST['give']))
             $credits = round($credits);
             $insert = mysqli_query($con,"INSERT INTO `learning_outcomes_credits` (`school_id`, `class_id`, `student_id`, `subject_id`, `loc_id`, `credits`) VALUES ('$school_id', '$class_id', '$student_id', 'SUB0104', '$locid', $credits)") or die(mysqli_error()); 
         }
-    }   
-
+    }
 }
 
 ?>
@@ -73,6 +72,22 @@ if(isset($_POST['give']))
 		
 		<!-- Main CSS -->
         <link rel="stylesheet" href="assets/css/style.css">
+
+        <script>
+			
+			const dataT = [];
+			<?php 
+				$get = "select question_id as ci from teacher_exam_question where exam_id='$exam_id'";
+				$run = mysqli_query($con, $get);
+                $i = 0;
+				while($get = mysqli_fetch_array($run))
+				{
+                    echo 'dataT['.$i.'] = "'.$get['ci'].'";';
+                    $i++;
+				}
+			?>
+		</script>
+
         <style>
             #signal0 {
 				display : none;
@@ -109,7 +124,7 @@ if(isset($_POST['give']))
         <div class="alert" id="alert" style="font-size: 38px; color: blue"></div>
 
         <div>
-                                <p>Grade : 1</p>&nbsp&nbsp&nbsp&nbsp<p>Subject : Mathematics </p>
+                                <p style="font-weight: bold;">Grade: 1</p>&nbsp&nbsp&nbsp&nbsp<p style="font-weight: bold;">Subject: Mathematics </p>
 								<ul class="breadcrumb">
 									
 								</ul>
@@ -151,7 +166,7 @@ if(isset($_POST['give']))
                                         echo '<img src="exam/img/'.$run1['image_path'].'" alt="image not loaded" class="card-img">';
                                     }    
                                     echo '<div class="card-body">
-                                    <p class="card-text">Answer: <input type="text" name="'.$run1['question_id'].'"></p>
+                                    <p class="card-text">Answer: <input type="text" name="'.$run1['question_id'].'" id="'.$run1['question_id'].'"></p>
                                     </div>
                                     </div>
                                     </div>';
@@ -161,7 +176,7 @@ if(isset($_POST['give']))
                     </div>	
                     			
 				</div>
-                <button class="btn btn-info btn-lg" id="submit">Submit</button>
+                <button class="btn btn-info btn-lg" name="give" id="submit">Submit</button>
                 </form>	
 
 				<!-- Footer -->
@@ -211,6 +226,7 @@ const formId = "save-later-form"; // ID of the form
 
 submitButton.onclick = event => {
         if (navigator.onLine) {
+            document.write('<?php post(); ?>');
             alert("Test submitted successfully!!");
             localStorage.clear()
         }
