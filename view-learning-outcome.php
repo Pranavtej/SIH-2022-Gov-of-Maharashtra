@@ -58,7 +58,7 @@ $sql1=mysqli_fetch_assoc($sql1);
 								<h3 class="page-title">Learning Outcomes</h3>
 								<ul class="breadcrumb">
 									<li class="breadcrumb-item"><a href="teacher-classteacher-dashboard.php">Dashboard</a></li>
-									<li class="breadcrumb-item active">Subjects</li>
+									<li class="breadcrumb-item active">Learning Outcomes</li>
 								</ul>
 							</div>
 						</div>
@@ -76,12 +76,13 @@ $sql1=mysqli_fetch_assoc($sql1);
 												<tr>
 													<th>S. No.</th>
 													<th>Learning Outcome</th>
-													<th>Credit</th>
+													<th>Percentage</th>
 												</tr>
 											</thead>
 											<tbody>
                                                 <?php
 													$i = 0;
+                                                   
                                                     
 													while($run1 = mysqli_fetch_assoc($sql))
 													{
