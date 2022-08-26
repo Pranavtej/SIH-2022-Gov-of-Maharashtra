@@ -5,7 +5,7 @@ include "connect.php";
 $loc_id = $_GET['locid'];
 $eid = $_GET['eid'];
 
-$query = mysqli_query($con, "select s.student_id as student_id,l.credits as credits from student s,learning_outcomes_credits l where l.subject_id='SUB0104' and l.loc_id='$loc_id' and l.student_id = s.student_id order by credits desc");
+$query = mysqli_query($con, "select s.student_name as student_name,l.credits as credits from student s,learning_outcomes_credits l where l.subject_id='SUB0104' and l.loc_id='$loc_id' and l.student_id = s.student_id order by credits desc");
 
 ?>
 
