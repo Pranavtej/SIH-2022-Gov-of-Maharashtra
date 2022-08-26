@@ -151,7 +151,7 @@ $query="select S.subject_name, M.marks from exam_marks M,subjects S where M.stud
 							<div class="col-sm-12">
 								<h3 class="page-title">Student Report card</h3>
 								<div class="col-auto text-end float-end ms-auto">
-								  <button  class="btn btn-primary">Print</button>
+								<input type="button" class="btn btn-primary" value="Print" onclick="window.open('print-report.php','popUpWindow','height=920,width=720,left=100,top=100,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no, status=yes');">
 								</div>
 									
 								<div id="google_translate_element"></div>
