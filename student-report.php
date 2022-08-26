@@ -151,8 +151,9 @@ $query="select S.subject_name, M.marks from exam_marks M,subjects S where M.stud
 								<h3 class="page-title">Student Report card</h3>
 								<div id="google_translate_element"></div>
 								<div class="col-auto text-end float-end ms-auto">
+									<div>
 									<button  class="btn btn primary"></button>
-                                <div>
+                                <
 												
 								<ul class="breadcrumb">
 									<li class="breadcrumb-item"><a href="">Student</a></li>
