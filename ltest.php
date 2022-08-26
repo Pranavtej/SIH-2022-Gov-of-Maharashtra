@@ -1,5 +1,49 @@
+<?php
 
+include 'connect.php';
 
+session_start();
+
+$school_id = $_SESSION['SCHOOL_ID'];
+$student_id = $_SESSION['STUDENT_ID'];
+$class_id = $_SESSION['CLASS_ID'];
+
+$exam_id = $_GET['eid'];
+
+//$loc = mysqli_query($con, "SELECT question_id,question,options,loc_id,image_path FROM `teacher_exam_question` WHERE exam_id='$exam_id' order by question_id");
+
+if(isset($_POST['give']))
+{
+    $loc = mysqli_query($con, "select distinct(loc_id) as loc_id from teacher_exam_question where exam_id='$exam_id'");
+    foreach($loc as $id)
+    {
+        $locid = $id['loc_id'];
+        $qid = mysqli_query($con, "select question_id as qid from teacher_exam_question where loc_id='$locid'");
+        {
+            $correct = 0;
+            $count = 0;
+            foreach($qid as $id1)
+            {
+                $ques = $id1['qid'];
+                $ans = $_POST[$ques];
+                $answer = mysqli_query($con, "select answer from teacher_exam_question where question_id='$ques'");
+                $answer2 = mysqli_fetch_assoc($answer);
+                if($answer2['answer'] == strtoupper($ans))
+                {
+                    $correct += 1;
+                }
+                $count++;
+            }
+            $markperquestion = 5/$count;
+            $credits = $markperquestion * $correct;
+            $credits = round($credits);
+            $insert = mysqli_query($con,"INSERT INTO `learning_outcomes_credits` (`school_id`, `class_id`, `student_id`, `subject_id`, `loc_id`, `credits`) VALUES ('$school_id', '$class_id', '$student_id', 'SUB0104', '$locid', $credits)") or die(mysqli_error()); 
+        }
+    }   
+
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -184,7 +228,7 @@ body {
                                     <p class="card-text">Answer: 
 
 1) ONE -
-<select name='q131' id='q131'>
+<select name='Q26' id='q131'>
 <option value='1'>1</option>
 <option value='5'>5</option>
 <option value='8'>8</option>
