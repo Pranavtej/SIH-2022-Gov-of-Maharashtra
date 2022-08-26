@@ -364,7 +364,7 @@ foreach($sql as $data){
 										<div class="card-header">
 											<div class="row align-items-center">
 												<div class="col-6">
-													<h5 class="card-title"><?php echo $ename; ?><img src="https://sih.gov.in/img1/slider/new.gif"></h5>
+													<h5 class="card-title"><?php echo $ename; ?></h5>
 												</div>
 												<!-- <div class="col-6">
 													<ul class="list-inline-group text-end mb-0 ps-0">
