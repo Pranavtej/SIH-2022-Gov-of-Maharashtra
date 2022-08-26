@@ -117,7 +117,7 @@
                         <li class="submenu">
                             <a href="#"><i class="fas fa-user-graduate"></i> <span>Online/Offline</span> <span class="menu-arrow"></span></a>
                             <ul>
-                                <li><a href="teacher-exam1.php?eid=E10">Mock Page</a></li>
+                                <li><a href="test12.php">Mock Page</a></li>
                             </ul>
                         </li>
                     </ul>
