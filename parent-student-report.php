@@ -4,7 +4,7 @@ include 'connect.php';
 
 session_start();
 
-$student_id=$_GET['student_id'];
+$student_id = $_SESSION['STUDENT_ID'];
 $school_id  = $_SESSION['SCHOOL_ID'];
 $class_id = $_SESSION['CLASS_ID'];
 
@@ -101,8 +101,8 @@ foreach($re9 as $data)
 	
 		<!-- Main Wrapper -->
         <div class="main-wrapper">
-		<?php include 'teacher-header.php' ?>
-        <?php include 'teacher-sidebar.php' ?>
+		
+			<?php include 'parent-menu.php'; ?>
         
 			<!-- Page Wrapper -->
             <div class="page-wrapper">
@@ -263,7 +263,6 @@ foreach($re9 as $data)
                                                                 <th>S. No.</th>
                                                                 <th>Subject</th>
                                                                 <th>Marks</th>
-																<th>Max Marks</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>';
@@ -274,8 +273,6 @@ foreach($re9 as $data)
                                                                     <td>'.++$i.'</td>
                                                                     <td>'.$data['sn'].'</td>
                                                                     <td>'.$data['mm'].'</td>
-                                                                    <td>100</td>
-
                                                                 </tr>';
                                                             }
                                 echo '                  </tbody>

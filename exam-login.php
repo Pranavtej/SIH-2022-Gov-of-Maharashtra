@@ -25,7 +25,7 @@ if(isset($_POST['login']))
         $_SESSION['SCHOOL_ID'] = $run['school_id'];
         $_SESSION['STUDENT_ID'] = $_POST['student_id'];
         $_SESSION['CLASS_ID'] = $run['class_id'];
-		echo "<script>document.location='ltest.php?eid=$eid'</script>";
+		echo "<script>document.location='teacher-exam.php?eid=$eid'</script>";
     }
     else
     {

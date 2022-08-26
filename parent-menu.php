@@ -4,10 +4,10 @@
         
             <!-- Logo -->
             <div class="header-left">
-                <a href="student-dashboard.php" class="logo">
+                <a href="parent-dashboard.php" class="logo">
                     <img src="assets/img/logo.png" alt="Logo">
                 </a>
-                <a href="student-dashboard.php" class="logo logo-small">
+                <a href="parent-dashboard.php" class="logo logo-small">
                     <img src="assets/img/logo-small.png" alt="Logo" width="30" height="30">
                 </a>
             </div>
@@ -106,7 +106,7 @@
                         <li class="submenu">
                             <a href="#"><i class="fas fa-user-graduate"></i> <span>Report Card</span> <span class="menu-arrow"></span></a>
                             <ul>
-                            <li><a href="student-report.php">Academic Report</a></li>
+                            <li><a href="parent-student-report.php">Academic Report</a></li>
 
                             </ul>
                         </li>

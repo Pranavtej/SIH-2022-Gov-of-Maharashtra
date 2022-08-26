@@ -74,7 +74,8 @@ $sql = mysqli_query($con ,"SELECT lo.loc as locs, loc.credits as credits FROM `l
 												<tr>
 													<th>S. No.</th>
 													<th>Learning Outcome</th>
-													<th>Credit</th>
+													<th>Marks</th>
+													<th>Percentage</th>
 												</tr>
 											</thead>
 											<tbody>
@@ -82,10 +83,12 @@ $sql = mysqli_query($con ,"SELECT lo.loc as locs, loc.credits as credits FROM `l
 													$i = 0;
 													while($run1 = mysqli_fetch_assoc($sql))
 													{
+														$per=$run1['credits']/5*100;
 														echo '<tr>
 															<td>'.++$i.'</td>
 															<td>'.$run1['locs'].'</td>
 															<td>'.$run1['credits'].'</td>
+															<td>'.$per.'%</td>
 														</tr>';
 													}
                                                 ?>

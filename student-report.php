@@ -70,6 +70,43 @@ foreach($re9 as $data)
 	}
 }
 
+
+$query="select m.cocircular_name as cn,c.marks as marks from cocircular_marks c,cocircular m where c.student_id='$student_id' and c.school_id='$school_id' and c.class_id='$class_id' and c.cocircular_id = m.cocircular_id";
+$result=mysqli_query($con,$query) or die(mysqli_error);
+    foreach($result as $data)
+{
+    $cn[] = $data['cn'];
+    $ma[]=$data['marks'];
+}
+
+$q="SELECT e.marks,s.sport_name FROM sports_marks e,sports s WHERE student_id='$student_id' AND s.sport_id=e.sport_id;";
+$r=mysqli_query($con,$q) or die(mysqli_error);
+	foreach($r as $d)
+	{
+		$l[] = $d['sport_name'];
+		$m[]=$d['marks'];
+	}
+
+
+	$sql = mysqli_query($con ,"SELECT (loc.credits/5)*100 as percent  FROM `learning_outcomes_credits` loc , `learning_outcomes` lo where loc.class_id='$class_id' AND loc.school_id='$school_id' and loc.student_id='$student_id' and loc.loc_id = lo.loc_id");
+foreach($sql as $data){
+   $per[]=$data['percent'];
+}
+
+$query="select S.subject_name, M.marks from exam_marks M,subjects S where M.student_id='$student_id' and M.subject_id=S.subject_id and eid='$eid'";
+    $result=mysqli_query($con,$query) or die(mysqli_error);
+     foreach($result as $data)
+     {
+        $y[] = $data['subject_name'];
+        $x[]=$data['marks'];
+    }
+	foreach($result as $data)
+	{ 
+		if($data['subject_name']!="MARATHI"&&$data['subject_name']!="HINDI"){
+	   $sub[] = $data['subject_name'];
+	}
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -117,18 +154,18 @@ foreach($re9 as $data)
 									<li class="breadcrumb-item"><a href="">Student</a></li>
 									<li class="breadcrumb-item active">Student Report card</li>
 									<script type="text/javascript">
-		function googleTranslateElementInit() {
-			new google.translate.TranslateElement(
-				{pageLanguage: 'en'},
-				'google_translate_element'
-			);
-		}
-	</script>
-	
-	<script type="text/javascript" src=
-"https://translate.google.com/translate_a/element.js?
-		cb=googleTranslateElementInit">
-	</script>
+							function googleTranslateElementInit() {
+								new google.translate.TranslateElement(
+									{pageLanguage: 'en'},
+									'google_translate_element'
+								);
+							}
+						</script>
+						
+						<script type="text/javascript" src=
+					"https://translate.google.com/translate_a/element.js?
+							cb=googleTranslateElementInit">
+						</script>
 								</ul>
 							</div>
 						</div>
@@ -238,6 +275,55 @@ foreach($re9 as $data)
 						</div>
 					</div>	
 					
+					
+					<div class="row">
+						<?php
+                            $eid = array("UT1","FA1","UT2","FA2","AEE");
+                            foreach($eid as $id)
+                            {
+                                $i = 0;
+                                $query="select S.subject_name as sn, M.marks as mm from exam_marks M,subjects S where M.student_id='$student_id' and M.subject_id=S.subject_id and eid='$id'";
+                                $result=mysqli_query($con,$query) or die(mysqli_error);
+                                $query1="select ename from exam where eid='$id'";
+                                $result2=mysqli_query($con,$query1) or die(mysqli_error);
+                                $res = mysqli_fetch_assoc($result2);
+                                echo '<div class="col-sm-12">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h5 class="card-title mb-2">'.$res['ename'].'</h5>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="table-responsive">
+                                                    <table class="table table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>S. No.</th>
+                                                                <th>Subject</th>
+                                                                <th>Marks</th>
+																<th>Max Marks</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>';
+                                                            while($data = mysqli_fetch_array($result))
+                                                            {
+                                                                echo '
+                                                                <tr>
+                                                                    <td>'.++$i.'</td>
+                                                                    <td>'.$data['sn'].'</td>
+                                                                    <td>'.$data['mm'].'</td>
+																	<td>100</td>
+                                                                </tr>';
+                                                            }
+                                echo '                  </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>';
+                            }
+                        ?>
+					</div>
+
 					<div class="row">
 					<style>
 						.checked {
@@ -275,7 +361,7 @@ foreach($re9 as $data)
 											{
 												echo '<p class="card-text">'.$su['type'].'</p>';
 											}
-											echo '<a class="card-link" href="student-detailed-view.php?suid='.$id['subject_id'].'">View detailed credits</a>
+											echo '<a class="card-link" href="student-detailed-view.php?suid='.$id['subject_id'].'">View detailed outcomes</a>
 										</div>
 									</div>
 								</div>
@@ -283,7 +369,296 @@ foreach($re9 as $data)
 							}
 						?>
 					</div>
+
+					<div class="row">
+								<div class="col-12 col-lg-12 col-xl-8 d-flex">
+									<div class="card flex-fill">
+										<div class="card-header">
+											<div class="row align-items-center">
+												<div class="col-6">
+													<h5 class="card-title">Learning-Outcome Activity</h5>
+												</div>
+												<!-- <div class="col-6">
+													<ul class="list-inline-group text-end mb-0 ps-0">
+														<li class="list-inline-item">
+															  <div class="form-group mb-0 amount-spent-select">
+																<select class="form-control form-control-sm form-select">
+																  <option>Weekly</option>
+																  <option>Monthly</option>
+																  <option>Yearly</option>
+																</select>
+															</div>
+														</li>
+													</ul>                                        
+												</div> -->
+											</div>						
+										</div>
+										<div class="card-body">
+                                        <canvas id="lescore"></canvas>
+                                            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                                            <script>
+												// m = JSON.parse(localStorage.m);
+												const ctx3 = document.getElementById('lescore');
+												const myChart3 = new Chart(ctx3, {
+													type: 'bar',
+													data: {
+														labels: <?php echo json_encode($sub) ?>,
+														//echo json_encode($y), 
+														datasets: [{
+															label: 'LEARNING OUTCOME PERCENTAGE',
+															data:<?php echo json_encode($per)?>,
+															labelLinks: ["view-learning-outcome.php?suid=SUB0603","view-learning-outcome.php?suid=SUB0604","view-learning-outcome.php?suid=SUB0605","view-learning-outcome.php?suid=SUB0606","view-learning-outcome.php?suid=SUB0607"],
+														//echo json_encode($x),
+
+															backgroundColor: [
+																'rgba(255, 99, 132, 0.2)',
+																'rgba(54, 162, 235, 0.2)',
+																'rgba(255, 206, 86, 0.2)',
+																'rgba(75, 192, 192, 0.2)',
+																'rgba(153, 102, 255, 0.2)',
+																'rgba(255, 159, 64, 0.2)'
+															],
+															borderColor: [
+																'rgba(255, 99, 132, 1)',
+																'rgba(54, 162, 235, 1)',
+																'rgba(255, 206, 86, 1)',
+																'rgba(75, 192, 192, 1)',
+																'rgba(153, 102, 255, 1)',
+																'rgba(255, 159, 64, 1)'
+															],
+															borderWidth: 1
+														}]
+													},
+													options: {
+														//maintainAspectRatio: true,
+														indexAxis:'y',
+														scales: {
+															y: {
+																beginAtZero: true
+															}
+														}
+													}
+												});
+												myChart3.canvas.addEventListener('click',(e) => {
+                                                clickableScales(myChart3,e)
+                                                   });
+                                                   function clickableScales(chart,click){
+    const{ctx,canvas,scales:{x,y}}=chart;
+   const top=y.top
+  const left=y.left
+  const right=y.right
+  const bottom=y.bottom
+  const height=y.height/ y.ticks.length;
+  // mouse coordinates
+  let rect=canvas.getBoundingClientRect();
+  const xCoor=click.clientX-rect.left;
+  const yCoor=click.clientY-rect.top;
+  for(let i=0;i < y.ticks.length;i++){
+    if(xCoor>=left && xCoor<=right && yCoor>=top+(height*i)&&
+       yCoor<=top+height+(height*i)){
+    window.open(chart.data.datasets[0].labelLinks[i]);
+      
+}
+   }
+}
+											</script>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-12 col-lg-12 col-xl-4 d-flex">
+									<div class="card flex-fill">
+										<div class="card-header">
+											<h5 class="card-title"></h5>
+										</div>
+										<div class="card-body">
+											<div class="teaching-card">
+												<ul class="activity-feed">
+													<li class="feed-item">
+														<div class="feed-date1">Current Academic Year 2021-2022 </div>
+														<style>
+															.checked {
+																color: orange;
+																}
+														</style>
+														<?php
+															$exam = array("UT1","FA1","UT2","FA2","AEE");
+															foreach($exam as $eid)
+															{
+																$qu1="select e.total as total,ex.ename as ename from exam_totals e, exam ex where e.eid='$eid' and e.student_id='$student_id' and e.eid = ex.eid";
+    															$re1=mysqli_query($con,$qu1);
+																$re1 = mysqli_fetch_assoc($re1);
+																echo '
+																<span class="feed-text1"><a>'.$re1['ename'].'</a></span>
+																<p><span><a href="student-marklist-perexam.php?eid='.$eid.'">'.$re1['total'].'</span></p>';
+															}
+														?>
+													</li>
+													<li class="feed-item">
+														<div class="feed-date1">old  Acdemic Year</div>
+														<span class="feed-text1"><a>Score</a></span>
+														<p>Completed</p>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+
+
+
+								<div class="row">
+<div class="col-12 col-lg-12 col-xl-8 d-flex">
+<div class="card flex-fill">
+<div class="card-header">
+<div class="row align-items-center">
+<div class="col-6">
+<h5 class="card-title">cocircular</h5>
+</div>
+<div class="col-6">
+<ul class="list-inline-group text-end mb-0 ps-0">
+<li class="list-inline-item">
+<!-- <div class="form-group mb-0 amount-spent-select"> -->
+<!-- <select class="form-control form-control-sm form-select">
+<option>Weekly</option>
+<option>Monthly</option>
+<option>Yearly</option>
+</select> -->
+<!-- </div> -->
+</li>
+</ul>
+</div>
+</div>
+</div> 
+<div  id="chart">
+
+<canvas id="cscore"></canvas>
+<!-- <canvas id="ccscore"></canvas> -->
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    
+const ctxc = document.getElementById('cscore');
+const myChartc = new Chart(ctxc, {
+    type: 'pie',
+    data: {
+        labels:  <?php echo json_encode($cn)?>, 
+        datasets: [{
+            label: 'MARKS SCORED',
+            data: <?php echo json_encode($ma)?>,
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+					// 'rgb(255, 99, 132)',
+					// 'rgb(54, 162, 235)',
+					// 'rgb(255, 205, 86)',
+					// 'rgb(255, 99, 13)',
+					// 'rgb(54, 162, 23)',
+					// 'rgb(255, 205, 8)',
+					// 'rgb(255, 205, 899)'super-admin-add-school.php
+
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        maintainAspectRatio: false,
+        scales: {
+            
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+
+</script>
+
+</div>
+</div> 
+<div class="col-12 col-lg-12 col-xl-4 d-flex">
+<div class="card flex-fill">
+<div class="card-header">
+<h5 class="card-title">Sports</h5>
+</div>
+
+<!-- <div class="circle-bar circle-bar3">
+<div class="circle-graph3" data-percent="50"> -->
+<!-- <b>50%</b>
+</div> -
+<h2>Score</h2>
+<h2><?php echo $zzz['total']; ?></h2>-->
+<div id="chart" >
+<canvas id="ccscore" width="750" height="750"></canvas>
+<!-- <canvas id="ccscore"></canvas> -->
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    
+const ctxcc = document.getElementById('ccscore');
+const myChartcc = new Chart(ctxcc, {
+    type: 'doughnut',
+    data: {
+        labels:  <?php echo json_encode($l)?>, 
+        datasets: [{
+            label: 'MARKS SCORED',
+            data: <?php echo json_encode($m)?>,
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        maintainAspectRatio: true,
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+
+</script>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+				
 				</div>
+
+				
 				
 				<!-- Footer -->
 				<!-- <footer>
@@ -292,6 +667,8 @@ foreach($re9 as $data)
 				<!-- /Footer -->
 			</div>
 			<!-- /Page Wrapper -->
+
+			
 		
         </div>
 		<!-- /Main Wrapper -->

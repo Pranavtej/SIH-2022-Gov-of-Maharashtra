@@ -9,6 +9,8 @@ $school_id  = $_SESSION['SCHOOL_ID'];
 $class_id = $_SESSION['CLASS_ID'];
 $sql3=mysqli_query($con,"select * from student where student_id='$student_id'");
 $sql4=mysqli_fetch_assoc($sql3);
+$sql5=mysqli_query($con,"select class from classes where class_id='$class_id'");
+$sql6=mysqli_fetch_assoc($sql5);
 $sql = mysqli_query($con ,"SELECT lo.loc as locs, loc.credits as credits FROM `learning_outcomes_credits` loc , `learning_outcomes` lo where loc.class_id='$class_id' AND loc.school_id='$school_id' and loc.student_id='$student_id' and loc.subject_id='$subject_id' and loc.loc_id = lo.loc_id");
 $sql1=mysqli_query($con ,"SELECT subject_name from subjects where subject_id='$subject_id'");
 $sql2=mysqli_fetch_assoc($sql1);
@@ -73,7 +75,8 @@ $sql2=mysqli_fetch_assoc($sql1);
 				
 					<div class="row">
 						<div class="col-sm-12">
-                        <h7 >Student Name : <?php echo $sql4['student_name']?> </h7>
+                        <h3 >Student Name : <?php echo $sql4['student_name']?> </h3>
+						<h4 >Class        : <?php echo $sql6['class']?> </h4>
                         <br>
 							<div class="card card-table">
 								<div class="card-body">
@@ -83,6 +86,7 @@ $sql2=mysqli_fetch_assoc($sql1);
 												<tr>
 													<th>S. No.</th>
 													<th>Learning Outcome</th>
+													<th>Marks</th>
 													<th>Percentage</th>
 												</tr>
 											</thead>
@@ -97,6 +101,7 @@ $sql2=mysqli_fetch_assoc($sql1);
 														echo '<tr>
 															<td>'.++$i.'</td>
 															<td>'.$run1['locs'].'</td>
+															<td>'.$run1['credits'].'</td>
 															<td>'.$r.'</td>
 														</tr>';
 													}

@@ -11,7 +11,7 @@ else{
 	$class_id = $_SESSION['CLASS_ID'];
 	$school_id = $_SESSION['SCHOOL_ID'];
  
-    $sql="select * from student where student_id='$student_id'";
+    $sql="select s.*,c.class,c.section from student s,classes c where s.student_id='$student_id' and s.class_id=c.class_id";
     $run = mysqli_query($con,$sql)or die(''.__LINE__.'<br>'.mysqli_error($con));
     $run = mysqli_fetch_assoc($run);
     if(!empty($run))
@@ -150,6 +150,8 @@ else{
 						<div class="row">
 							<div class="col-sm-12">
 								<h3 class="page-title">Welcome Parent !!</h3>
+								<h4>Student name:<?php echo $student_name;?></h4>
+								<h6>Student name:<?php echo $run['class'].'-'.$run['section'];?></h6>
                                 </h3>
 								<ul class="breadcrumb">
 									<li class="breadcrumb-item"><a href="">Dashboard</a></li>
@@ -370,10 +372,11 @@ else{
 									</div>
 								</div>
 								
+								
 								<div class="col-12 col-lg-12 col-xl-4 d-flex">
 									<div class="card flex-fill">
 										<div class="card-header">
-											<h5 class="card-title">Learning History</h5>
+											<h5 class="card-title"></h5>
 										</div>
 										<div class="card-body">
 											<div class="teaching-card">
@@ -394,7 +397,7 @@ else{
 																$re1 = mysqli_fetch_assoc($re1);
 																echo '
 																<span class="feed-text1"><a>'.$re1['ename'].'</a></span>
-																<p><span>'.$re1['total'].'</span></p>';
+																<p><span><a href="parent-student-marklist-perexam.php?eid='.$eid.'">'.$re1['total'].'</span></p>';
 															}
 														?>
 													</li>
@@ -450,7 +453,7 @@ else{
 <div class="card-header">
 <div class="row align-items-center">
 <div class="col-6">
-<h5 class="card-title">Academeic Marks</h5>
+<h5 class="card-title">Cocurricular Marks</h5>
 </div>
 <div class="col-6">
 <ul class="list-inline-group text-end mb-0 ps-0">

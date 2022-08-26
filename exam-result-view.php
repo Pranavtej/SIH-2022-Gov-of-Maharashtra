@@ -84,6 +84,7 @@ $run = mysqli_fetch_array($query);
 													<th>Class</th>
 													<th>Subject</th>
 													<th>Marks Obtained</th>
+													<th>Comparitive Analytics</th>
 													<th>Percentage</th>
 												</tr>
 											</thead>
@@ -94,7 +95,7 @@ $run = mysqli_fetch_array($query);
 													}
 											</style>
 												<?php
-                                                    $query = "select o.loc as loc,l.credits as credits from learning_outcomes_credits l,learning_outcomes o where l.student_id = '$student_id' and l.subject_id='$subject_id' and l.loc_id = o.loc_id";
+                                                    $query = "select o.loc as loc,o.loc_id as locid,l.credits as credits from learning_outcomes_credits l,learning_outcomes o where l.student_id = '$student_id' and l.subject_id='$subject_id' and l.loc_id = o.loc_id";
                                                     $run = mysqli_query($con, $query);
                                                     $i = 0;
                                                     foreach($run as $d)
@@ -105,7 +106,8 @@ $run = mysqli_fetch_array($query);
                                                             <td>'.$d['loc'].'</td>
 															<td>Class 1</td>
 															<td>Mathematics</td>
-                                                            <td>'.$d['credits'].'/5</td>
+                                                            <td><a href="view-std.php?sid='.$student_id.'&loc_id='.$d['locid'].'&eid=E10">'.$d['credits'].'/5</a></td>
+															<td><a href="index.php">Press Here</a></td>
 															<td>'.$per.'%</td>
                                                         </tr>';
                                                     }													

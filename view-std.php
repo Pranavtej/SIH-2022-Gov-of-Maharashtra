@@ -2,48 +2,13 @@
 
 include 'connect.php';
 
-session_start();
-
-$school_id = $_SESSION['SCHOOL_ID'];
-$student_id = $_SESSION['STUDENT_ID'];
-$class_id = $_SESSION['CLASS_ID'];
-
+$student_id = $_GET['sid']; 
+$loc_id = $_GET['loc_id'];
 $exam_id = $_GET['eid'];
 
-$loc = mysqli_query($con, "SELECT question_id,question,options,loc_id,image_path FROM `teacher_exam_question` WHERE exam_id='$exam_id' order by question_id");
 
-if(isset($_POST['give']))
-{
-    $loc = mysqli_query($con, "select distinct(loc_id) as loc_id from teacher_exam_question where exam_id='$exam_id'");
-    foreach($loc as $id)
-    {
-        $locid = $id['loc_id'];
-        $qid = mysqli_query($con, "select question_id as qid from teacher_exam_question where loc_id='$locid' and exam_id='$exam_id'");
-        {
-            $correct = 0;
-            $count = 0;
-            foreach($qid as $id1)
-            {
-                $ques = $id1['qid'];
-                $ans = $_POST[$ques];
-                $answer = mysqli_query($con, "select answer from teacher_exam_question where question_id='$ques'");
-                $answer2 = mysqli_fetch_assoc($answer);
-                if($answer2['answer'] == strtoupper($ans))
-                {
-                    $correct += 1;
+$loc = mysqli_query($con, "SELECT question_id,question,options,loc_id,image_path FROM `teacher_exam_question` WHERE exam_id='$exam_id' and loc_id='$loc_id' order by question_id");
 
-                }
-                $count++;
-                $insert1 = mysqli_query($con,"INSERT INTO `exam_answers` (`student_id`,`school_id`,`exam_id`, `question_id`, `loc_id`,`answer`,`class_id`,`subject_id`) VALUES ('$student_id','$school_id','$exam_id' , '$ques','$locid', '$ans' ,'$class_id','SUB0104')") or die(mysqli_error()); 
-            }
-            $markperquestion = 5/$count;
-            $credits = $markperquestion * $correct;
-            $credits = round($credits);
-            $insert = mysqli_query($con,"INSERT INTO `learning_outcomes_credits` (`school_id`, `class_id`, `student_id`, `subject_id`, `loc_id`, `credits`) VALUES ('$school_id', '$class_id', '$student_id', 'SUB0104', '$locid', $credits)") or die(mysqli_error()); 
-        }
-    }   
-
-}
 
 ?>
 
@@ -104,22 +69,27 @@ if(isset($_POST['give']))
 					</div>
 					<!-- /Page Header -->
 				
-                   
-                        <form action="" method="post">
+
                         <div class="row">
                             <?php
                                 $i = 0;
                                 $j = 1;
                                 while($run1 = mysqli_fetch_assoc($loc))
                                 {
+                                    $qid = $run1['question_id'];
                                     $query = mysqli_query($con, "select loc from learning_outcomes where loc_id='{$run1['loc_id']}'");
-                                    $a = mysqli_fetch_assoc($query);
+                                    $aa = mysqli_fetch_assoc($query);
+                                    $query2 = mysqli_query($con,"select answer from exam_answers where exam_id='$exam_id' and student_id='$student_id' and question_id='$qid'");
+                                    $a = mysqli_fetch_assoc($query2);
+                                    $query3 = mysqli_query($con, "select answer from teacher_exam_question where exam_id='$exam_id' and question_id='$qid'");
+                                    $b = mysqli_fetch_assoc($query3);
+
                                     echo'
                                     <div class="col-12 col-md-6 col-lg-4 d-flex">
                                     <div class="card flex-fill">
                                     <div class="card-header">
                                    <h4> Question '.$j++.': '.$run1['question'].'</h4><br>
-                                    <h6>(Learning Outcome : '.$a['loc'].')</h6>              
+                                    <h6>(Learning Outcome : '.$aa['loc'].')</h6>              
                                     </div>';
                                     if(!empty($run1['options']))
                                     {
@@ -128,10 +98,20 @@ if(isset($_POST['give']))
                                     if(!empty($run1['image_path']))
                                     {
                                         echo '<img src="exam/img/'.$run1['image_path'].'" alt="image not loaded" class="card-img">';
-                                    }    
+                                    }
                                     echo '<div class="card-body">
-                                    <p class="card-text">Answer: <input type="text" name="'.$run1['question_id'].'"></p>
-                                    </div>
+                                    <p class="card-text">Right Answer: '.$b['answer'].'</p>
+                                    <p class="card-text">Student Answer: '.$a['answer'].'</p>';
+                                    if($b['answer']==$a['answer'])
+                                    {
+                                        echo '<p class="card-text" style="color:green"><b>Correct</b></p>';
+                                    }
+                                    else
+                                    {
+                                        echo '<p class="card-text" style="color:red"><b>Wrong</b></p>';
+
+                                    }
+                                    echo '</div>
                                     </div>
                                     </div>';
                                 }
@@ -140,8 +120,7 @@ if(isset($_POST['give']))
                     </div>	
                     			
 				</div>
-                <input type="submit" class="btn btn-primary" name="give">
-                </form>	
+
 
 				<!-- Footer -->
 				<!-- <footer>

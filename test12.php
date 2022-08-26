@@ -47,37 +47,27 @@
             #signal1 {
 				display : none;
 			}
+      label{
+        color : black;
+      }
         </style>
 
 	</head>
 <body>
-                                <section class="card">
+                    <section class="card">
 
-                                    <div class="card-body">
-                                    <div class="row">
-                                    <div class="col-lg-4">
-                                    </div>
-                                    <div class="col-lg-6">
-                                    </div>
-                                    <div class="col-lg-2">
-                                    <div class="card-body" id="signal0">
-                                    <button type="button" class="btn btn-sm btn-default" style="color: red;"><i class="fa fa-signal" aria-hidden="true"></i>&nbsp&nbspNot Connected</button>
-                                    </div>
-                                    <div class="card-body" id="signal1">
-                                    <button type="button" class="btn btn-sm btn-default" style="color: green;"><i class="fa fa-signal" aria-hidden="true"></i>&nbsp&nbspConnected</button>
-                                    </div>
-                                    </div>
-                                    </div>
-                                    <div class="alert" id="alert" style="font-size: 38px; color: blue"></div>
-										<form class="form-horizontal form-bordered" id="save-later-form" method="get">
+                        <div class="card-body">
+                
+                        <div class="alert class-body" id="alert" style="font-size: 38px; color: blue"></div>
+										<form class="form-horizontal form-bordered" id="save-later-form" action="insert.php" method="post">
                                             
                                             <div class="form-group row">
 												<label class="col-lg-3 control-label text-lg-right pt-2" for="inputDefault"></label>
 												<div class="col-lg-6">
-                                                <h2>Your Test</h2>
+                        <h2>Your Test</h2>
 												</div>
 											</div>
-
+                      
 											<div class="form-group row">
 												<label class="col-lg-3 control-label text-lg-right pt-2" for="inputDefault">2 +13 =</label>
 												<div class="col-lg-6">
@@ -86,7 +76,7 @@
 											</div>
 						
 											<div class="form-group row">
-												<label class="col-lg-3 control-label text-lg-right pt-2" for="inputDefault">11 IS GREATER THAN 12</label>
+												<label class="col-lg-3 control-label text-lg-right pt-2" for="inputDefault">What comes AFTER 11</label>
 												<div class="col-lg-6">
 													<input type="text" class="form-control" name="ans2" id="ans2" placeholder="Answer 1">
 												</div>
@@ -105,9 +95,15 @@
 													<input type="text" class="form-control" name="ans4" id="ans4" placeholder="Answer 4">
 												</div>
 											</div>
+                                            <div class="card-body" id="signal0">
+                        <button type="button" class="btn btn-sm btn-default" style="color: red;"><i class="fa fa-signal" aria-hidden="true"></i>&nbsp&nbspNot Connected</button>
+                        </div>
+                        <div class="card-body" id="signal1">
+                        <button type="button" class="btn btn-sm btn-default" style="color: green;"><i class="fa fa-signal" aria-hidden="true"></i>&nbsp&nbspConnected</button>
+                        </div>
 
                                             <div class="form-group row">
-												<label class="col-lg-3 control-label text-lg-right pt-2" for="inputDefault">5 is LESS THAN 7</label>
+												<label class="col-lg-3 control-label text-lg-right pt-2" for="inputDefault">Number BETWEEN 5 and 7</label>
 												<div class="col-lg-6">
 													<input type="text" class="form-control" name="ans5" id="ans5" placeholder="Answer 5">
 												</div>
@@ -118,7 +114,7 @@
 												<div class="col-lg-6">
                                                         <!-- <button class="btn btn-success btn-lg" id="save">Save as Draft</button> -->
                                                         <!-- &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp -->
-                                                        <button class="btn btn-info btn-lg" id="submit">Submit</button>
+                                                        <button class="btn btn-info btn-lg" name="submit" id="submit">Submit</button>
 												</div>
                                             </div>
 						
@@ -149,15 +145,16 @@
 };
 
 submitButton.onclick = event => {
+  
         if (navigator.onLine) {
-            alert("Test submitted successfully!!");
+            alert('data saved successfully');
             localStorage.clear()
         }
         else{
             event.preventDefault();
             data = getFormData();
             localStorage.setItem(formIdentifier, JSON.stringify(data[formIdentifier]));
-            const message = "Form draft has been saved!";
+            const message = "Form draft has been saved locally!";
             displayAlert(message);
 
         }
