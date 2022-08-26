@@ -8,7 +8,9 @@ $student_id = $_SESSION['STUDENT_ID'];
 $school_id  = $_SESSION['SCHOOL_ID'];
 $class_id = $_SESSION['CLASS_ID'];
 
-$sql = mysqli_query($con ,"SELECT lo.loc as locs, loc.credits as credits FROM `learning_outcomes_credits` loc , `learning_outcomes` lo where loc.class_id='$class_id' AND loc.school_id='$school_id' and loc.student_id='$student_id' and loc.subject_id='$subject_id' and loc.loc_id = lo.loc_id")
+$sql = mysqli_query($con ,"SELECT lo.loc as locs, loc.credits as credits FROM `learning_outcomes_credits` loc , `learning_outcomes` lo where loc.class_id='$class_id' AND loc.school_id='$school_id' and loc.student_id='$student_id' and loc.subject_id='$subject_id' and loc.loc_id = lo.loc_id");
+$sql1=mysqli_query($con,"SELECT subject_name from subjects where subject_id='.$subject_id.'");
+$sql1=mysqli_fetch_assoc($sql1);
 
 ?>
 
@@ -53,10 +55,10 @@ $sql = mysqli_query($con ,"SELECT lo.loc as locs, loc.credits as credits FROM `l
 					<div class="page-header">
 						<div class="row align-items-center">
 							<div class="col">
-								<h3 class="page-title">Subjects</h3>
+								<h3 class="page-title">Learning Outcomes</h3>
 								<ul class="breadcrumb">
 									<li class="breadcrumb-item"><a href="teacher-classteacher-dashboard.php">Dashboard</a></li>
-									<li class="breadcrumb-item active">Subjects</li>
+									<li class="breadcrumb-item active">Learning Outcomes</li>
 								</ul>
 							</div>
 						</div>
@@ -74,18 +76,21 @@ $sql = mysqli_query($con ,"SELECT lo.loc as locs, loc.credits as credits FROM `l
 												<tr>
 													<th>S. No.</th>
 													<th>Learning Outcome</th>
-													<th>Credit</th>
+													<th>Percentage</th>
 												</tr>
 											</thead>
 											<tbody>
                                                 <?php
 													$i = 0;
+                                                   
+                                                    
 													while($run1 = mysqli_fetch_assoc($sql))
 													{
+                                                        $r=($run1['credits']/5)*100;
 														echo '<tr>
 															<td>'.++$i.'</td>
 															<td>'.$run1['locs'].'</td>
-															<td>'.$run1['credits'].'</td>
+															<td>'.$r.'</td>
 														</tr>';
 													}
                                                 ?>
