@@ -55,7 +55,7 @@ $sql1=mysqli_fetch_assoc($sql1);
 					<div class="page-header">
 						<div class="row align-items-center">
 							<div class="col">
-								<h3 class="page-title"><?php echo ?>Learning Outcomes</h3>
+								<h3 class="page-title">Learning Outcomes</h3>
 								<ul class="breadcrumb">
 									<li class="breadcrumb-item"><a href="teacher-classteacher-dashboard.php">Dashboard</a></li>
 									<li class="breadcrumb-item active">Subjects</li>
