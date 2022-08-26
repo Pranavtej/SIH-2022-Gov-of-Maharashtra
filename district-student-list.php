@@ -7,30 +7,6 @@ include'connect.php';
 $did=$_SESSION['DISTRICT_ID'];
 
 $std=" select s.student_id , s.student_name ,s.date_of_birth,s.address,s.email,s.class_id,s.gender,c.class,c.section from student as s, classes as c where s.school_id=ANY(select school_id from school_info where district_id='$did') and s.class_id=c.class_id";
-if(isset($_POST['submit'])) {
-    if($_POST['select']=='6th') {   //<=========== 'select'
-        $std=" select s.student_id , s.student_name ,s.date_of_birth,s.address,s.email,s.class_id,s.gender,c.class,c.section from student as s,classes as c where school_id=ANY(select school_id from school_info where district_id='$did')  and (class_id='CL0601' or class_id='CL0602' or class_id='CL0603' or class_id='CL0604') ";
-    }
-    elseif($_POST['select']=='7th') {   //<=========== 'select'
-        $std=" select student_id , student_name ,date_of_birth,address,email,class_id,gender,c.class,c.section from student where school_id=ANY(select school_id from school_info where district_id='$did') and (class_id='CL0701' or class_id='CL0702' or class_id='CL0703' or class_id='CL0704') ";
-    }
-    elseif($_POST['select']=='8th'){
-        $std=" select student_id , student_name ,date_of_birth,address,email,class_id,gender,c.class,c.section from student where school_id=ANY(select school_id from school_info where district_id='$did') and class_id='CL0801' or class_id='CL0802' or class_id='CL0803' or class_id='CL0804' ";
-    }
-    elseif($_POST['select']=='9th'){
-        $std=" select student_id , student_name ,date_of_birth,address,email,class_id,gender,c.class,c.section from student where school_id=ANY(select school_id from school_info where district_id='$did') and class_id='CL0901' or class_id='CL0902' or class_id='CL0903' or class_id='CL0904' ";
-    }
-    elseif($_POST['select']=='10th'){
-        $std=" select student_id , student_name ,date_of_birth,address,email,class_id,gender,c.class,c.section from student where school_id=ANY(select school_id from school_info where district_id='$did') and class_id='CL1001' or class_id='CL1002' or class_id='CL1003' or class_id='CL1004' ";
-    }
-    else{
-
-    }
-
-    $result=mysqli_query($con,$std) or die(mysqli_error);
-    $counter=mysqli_num_rows($result);
-    
-}
 $result=mysqli_query($con,$std) or die(mysqli_error);
 $counter=mysqli_num_rows($result);
 
@@ -87,7 +63,7 @@ $counter=mysqli_num_rows($result);
 </div> 
 
 
-<div>
+<!-- <div>
 <form class="filteroption" action="" method="post">
     <select id="select" class="form-control form-select" name="select" >
 
@@ -100,10 +76,10 @@ $counter=mysqli_num_rows($result);
     </select>
     <br>
     <input  class="btn btn-primary" type="submit" name="submit" value="submit">
-          </form>
+          </form> -->
 
 
-</div>
+<!-- </div> -->
 <br>
 <div class="row">
 <div class="col-sm-12">

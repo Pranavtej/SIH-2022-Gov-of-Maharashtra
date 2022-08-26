@@ -82,7 +82,10 @@ error_reporting(E_ERROR | E_PARSE);
                                                         $sql="select distinct subject_name from subjects as s,schoolwise_class_subject_teachers as st,teacher_info as t where st.teacher_id='$did' and st.subject_id=s.subject_id";
                                                         $res=mysqli_query($con,$sql);
                                                         $res1=mysqli_fetch_assoc($res);
+														if($res1!=null)
+														{
                                                         $m=implode("",$res1);
+														}
                                                         
                                                     
 														echo 
