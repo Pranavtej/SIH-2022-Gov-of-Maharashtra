@@ -149,11 +149,13 @@ $query="select S.subject_name, M.marks from exam_marks M,subjects S where M.stud
 						<div class="row">
 							<div class="col-sm-12">
 								<h3 class="page-title">Student Report card</h3>
-								<div id="google_translate_element"></div>
 								<div class="col-auto text-end float-end ms-auto">
+								  <button  class="btn btn primary"></button>
 									<div>
-									<button  class="btn btn primary"></button>
-                                <
+									
+								<div id="google_translate_element"></div>
+								
+                                
 												
 								<ul class="breadcrumb">
 									<li class="breadcrumb-item"><a href="">Student</a></li>
