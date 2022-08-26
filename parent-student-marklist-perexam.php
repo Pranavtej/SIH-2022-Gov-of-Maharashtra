@@ -6,6 +6,8 @@ session_start();
 
 $student_id = $_SESSION['STUDENT_ID'];
 
+$exam_id=$_GET['eid'];
+
 
 
 
@@ -65,13 +67,12 @@ $student_id = $_SESSION['STUDENT_ID'];
 					
 					<div class="row">
 						<?php
-                            $eid = array("UT1","FA1","UT2","FA2","AEE");
-                            foreach($eid as $id)
-                            {
+                            //$eid = array($eid);
+                            $eid=$_GET['eid'];
                                 $i = 0;
-                                $query="select S.subject_name as sn, M.marks as mm from exam_marks M,subjects S where M.student_id='$student_id' and M.subject_id=S.subject_id and eid='$id'";
+                                $query="select S.subject_name as sn, M.marks as mm from exam_marks M,subjects S where M.student_id='$student_id' and M.subject_id=S.subject_id and eid='$eid'";
                                 $result=mysqli_query($con,$query) or die(mysqli_error);
-                                $query1="select ename from exam where eid='$id'";
+                                $query1="select ename from exam where eid='$eid'";
                                 $result2=mysqli_query($con,$query1) or die(mysqli_error);
                                 $res = mysqli_fetch_assoc($result2);
                                 echo '<div class="col-sm-12">
@@ -105,7 +106,6 @@ $student_id = $_SESSION['STUDENT_ID'];
                                             </div>
                                         </div>
                                     </div>';
-                            }
                         ?>
 					</div>
 				

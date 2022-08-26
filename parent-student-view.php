@@ -116,28 +116,7 @@ $run2 = mysqli_fetch_assoc($run2);
 										<div class="row mt-3">                                           
 										</div>
 										
-										<div class="row follow-sec">
-                                            <div class="col-md-4 mb-3">
-                                                <div class="blue-box">
-                                                    <h3>2850</h3>
-                                                    <p>Followers</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4 mb-3">
-                                                <div class="blue-box">
-                                                    <h3>2050</h3>
-                                                    <p>Following</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4 mb-3">
-                                                <div class="blue-box">
-                                                    <h3>2950</h3>
-                                                    <p>Friends</p>
-                                                </div>
-                                            </div>
-										</div>
-										
-										<div class="row mt-2">
+																			<div class="row mt-2">
 											<div class="col-md-12">
 												<h5>Permanent Address</h5>
 												<p><?php echo $run['address']; ?></p>
