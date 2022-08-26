@@ -109,9 +109,15 @@
                             </ul>
                         </li>
                         <li class="submenu">
-                            <a href="#"><i class="fas fa-user-graduate"></i> <span>Learning OutcOME Assesment</span> <span class="menu-arrow"></span></a>
+                            <a href="#"><i class="fas fa-user-graduate"></i> <span>Learning Outcome Assesment</span> <span class="menu-arrow"></span></a>
                             <ul>
                                 <li><a href="exam-login.php?eid=E11">Take Assesment</a></li>
+                            </ul>
+                        </li>
+                        <li class="submenu">
+                            <a href="#"><i class="fas fa-user-graduate"></i> <span>Online/Offline</span> <span class="menu-arrow"></span></a>
+                            <ul>
+                                <li><a href="teacher-exam1.php?eid=E10">Mock Page</a></li>
                             </ul>
                         </li>
                     </ul>
