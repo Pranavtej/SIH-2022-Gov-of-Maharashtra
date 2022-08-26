@@ -256,7 +256,7 @@ foreach($re9 as $data)
 								<div class="col-12 col-md-6 col-lg-4 d-flex">
 									<div class="card flex-fill">
 										<div class="card-header">
-											<h5 class="card-title mb-0">'.$id['subject_name'].'<br><br>Credits : ';
+											<h5 class="card-title mb-0">'.$id['subject_name'].'<br><br>Rating : ';
 											for($i=1;$i<=$cc;$i++)
 											{
 												echo '<span class="fa fa-star checked"></span>';
