@@ -7,7 +7,8 @@ $subject_id = $_GET['suid'];
 $student_id = $_SESSION['STUDENT_ID'];
 $school_id  = $_SESSION['SCHOOL_ID'];
 $class_id = $_SESSION['CLASS_ID'];
-
+$sql3=mysqli_query($con,"select * from student where student_id='$student_id'");
+$sql4=mysqli_fetch_assoc($sql3);
 $sql = mysqli_query($con ,"SELECT lo.loc as locs, loc.credits as credits FROM `learning_outcomes_credits` loc , `learning_outcomes` lo where loc.class_id='$class_id' AND loc.school_id='$school_id' and loc.student_id='$student_id' and loc.subject_id='$subject_id' and loc.loc_id = lo.loc_id");
 $sql1=mysqli_query($con ,"SELECT subject_name from subjects where subject_id='$subject_id'");
 $sql2=mysqli_fetch_assoc($sql1);
@@ -60,19 +61,24 @@ $sql2=mysqli_fetch_assoc($sql1);
 								<ul class="breadcrumb">
 									<li class="breadcrumb-item"><a href="teacher-classteacher-dashboard.php">Dashboard</a></li>
 									<li class="breadcrumb-item active">Learning Outcomes</li>
-								</ul>
+                                    </ul>
+
+                                   
+								
 							</div>
 						</div>
+                      
 					</div>
 					<!-- /Page Header -->
 				
 					<div class="row">
 						<div class="col-sm-12">
-						
+                        <h7 >Student Name : <?php echo $sql4['student_name']?> </h7>
+                        <br>
 							<div class="card card-table">
 								<div class="card-body">
 									<div class="table-responsive">
-										<table class="table table-hover">
+										<table class="datatable table table-stripped">
 											<thead>
 												<tr>
 													<th>S. No.</th>
