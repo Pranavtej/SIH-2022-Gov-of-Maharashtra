@@ -151,7 +151,7 @@ else{
 							<div class="col-sm-12">
 								<h3 class="page-title">Welcome Parent !!</h3>
 								<h4>Student name:<?php echo $student_name;?></h4>
-								<h6>CLASS:<?php echo $run['class'].'-'.$run['section'];?></h6>
+								<h6>Class: <?php echo $run['class'].'-'.$run['section'];?></h6>
                                 </h3>
 								<ul class="breadcrumb">
 									<li class="breadcrumb-item"><a href="">Dashboard</a></li>
