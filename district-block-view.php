@@ -1,6 +1,6 @@
 <?php
 include "connect.php";
-$bid=$_GET["bid"];
+$bid=$_GET["id"];
 $sql1=mysqli_query($con,"select count(student_id) as total from student where school_id=ANY(select school_id from school_info where block_id='$bid') group by school_id");
 
 foreach($sql1 as $data)
@@ -23,13 +23,6 @@ foreach($sql3 as $data2)
 <!DOCTYPE html>
 <html lang="en">
     <head>
-    <style>
-  #pscore {
-    display: inline-block;
-    position: relative;
-    width: 80%;
-  }
-</style>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
         <title>State-Official-Dashboard</title>
@@ -63,7 +56,7 @@ foreach($sql3 as $data2)
 					<div class="page-header">
 						<div class="row">
 							<div class="col-sm-12">
-								<h3 class="page-title">School wise NO.OF Students and Pass Percentage of Each School <?php echo json_encode($y) ?></h3>
+								<h3 class="page-title">School wise NO.OF Students and Pass Percentage of Each School </h3>
 								<ul class="breadcrumb">
 									<li class="breadcrumb-item active"></li>
 								</ul>
@@ -131,6 +124,7 @@ foreach($sql3 as $data2)
 													},
 													options: {
 														//maintainAspectRatio: true,
+														indexAxis : 'y',
 														scales: {
 															y: {
 																beginAtZero: true
@@ -159,7 +153,7 @@ foreach($sql3 as $data2)
                                             <script>
 												// m = JSON.parse(localStorage.m);
 												const ctx1 = document.getElementById('pscore');
-                                                var ctxP = ctx1.getContext('2d');
+                                                // var ctxP = ctx1.getContext('2d');
 												const myChart1 = new Chart(ctx1, {
 													type: 'bar',
 													data: {
