@@ -103,11 +103,11 @@ $loc = mysqli_query($con, "SELECT question_id,question,options,loc_id,image_path
                                     <p class="card-text">Student Answer: '.$a['answer'].'</p>';
                                     if($b['answer']==$a['answer'])
                                     {
-                                        echo '<p class="card-text" style="color:green">Correct</p>';
+                                        echo '<p class="card-text" style="color:green"><b>Correct</b></p>';
                                     }
                                     else
                                     {
-                                        echo '<p class="card-text" style="color:red">Wromg</p>';
+                                        echo '<p class="card-text" style="color:red"><b>Wrong</b></p>';
 
                                     }
                                     echo '</div>
