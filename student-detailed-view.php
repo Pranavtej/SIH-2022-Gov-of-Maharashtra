@@ -53,10 +53,10 @@ $sql = mysqli_query($con ,"SELECT lo.loc as locs, loc.credits as credits FROM `l
 					<div class="page-header">
 						<div class="row align-items-center">
 							<div class="col">
-								<h3 class="page-title">Subjects</h3>
+								<h3 class="page-title">Deatailed Learning outcomes view</h3>
 								<ul class="breadcrumb">
 									<li class="breadcrumb-item"><a href="teacher-classteacher-dashboard.php">Dashboard</a></li>
-									<li class="breadcrumb-item active">Subjects</li>
+									<li class="breadcrumb-item active"></li>
 								</ul>
 							</div>
 						</div>
