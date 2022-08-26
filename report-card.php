@@ -170,7 +170,7 @@ foreach($re9 as $data)
 
 										<div class="row mt-3">                                           
 										</div>
-										\<!-- <div class="row mt-2">
+										<!-- <div class="row mt-2">
 											<div class="col-md-12">
 												<h5>Permanent Address</h5>
 												<p><?php echo $run['address']; ?></p>
