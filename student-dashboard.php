@@ -455,7 +455,7 @@ foreach($sql as $data){
 																$re1 = mysqli_fetch_assoc($re1);
 																echo '
 																<span class="feed-text1"><a>'.$re1['ename'].'</a></span>
-																<p><span>'.$re1['total'].'</span></p>';
+																<p><span><a href="student-marklist-perexam.php?eid='.$eid.'">'.$re1['total'].'</span></p>';
 															}
 														?>
 													</li>
