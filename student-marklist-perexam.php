@@ -9,12 +9,12 @@ $student_id = $_SESSION['STUDENT_ID'];
 $exam_id=$_GET['eid'];
 
 $query="select S.subject_name, M.marks from exam_marks M,subjects S where M.student_id='$student_id' and M.subject_id=S.subject_id and eid='$exam_id'";
-$result=mysqli_query($con,$query) or die(mysqli_error);
-    foreach($result as $data)
-    {
-    $y[] = $data['subject_name'];
-    $x[]=$data['marks'];
-}
+    $result=mysqli_query($con,$query) or die(mysqli_error);
+     foreach($result as $data)
+     {
+        $y[] = $data['subject_name'];
+        $x[]=$data['marks'];
+    }
 
 
 
