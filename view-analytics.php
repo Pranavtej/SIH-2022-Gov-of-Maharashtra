@@ -84,7 +84,7 @@ $query = mysqli_query($con, "select s.student_id as student_id,l.credits as cred
                                                             <td>'.++$i.'</td>
                                                             <td>'.$ru['student_name'].'</td>
                                                             <td>'.$ru['credits'].'</td>
-                                                        </tr>'
+                                                        </tr>';
 													}
                                                 ?>
                                             </tbody>
