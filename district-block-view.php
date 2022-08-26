@@ -201,28 +201,28 @@ foreach($sql3 as $data2)
 														}
 													}
 												});
-//                                                 myChart1.canvas.addEventListener('click',(e) => {
-//                                                 clickableScales(myChart1,e)
-//                                                    });
-//                                                    function clickableScales(chart,click){
-//     const{ctx,canvas,scales:{x,y}}=chart;
-//    const top=y.top
-//   const left=y.left
-//   const right=y.right
-//   const bottom=y.bottom
-//   const height=y.height/ y.ticks.length;
-//   // mouse coordinates
-//   let rect=canvas.getBoundingClientRect();
-//   const xCoor=click.clientX-rect.left;
-//   const yCoor=click.clientY-rect.top;
-//   for(let i=0;i < y.ticks.length;i++){
-//     if(xCoor>=left && xCoor<=right && yCoor>=top+(height*i)&&
-//        yCoor<=top+height+(height*i)){
-//     window.open(chart.data.datasets[0].labelLinks[i]);
+                                                myChart1.canvas.addEventListener('click',(e) => {
+                                                clickableScales(myChart1,e)
+                                                   });
+                                                   function clickableScales(chart,click){
+    const{ctxp,canvas,scales:{x,y}}=chart;
+   const top=y.top
+  const left=y.left
+  const right=y.right
+  const bottom=y.bottom
+  const height=y.height/ y.ticks.length;
+  // mouse coordinates
+  let rect=canvas.getBoundingClientRect();
+  const xCoor=click.clientX-rect.left;
+  const yCoor=click.clientY-rect.top;
+  for(let i=0;i < y.ticks.length;i++){
+    if(xCoor>=left && xCoor<=right && yCoor>=top+(height*i)&&
+       yCoor<=top+height+(height*i)){
+    window.open(chart.data.datasets[0].labelLinks[i]);
       
-// }
-//    }
-// }
+}
+   }
+}
 
 											</script>
 										</div>
