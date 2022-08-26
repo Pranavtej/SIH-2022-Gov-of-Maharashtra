@@ -88,9 +88,10 @@ $r=mysqli_query($con,$q) or die(mysqli_error);
 	}
 
 
-	$sql = mysqli_query($con ,"SELECT (loc.credits/5)*100 as percent  FROM `learning_outcomes_credits` loc , `learning_outcomes` lo where loc.class_id='$class_id' AND loc.school_id='$school_id' and loc.student_id='$student_id' and loc.loc_id = lo.loc_id");
+	$sql = mysqli_query($con ,"SELECT s.subject_name  as subject_name,ROUND(sum(credits)/5) as num,loc.subject_id as subject_id FROM `learning_outcomes_credits` loc,subjects s WHERE class_id='$class_id' and student_id='$student_id' and s.subject_id=loc.subject_id GROUP BY loc.subject_id");
 foreach($sql as $data){
-   $per[]=$data['percent'];
+	$n = $data['num']/5 * 100;
+   $per[]=$n;
 }
 
 $query="select S.subject_name, M.marks from exam_marks M,subjects S where M.student_id='$student_id' and M.subject_id=S.subject_id and eid='$eid'";
