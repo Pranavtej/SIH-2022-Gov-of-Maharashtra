@@ -73,7 +73,7 @@ if(isset($_POST['login']))
 										<input class="form-control" name="student_id" id="student_id" type="text" placeholder="Student ID ">
 									</div>
 									<div class="form-group">
-										<input class="form-control" name="student_password" id="student_password" type="password" placeholder="Password">
+										<input class="form-control" name="student_password" id="student_password" type="password" placeholder="Password" required>
 									</div>
 									<div class="form-group">
 										<button class="btn btn-primary btn-block"  name="login" type="submit">Login</button>

@@ -3,15 +3,30 @@
 include 'connect.php';
 
 session_start();
-
-$school_id = $_SESSION['SCHOOL_ID']; 
-$teacher_id = $_SESSION['TEACHER_ID'];
-
-$sql = "select su.subject_id as sid, su.subject_name as subject_name,c.class as class,c.section as section,scst.class_id as class_id 
-		from schoolwise_class_subject_teachers as scst, subjects su ,classes c where scst.school_id = '$school_id' 
-		and scst.teacher_id = '$teacher_id' and su.subject_id = scst.subject_id and scst.class_id = c.class_id";
-$run = mysqli_query($con, $sql);
-
+$teacher_id=$_SESSION['TEACHER_ID'];
+$school_id = $_SESSION['SCHOOL_ID'];
+$class_id = $_GET['class_id'];
+$subject_id=$_GET['subject_id'];
+$loc_id=$_GET['loc_id'];
+$avg=$_GET['avg'];
+$ace="select loc from learning_outcomes where loc_id='$loc_id'";
+$run=mysqli_query($con,$ace);
+$run=mysqli_fetch_assoc($run);
+$loc=$run['loc'];
+$subject_name=$_GET['subject_name'];
+$stat="SELECT c.*,s.student_name FROM learning_outcomes_credits c,student s WHERE loc_id='$loc_id' AND c.school_id='$school_id' AND s.student_id=c.student_id AND credits<FLOOR('$avg')";
+$res=mysqli_query($con,$stat); 
+// $class=6;
+// $section="A";
+// $sql12=mysqli_query($con,"select class_id from classes where class='$class' AND section='$section'");
+// $sql12=mysqli_fetch_assoc($sql12);
+// $class_id1=$sql12['class_id'];
+// $stat="select subject_id from schoolwise_class_subject_teachers where teacher_id='$teacher_id' AND class_id=ANY(select class_id from classes where class='$class' AND section='$section')";
+// $run = mysqli_query($con, $stat);
+// $run=mysqli_fetch_assoc($run);
+// $subject_id=$run['subject_id'];
+// $ace="select * from learning_outcomes where subject_id='$subject_id' AND loc_id=ANY(select loc_id from learning_outcomes_credits where subject_id='$subject_id')";
+// $res=mysqli_query($con,$ace);
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +34,7 @@ $run = mysqli_query($con, $sql);
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-        <title>Subjects</title>
+        <title>Preskool - Subjects</title>
 		
 		<!-- Favicon -->
         <link rel="shortcut icon" href="assets/img/favicon.png">
@@ -45,8 +60,7 @@ $run = mysqli_query($con, $sql);
 		<!-- Main Wrapper -->
         <div class="main-wrapper">
 		
-			<?php include 'teacher-header.php'; ?>
-			<?php include 'teacher-sidebar.php'; ?>
+			<?php include 'student-menu.php'; ?>
 			
 			<!-- Page Wrapper -->
             <div class="page-wrapper">
@@ -56,16 +70,17 @@ $run = mysqli_query($con, $sql);
 					<div class="page-header">
 						<div class="row align-items-center">
 							<div class="col">
-								<h3 class="page-title">Subjects Teaching</h3>
+								<h3 class="page-title"><?php echo $subject_name ;?></h3>
 								<ul class="breadcrumb">
-									<li class="breadcrumb-item"><a href="#">Teacher Dashboard</a></li>
-									<li class="breadcrumb-item active">Subjects Teaching</li>
+									<li class="breadcrumb-item"><a href="index.html">Analysis</a></li>
+									<li class="breadcrumb-item active">Learning Outcomes</li>
 								</ul>
 							</div>
 						</div>
 					</div>
 					<!-- /Page Header -->
-				
+				<h3>Learning Outcome:</h3>
+                <h4><?php echo $loc ;?></h4>
 					<div class="row">
 						<div class="col-sm-12">
 						
@@ -76,23 +91,23 @@ $run = mysqli_query($con, $sql);
 											<thead>
 												<tr>
 													<th>S. No.</th>
-													<th>Subject</th>
-													<th>Class</th>
-                                                    <th>Section</th>
+													<th>Name</th>
+													<th>Class Id</th>
+                                                    <th>Score</th>
 												</tr>
 											</thead>
 											<tbody>
                                                 <?php
-													$i = 0;
-													while($run1 = mysqli_fetch_assoc($run))
-													{
-														echo '<tr>
-															<td>'.++$i.'</td>
-															<td><a href="ex-loc-list.php?subject_name='.$run1['subject_name'].'&class='.$run1['class'].'&section='.$run1['section'].'">'.$run1['subject_name'].'</a></td>
-															<td>'.$run1['class'].'</td>
-															<td>'.$run1['section'].'</td>
-														</tr>';
-													}
+                                                    $i = 0;
+                                                    while($data = mysqli_fetch_array($res))
+                                                    {
+                                                        echo '<tr>
+                                                        <td>'.++$i.'</td>
+                                                        <td>'.$data['student_name'].'</td>
+                                                        <td>'.$data['class_id'].'</td>
+                                                        <td>'.$data['credits'].'</td>
+                                                        </tr>';
+                                                    }
                                                 ?>
                                             </tbody>
 										</table>
