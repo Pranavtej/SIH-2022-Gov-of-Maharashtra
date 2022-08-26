@@ -31,8 +31,11 @@ if(isset($_POST['give']))
                 if($answer2['answer'] == strtoupper($ans))
                 {
                     $correct += 1;
+
                 }
                 $count++;
+            $insert1 = mysqli_query($con,"INSERT INTO `learning_outcomes_credits` (`student_id`,`school_id`,`exam_id`, `question_id`, `loc_id`,`answer`,`class_id`,`subject_id`) VALUES ('$student_id','$school_id','$exam_id' , '$ques','$locid', '$ans' ,'$class_id','SUB0104')") or die(mysqli_error()); 
+
             }
             $markperquestion = 5/$count;
             $credits = $markperquestion * $correct;

@@ -105,7 +105,7 @@ $run = mysqli_fetch_array($query);
                                                             <td>'.$d['loc'].'</td>
 															<td>Class 1</td>
 															<td>Mathematics</td>
-                                                            <td>'.$d['credits'].'/5</td>
+                                                            <td><a herf="view-std.php?sid=&loc_id">'.$d['credits'].'/5</td>
 															<td>'.$per.'%</td>
                                                         </tr>';
                                                     }													
