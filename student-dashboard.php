@@ -25,10 +25,11 @@ else{
         $student_dob = $run['date_of_birth'];
         $student_classid= $run['class_id'];
 
-	$query1="select eid from exam where status=1";
+	$query1="select eid,ename from exam where status=1";
 	$result1=mysqli_query($con,$query1) or die(mysqli_error);
 	$res = mysqli_fetch_assoc($result1);
 	$eid = $res['eid'];
+	$ename = $res['ename'];
 
     $query="select S.subject_name, M.marks from exam_marks M,subjects S where M.student_id='$student_id' and M.subject_id=S.subject_id and eid='$eid'";
     $result=mysqli_query($con,$query) or die(mysqli_error);
@@ -363,7 +364,7 @@ foreach($sql as $data){
 										<div class="card-header">
 											<div class="row align-items-center">
 												<div class="col-6">
-													<h5 class="card-title">Learning Activity</h5>
+													<h5 class="card-title"><?php echo $ename; ?></h5>
 												</div>
 												<!-- <div class="col-6">
 													<ul class="list-inline-group text-end mb-0 ps-0">
@@ -434,7 +435,7 @@ foreach($sql as $data){
 								<div class="col-12 col-lg-12 col-xl-4 d-flex">
 									<div class="card flex-fill">
 										<div class="card-header">
-											<h5 class="card-title">Learning History</h5>
+											<h5 class="card-title"></h5>
 										</div>
 										<div class="card-body">
 											<div class="teaching-card">
