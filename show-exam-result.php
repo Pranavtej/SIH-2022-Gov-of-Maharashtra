@@ -11,7 +11,7 @@ session_start();
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
         <meta http-equiv="refresh" content="3">
-        <title>Preskool - Students</title>
+        <title>Student Exam Results</title>
 		
 		<!-- Favicon -->
         <link rel="shortcut icon" href="assets/img/favicon.png">
@@ -45,10 +45,10 @@ session_start();
 					<div class="page-header">
 						<div class="row align-items-center">
 							<div class="col">
-								<h3 class="page-title">Students</h3>
+								<h3 class="page-title">Learning Outcome assessment for Grade 1</h3>
 								<ul class="breadcrumb">
-									<li class="breadcrumb-item active">Dashboard</a></li>
-									<li class="breadcrumb-item active">Students</li>
+									<li class="breadcrumb-item active">List</a></li>
+									<li class="breadcrumb-item active">Student Result View</li>
 								</ul>
 							</div>
 						</div>
@@ -68,8 +68,10 @@ session_start();
 										<table class="table table-hover table-center mb-0">
 											<thead>
 												<tr>
+													<th>Student Roll No</th>
 													<th>Student Name</th>
-													<th>Credits</th>
+													<th>Class</th>
+													<th>Subject</th>
 													<th>Rating</th>
 													<th>View More details</th>
 												</tr>
@@ -85,8 +87,10 @@ session_start();
 														foreach($run as $r)
 														{
 															echo '<tr>
+																<td>'.$sid.'</td>
 																<td>'.$r['student_name'].'</td>
-																<td>'.$r['num'].'</td>';
+																<td>Class 1</td>
+																<td>Mathematics</td>';
                                                             $cc = (int)$r['num'];
 															echo '<td>';
 															for($i=1;$i<=$cc;$i++)
