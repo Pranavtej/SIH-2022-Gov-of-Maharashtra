@@ -48,7 +48,7 @@ foreach($sql3 as $data2)
 		<!-- Main Wrapper -->
         <div class="main-wrapper">
 		
-			<?php include 'district-menu.php';	?><!-- Page Wrapper -->
+			<?php include 'public-menu.php';	?><!-- Page Wrapper -->
             <div class="page-wrapper">
 			
                 <div class="content container-fluid">
@@ -101,9 +101,8 @@ foreach($sql3 as $data2)
 														datasets: [{
 															label: 'NO.OF STUDENTS',
 															data:<?php echo json_encode($x)?>,
-															labelLinks: ['district-school-view.php?sid=SC0001','district-school-view.php?sid=SC0002'],
 														//echo json_encode($x),
-
+                                                        labelLinks: ["sample-school.php?sid=SC0001","sample-school.php?sid=SC0002"],
 															backgroundColor: [
 																'rgba(255, 99, 132, 0.2)',
 																'rgba(54, 162, 235, 0.2)',
@@ -133,7 +132,7 @@ foreach($sql3 as $data2)
 														}
 													}
 												});
-												myChart.canvas.addEventListener('click',(e) => {
+                                                myChart.canvas.addEventListener('click',(e) => {
                                                 clickableScales(myChart,e)
                                                    });
                                                    function clickableScales(chart,click){
@@ -188,7 +187,7 @@ foreach($sql3 as $data2)
 															label: 'PASS PERCENT FOR EACH SCHOOL',
 															data:<?php echo json_encode($m)?>,
 													
-                                                            labelLinks: ['district-school-view.php?sid=SC0001','district-school-view.php?sid=SC0002'],
+                                                            labelLinks: ['https//:www.google.com','https//:www.youtube.com'],
 															backgroundColor: [
 																'rgba(255, 99, 132, 0.2)',
 																'rgba(54, 162, 235, 0.2)',
@@ -218,28 +217,7 @@ foreach($sql3 as $data2)
 														}
 													}
 												});
-                                                myChart1.canvas.addEventListener('click',(e) => {
-                                                clickableScales(myChart1,e)
-                                                   });
-                                                   function clickableScales(chart,click){
-    const{ctxp,canvas,scales:{x,y}}=chart;
-   const top=y.top
-  const left=y.left
-  const right=y.right
-  const bottom=y.bottom
-  const height=y.height/ y.ticks.length;
-  // mouse coordinates
-  let rect=canvas.getBoundingClientRect();
-  const xCoor=click.clientX-rect.left;
-  const yCoor=click.clientY-rect.top;
-  for(let i=0;i < y.ticks.length;i++){
-    if(xCoor>=left && xCoor<=right && yCoor>=top+(height*i)&&
-       yCoor<=top+height+(height*i)){
-    window.open(chart.data.datasets[0].labelLinks[i]);
-      
-}
-   }
-}
+                                            
 
 											</script>
 										</div>

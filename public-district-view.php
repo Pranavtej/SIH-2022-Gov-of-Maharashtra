@@ -1,19 +1,19 @@
 <?php
 include "connect.php";
-$bid=$_GET["id"];
-$sql1=mysqli_query($con,"select count(student_id) as total from student where school_id=ANY(select school_id from school_info where block_id='$bid') group by school_id");
+$did=$_GET["did"];
+$sql1=mysqli_query($con,"select count(student_id) as total from student where school_id=ANY(select school_id from school_info where district_id='$did') group by school_id");
 
 foreach($sql1 as $data)
 {
    
    $x[]=$data['total'];
 }
-$sql2=mysqli_query($con,"select school_name from school_info where block_id='$bid'");
+$sql2=mysqli_query($con,"select school_name from school_info where district_id='$did'");
 foreach($sql2 as $data1)
 {
    $y[] = $data1['school_name'];
 }
-$sql3=mysqli_query($con,"select count(student_id) as total from exam_totals where  eid='AEE' and status='p' and school_id=ANY(select school_id from school_info where block_id='$bid') group by school_id");
+$sql3=mysqli_query($con,"select count(student_id) as total from exam_totals where  eid='AEE' and status='p' and school_id=ANY(select school_id from school_info where district_id='$did') group by school_id");
 foreach($sql3 as $data2)
 {
    $m[] = ($data2['total']/$data['total'])*100 ;
@@ -48,7 +48,7 @@ foreach($sql3 as $data2)
 		<!-- Main Wrapper -->
         <div class="main-wrapper">
 		
-			<?php include 'district-menu.php';	?><!-- Page Wrapper -->
+			<?php include 'public-menu.php';	?><!-- Page Wrapper -->
             <div class="page-wrapper">
 			
                 <div class="content container-fluid">
@@ -101,7 +101,7 @@ foreach($sql3 as $data2)
 														datasets: [{
 															label: 'NO.OF STUDENTS',
 															data:<?php echo json_encode($x)?>,
-															labelLinks: ['district-school-view.php?sid=SC0001','district-school-view.php?sid=SC0002'],
+                                                            labelLinks: ["sample-school.php?sid=SC0001","sample-school.php?sid=SC0002"],
 														//echo json_encode($x),
 
 															backgroundColor: [
@@ -133,7 +133,7 @@ foreach($sql3 as $data2)
 														}
 													}
 												});
-												myChart.canvas.addEventListener('click',(e) => {
+                                                myChart.canvas.addEventListener('click',(e) => {
                                                 clickableScales(myChart,e)
                                                    });
                                                    function clickableScales(chart,click){
@@ -188,7 +188,7 @@ foreach($sql3 as $data2)
 															label: 'PASS PERCENT FOR EACH SCHOOL',
 															data:<?php echo json_encode($m)?>,
 													
-                                                            labelLinks: ['district-school-view.php?sid=SC0001','district-school-view.php?sid=SC0002'],
+                                                            labelLinks: ["sample-school.php?sid=SC0001","sample-school.php?sid=SC0002"],
 															backgroundColor: [
 																'rgba(255, 99, 132, 0.2)',
 																'rgba(54, 162, 235, 0.2)',
@@ -218,11 +218,11 @@ foreach($sql3 as $data2)
 														}
 													}
 												});
-                                                myChart1.canvas.addEventListener('click',(e) => {
+                                               myChart1.canvas.addEventListener('click',(e) => {
                                                 clickableScales(myChart1,e)
                                                    });
                                                    function clickableScales(chart,click){
-    const{ctxp,canvas,scales:{x,y}}=chart;
+    const{ctx,canvas,scales:{x,y}}=chart;
    const top=y.top
   const left=y.left
   const right=y.right
@@ -240,6 +240,7 @@ foreach($sql3 as $data2)
 }
    }
 }
+	
 
 											</script>
 										</div>

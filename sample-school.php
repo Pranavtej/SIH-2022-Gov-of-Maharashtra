@@ -58,7 +58,7 @@ s.school_id ='$school_id' and  sc.class_id = c.class_id and sc.school_id=s.schoo
 		<!-- Main Wrapper -->
         <div class="main-wrapper">
 		
-			<?php include 'district-menu.php'; ?>
+			<?php include 'public-menu.php'; ?>
         
 			Page Wrapper
              <div class="page-wrapper">
