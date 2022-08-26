@@ -149,10 +149,6 @@ $query="select S.subject_name, M.marks from exam_marks M,subjects S where M.stud
 						<div class="row">
 							<div class="col-sm-12">
 								<h3 class="page-title">Student Report card</h3>
-								<div id="google_translate_element"></div>
-								<ul class="breadcrumb">
-									<li class="breadcrumb-item"><a href="">Student</a></li>
-									<li class="breadcrumb-item active">Student Report card</li>
 
 
 <div class="card">
@@ -160,7 +156,8 @@ $query="select S.subject_name, M.marks from exam_marks M,subjects S where M.stud
 							<div class="row">
 								<div class="col-md-12">
 									<div class="about-info">
-										<h4>Z P School</h4>
+                                        <h4>GOVERNMENT OF MAHARASHTRA</h4>
+										<h4>Z P School,Pune</h4>
 										
 										<div class="media mt-3 d-flex">
 											<img src="assets/img/user.jpg" class="me-3 flex-shrink-0" alt="...">
