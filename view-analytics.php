@@ -4,8 +4,13 @@ include "connect.php";
 
 $loc_id = $_GET['locid'];
 $eid = $_GET['eid'];
+$sid = $_GET['sid']
 
 $query = mysqli_query($con, "select s.student_name as student_name,l.credits as credits from student s,learning_outcomes_credits l where l.subject_id='SUB0104' and l.loc_id='$loc_id' and l.student_id = s.student_id order by credits desc");
+
+$q2 = mysqli_query($con, "select loc from learning_outcomes where loc_id='$loc_id'");
+$rrr = mysqli_fetch_assoc($q2);
+
 
 ?>
 
@@ -51,7 +56,7 @@ $query = mysqli_query($con, "select s.student_name as student_name,l.credits as 
 					<div class="page-header">
 						<div class="row align-items-center">
 							<div class="col">
-								<h3 class="page-title">Learning Outcome: </h3>
+								<h3 class="page-title">Learning Outcome: <?php echo $rrr['loc']; ?></h3>
 								<ul class="breadcrumb">
 									<li class="breadcrumb-item">Student List</li>
 									<li class="breadcrumb-item active">Mark List</li>
