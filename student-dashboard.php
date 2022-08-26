@@ -408,6 +408,7 @@ else{
 													},
 													options: {
 														//maintainAspectRatio: true,
+														indexAxis: 'y',
 														scales: {
 															y: {
 																beginAtZero: true
@@ -415,6 +416,7 @@ else{
 														}
 													}
 												});
+											
 											</script>
 										</div>
 									</div>
@@ -460,9 +462,9 @@ else{
 								</div>
 							</div>
 								
-							<div class="row">
-						<?php
-							$query = "SELECT s.subject_name  as subject_name,ROUND(sum(credits)/5) as num,loc.subject_id as subject_id FROM `learning_outcomes_credits` loc,subjects s WHERE class_id='$class_id' and student_id='$student_id' and s.subject_id=loc.subject_id GROUP BY loc.subject_id";
+							<!-- <div class="row">
+					       <?php
+							/*$query = "SELECT s.subject_name  as subject_name,ROUND(sum(credits)/5) as num,loc.subject_id as subject_id FROM `learning_outcomes_credits` loc,subjects s WHERE class_id='$class_id' and student_id='$student_id' and s.subject_id=loc.subject_id GROUP BY loc.subject_id";
 							$run = mysqli_query($con,$query);
 
 							foreach($run as $id)
@@ -489,10 +491,109 @@ else{
 									</a></div>
 								</div>
 								';
-							}
+							}*/
 						?>
 					
-				</div>
+				</div> -->
+
+				<div class="row">
+								<div class="col-12 col-lg-12 col-xl-8 d-flex">
+									<div class="card flex-fill">
+										<div class="card-header">
+											<div class="row align-items-center">
+												<div class="col-6">
+													<h5 class="card-title">Learning-Outcome Activity</h5>
+												</div>
+												<!-- <div class="col-6">
+													<ul class="list-inline-group text-end mb-0 ps-0">
+														<li class="list-inline-item">
+															  <div class="form-group mb-0 amount-spent-select">
+																<select class="form-control form-control-sm form-select">
+																  <option>Weekly</option>
+																  <option>Monthly</option>
+																  <option>Yearly</option>
+																</select>
+															</div>
+														</li>
+													</ul>                                        
+												</div> -->
+											</div>						
+										</div>
+										<div class="card-body">
+                                        <canvas id="lescore"></canvas>
+                                            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                                            <script>
+												// m = JSON.parse(localStorage.m);
+												const ctx3 = document.getElementById('lescore');
+												const myChart3 = new Chart(ctx3, {
+													type: 'bar',
+													data: {
+														labels: <?php echo json_encode($y) ?>,
+														//echo json_encode($y), 
+														datasets: [{
+															label: 'MARKS SCORED',
+															data:<?php echo json_encode($x)?>,
+															labelLinks: ["https//:google.com","https//:youtube.com","https//:heroku.com","https//:nike.com","https//:reeebok.com","https//:amazon.com","https//:google.com"],
+														//echo json_encode($x),
+
+															backgroundColor: [
+																'rgba(255, 99, 132, 0.2)',
+																'rgba(54, 162, 235, 0.2)',
+																'rgba(255, 206, 86, 0.2)',
+																'rgba(75, 192, 192, 0.2)',
+																'rgba(153, 102, 255, 0.2)',
+																'rgba(255, 159, 64, 0.2)'
+															],
+															borderColor: [
+																'rgba(255, 99, 132, 1)',
+																'rgba(54, 162, 235, 1)',
+																'rgba(255, 206, 86, 1)',
+																'rgba(75, 192, 192, 1)',
+																'rgba(153, 102, 255, 1)',
+																'rgba(255, 159, 64, 1)'
+															],
+															borderWidth: 1
+														}]
+													},
+													options: {
+														//maintainAspectRatio: true,
+														indexAxis:'y',
+														scales: {
+															y: {
+																beginAtZero: true
+															}
+														}
+													}
+												});
+												myChart3.canvas.addEventListener('click',(e) => {
+                                                clickableScales(myChart3,e)
+                                                   });
+                                                   function clickableScales(chart,click){
+    const{ctx,canvas,scales:{x,y}}=chart;
+   const top=y.top
+  const left=y.left
+  const right=y.right
+  const bottom=y.bottom
+  const height=y.height/ y.ticks.length;
+  // mouse coordinates
+  let rect=canvas.getBoundingClientRect();
+  const xCoor=click.clientX-rect.left;
+  const yCoor=click.clientY-rect.top;
+  for(let i=0;i < y.ticks.length;i++){
+    if(xCoor>=left && xCoor<=right && yCoor>=top+(height*i)&&
+       yCoor<=top+height+(height*i)){
+    window.open(chart.data.datasets[0].labelLinks[i]);
+      
+}
+   }
+}
+											</script>
+										</div>
+									</div>
+								</div>
+								
+								
+
 				
 						<div class="row">
 <div class="col-12 col-lg-12 col-xl-8 d-flex">

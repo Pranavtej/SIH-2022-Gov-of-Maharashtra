@@ -2,6 +2,7 @@
 include "connect.php";
 
 
+
 $did=$_SESSION['DISTRICT_ID'];
 $sql8=mysqli_query($con,"select count(school_id) as total from school_info where district_id='$did'");
 $sql9=mysqli_fetch_assoc($sql8);
@@ -77,6 +78,14 @@ foreach($sql12 as $data2)
 						</div>
 					</div>
 					<!-- /Page Header -->
+											
+					<script>
+			function redirect() {
+				let year = document.getElementById('year').value;
+				document.location = "student-dashboard-test.php?year="+year;
+
+			}
+		</script>
 
 					<!-- Overview Section -->
 					<div class="row">
