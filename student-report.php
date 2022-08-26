@@ -593,7 +593,7 @@ const myChartc = new Chart(ctxc, {
 <div class="col-12 col-lg-12 col-xl-4 d-flex">
 <div class="card flex-fill">
 <div class="card-header">
-<h5 class="card-title">Your Intrests </h5>
+<h5 class="card-title">Sports</h5>
 </div>
 
 <!-- <div class="circle-bar circle-bar3">
