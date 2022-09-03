@@ -1,14 +1,14 @@
 <?php 
-include "connect.php";
+include 'connect.php';
 $sql=mysqli_query($con,"select count(DISTINCT(d.district_id)) as total,d.district_id as d_id  from districts as d,blocks as b where d.district_id=b.district_id");
 $sql1=mysqli_fetch_assoc($sql);
-$sql2=mysqli_query($con,"select count(block_id) as total,block_id from blocks ");
+$sql2=mysqli_query($con,"select count(block_id) as total from blocks ");
 $sql3=mysqli_fetch_assoc($sql2);
-$sql4=mysqli_query($con,"select count(teacher_id) as total,teacher_id from teacher_info");
+$sql4=mysqli_query($con,"select count(teacher_id) as total from teacher_info");
 $sql5=mysqli_fetch_assoc($sql4);
-$sql6=mysqli_query($con,"select count(student_id) as total,student_id from student");
+$sql6=mysqli_query($con,"select count(student_id) as total from student");
 $sql7=mysqli_fetch_assoc($sql6);
-$sql8=mysqli_query($con,"select count(school_id) as total,school_id from school_info");
+$sql8=mysqli_query($con,"select count(school_id) as total from school_info");
 $sql9=mysqli_fetch_assoc($sql8);
 $sql10=mysqli_query($con,"select count(student_id) as total from student group by school_id");
 foreach($sql10 as $data)
@@ -27,7 +27,7 @@ foreach($sql11 as $data)
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-        <title>State-Official-Dashboard</title>
+        <title>Public-Dashboard</title>
 		
 		<!-- Favicon -->
         <link rel="shortcut icon" href="assets/img/favicon.png">
