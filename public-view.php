@@ -1,6 +1,6 @@
 <?php 
 include 'connect.php';
-$sql=mysqli_query($con,"select count(DISTINCT(d.district_id)) as total,d.district_id as d_id  from districts as d,blocks as b where d.district_id=b.district_id");
+$sql=mysqli_query($con,"select count(DISTINCT(d.district_id)) as total from districts as d,blocks as b where d.district_id=b.district_id");
 $sql1=mysqli_fetch_assoc($sql);
 $sql2=mysqli_query($con,"select count(block_id) as total from blocks ");
 $sql3=mysqli_fetch_assoc($sql2);
