@@ -1,12 +1,5 @@
 <?php
 include 'connect.php';
-$sql1=mysqli_query($con,"select count(student_id) as total from student where school_id=ANY(select school_id from school_info where district_id=) group by school_id");
-
-foreach($sql1 as $data)
-{
-   
-   $x[]=$data['total'];
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -107,7 +100,7 @@ foreach($sql1 as $data)
 				</div>			
 			</div>
            
-  
+<!--   
   <div class="card-body">
                                         <canvas id="acscore"></canvas>
                                             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -117,11 +110,11 @@ foreach($sql1 as $data)
 												const myChart = new Chart(ctx, {
 													type: 'pie',
 													data: {
-														labels: <?php echo json_encode($y) ?>,
+														labels: ,
 														//echo json_encode($y), 
 														datasets: [{
 															label: '',
-															data:<?php echo json_encode($x)?>,
+															data:,
 														//echo json_encode($x),
                                                         // labelLinks: ["sample-school.php?sid=SC0001","sample-school.php?sid=SC0002"],
 															backgroundColor: [
@@ -153,7 +146,7 @@ foreach($sql1 as $data)
 														}
 													}
 												});
-</script>
+</script> -->
 			<!-- /Page Wrapper -->
 			
         </div>
